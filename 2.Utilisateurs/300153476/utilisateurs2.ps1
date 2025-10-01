@@ -1,4 +1,4 @@
-. .\Utilisateur1.ps1
+. .\utilisateurs1.ps1
 # Créer des groupes
 $Groups = @{
     "GroupeFormation" = @();

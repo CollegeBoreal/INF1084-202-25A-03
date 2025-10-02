@@ -36,6 +36,37 @@ Exemple avec domaine **DC999999999.local** :
 ```powershell
 Install-ADDSForest -DomainName "DC999999999.local" -DomainNetbiosName "DC999999999" -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
 ```
+<details>
+<summary>Output</summary>
+
+```powershell
+                                                                                                                         Install-ADDSForest                                                                                                                                                                                                                                Validating environment and user input                                                                                      All tests completed successfully                                                                                        [oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo]         Installing new forest                                                                                                      Starting                                                                                                                                                                                                                                  For more information about this setting, see Knowledge Base article 942564
+(http://go.microsoft.com/fwlink/?LinkId=104751).
+
+WARNING: This computer has at least one physical network adapter that does not have static IP address(es) assigned to
+its IP Properties. If both IPv4 and IPv6 are enabled for a network adapter, both IPv4 and IPv6 static IP addresses
+should be assigned to both IPv4 and IPv6 Properties of the physical network adapter. Such static IP address(es)
+assignment should be done to all the physical network adapters for reliable Domain Name System (DNS) operation.
+
+WARNING: A delegation for this DNS server cannot be created because the authoritative parent zone cannot be found or it
+ does not run Windows DNS server. If you are integrating with an existing DNS infrastructure, you should manually
+create a delegation to this DNS server in the parent zone to ensure reliable name resolution from outside the domain
+"DC999999999.local". Otherwise, no action is required.
+
+WARNING: Windows Server 2022 domain controllers have a default for the security setting named "Allow cryptography
+algorithms compatible with Windows NT 4.0" that prevents weaker cryptography algorithms when establishing security
+channel sessions.
+
+For more information about this setting, see Knowledge Base article 942564
+(http://go.microsoft.com/fwlink/?LinkId=104751).
+
+WARNING: This computer has at least one physical network adapter that does not have static IP address(es) assigned to
+its IP Properties. If both IPv4 and IPv6 are enabled for a network adapter, both IPv4 and IPv6 static IP addresses
+should be assigned to both IPv4 and IPv6 Properties of the physical network adapter. Such static IP address(es)
+assignment should be done to all the physical network adapters for reliable Domain Name System (DNS) operation.
+```
+
+</details>
 
 * `-DomainName` → nom DNS du domaine.
 * `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC999999999).

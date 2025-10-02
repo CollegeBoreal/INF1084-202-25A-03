@@ -1,4 +1,4 @@
-# Créer une liste d'utilisateurs simulés
+# Définition des utilisateurs
 $Users = @(
     @{ Nom="Dupont";  Prenom="Alice";  Login="adupont";  OU="Stagiaires" },
     @{ Nom="Lemoine"; Prenom="Sarah";  Login="slemoine"; OU="Stagiaires" },
@@ -7,7 +7,15 @@ $Users = @(
     @{ Nom="Hocine";  Prenom="Sara";   Login="shocine";  OU="Stagiaires" }
 )
 
-# Afficher les utilisateurs
-$Users | ForEach-Object { "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)" }
+# Définition des groupes
+$Groups = @{
+    "GroupeFormation" = @()
+}
 
+# Ajout des utilisateurs dans GroupeFormation si OU = "Stagiaires"
+$Groups["GroupeFormation"] += $Users | Where-Object { $_.OU -eq "Stagiaires" }
 
+# Affichage des utilisateurs du groupe
+$Groups["GroupeFormation"] | ForEach-Object {
+    "$($_.Prenom) $($_.Nom) ($($_.Login))"
+}

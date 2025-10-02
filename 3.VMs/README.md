@@ -45,7 +45,7 @@ True    No             Success        {Active Directory Domain Services, Group P
 Exemple avec domaine **DC999999990.local** :
 
 ```powershell
-Install-ADDSForest -DomainName "DC999999990.local" -DomainNetbiosName "DC999999990" -InstallDns:$false -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
+Install-ADDSForest -DomainName "DC999999990.local" -DomainNetbiosName "DC999999990" -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
 ```
 <details>
 <summary>Output</summary>

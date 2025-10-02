@@ -1,10 +1,10 @@
 # Définir la liste des utilisateurs
 $Users = @(
-    @{ Name = "Alice Dupont"; Login = "adupont"; OU = "Stagiaires" }
-    @{ Name = "Sara hocine"; Login = "h.sara"; OU = "Stagiaires" }
-    @{ Name = "amel zourane"; Login = "a.zourane"; OU = "Stagiaires" }
-    @{ Name = "Kahina Zerkani"; Login = "kzerkani"; OU = "Stagiaires" }
-    @{ Name = "amira sadouni"; Login = "s.amira"; OU = "Stagiaires" }
+    @{ Nom = "Dupont";  Prenom = "Alice";   Login = "adupont";   OU = "Stagiaires" }
+    @{ Nom = "Hocine";  Prenom = "Sara";    Login = "h.sara";    OU = "Stagiaires" }
+    @{ Nom = "Zourane"; Prenom = "Amel";    Login = "a.zourane"; OU = "Stagiaires" }
+    @{ Nom = "Zerkani"; Prenom = "Kahina";  Login = "kzerkani";  OU = "Stagiaires" }
+    @{ Nom = "Sadouni"; Prenom = "Amira";   Login = "s.amira";   OU = "Stagiaires" }
 )
 
 # Créer des groupes (vides au départ)

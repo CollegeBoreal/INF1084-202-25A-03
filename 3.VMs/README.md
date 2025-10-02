@@ -34,7 +34,7 @@ Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 Exemple avec domaine **DC999999999.local** :
 
 ```powershell
-Install-ADDSForest -DomainName "DC999999999.local" -DomainNetbiosName "DC999999999" -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
+Install-ADDSForest -DomainName "DC999999999.local" -DomainNetbiosName "DC999999999" -InstallDns:$false -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
 ```
 <details>
 <summary>Output</summary>

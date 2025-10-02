@@ -1,14 +1,27 @@
-# Importer les utilisateurs
-. "$PSScriptRoot\utilisateurs1.ps1"
+. "$PSScriptRoot\utilisateurs1.ps1" > $null
 
-# Définir le chemin du CSV dans le même dossier que le script
-$CsvPath = "$PSScriptRoot\file_utilisateurs1.csv"
+# Définir le chemin du fichier CSV
+$CsvPath = "\2.Utilisateurs\300152260\file_utilisateurs1.csv"
 
-# Exporter les utilisateurs vers CSV
-$Users | Export-Csv -Path $CsvPath -NoTypeInformation
+# Exporter $Users vers un fichier CSV
+$Users | Export-Csv -Path $CsvPath  -NoTypeInformation
+Write-Host "`nImportation des utiliateurs depuis : $CsvPath `n"
 
-# Importer les utilisateurs depuis CSV
+# Importer les utilisateurs depuis le CSV
 $UsersImportes = Import-Csv -Path $CsvPath
 
-# Afficher les utilisateurs importés
-$UsersImportes
+# Vérifier que le CSV contient des utilisateurs
+if (-not $UsersImportes) {
+    Write-Host "Aucun utilisateur trouvé dans le CSV."
+    return
+}
+
+# Créer le groupe "ImportGroupe" sous forme de tableau vide
+$ImportGroupe = @()
+
+# Ajouter tous les utilisateurs importés au groupe
+$ImportGroupe += $UsersImportes
+
+# Afficher les membres du groupe
+Write-Host " Membres du groupe ImportGroupe `n"
+$ImportGroupe | Format-Table Prenom, Nom, Login, OU -AutoSize

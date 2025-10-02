@@ -100,19 +100,6 @@ assignment should be done to all the physical network adapters for reliable Doma
 </details>
 
 * `-DomainName` → nom DNS du domaine.
-* `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC999999999).
-=======
-Exemple avec domaine **DC9999999990.local** : (remplace DC9999999990 avec ton :iD: example `DC300098957`
-
-```powershell
-Install-ADDSForest -DomainName "DC9999999990.local" `
-                   -DomainNetbiosName "DC9999999990" `
-                   -InstallDns:$true `
-                   -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
-                   -Force
-```
-
-* `-DomainName` → nom DNS du domaine.
 * `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC9999999990).
 * `-InstallDns:$true` → installe DNS en même temps.
 * `-SafeModeAdministratorPassword` → mot de passe pour le mode restauration DSRM.

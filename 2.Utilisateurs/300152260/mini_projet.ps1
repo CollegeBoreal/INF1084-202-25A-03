@@ -4,7 +4,7 @@ $Etudiants = @(
     [PSCustomObject]@{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Promo2025"},
     [PSCustomObject]@{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Promo2025"},
     [PSCustomObject]@{Nom="Nelson"; Prenom="William"; Login="wnelson"; OU="Promo2025"},
-    [PSCustomObject]@{Nom="Diara"; Prenom="Siga"; Login="sdiara"; OU="Promo2025"}
+    [PSCustomObject]@{Nom="Bekkai"; Prenom="Mohib"; Login="BMohib"; OU="Promo2025"}
 
 )
 

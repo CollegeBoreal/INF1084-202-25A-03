@@ -1,10 +1,6 @@
 # 300146721
-Smail 
-🇩🇿 ⚽
+Smail  
 
-<<<<<<< HEAD
-=======
-<img src=images/telechargement.png width='50%' lengh='50%'>
-
->>>>>>> 4b94baaf0cd78602e37def163e9c098f966a143d
+<img src=images/telechargement.png width='50%' height='50%'>
+<img src=images/Capture-removebg-preview.png width='50%' height='50%'>
 

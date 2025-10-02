@@ -1,10 +1,26 @@
-# Construire un chemin relatif dans le dossier du script
-$CsvPath = Join-Path -Path $PSScriptRoot -ChildPath "UsersSimules.csv"
+# Déclaration des groupes
+$Groups = @{
+    "GroupeFormation" = @()
+    "ProfesseursAD"   = @()
+}
 
-# Export
-$Users | Export-Csv -Path $CsvPath -NoTypeInformation -Encoding UTF8
+# Déclaration des utilisateurs simulés
+$Users = @(
+    @{ Nom="Alice Dupont"; OU="Stagiaires" },
+    @{ Nom="Bob Martin"; OU="Professeurs" },
+    @{ Nom="Benoit Leroy"; OU="Stagiaires" },
+    @{ Nom="Charlie Durand"; OU="Stagiaires" }
+)
 
-# Import
-$ImportedUsers = Import-Csv -Path $CsvPath
-$ImportedUsers | Format-Table Nom, Prenom, Age, OU
+# Ajouter Alice dans GroupeFormation
+$Groups["GroupeFormation"] += $Users[0]
+
+# Exporter les utilisateurs simulés vers un CSV
+$Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
+
+# Importer les utilisateurs depuis le CSV
+$ImportedUsers = Import-Csv -Path "C:\Temp\UsersSimules.csv"
+
+# Afficher les utilisateurs importés
+$ImportedUsers
 

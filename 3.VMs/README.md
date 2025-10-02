@@ -2,8 +2,6 @@
 
 [:tada: Participation](.scripts/Participation.md) 
 
-<<<<<<< HEAD
-
 Installer et configurer un contrôleur de domaine Active Directory sur **Windows Server 2022**.
 
 ---
@@ -16,8 +14,7 @@ Installer et configurer un contrôleur de domaine Active Directory sur **Windows
 
 ```powershell
 Rename-Computer -NewName "DC999999999" -Restart
-=======
-- [ ] Installer et configurer un contrôleur de domaine Active Directory sur **Windows Server 2022**.
+```
 
 ---
 
@@ -27,7 +24,6 @@ Rename-Computer -NewName "DC999999999" -Restart
 
 ```powershell
 Rename-Computer -NewName "DC9999999990" -Restart
->>>>>>> 0b3b6ce3a5ad74d57cb9f59ba993a89cf533e745
 ```
 
 *(le serveur va redémarrer)*
@@ -39,7 +35,6 @@ Rename-Computer -NewName "DC9999999990" -Restart
 ```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
-<<<<<<< HEAD
 <details>
 <summary>Output</summary>
 
@@ -51,20 +46,17 @@ True    No             Success        {Active Directory Domain Services, Group P
 ```
 
 </details>
-=======
->>>>>>> 0b3b6ce3a5ad74d57cb9f59ba993a89cf533e745
 
 ---
 
 ### 3. Créer un nouveau domaine (nouvelle forêt)
 
-<<<<<<< HEAD
-Exemple avec domaine **DC999999999.local** :
+Exemple avec domaine **DC999999999-00.local** :
 
 ```powershell
 Install-ADDSForest `
-    -DomainName "DC999999999.local" `
-    -DomainNetbiosName "DC999999999" `
+    -DomainName "DC999999999-00.local" `
+    -DomainNetbiosName "DC999999999-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
     -Force
@@ -122,7 +114,6 @@ Install-ADDSForest -DomainName "DC9999999990.local" `
 
 * `-DomainName` → nom DNS du domaine.
 * `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC9999999990).
->>>>>>> 0b3b6ce3a5ad74d57cb9f59ba993a89cf533e745
 * `-InstallDns:$true` → installe DNS en même temps.
 * `-SafeModeAdministratorPassword` → mot de passe pour le mode restauration DSRM.
 * `-Force` → évite les confirmations.
@@ -136,11 +127,7 @@ Install-ADDSForest -DomainName "DC9999999990.local" `
 Une fois redémarré, connecte-toi avec :
 
 ```
-<<<<<<< HEAD
 DC999999999\Administrator
-=======
-MONDOMAINE\Administrateur
->>>>>>> 0b3b6ce3a5ad74d57cb9f59ba993a89cf533e745
 ```
 
 Puis vérifie :

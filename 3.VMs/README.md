@@ -26,6 +26,17 @@ Rename-Computer -NewName "DC999999999" -Restart
 ```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
+<details>
+<summary>Output</summary>
+
+```powershell
+
+Success Restart Needed Exit Code      Feature Result
+------- -------------- ---------      --------------
+True    No             Success        {Active Directory Domain Services, Group P...
+```
+
+</details>
 
 ---
 

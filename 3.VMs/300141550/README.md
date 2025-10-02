@@ -38,6 +38,9 @@ MONDOMAINE\Administrateur
 >>>>>>> 0b3b6ce3a5ad74d57cb9f59ba993a89cf533e745
 ```
 
+``` powershell
+Get-ADDomain
+``` 
 - [ ] resultat :
       
 AllowedDNSSuffixes                 : {}
@@ -74,6 +77,11 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300141550,DC=local,
 SystemsContainer                   : CN=System,DC=DC300141550,DC=local
 UsersContainer                     : CN=Users,DC=DC300141550,DC=local
 
+
+``` powershell
+Get-ADForest
+``` 
+- [ ] resultat :
 ApplicationPartitions : {DC=ForestDnsZones,DC=DC300141550,DC=local, 
                         DC=DomainDnsZones,DC=DC300141550,DC=local}
 CrossForestReferences : {}
@@ -88,5 +96,6 @@ SchemaMaster          : DC300141550.DC300141550.local
 Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
+
 
       

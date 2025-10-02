@@ -18,7 +18,7 @@ echo "| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :h
 echo "| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |"
 
 echo ""
-echo ":bulb: Le mot de passe Administrateur (en Anglais) de la VM importée est `Infra`@:two::zero::two::four:"
+echo ":bulb: Le mot de passe Administrateur (en Anglais) de la VM est ***Infra@:two::zero::two::four:***"
 echo ""
 
 echo ""

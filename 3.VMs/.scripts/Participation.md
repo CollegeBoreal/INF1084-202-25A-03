@@ -1,11 +1,11 @@
-# Participation au 02-10-2025 15:52
+# Participation au 02-10-2025 15:53
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
 | :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |
 | :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |
 
-:bulb: Le mot de passe Administrateur (en Anglais) de la VM importée est @:two::zero::two::four:
+:bulb: Le mot de passe Administrateur (en Anglais) de la VM est ***Infra@:two::zero::two::four:***
 
 
 ## Légende

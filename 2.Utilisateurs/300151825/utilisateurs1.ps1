@@ -1,34 +1,16 @@
-# Fichier : utilisateurs1.ps1
-# Contient les utilisateurs et les groupes simulés
+# utilisateurs1.ps1
 
-# Création des utilisateurs (liste de hashtables)
-$Utilisateurs = @(
+# Liste initiale d'utilisateurs simulés
+$Users = @(
     @{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"},
     @{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Stagiaires"},
-    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"},
-    @{Nom="Nguyen"; Prenom="Thierry"; Login="tnguyen"; OU="Stagiaires"},
-    @{Nom="Martin"; Prenom="Julie"; Login="jmartin"; OU="Stagiaires"}
+    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"}
 )
 
-# Création des groupes (hashtable qui contient des tableaux d’utilisateurs)
-$Groupes = @{
-    "GroupeFormation" = @()
-    "ProfesseursAD"   = @()
-    "ImportGroupe"    = @()
-}
+# Ajouter 2 nouveaux utilisateurs
+$Users += @{Nom="Moreau"; Prenom="Julien"; Login="jmoreau"; OU="Stagiaires"}
+$Users += @{Nom="Petit"; Prenom="Laura"; Login="lpetit"; OU="Stagiaires"}
 
-# Ajouter tous les utilisateurs dans les groupes appropriés
-foreach ($u in $Utilisateurs) {
-    if ($u.OU -eq "Stagiaires") {
-        $Groupes["GroupeFormation"] += $u
-        $Groupes["ImportGroupe"]    += $u
-    }
-}
-
-# Affichage de vérification
-"=== Utilisateurs ==="
-$Utilisateurs
-
-"=== Groupes ==="
-$Groupes
+# Afficher tous les utilisateurs
+$Users | ForEach-Object { "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)" }
 

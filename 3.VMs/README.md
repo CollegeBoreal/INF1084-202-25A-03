@@ -89,7 +89,7 @@ assignment should be done to all the physical network adapters for reliable Doma
 Une fois redémarré, connecte-toi avec :
 
 ```
-DC999999999\Administrateur
+DC999999999\Administrator
 ```
 
 Puis vérifie :

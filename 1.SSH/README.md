@@ -16,7 +16,7 @@
 1. **Changer l’URL du dépôt distant**
 
    ```sh
-   git remote set-url origin git@github.com:CollegeBoreal/INF1084-202-25A-03.git
+   git remote set-url origin git@github.com:CollegeBoreal/INF1084-202-25A-04.git
    ```
 
 2. **Vérifier la nouvelle configuration du dépôt distant**
@@ -28,8 +28,8 @@
    Ce qui affiche actuellement :
 
    ```lua
-   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-03.git (fetch)
-   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-03.git (push)
+   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-04.git (fetch)
+   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-04.git (push)
    ```
 
 ## :ab: Créer un fichier dans ce répertoire `(1.SSH)`:

@@ -40,7 +40,13 @@ Install-ADDSForest -DomainName "DC999999999.local" -DomainNetbiosName "DC9999999
 <summary>Output</summary>
 
 ```powershell
-                                                                                                                         Install-ADDSForest                                                                                                                                                                                                                                Validating environment and user input                                                                                      All tests completed successfully                                                                                        [oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo]         Installing new forest                                                                                                      Starting                                                                                                                                                                                                                                  For more information about this setting, see Knowledge Base article 942564
+Install-ADDSForest
+
+  Validating environment and user input
+      All tests completed successfully                                                                                       [oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo]
+      Installing new forest Starting
+
+For more information about this setting, see Knowledge Base article 942564
 (http://go.microsoft.com/fwlink/?LinkId=104751).
 
 WARNING: This computer has at least one physical network adapter that does not have static IP address(es) assigned to

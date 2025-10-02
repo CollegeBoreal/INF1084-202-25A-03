@@ -1,8 +1,13 @@
+# 300151258
 
+```powershell
 PS C:\Users\Administrator> Import-Module ActiveDirectory
 PS C:\Users\Administrator> Get-ADDomain
+```
+<details>
+<summary>Output</summary>
 
-
+```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300151258,DC=local
@@ -36,6 +41,9 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151258,DC=local,
                                      CN=Configuration,DC=DC300151258,DC=local}
 SystemsContainer                   : CN=System,DC=DC300151258,DC=local
 UsersContainer                     : CN=Users,DC=DC300151258,DC=local
+```
+
+</details>
 
 PS C:\Users\Administrator> Get-ADForest
 

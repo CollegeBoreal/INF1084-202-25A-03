@@ -11,10 +11,10 @@ Installer et configurer un contrôleur de domaine Active Directory sur **Windows
 
 ### 1. Renommer le serveur 
 
-:bulb: remplacer `DC999999990` par votre :id: par example "DC999999990"
+:bulb: remplacer `DC999999990` par votre :id: par example "DC300098957"
 
 ```powershell
-Rename-Computer -NewName "DC999999990" -Restart
+Rename-Computer -NewName "DC999999999" -Restart
 ```
 
 *(le serveur va redémarrer)*
@@ -42,10 +42,15 @@ True    No             Success        {Active Directory Domain Services, Group P
 
 ### 3. Créer un nouveau domaine (nouvelle forêt)
 
-Exemple avec domaine **DC999999990.local** :
+Exemple avec domaine **DC999999999.local** :
 
 ```powershell
-Install-ADDSForest -DomainName "DC999999990.local" -DomainNetbiosName "DC999999990" -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) -Force
+Install-ADDSForest `
+    -DomainName "DC999999999.local" `
+    -DomainNetbiosName "DC999999999" `
+    -InstallDns:$true `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
+    -Force
 ```
 <details>
 <summary>Output</summary>
@@ -100,7 +105,7 @@ assignment should be done to all the physical network adapters for reliable Doma
 Une fois redémarré, connecte-toi avec :
 
 ```
-DC999999990\Administrator
+DC999999999\Administrator
 ```
 
 Puis vérifie :

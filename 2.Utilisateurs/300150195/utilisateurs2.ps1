@@ -17,6 +17,11 @@ $Groups = @{
 $Groups["GroupeFormation"] = $Users | Where-Object { $_.OU -eq "Stagiaires" }
 
 # Vérifier le contenu du groupe
-$Groups["GroupeFormation"] | ForEach-Object {
+$Groups["GroupeFormation"] | ForEach-Object
     "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
+
+    "$($_.Name) - Login: $($_.Login) - OU: $($_.OU)"
+}
+   
+

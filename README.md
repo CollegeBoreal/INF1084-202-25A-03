@@ -14,7 +14,7 @@ INF1084 (202) - Introduction à l'administration des systèmes
 | :five:  |29-sept| [3.VMs](3.VMs/.scripts/Participation.md)       | â Noter :x: |
 
 
-# :books: Références
+# :books: References
 
 - [ ] Comment vérifier que le `commit` a été fait par le `CLI`
       

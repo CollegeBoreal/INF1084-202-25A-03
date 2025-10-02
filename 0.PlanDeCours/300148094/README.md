@@ -1,1 +1,1 @@
-<img src=images/photo.png width='50%' lengh='50%'>
+<img src=images/photo.jpeg width='50%' lengh='50%'>

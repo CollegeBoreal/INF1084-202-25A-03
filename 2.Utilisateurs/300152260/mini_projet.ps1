@@ -21,7 +21,7 @@ $Groups["Etudiants2025"] += $Etudiants[3]
 $Groups["Etudiants2025"] += $Etudiants[4]
 
 # Définir le chemin du fichier CSV
-$CsvPath = "C:\Users\kelek\Documents\developer\INF1084-202-25A-03\2.Utilisateurs\300133071\file_etudiants.csv"
+$CsvPath = "C:\Users\User\Developer\INF1084-202-25A-03\2.Utilisateurs\300152260\file_etudiants.csv"
 
 # Exporter $Etudiants vers un fichier CSV
 $Etudiants | Export-Csv -Path $CsvPath  -NoTypeInformation

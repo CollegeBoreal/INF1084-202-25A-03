@@ -1,4 +1,7 @@
+
+```powershell
 Rename-Computer -NewName "DC300133071" -Restart
+```
 
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 

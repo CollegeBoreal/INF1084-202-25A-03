@@ -5,7 +5,7 @@ PS C:\Users\Administrator> Import-Module ActiveDirectory
 PS C:\Users\Administrator> Get-ADDomain
 ```
 <details>
-< summary>Output</summary>
+<summary>Output</summary>
   
 ```powershell
 AllowedDNSSuffixes                 : {}
@@ -41,7 +41,7 @@ SystemsContainer                   : CN=System,DC=DC300151347-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300151347-00,DC=local
 ```
 
-  </details>
+</details>
   
 PS C:\Users\Administrator> Get-ADForest
 

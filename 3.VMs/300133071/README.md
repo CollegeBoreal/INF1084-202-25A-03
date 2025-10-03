@@ -37,6 +37,8 @@ DC300133071-00\Administrator
 
 <img src="images/photo1.jpg" alt="Images" width="450"/>
 
+Vous verez les services installer ainsi que le DNS comme sur l'image
+
 * Je verifie que mon controlleur de donnaime est bien installer
   
 ```powershell

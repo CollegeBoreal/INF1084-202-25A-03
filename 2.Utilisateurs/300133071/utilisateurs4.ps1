@@ -1,7 +1,7 @@
 . "$PSScriptRoot\utilisateurs1.ps1" > $null
 
 # Définir le chemin du fichier CSV
-$CsvPath = "\2.Utilisateurs\300133071\file_utilisateurs1.csv"
+$CsvPath = Join-Path -Path $PSScriptRoot -ChildPath "file_utilisateurs1.csv"
 
 # Exporter $Users vers un fichier CSV
 $Users | Export-Csv -Path $CsvPath  -NoTypeInformation

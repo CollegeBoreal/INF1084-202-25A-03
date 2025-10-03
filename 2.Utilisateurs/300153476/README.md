@@ -20,4 +20,4 @@ Toujours séparer les clés d’une hashtable par ;
     "ProfesseursAD" = @()
 }
 ```
->>>>>>> 4fa7d0cb00039d9b1e49a55a6d197df4eb9d424a
+

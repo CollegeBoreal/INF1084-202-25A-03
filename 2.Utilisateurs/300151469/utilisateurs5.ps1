@@ -1,35 +1,34 @@
-=
-$OU = "OU=Promo2025,DC=tondomaine,DC=local"
-$Groupe = "Etudiants2025"
+# utilisateurs5.ps1 - Mini-projet : simulation complète
 
-if (-not (Get-ADGroup -Filter {Name -eq $Groupe})) {
-    New-ADGroup -Name $Groupe -SamAccountName $Groupe -GroupScope Global -Path $OU
-}
-
-$utilisateurs = @(
-    @{Nom="User1"; Prenom="Test1"; Login="user1"; Mdp="Password123!"},
-    @{Nom="User2"; Prenom="Test2"; Login="user2"; Mdp="Password123!"},
-    @{Nom="User3"; Prenom="Test3"; Login="user3"; Mdp="Password123!"},
-    @{Nom="User4"; Prenom="Test4"; Login="user4"; Mdp="Password123!"},
-    @{Nom="User5"; Prenom="Test5"; Login="user5"; Mdp="Password123!"}
+# Créer 5 utilisateurs simulés dans l'OU "Promo2025"
+$UsersPromo = @(
+    [PSCustomObject]@{Nom="Dupont";      Prenom="Alice";  Login="adupont";      OU="Promo2025"},
+    [PSCustomObject]@{Nom="Lemoine";     Prenom="Sarah";  Login="slemoine";     OU="Promo2025"},
+    [PSCustomObject]@{Nom="Benali";      Prenom="Karim";  Login="kbenali";      OU="Promo2025"},
+    [PSCustomObject]@{Nom="Bouhali";     Prenom="Rabia";  Login="rbouhali";     OU="Promo2025"},
+    [PSCustomObject]@{Nom="Ait Benour";  Prenom="Wafi";   Login="waitbenour";   OU="Promo2025"}
 )
 
-foreach ($u in $utilisateurs) {
-    if (-not (Get-ADUser -Filter {SamAccountName -eq $u.Login})) {
-        New-ADUser -Name "$($u.Prenom) $($u.Nom)" `
-                   -GivenName $u.Prenom `
-                   -Surname $u.Nom `
-                   -SamAccountName $u.Login `
-                   -AccountPassword (ConvertTo-SecureString $u.Mdp -AsPlainText -Force) `
-                   -Path $OU `
-                   -Enabled $true
-    }
+# Créer le groupe Etudiants2025
+$Groups = @{
+    "Etudiants2025" = @()
 }
 
-$usersOU = Get-ADUser -SearchBase $OU -Filter *
-foreach ($user in $usersOU) {
-    Add-ADGroupMember -Identity $Groupe -Members $user.SamAccountName
+# Ajouter tous les utilisateurs de Promo2025 dans le groupe
+$Groups["Etudiants2025"] += $UsersPromo | Where-Object { $_.OU -eq "Promo2025" }
+
+# Afficher les membres du groupe
+Write-Output "=== Membres du groupe Etudiants2025 ==="
+$Groups["Etudiants2025"] | ForEach-Object {
+    "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
 
-Get-ADGroupMember -Identity $Groupe | Select-Object Name,SamAccountName | Export-Csv -Path ".\Etudiants2025.csv" -NoTypeInformation
+# Exporter le groupe final vers CSV
+# Créer le dossier C:\Temp s'il n'existe pas
+if (-not (Test-Path "C:\Temp")) {
+    New-Item -ItemType Directory -Path "C:\Temp" | Out-Null
+}
+
+$Groups["Etudiants2025"] | Export-Csv -Path "C:\Temp\Etudiants2025.csv" -NoTypeInformation
+Write-Output " Export terminé : C:\Temp\Etudiants2025.csv"
 

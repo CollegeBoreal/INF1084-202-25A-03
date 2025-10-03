@@ -1,7 +1,6 @@
 # 300146721
-Smail 
-🇩🇿 ⚽
+Smail  
 
-![istockphoto-1473323104-612x612](https://github.com/user-attachments/assets/f2b906f1-a8c9-40d3-a86a-38eac99afa01)
-
+<img src=images/telechargement.png width='50%' height='50%'>
+<img src=images/Capture-removebg-preview.png width='50%' height='50%'>
 

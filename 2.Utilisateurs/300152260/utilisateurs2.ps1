@@ -1,13 +1,23 @@
-# Créer une liste d'utilisateurs simulés
-$Users = @(
-    @{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"},
-    @{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Stagiaires"},
-    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"}
-)
+. "$PSScriptRoot\utilisateurs1.ps1" > $null
 
-# Ajouter 2 nouveaux utilisateurs
-$Users += @{Nom="boubou"; Prenom="zaza"; Login="mama"; OU="Stagiaires"}
-$Users += @{Nom="gringo"; Prenom="kiki"; Login="kaka"; OU="Stagiaires"}
+# Création des groupes
+$Groups = @{
+    "GroupeFormation" = @()
+    "ProfesseursAD" = @()
+}
 
-# Afficher tous les utilisateurs
-$Users | ForEach-Object { "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)" }
+# Ajouter les stagiaires dans GroupeFormation
+$Groups["GroupeFormation"] += $Users[0]
+$Groups["GroupeFormation"] += $Users[1]
+$Groups["GroupeFormation"] += $Users[2]
+$Groups["GroupeFormation"] += $Users[3]
+$Groups["GroupeFormation"] += $Users[4]
+
+# Afficher le contenu des groupes
+foreach ($group in $Groups.Keys) {
+    Write-Host "$group"
+    $Groups[$group] | ForEach-Object { 
+        Write-Host "$($_.Prenom) $($_.Nom) ($($_.Login))"
+    }
+    Write-Host ""
+}

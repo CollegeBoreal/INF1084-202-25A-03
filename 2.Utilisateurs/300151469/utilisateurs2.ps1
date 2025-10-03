@@ -1,9 +1,14 @@
-# Créer des groupes
+# Création de groupes
 $Groups = @{
     "GroupeFormation" = @()
-    "ProfesseursAD" = @()
+    "ProfesseursAD"   = @()
 }
 
-# Ajouter un utilisateur à un groupe
-$Groups["GroupeFormation"] += $Users[0]   # Alice Dupont
+# Ajouter tous les utilisateurs dont l’OU = "Stagiaires" dans GroupeFormation
+$Groups["GroupeFormation"] += $Users | Where-Object { $_.OU -eq "Stagiaires" }
+
+# Afficher les utilisateurs du groupe
+$Groups["GroupeFormation"] | ForEach-Object {
+    "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
+}
 

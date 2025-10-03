@@ -1,22 +1,26 @@
-﻿# Projet PowerShell - Simulation Active Directory
+﻿# 🚀 Projet PowerShell - Gestion d'Utilisateurs
 
 **Auteur:** Mame Fatim  
-**ID:** 300141625
+**ID:** 300141625  
+**Cours:** INF1084-202-25A-03
 
-## Description
-Simulation de gestion d'utilisateurs Active Directory avec PowerShell.
+## 📋 Description Complète
+Ce projet montre comment créer, filtrer et gérer des utilisateurs avec PowerShell. Parfait pour apprendre l'automatisation.
 
-## Scripts
-- `utilisateurs1.ps1` - Création d'utilisateurs simulés
-- `utilisateurs2.ps1` - Filtrage des utilisateurs
-- `utilisateurs3.ps1` - Filtres avancés
-- `utilisateurs4.ps1` - Export/Import CSV
+## 📁 Fichiers du Projet
+- **utilisateurs1.ps1** - Crée 4 utilisateurs (Alice, Bob, Charlie, Diana)
+- **utilisateurs2.ps1** - Filtre par département avec Where-Object
+- **utilisateurs3.ps1** - Filtres avancés (-and, -or) et tri
+- **utilisateurs4.ps1** - Export/Import CSV (Export-Csv, Import-Csv)
+- **mini_projet.ps1** - Application complète avec menu
+- **file_utilisateurs1.csv** - Données des 4 utilisateurs
+- **file_etudiants.csv** - Données des étudiants
 
-## Technologies
-- PowerShell
-- GitHub Actions
-- CSV
-## Fichiers supplémentaires
-- `file_utilisateurs1.csv` - Export des utilisateurs
-- `file_etudiants.csv` - Données des étudiants  
-- `mini_projet.ps1` - Projet complet
+## 🚀 Comment Utiliser
+```powershell
+# Exécuter chaque script:
+.\utilisateurs1.ps1
+.\utilisateurs2.ps1
+.\utilisateurs3.ps1
+.\utilisateurs4.ps1
+.\mini_projet.ps1

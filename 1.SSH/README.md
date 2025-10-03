@@ -1,7 +1,4 @@
-
-
-
-	# :key: SSH
+# :key: SSH
 
 [:tada: Participation](.scripts/Participation.md)
 

@@ -1,2 +1,2 @@
-﻿# Mini Projet - Simulation Active Directory complet
-Write-Host "=== MINI PROJET TERMINE ==="
+﻿# Mini Projet - Simulation Active Directory
+Write-Host "=== PROJET COMPLET ==="

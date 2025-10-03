@@ -1,12 +1,14 @@
 # 300133071
 
+<details>
+
+
+</details>
+
 * J'ai renommer le nom de la machine
 
 ```powershell
 Rename-Computer -NewName "DC300133071" -Restart
-```
-```powershell
-DC300133071
 ```
 
 * J'installe Active Directory
@@ -14,11 +16,15 @@ DC300133071
 ```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
+<details>
+    <summary>Output</summary>
+    
 ```powershell
 Success Restart Needed Exit Code      Feature Result
 ------- -------------- ---------      --------------
 True    No             Success        {Active Directory Domain Services, Group P...
 ```
+</details>
 
 * J'ajoute une nouvelle foret a mon AD
 
@@ -44,7 +50,9 @@ Vous verez les services installer ainsi que le DNS comme sur l'image
 ```powershell
 Get-ADDomain
 ```
-
+<details>
+    <summary>Output</summary>
+    
 ```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
@@ -80,10 +88,14 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300133071-00,DC=loc
 SystemsContainer                   : CN=System,DC=DC300133071-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300133071-00,DC=local
 ```
+</details>
+
 ```powershell
 Get-ADForest
 ```
-
+<details>
+    <summary>Output</summary>
+    
 ```powershell
 ApplicationPartitions : {DC=DomainDnsZones,DC=DC300133071-00,DC=local, DC=ForestDnsZones,DC=DC300133071-00,DC=local}
 CrossForestReferences : {}
@@ -99,3 +111,4 @@ Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
 ```
+</details>

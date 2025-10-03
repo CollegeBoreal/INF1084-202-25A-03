@@ -1,6 +1,6 @@
 ceci est mon readme de creation d'acces a ma machine virtuelle
 Copyright (C) Microsoft Corporation. All rights reserved.
-                                                                                                                     
+powershell```
 Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows PS C:\Users\Administrator> Get-ADDomain>> Get-ADForest
 
 AllowedDNSSuffixes                 : {}
@@ -50,3 +50,4 @@ SchemaMaster          : DC-300143951.DC-300143951-00.local
 Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
+```

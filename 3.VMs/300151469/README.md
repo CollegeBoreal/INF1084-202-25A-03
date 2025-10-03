@@ -1,3 +1,19 @@
+```300151469```
+
+pour toute les comande que j'ai utilise :
+###
+- Rename-Computer -NewName "DC300151469" -Restart
+- Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+- Install-ADDSForest `
+    -DomainName "DC300151469-00.local" `
+    -DomainNetbiosName "DC300151469-00" `
+    -InstallDns:$true `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
+    -Force
+Get-ADDomain
+Get-ADForest
+
+###
 
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}

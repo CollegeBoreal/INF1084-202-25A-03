@@ -16,3 +16,7 @@ Simulation de gestion d'utilisateurs Active Directory avec PowerShell.
 - PowerShell
 - GitHub Actions
 - CSV
+## Fichiers supplémentaires
+- `file_utilisateurs1.csv` - Export des utilisateurs
+- `file_etudiants.csv` - Données des étudiants  
+- `mini_projet.ps1` - Projet complet

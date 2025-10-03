@@ -6,46 +6,49 @@
 Rename-Computer -NewName "DC300133071" -Restart
 ```
 
+* J'installe Active Directory
+
 ```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
-
-
+<details>
+    <summary>Output</summary>
+    
 ```powershell
-Install-ADDSForest `
-    -DomainName "DC300133071_1.local" `
-    -DomainNetbiosName "DC300133071_1" `
-    -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "Cameroon2024&" -AsPlainText -Force) `
-    -Force
-```
-
-Rename-Computer -NewName "DC300133071" -Restart
-
-DC300133071
-
-Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
-
-
 Success Restart Needed Exit Code      Feature Result
 ------- -------------- ---------      --------------
 True    No             Success        {Active Directory Domain Services, Group P...
+```
+</details>
 
+* J'ajoute une nouvelle foret a mon AD
 
+```powershell
 Install-ADDSForest `
     -DomainName "DC300133071-00.local" `
     -DomainNetbiosName "DC300133071-00" `
     -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "Cameroon2024&" -AsPlainText -Force) `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "Cameroon2️⃣0️⃣2️⃣4️⃣&" -AsPlainText -Force) `
     -Force
+```
+
+* je me connect a mon domaine avec le nom d'utilisateur ci dessous et le mot de passe de la VM
 
 DC300133071-00\Administrator
 
+<img src="images/photo1.jpg" alt="Images" width="450"/>
 
+Vous verez les services installer ainsi que le DNS comme sur l'image
 
+* Je verifie que mon controlleur de donnaime est bien installer
+  
+```powershell
 Get-ADDomain
-
-
+```
+<details>
+    <summary>Output</summary>
+    
+```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300133071-00,DC=local
@@ -79,11 +82,16 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300133071-00,DC=loc
                                      CN=Configuration,DC=DC300133071-00,DC=local}
 SystemsContainer                   : CN=System,DC=DC300133071-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300133071-00,DC=local
+```
+</details>
 
-
-
+```powershell
 Get-ADForest
-
+```
+<details>
+    <summary>Output</summary>
+    
+```powershell
 ApplicationPartitions : {DC=DomainDnsZones,DC=DC300133071-00,DC=local, DC=ForestDnsZones,DC=DC300133071-00,DC=local}
 CrossForestReferences : {}
 DomainNamingMaster    : DC300133071.DC300133071-00.local
@@ -97,4 +105,5 @@ SchemaMaster          : DC300133071.DC300133071-00.local
 Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
-
+```
+</details>

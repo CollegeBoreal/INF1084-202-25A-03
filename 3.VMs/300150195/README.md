@@ -4,8 +4,8 @@
 PS C:\Users\Administrator> Import-Module ActiveDirectory
 PS C:\Users\Administrator> Get-ADDomain
 ```
-‹details›
-‹summary>Output</ summary>
+<details›
+<summary>Output</summary>
 
 ***powershell
 AllowedDNSSuffixes                 : {}

@@ -1,10 +1,5 @@
 # 300133071
 
-<details>
-
-
-</details>
-
 * J'ai renommer le nom de la machine
 
 ```powershell

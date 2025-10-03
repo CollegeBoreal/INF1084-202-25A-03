@@ -1,12 +1,13 @@
 # 300150195
 
-'''powershell
+```powershell
 PS C:\Users\Administrator> Import-Module ActiveDirectory
 PS C:\Users\Administrator> Get-ADDomain
 
-'''
-<details›
+```
+<details>
 <summary>Output</summary>
+
 
 ***powershell
 AllowedDNSSuffixes                 : {}
@@ -42,7 +43,7 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300150195-00,DC=loc
                                      CN=Configuration,DC=DC300150195-00,DC=local}
 SystemsContainer                   : CN=System,DC=DC300150195-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300150195-00,DC=local
-'''
+```
 
 </details>
 

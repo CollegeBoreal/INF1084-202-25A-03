@@ -1,4 +1,3 @@
-# 2️⃣ Création de groupes simulés
 # Créer des groupes
 $Groups = @{
     "GroupeFormation" = @()
@@ -22,4 +21,3 @@ foreach ($group in $Groups.GetEnumerator()) {
         Write-Host " - $($member.Prenom) $($member.Nom) - Login: $($member.Login)"
     }
 }
-

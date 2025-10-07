@@ -1,5 +1,3 @@
-# 4️⃣ Export et import CSV
-
 # Exporter les utilisateurs simulés
 $Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
 Write-Host "Les utilisateurs ont été exportés vers C:\Temp\UsersSimules.csv"
@@ -23,4 +21,3 @@ Write-Host "`nMembres du groupe ImportGroupe :"
 $Groups["ImportGroupe"] | ForEach-Object {
     Write-Host "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
-

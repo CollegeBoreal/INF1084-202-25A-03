@@ -6,10 +6,10 @@ flowchart TD
 
     subgraph Etudiant[Workflow etudiant]
         B1[git fetch origin]
-        B2[git checkout -b etudiant-<nom>]
+        B2[git checkout -b :ID:]
         B3[Modifier les fichiers localement]
         B4[git add .]
-        B5[git commit -m 'Modifications de README par <nom>']
+        B5[git commit -m 'Modifications de README par :ID:']
         B6[git rebase origin/main]
         B7[Resoudre les conflits si necessaire]
         B8[git push origin etudiant-<nom>]

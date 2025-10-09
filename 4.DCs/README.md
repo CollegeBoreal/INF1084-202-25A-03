@@ -1,5 +1,23 @@
 # 🎛️ DC Domain Controler
 
+## :ab: Travail à soumettre :
+
+- [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)
+  - [ ] `mkdir ` :id:
+  - [ ] `cd ` :id
+- [ ] dans le répertoire ajouter le fichier `README.md`
+  - [ ] `touch README.md`
+  - [ ] Créer un répertoire images
+  - [ ] `touch images/.gitkeep`
+- [ ] envoyer vers le serveur `git`
+  - [ ] remonter au repertoire précédent
+        `cd ..`
+  - [ ] `git add `:id:
+  - [ ] `git commit -m "mon fichier ..."`
+  - [ ] `git push`
+
+## :a: Arborescence 
+
 ```mermaid
 flowchart TD
     %% Forêt

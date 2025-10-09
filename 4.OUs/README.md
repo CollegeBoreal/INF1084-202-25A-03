@@ -170,7 +170,8 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
 
 ```powershell
 Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
-              -TargetPath "OU=Students,DC=$netbiosName,DC=local"
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
+              -Credential $cred
 ```
 
 3. Vérifier le déplacement :

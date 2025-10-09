@@ -1,4 +1,4 @@
-# 300133071
+# 300148450
 
 * J'ai renommer le nom de la machine
 
@@ -36,7 +36,7 @@ Install-ADDSForest `
 
 DC300148450-00\Administrator
 
-<img src="images/photo1.jpg" alt="Images" width="450"/>
+<img src="images/Houcine.png" alt="Images" width="450"/>
 
 Vous verez les services installer ainsi que le DNS comme sur l'image
 
@@ -108,5 +108,8 @@ UPNSuffixes           : {}
 
 
 ```
+
+<img src="images/h3.png" alt="Images" width="450"/>
+<img src="images/houssine.png" alt="Images" width="450"/>
 </details>
 

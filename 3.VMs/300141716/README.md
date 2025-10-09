@@ -4,43 +4,46 @@
 
 ```powershell
 Rename-Computer -NewName "DC300141716" -Restart
+```
 J'installe Active Directory
-
-powershell
-Copy code
+```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
-<details> <summary>Output</summary>
-powershell
-Copy code
+```
+<details> 
+    <summary>Output</summary>
+```powershell
+
 Success Restart Needed Exit Code      Feature Result
 ------- -------------- ---------      --------------
 True    No             NoChangeNeeded {}
 </details>
-J'ajoute une nouvelle forêt à mon AD
+```
+*J'ajoute une nouvelle forêt à mon AD
 
-powershell
-Copy code
+```powershell
+
 Install-ADDSForest `
     -DomainName "DC300141716-00.local" `
     -DomainNetbiosName "DC300141716-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "Maroc@2025" -AsPlainText -Force) `
     -Force
-Je me connecte à mon domaine avec le nom d'utilisateur ci-dessous et le mot de passe de la VM
+```
+*Je me connecte à mon domaine avec le nom d'utilisateur ci-dessous et le mot de passe de la VM
 
-Copy code
 DC300141716-00\Administrator
-<img src="images/AC.jpg" alt="Screenshot of ADD" width="450"/>
+<img src="images/AC.png" alt="Screenshot of ADD" width="450"/>
 Vous verrez les services installés ainsi que le DNS comme sur l'image.
 
-Je vérifie que mon contrôleur de domaine est bien installé
+*Je vérifie que mon contrôleur de domaine est bien installé
 
-powershell
-Copy code
+```powershell
+
 Get-ADDomain
-<details> <summary>Output</summary>
-powershell
-Copy code
+```
+<details> 
+    <summary>Output</summary>
+```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300141716-00,DC=local
@@ -59,13 +62,15 @@ ManagedBy                          :
 Name                               : DC300141716-00
 NetBIOSName                        : DC300141716-00
 ObjectClass                        : domainDNS
+    ```
 </details>
-powershell
-Copy code
+```powershell
 Get-ADForest
-<details> <summary>Output</summary>
-powershell
-Copy code
+```
+<details> 
+    <summary>Output</summary>
+```powershell
+
 ApplicationPartitions : {DC=DomainDnsZones,DC=DC300141716-00,DC=local, DC=ForestDnsZones,DC=DC300141716-00,DC=local}
 CrossForestReferences : {}
 DomainNamingMaster    : DC300141716.DC300141716-00.local
@@ -79,4 +84,5 @@ SchemaMaster          : DC300141716.DC300141716-00.local
 Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
-</details> ```
+```
+</details> 

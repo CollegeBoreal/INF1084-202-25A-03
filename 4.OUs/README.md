@@ -78,11 +78,15 @@ Select-Object Name, SamAccountName
 
 ---
 
-## **3️⃣ Créer un nouvel utilisateur**
+:key: Pour les operations néscessitant les informations sécurisées de l'administrateur
 
 ```powershell
 $cred = Get-Credential  # entrer Administrator@$domainName et le mot de passe
+```
 
+## **3️⃣ Créer un nouvel utilisateur**
+
+```powershell
 New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `
@@ -101,7 +105,8 @@ New-ADUser -Name "Alice Dupont" `
 ```powershell
 Set-ADUser -Identity "alice.dupont" `
            -EmailAddress "alice.dupont@exemple.com" `
-           -GivenName "Alice-Marie"
+           -GivenName "Alice-Marie" `
+           -Credential $cred
 ```
 
 ---
@@ -109,7 +114,7 @@ Set-ADUser -Identity "alice.dupont" `
 ## **5️⃣ Désactiver un utilisateur**
 
 ```powershell
-Disable-ADAccount -Identity "alice.dupont"
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred
 ```
 
 ---
@@ -117,7 +122,7 @@ Disable-ADAccount -Identity "alice.dupont"
 ## **6️⃣ Réactiver un utilisateur**
 
 ```powershell
-Enable-ADAccount -Identity "alice.dupont"
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred
 ```
 
 ---
@@ -125,7 +130,7 @@ Enable-ADAccount -Identity "alice.dupont"
 ## **7️⃣ Supprimer un utilisateur**
 
 ```powershell
-Remove-ADUser -Identity "alice.dupont" -Confirm:$false
+Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
 ```
 
 ---
@@ -145,7 +150,7 @@ Select-Object Name, SamAccountName
 Get-ADUser -Filter * -Server $domain -Properties Name, SamAccountName, EmailAddress, Enabled |
 Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName, EmailAddress, Enabled |
-Export-Csv -Path "C:\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
+Export-Csv -Path "TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 ```
 
 ---
@@ -157,15 +162,15 @@ Export-Csv -Path "C:\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 ```powershell
 # Vérifier si l'OU existe
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=DC999999999-0,DC=local"
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
 }
 ```
 
 2. Déplacer l’utilisateur depuis `CN=Users` :
 
 ```powershell
-Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=DC999999999-0,DC=local" `
-              -TargetPath "OU=Students,DC=DC999999999-0,DC=local"
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local"
 ```
 
 3. Vérifier le déplacement :

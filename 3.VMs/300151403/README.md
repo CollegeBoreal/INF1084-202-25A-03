@@ -1,4 +1,4 @@
-1-J'ai  Renommé le serveuur
+##1-J'ai  Renommé le serveuur
 
 Rename-Computer -NewName "DC-300151403" -Restart
 2- Installer le rôle AD DS

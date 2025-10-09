@@ -1,3 +1,5 @@
+<img src="images/photo1.jpg" alt="Images" width="450"/>
+
 je cree un utilisateur sur ma vm
 ```powershell
 

@@ -1,10 +1,10 @@
 # 🎛️ DC Domain Controler
 
-## :ab: Travail à soumettre :
+## :books: Travail à soumettre :
 
 - [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)
   - [ ] `mkdir ` :id:
-  - [ ] `cd ` :id
+  - [ ] `cd ` :id:
 - [ ] dans le répertoire ajouter le fichier `README.md`
   - [ ] `touch README.md`
   - [ ] Créer un répertoire images

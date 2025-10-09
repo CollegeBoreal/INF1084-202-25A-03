@@ -8,8 +8,8 @@
 - [ ] dans le répertoire ajouter le fichier `README.md`
   - [ ] `touch README.md`
   - [ ] Créer un répertoire images
-  - [ ] `mkdir images`
-  - [ ] `touch images/.gitkeep`
+    - [ ] `mkdir images`
+    - [ ] `touch images/.gitkeep`
 - [ ] envoyer vers le serveur `git`
   - [ ] remonter au repertoire précédent
         `cd ..`

@@ -9,7 +9,7 @@ flowchart TD
         B2[git checkout -b etudiant-<nom>]
         B3[Modifier les fichiers localement]
         B4[git add .]
-        B5[git commit -m Modifications de README par <nom>]
+        B5[git commit -m \"Modifications de README par <nom>]
         B6[git rebase origin/main]
         B7[Resoudre les conflits si necessaire]
         B8[git push origin etudiant-<nom>]

@@ -81,6 +81,8 @@ Select-Object Name, SamAccountName
 ## **3️⃣ Créer un nouvel utilisateur**
 
 ```powershell
+$cred = Get-Credential  # entrer Administrator@$domainName et le mot de passe
+
 New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `
@@ -88,7 +90,8 @@ New-ADUser -Name "Alice Dupont" `
            -UserPrincipalName "alice.dupont@$domainName" `
            -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
            -Enabled $true `
-           -Path "CN=Users,$netbiosName,DC=local"
+           -Path "CN=Users,DC=$netbiosName,DC=local" `
+           -Credential $cred
 ```
 
 ---

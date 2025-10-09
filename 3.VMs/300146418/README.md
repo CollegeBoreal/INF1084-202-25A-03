@@ -36,7 +36,7 @@ Install-ADDSForest `
 
 DC300146418-00\Administrator
 
-<img src="images/photo1.jpg" alt="Images" width="450"/>
+<img src="images/111.jpg" alt="Images" width="450"/>
 
 Vous verez les services installer ainsi que le DNS comme sur l'image
 
@@ -107,3 +107,6 @@ SPNSuffixes           : {}
 UPNSuffixes           : {}
 ```
 </details>
+
+<img src="images/2222.jpg" alt="Images" width="450"/>
+<img src="images/3333.jpg" alt="Images" width="450"/>

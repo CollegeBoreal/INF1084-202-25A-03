@@ -9,7 +9,7 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 ```
 <img src="images/1.jpg" alt="images" width="450"/>
 
-# 2️⃣ Liste des utilisateurs du domaine
+# 1️⃣ Liste des utilisateurs du domaine
 
 <img src="images/2.jpg" alt="images" width="450"/>
 

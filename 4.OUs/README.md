@@ -27,6 +27,30 @@ Gérer les utilisateurs dans ton domaine **`DC999999999-0.local`**, avec les cor
 **Domaine cible :** `DC999999999-0.local`
 **Outils :** PowerShell avec module `ActiveDirectory`
 
+:warning: **Chaque étudiant a un domaine unique basé sur son numéro étudiant**.
+
+Voici comment organiser ça et l’adapter à PowerShell :
+
+---
+
+## **0️⃣ Nom du domaine basé  sur le numéro étudiant**
+
+Si ton numéro d’étudiant est `999999999` et que tu as le numéro d'instance `netbios` 30 (pour éviter les erreurs de duplicatas):
+
+```powershell
+$studentNumber = 999999999
+$studentInstance = 0
+
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+```
+
+* **$domainName** : FQDN du domaine (`DC999999999-0.local`)
+* **$netbiosName** : Nom NetBIOS court (`DC999999999-0`)
+* Cela garantit **un nom unique pour chaque étudiant** même si plusieurs étudiants font le TP sur le même réseau isolé.
+
+---
+
 ---
 
 ## **1️⃣ Préparer l’environnement**
@@ -36,8 +60,8 @@ Gérer les utilisateurs dans ton domaine **`DC999999999-0.local`**, avec les cor
 Import-Module ActiveDirectory
 
 # Vérifier le domaine et les DC
-Get-ADDomain -Server "DC999999999-0.local"
-Get-ADDomainController -Filter * -Server "DC999999999-0.local"
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
 ```
 
 ---
@@ -63,7 +87,7 @@ New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `
            -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@DC999999999-0.local" `
+           -UserPrincipalName "alice.dupont@$domain" `
            -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
            -Enabled $true `
            -Path "CN=Users,DC=DC999999999-0,DC=local"

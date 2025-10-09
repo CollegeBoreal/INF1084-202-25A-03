@@ -1,0 +1,140 @@
+[33mb81843ad[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Vérification de la participation
+[33md711d365[m TP AD: utilisateurs1-4.ps1 (Karim NIANG)
+[33mb7446b27[m Vérification de la participation
+[33m0e29ecfa[m Update README.md
+[33m65268b18[m Vérification de la participation
+[33m103bdb04[m Update participations.yaml
+[33m28124983[m Recréation du fichier utilisateurs4.ps1 corrigé
+[33m880cafb8[m Recréation du fichier utilisateurs3.ps1 corrigé
+[33m6c73266d[m Recréation du fichier utilisateurs2.ps1 corrigé
+[33m70ab04a8[m Recréation du fichier utilisateurs1.ps1 corrigé
+[33m9702d578[m Ajout du fichier utilisateurs1.ps1
+[33m278cfc06[m Suppression du fichier utilisateurs1.ps1 pour recréation
+[33m7ce26485[m Renommage des fichiers utilisateurs1-4.ps1
+[33mcf0ee6c7[m Création du script utilisateur4.ps1 avec export/import CSV et ImportGroupe
+[33m0f501315[m Création du script utilisateur3.ps1 avec requêtes et filtres
+[33m4bb55644[m Création du script utilisateur2.ps1
+[33m201bed5e[m Ajout du contenu du script utilisateur1.ps1
+[33m933c8a22[m Création du script utilisateur1.ps1
+[33m8b56eddc[m Ajout du script utilisateur1.ps1
+[33m76b815d9[m Update README.md
+[33mcf91e432[m[33m ([m[1;31morigin/300098957[m[33m)[m 📚 GUIDE COMPLET - Tous les scripts PowerShell avec arborescence
+[33mc1ba6f1c[m 📚 AJOUT DE TOUS LES CODES SOURCES COMPLETS - Guide détaillé PowerShell
+[33m8471595f[m 📚 Description des modifications
+[33md36a6766[m message
+[33m18bb0324[m Merge branch 'main' of https://github.com/CollegeBoreal/INF1084-202-25A-03
+[33m95a7d28b[m 📚 Documentation complète du projet PowerShell
+[33ma21386ad[m .
+[33me1f44499[m Update README.md
+[33m6727a4f6[m Update README.md
+[33meab50c98[m Merge branch 'main' of github.com:CollegeBoreal/INF1084-202-25A-03
+[33ma6dd8bfc[m 300153476
+[33m0ed747a4[m Complete file structure matching successful students
+[33m5c9be22a[m Add all missing files to match successful student structure
+[33md4109c59[m Add missing files: file_utilisateurs1.csv, file_etudiants.csv, mini_projet.ps1
+[33m4975a5b4[m Add ulilisateurs4.ps1 (typo file like other students)
+[33mbe340068[m Update README.md - remove utilisateurs.ps1 reference
+[33m49724c1a[m Keep only the 4 required scripts: utilisateurs1-4.ps1
+[33m5108c412[m Add utilisateurs.ps1 to README.md
+[33mc14d8c31[m Complete file set: utilisateurs.ps1 + utilisateurs1-4.ps1 + file_utilisateurs1.csv
+[33m17e0654c[m Final structure: utilisateurs1-4.ps1 + file_utilisateurs1.csv with PSCustomObject
+[33m2cf41e9e[m Rename scripts to utilisateurs1-4.ps1 for consistency
+[33mb284f19e[m Fix script 4 - CSV import now displays names correctly
+[33m5c5085c9[m Rename scripts to 1.ps1, 2.ps1, 3.ps1, 4.ps1 in correct folder
+[33m4c968af0[m Update utilisateurs4.ps1
+[33m871682fb[m Update utilisateurs4.ps1
+[33mbfa09f82[m Update README.md
+[33m229a0f03[m Update README.md
+[33m7e1d2b4a[m Update README.md
+[33mb03121e8[m Update README.md
+[33mc2ec0d54[m Add files via upload
+[33m9bd1d216[m Create .gitkeep
+[33m971d3344[m Mes utilisateurs
+[33m4fa7d0cb[m Update README.md
+[33mc687ed83[m Update README.md
+[33m5e889c2f[m Update README.md
+[33m31c5282a[m Create README.md
+[33m08bbbf51[m Update README.md
+[33m362b0d4b[m Update README.md
+[33m0ddc1549[m Update README.md
+[33m673d6145[m Update README.md
+[33m520a1adf[m Update README.md
+[33m318f128a[m Create README.md
+[33md0f88173[m Update README.md
+[33mfc1f7afc[m Create README.md
+[33m1238ccea[m Ajout du script utilisateurs.ps1
+[33m80a584a1[m Ajout du script utilisateur1.ps1 avec 5 utilisateurs
+[33m6fdbd69a[m Ajout exercice 1 - utilisateurs1.ps1
+[33m71a1deb3[m Update README.md
+[33mb8203b13[m Update README.md
+[33ma40c7ea1[m Update README.md
+[33m4830766b[m Update README.md
+[33m3f6d74ef[m Update README.md
+[33m43671379[m Create README.md
+[33m9add18be[m Update README.md
+[33ma5361a82[m Update README.md
+[33mbeca24b4[m Update README.md
+[33m359e0989[m Ajout du README.md pour le projet PowerShell
+[33m937c4807[m Sauvegarde des dernières modifications du script utilisateurs2.ps1
+[33mf9d34256[m Sauvegarde du script utilisateurs2.ps1 avec modifications
+[33mc8e8c994[m Update README.md
+[33mb6623705[m Merge branch 'main' of github.com:CollegeBoreal/INF1084-202-25A-03
+[33mb97b4a2c[m Ajout du script utilisateurs3.ps1
+[33me7094032[m Update README.md
+[33mfa9d7488[m Correction du chemin CSV dans utilisateurs4.ps1
+[33m91f53310[m Update README.md
+[33m42807ab8[m Update README.md
+[33m7763fdbb[m Create README.md
+[33m86bd9608[m Merge branch 'main' of github.com:CollegeBoreal/INF1084-202-25A-03
+[33me87e9f99[m Mise à jour du script utilisateurs4.ps1
+[33m52c480a7[m Merge branch 'main' of github.com:CollegeBoreal/INF1084-202-25A-03
+[33m404bd09a[m Ajout du script Utilisateurs4.ps1
+[33m57771c4c[m Update README.md
+[33mf7cd06a5[m Create README.md
+[33ma79c3082[m Ajout fichier 300141657.md et modification README
+[33m0c13b82a[m Ajout du script utilisateurs2.ps1
+[33m6bdf68f3[m Update README.md
+[33m87e71d7a[m 3.VMs/300141858 : déplacer README.md et nettoyer README
+[33m9fab3501[m Ajout du README.md pour 300141858 dans 3.VMs
+[33m4dacb22e[m Mise à jour du script mini_projet.ps1 et autres fichiers
+[33m1c6ed2c0[m Ajout du contenu du fichier file_etudiants.csv
+[33mcf051911[m Update README.md
+[33m2309fd2c[m Mise à jour du script mini_projet.ps1 et autres fichiers
+[33mc4bff8fb[m Update README.md
+[33m09a2da52[m Update README.md
+[33m9b765bd8[m Create README.md
+[33m9bc23c05[m Ajout du CSV pour les étudiants
+[33m53ce09f1[m Ajout des scripts utilisateurs et CSV
+[33m89beaf92[m Create README.md
+[33m22d99f4f[m Ajout du script utilisateurs3.ps1 avec les 3 requêtes (nom commence par B, OU Stagiaires, prénom contient 'a')
+[33m65928fda[m Create README.md
+[33mb4ac0635[m Create README.md
+[33m6ccbeaf2[m Delete 3.VMs/300151469.md
+[33m6d9e5d75[m Sauvegarde de tous les fichiers avant pull
+[33mb9fafa7c[m Ajout ou modification de utilisateurs4.ps1
+[33m22fe87a9[m Merge branch 'main' of https://github.com/CollegeBoreal/INF1084-202-25A-03
+[33m8b018b6b[m Update README.md
+[33mb5500a4a[m Sauvegarde de tous les fichiers avant pull
+[33m29bd9c63[m Ajout ou modification de utilisateurs3.ps1
+[33m4b844a0d[m Complete PowerShell scripts with proper code content
+[33m686f7eb9[m Update README.md
+[33maf9b9518[m Update README.md
+[33me95df39c[m Create README.md
+[33m33f23123[m Create README.md
+[33mb20f5961[m Sauvegarde des fichiers modifiés avant pull
+[33mc25d3d23[m Ajout ou modification de utilisateurs2.ps1
+[33m890fb6ef[m Create README.md
+[33m5f70a8ba[m Create README.md
+[33m5202b764[m Sauvegarde avant pull --rebase
+[33me7cc9f08[m Modification du contenu de utilisateurs1.ps1
+[33m13255813[m Update README.md
+[33m99d32e63[m Create README.md
+[33m99f35e21[m Delete 3.VMs/300151258
+[33m32478392[m Rename README.me to README.md
+[33me52887bd[m Update README.md
+[33m2ffe4327[m Create README.md
+[33m6a6a08a2[m Update README.md
+[33m74219eb7[m Create README.me
+[33m925e6225[m Create README.md
+[33m91f14687[m Create 300151469.md
+[33m8ef05c98[m Create README.md

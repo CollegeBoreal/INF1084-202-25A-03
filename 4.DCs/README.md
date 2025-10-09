@@ -12,7 +12,7 @@
     - [ ] `touch images/.gitkeep`
 - [ ] envoyer vers le serveur `git`
   - [ ] remonter au repertoire précédent
-        `cd ..`
+    - [ ] `cd ..`
   - [ ] `git add `:id:
   - [ ] `git commit -m "mon fichier ..."`
   - [ ] `git push`

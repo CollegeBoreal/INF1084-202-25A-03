@@ -69,8 +69,6 @@ Get-ADDomainController -Filter * -Server $domainName
 ## **2️⃣ Liste des utilisateurs du domaine**
 
 ```powershell
-$domain = "DC999999999-0.local"
-
 Get-ADUser -Filter * -Server $domain -Properties Name, SamAccountName, Enabled |
 Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName

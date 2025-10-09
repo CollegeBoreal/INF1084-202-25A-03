@@ -1,4 +1,23 @@
+# 0️⃣ Nom du domaine basé sur le numéro étudiant
+
+```powershell
+$studentNumber = 300133071
+$studentInstance = "00"
+
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+```
 <img src="images/1.jpg" alt="images" width="450"/>
+
+# 2️⃣ Liste des utilisateurs du domaine
+
+<img src="images/2.jpg" alt="images" width="450"/>
+
+```powershell
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
+Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName
+```
 
 je cree un utilisateur sur ma vm
 ```powershell
@@ -13,8 +32,6 @@ New-ADUser `
   -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
   -Enabled $true
 ```
-
-<img src="images/2.jpg" alt="images" width="450"/>
 
 ```powershell
 Get-ADUser -Identity nelson : pour verifier

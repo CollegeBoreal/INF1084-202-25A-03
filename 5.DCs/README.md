@@ -83,13 +83,6 @@ $studentInstance = 00
 
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
-
-Install-ADDSForest `
-    -DomainName $domainName `
-    -DomainNetbiosName $netbiosName `
-    -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
-    -Force
 ```
 
 * **$domainName** : FQDN du domaine (`DC999999999-00.local`)

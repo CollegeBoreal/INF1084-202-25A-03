@@ -13,6 +13,9 @@ New-ADUser `
   -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
   -Enabled $true
 ```
+
+<img src="images/2.jpg" alt="images" width="450"/>
+
 ```powershell
 Get-ADUser -Identity nelson : pour verifier
 ```

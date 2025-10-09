@@ -1,10 +1,30 @@
-Parfait ! Voici le **TP complet et mis à jour** pour gérer les utilisateurs dans ton domaine **`DC300098957-0.local`**, avec les corrections pour le container `CN=Users` et la création de l’OU `Students`.
 
 ---
 
 # **TP : Gestion des utilisateurs Active Directory avec PowerShell**
 
-**Domaine cible :** `DC300098957-0.local`
+Gérer les utilisateurs dans ton domaine **`DC999999999-0.local`**, avec les corrections pour le container `CN=Users` et la création de l’OU `Students`.
+
+## :books: Travail à soumettre :
+
+- [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)
+  - [ ] `mkdir ` :id:
+  - [ ] `cd ` :id:
+- [ ] dans le répertoire ajouter le fichier `README.md`
+  - [ ] `touch README.md`
+  - [ ] Créer un répertoire images
+    - [ ] `mkdir images`
+    - [ ] `touch images/.gitkeep`
+- [ ] envoyer vers le serveur `git`
+  - [ ] remonter au repertoire précédent
+    - [ ] `cd ..`
+  - [ ] `git add `:id:
+  - [ ] `git commit -m "mon fichier ..."`
+  - [ ] `git push`
+
+---
+
+**Domaine cible :** `DC999999999-0.local`
 **Outils :** PowerShell avec module `ActiveDirectory`
 
 ---
@@ -16,8 +36,8 @@ Parfait ! Voici le **TP complet et mis à jour** pour gérer les utilisateurs da
 Import-Module ActiveDirectory
 
 # Vérifier le domaine et les DC
-Get-ADDomain -Server "DC300098957-0.local"
-Get-ADDomainController -Filter * -Server "DC300098957-0.local"
+Get-ADDomain -Server "DC999999999-0.local"
+Get-ADDomainController -Filter * -Server "DC999999999-0.local"
 ```
 
 ---
@@ -25,7 +45,7 @@ Get-ADDomainController -Filter * -Server "DC300098957-0.local"
 ## **2️⃣ Liste des utilisateurs du domaine**
 
 ```powershell
-$domain = "DC300098957-0.local"
+$domain = "DC999999999-0.local"
 
 Get-ADUser -Filter * -Server $domain -Properties Name, SamAccountName, Enabled |
 Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
@@ -43,10 +63,10 @@ New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `
            -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@DC300098957-0.local" `
+           -UserPrincipalName "alice.dupont@DC999999999-0.local" `
            -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
            -Enabled $true `
-           -Path "CN=Users,DC=DC300098957-0,DC=local"
+           -Path "CN=Users,DC=DC999999999-0,DC=local"
 ```
 
 ---
@@ -112,15 +132,15 @@ Export-Csv -Path "C:\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 ```powershell
 # Vérifier si l'OU existe
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=DC300098957-0,DC=local"
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=DC999999999-0,DC=local"
 }
 ```
 
 2. Déplacer l’utilisateur depuis `CN=Users` :
 
 ```powershell
-Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=DC300098957-0,DC=local" `
-              -TargetPath "OU=Students,DC=DC300098957-0,DC=local"
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=DC999999999-0,DC=local" `
+              -TargetPath "OU=Students,DC=DC999999999-0,DC=local"
 ```
 
 3. Vérifier le déplacement :

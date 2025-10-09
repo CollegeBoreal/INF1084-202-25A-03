@@ -85,10 +85,10 @@ New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `
            -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@$domain" `
+           -UserPrincipalName "alice.dupont@$domainName" `
            -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
            -Enabled $true `
-           -Path "CN=Users,DC=DC999999999-0,DC=local"
+           -Path "CN=Users,$netbiosName,DC=local"
 ```
 
 ---

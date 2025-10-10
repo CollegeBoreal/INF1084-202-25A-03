@@ -1,3 +1,4 @@
+. .\utilisateur4.ps1
 # 1️⃣ Créer 5 utilisateurs simulés dans l'OU "Promo2025"
 $UsersPromo2025 = @(
     @{Nom="Martin";    Prenom="Emma";    Login="emartin";    OU="Promo2025"},

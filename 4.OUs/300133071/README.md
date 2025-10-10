@@ -14,6 +14,19 @@
 
 # 3️⃣ Créer un nouvel utilisateur
 
+```powershell
+
+New-ADUser `
+  -Name "William Nelson" `
+  -GivenName "William" `
+  -Surname "Nelson" `
+  -SamAccountName "nelson" `
+  -UserPrincipalName "nelson@DC300133071-00.local" `
+  -Path "CN=Users,DC=DC300133071-00,DC=local" `
+  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
+  -Enabled $true
+```
+
 <img src="images/3.jpg" alt="images" width="450"/>
 
 # 4️⃣ Modifier un utilisateur
@@ -35,47 +48,35 @@
 # 🔟 Déplacer un utilisateur vers une OU Students
 
 
-```powershell
-Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
-Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
-Select-Object Name, SamAccountName
-```
+# 🉐 Pour vous connecter avec un utilisateur creer vous devez :
 
-je cree un utilisateur sur ma vm
-```powershell
+1️⃣ verifier que la connexion RDP actif
 
-New-ADUser `
-  -Name "William Nelson" `
-  -GivenName "William" `
-  -Surname "Nelson" `
-  -SamAccountName "nelson" `
-  -UserPrincipalName "nelson@DC300133071-00.local" `
-  -Path "CN=Users,DC=DC300133071-00,DC=local" `
-  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
-  -Enabled $true
-```
-
-```powershell
-Get-ADUser -Identity nelson : pour verifier
-```
 ```powershell
 (Get-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name fDenyTSConnections).fDenyTSConnections
 ```
+```txt
+1 c'est desactive 0 c'est active
+```
+2️⃣ activer RDP si c'est desactiver
+
 ```powershell
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name fDenyTSConnections -Value 0
 ```
+3️⃣ ajouter votre utilisateur dans le groupe remote desktop users
+
 ```powershell
 Add-ADGroupMember -Identity "Remote Desktop Users" -Members "wnelson"
 ```
 ```powershell
 Get-ADGroupMember "Remote Desktop Users"
 ```
+4️⃣ ouvrir l'executer avec 🪟➕```R``` puis
+
 ```txt
-Sur le serveur :
+taoe secpol.msc (→ menu Démarrer → tape secpol.msc)
 
-Ouvre secpol.msc (→ menu Démarrer → tape secpol.msc)
-
-Va dans :
+allez dans :
 Local Policies → User Rights Assignment → Allow log on through Remote Desktop Services
 
 Assure-toi que le groupe Remote Desktop Users (et/ou ton utilisateur) y figure.

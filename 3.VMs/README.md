@@ -2,7 +2,6 @@
 
 [:tada: Participation](.scripts/Participation.md) 
 
-
 Installer et configurer un contrôleur de domaine Active Directory sur **Windows Server 2022**.
 
 ---
@@ -15,6 +14,16 @@ Installer et configurer un contrôleur de domaine Active Directory sur **Windows
 
 ```powershell
 Rename-Computer -NewName "DC999999999" -Restart
+```
+
+---
+
+## 🚀 Installation AD : Étapes avec PowerShell
+
+### 1. Renommer le serveur
+
+```powershell
+Rename-Computer -NewName "DC9999999990" -Restart
 ```
 
 *(le serveur va redémarrer)*
@@ -42,12 +51,12 @@ True    No             Success        {Active Directory Domain Services, Group P
 
 ### 3. Créer un nouveau domaine (nouvelle forêt)
 
-Exemple avec domaine **DC999999999.local** :
+Exemple avec domaine **DC999999999-00.local** :
 
 ```powershell
 Install-ADDSForest `
-    -DomainName "DC999999999.local" `
-    -DomainNetbiosName "DC999999999" `
+    -DomainName "DC999999999-00.local" `
+    -DomainNetbiosName "DC999999999-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
     -Force
@@ -91,7 +100,7 @@ assignment should be done to all the physical network adapters for reliable Doma
 </details>
 
 * `-DomainName` → nom DNS du domaine.
-* `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC999999999).
+* `-DomainNetbiosName` → version courte (max 15 caractères, ex. DC9999999990).
 * `-InstallDns:$true` → installe DNS en même temps.
 * `-SafeModeAdministratorPassword` → mot de passe pour le mode restauration DSRM.
 * `-Force` → évite les confirmations.

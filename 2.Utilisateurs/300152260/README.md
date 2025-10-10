@@ -1,21 +1,33 @@
-nano utilisateurs1.sh
- Comment creer le script
-Pour créer un script PowerShell avec nano, tapez nano utilisateurs1.ps1 pour ouvrir l'éditeur, écrivez votre code PowerShell (variables, commandes, etc.), sauvegardez avec Ctrl+O puis Entrée, et quittez avec Ctrl+X. Le fichier doit obligatoirement avoir l'extension .ps1 et peut ensuite être exécuté avec:
+Scripts PowerShell de gestion simulée d’utilisateurs et de groupes
+👥 Utilisateurs et Groupes simulés
+Scripts PowerShell pédagogiques pour simuler des utilisateurs et groupes, appliquer des filtres et exporter/importer en CSV.
+⚠️ Ces scripts ne modifient pas un vrai Active Directory.
 
-PowerShell -ExecutionPolicy Bypass -File .\utilisateurs1.ps1.
-.\utilisateurs1.sh
- Comment executer le script
-Windows bloque par défaut l'exécution des scripts PowerShell (.ps1) pour des raisons de sécurité via la politique "ExecutionPolicy".
+📂 Structure du projet
+2.Utilisateurs/
+ └──300152260/
+   ├── utilisateurs1.ps1     
+   ├── utilisateurs2.ps1          
+   ├── utilisateurs3.ps1          
+   ├── utilisateurs4.ps1    
+   └── file_utilisateurs1.csv     
+1️⃣ utilisateur simulés
+ Créer le script pour utilsateurs1.ps1
+nano utilisateur1.ps1
+ Editer votre scripts pour créer vous utilisateurs
+$Users = @(
+    @{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"}
+)
+ Exécuter le script pour Utilsateur1
+.\utilisateur1.ps1
+2️⃣: Groupe des utilisateurs
+㊙️ utiliser la commande "$PSScriptRoot\utilisateurs.ps1"  pour importer votre script utilisateur dans votre scprit groupe
 
-Solution la solution est d'executer la commandes:
-
-PowerShell -ExecutionPolicy Bypass -File .\utilisateurs1.ps1
-Explication
-La commande Bypass permet d'exécuter temporairement le script sans modifier définitivement les paramètres de sécurité du système. Cette approche maintient la protection globale tout en autorisant l'exécution ponctuelle du script nécessaire.
-
-nano utilisateurs1.sh
-❌ message d'erreur
-.\utilisateurs1.ps1 : File C:\Users\franc\Developer\inf1084-202-25A-03\2.Utilisateurs\300143951\utilisateurs1.ps1 cannot be loaded because running scripts is disabled on this system.
- For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
- At line:1 char:1+ .\utilisateurs1.ps1 + ~~~~~~~~~~~~~~~~~~~ + CategoryInfo          : SecurityError: (:) [], PSSecurityExceptio 
-+ FullyQualifiedErrorId : UnauthorizedAccess
+3️⃣: Flitres
+ Editer votre scripts pour créer un flitre et l'executer
+4️⃣: Le fichier csv
+ Editer votre scripts pour exporter et importer le fichier des utilisateurs ⚠️: Si apres exportation puis impoarte le resultat est vide ajouter dans votre script Utilsateurs1.ps1 devant chaque utilisateur [PSCustomObject]pour mettre vos utilisateur sous forme d’objets PowerShell
+$Users = @(
+    [PSCustomObject]@{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"}
+)
+Faites attention au chemin dans vos script vous pouvez utiliser $exportPath = "C:\Users\kelek\Documents\developer\INF1084-202-25A-03\2.Utilisateurs\300133071\UsersSimules.csv" pour definit un chemin

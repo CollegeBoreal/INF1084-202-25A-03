@@ -1,4 +1,4 @@
-. ..\utilisateur3.ps1
+. .\utilisateur3.ps1
 
 # Exporter les utilisateurs simulés
 $Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation

@@ -1,1 +1,1 @@
-Disable-ADAccount -Identity "siga"
+Disable-ADAccount -Identity "siga" -Credential $cred

@@ -28,8 +28,8 @@
    Ce qui affiche actuellement :
 
    ```lua
-   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-03.git (fetch)
-   origin  git@github-boreal.com:CollegeBoreal/INF1084-202-25A-03.git (push)
+   origin  git@github.com:CollegeBoreal/INF1084-202-25A-03.git (fetch)
+   origin  git@github.com:CollegeBoreal/INF1084-202-25A-03.git (push)
    ```
 
 ## :ab: Créer un fichier dans ce répertoire `(1.SSH)`:

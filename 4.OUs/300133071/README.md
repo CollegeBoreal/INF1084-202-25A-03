@@ -1,15 +1,18 @@
+# 300133071
 # 0️⃣ Nom du domaine basé sur le numéro étudiant
-
-```powershell
-$studentNumber = 300133071
-$studentInstance = "00"
-
-$domainName = "DC$studentNumber-$studentInstance.local"
-$netbiosName = "DC$studentNumber-$studentInstance"
-```
+# 1️⃣ Préparer l’environnement
+# 2️⃣ Liste des utilisateurs du domaine
+# 3️⃣ Créer un nouvel utilisateur
+# 4️⃣ Modifier un utilisateur
+# 5️⃣ Désactiver un utilisateur
+# 6️⃣ Réactiver un utilisateur
+# 7️⃣ Supprimer un utilisateur
+# 8️⃣ Rechercher des utilisateurs avec un filtre
+# 9️⃣ Exporter les utilisateurs dans un CSV
+# 🔟 Déplacer un utilisateur vers une OU Students
 <img src="images/1.jpg" alt="images" width="450"/>
 
-# 1️⃣ Liste des utilisateurs du domaine
+
 
 <img src="images/2.jpg" alt="images" width="450"/>
 

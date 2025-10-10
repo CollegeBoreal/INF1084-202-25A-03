@@ -36,7 +36,7 @@ Install-ADDSForest `
 
 DC300148094-00\Administrator
 
-<img src="images/photo1.jpg" alt="Images" width="450"/>
+<img src="images/TP1.png" alt="Images" width="450"/>
 
 Vous verez les services installer ainsi que le DNS comme sur l'image
 

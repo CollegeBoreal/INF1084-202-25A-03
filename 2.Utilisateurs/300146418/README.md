@@ -36,7 +36,7 @@ Ce projet consiste à :
 | Étape | Commande | Description |
 |-------|----------|-------------|
 | Modifier la politique d’exécution | `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` | Autoriser l’exécution des scripts PowerShell bloqués par défaut |
-| Exécuter les scripts | `.\Ikram1.ps1`<br>`.\Utilisateur1.ps1`<br>`.\Utilisateur2.ps1`<br>`.\Utilisateur3.ps1`<br>`.\Utilisateur4.ps1`<br>`.\Projet.ps1` | Exécution de tous les scripts du projet |
+| Exécuter les scripts | `.\Ikram1.ps1`<br>`.\utilisateurs1.ps1`<br>`.\utilisateurs2.ps1`<br>`.\utilisateurs3.ps1`<br>`.\utilisateurs4.ps1`<br>`.\mini_projet.ps1` | Exécution de tous les scripts du projet |
 | Export CSV | `$Users \| Export-Csv -Path "C:\Users\ikram\Developer\INF1084-202-25A-03\2.Utilisateurs\300146418\UsersSimules.csv" -NoTypeInformation -Encoding UTF8` | Exporter les utilisateurs simulés vers un fichier CSV |
 | Import CSV | `$ImportedUsers = Import-Csv -Path "C:\Users\ikram\Developer\INF1084-202-25A-03\2.Utilisateurs\300146418\UsersSimules.csv"` | Importer les utilisateurs depuis le fichier CSV |
 

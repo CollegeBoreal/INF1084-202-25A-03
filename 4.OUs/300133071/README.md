@@ -1,20 +1,26 @@
 # 300133071
 # 0️⃣ Nom du domaine basé sur le numéro étudiant
+<img src="images/0.jpg" alt="images" width="450"/>
 # 1️⃣ Préparer l’environnement
-# 2️⃣ Liste des utilisateurs du domaine
-# 3️⃣ Créer un nouvel utilisateur
-# 4️⃣ Modifier un utilisateur
-# 5️⃣ Désactiver un utilisateur
-# 6️⃣ Réactiver un utilisateur
-# 7️⃣ Supprimer un utilisateur
-# 8️⃣ Rechercher des utilisateurs avec un filtre
-# 9️⃣ Exporter les utilisateurs dans un CSV
-# 🔟 Déplacer un utilisateur vers une OU Students
 <img src="images/1.jpg" alt="images" width="450"/>
-
-
-
+# 2️⃣ Liste des utilisateurs du domaine
 <img src="images/2.jpg" alt="images" width="450"/>
+# 3️⃣ Créer un nouvel utilisateur
+<img src="images/3.jpg" alt="images" width="450"/>
+# 4️⃣ Modifier un utilisateur
+<img src="images/4.jpg" alt="images" width="450"/>
+# 5️⃣ Désactiver un utilisateur
+<img src="images/5.jpg" alt="images" width="450"/>
+# 6️⃣ Réactiver un utilisateur
+<img src="images/6.jpg" alt="images" width="450"/>
+# 7️⃣ Supprimer un utilisateur
+<img src="images/7.jpg" alt="images" width="450"/>
+# 8️⃣ Rechercher des utilisateurs avec un filtre
+<img src="images/8.jpg" alt="images" width="450"/>
+# 9️⃣ Exporter les utilisateurs dans un CSV
+<img src="images/9.jpg" alt="images" width="450"/>
+# 🔟 Déplacer un utilisateur vers une OU Students
+
 
 ```powershell
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |

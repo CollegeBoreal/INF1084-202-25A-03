@@ -2,9 +2,24 @@
 
 # 0️⃣ Nom du domaine basé sur le numéro étudiant
 
+```powershell
+$studentNumber = 300133071
+$studentInstance = "00"
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+```
+
 <img src="images/0.jpg" alt="images" width="450"/>
 
 # 1️⃣ Préparer l’environnement
+
+```powershell
+# Importer le module AD
+Import-Module ActiveDirectory
+# Vérifier le domaine et les DC
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
+```
 
 <img src="images/1.jpg" alt="images" width="450"/>
 

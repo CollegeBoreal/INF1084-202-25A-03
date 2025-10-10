@@ -1,1 +1,1 @@
-Enable-ADAccount -Identity "siga"
+Enable-ADAccount -Identity "siga" -Credential $cred

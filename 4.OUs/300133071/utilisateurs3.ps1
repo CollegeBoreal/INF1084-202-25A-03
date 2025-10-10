@@ -6,4 +6,5 @@ New-ADUser `
   -UserPrincipalName "siga@DC300133071-00.local" `
   -Path "CN=Users,DC=DC300133071-00,DC=local" `
   -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
-  -Enabled $true
+  -Enabled $true `
+  -Credential $cred

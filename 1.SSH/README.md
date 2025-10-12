@@ -33,7 +33,7 @@
    nano ~/.ssh/config
    ```
 
-- Ajouter le contenu ci-dessous et ajuster le nom de fichier de votre clé publique.
+- Ajouter le contenu ci-dessous et ajuster le nom de fichier de votre clé privée (.pk).
 
    ```powershell
    Host github.com

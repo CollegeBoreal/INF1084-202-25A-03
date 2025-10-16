@@ -1,0 +1,3 @@
+$GroupesPromo = @{
+    "Etudiants2025" = @()
+}

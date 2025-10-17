@@ -1,11 +1,15 @@
 # Tag
 
 ```bash
-git tag v1.2
+TAG=v1.2
 ```
 
 ```bash
-git push origin v1.2
+git tag ${TAG}
+```
+
+```bash
+git push origin ${TAG}
 ```
 <details>
 

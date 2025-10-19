@@ -1,4 +1,4 @@
-300151825
+# 300151825
 
 0️⃣ Nom du domaine basé sur le numéro étudiant
 
@@ -8,21 +8,23 @@ $studentInstance = 00
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 
-
 $domainName
-DC300151825-0.local
+# DC300151825-0.local
 
 $netbiosName
-DC300151825-0
+# DC300151825-0
 
+---
 
 1️⃣ Préparer l’environnement
 
 # Importer le module AD
 Import-Module ActiveDirectory
+
 # Vérifier le domaine et les DC
 Get-ADDomain -Server $domainName
 
+# Résultat
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300151825-00,DC=local
@@ -36,8 +38,7 @@ ForeignSecurityPrincipalsContainer : CN=ForeignSecurityPrincipals,DC=DC300151825
 Forest                             : DC300151825-00.local
 InfrastructureMaster               : DC300151825.DC300151825-00.local
 LastLogonReplicationInterval       :
-LinkedGroupPolicyObjects           : {CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=DC300151825-00
-                                     ,DC=local}
+LinkedGroupPolicyObjects           : {CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=DC300151825-00,DC=local}
 LostAndFoundContainer              : CN=LostAndFound,DC=DC300151825-00,DC=local
 ManagedBy                          :
 Name                               : DC300151825-00
@@ -51,17 +52,13 @@ QuotasContainer                    : CN=NTDS Quotas,DC=DC300151825-00,DC=local
 ReadOnlyReplicaDirectoryServers    : {}
 ReplicaDirectoryServers            : {DC300151825.DC300151825-00.local}
 RIDMaster                          : DC300151825.DC300151825-00.local
-SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151825-00,DC=local,
-                                     DC=DomainDnsZones,DC=DC300151825-00,DC=local,
-                                     CN=Configuration,DC=DC300151825-00,DC=local}
+SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151825-00,DC=local, DC=DomainDnsZones,DC=DC300151825-00,DC=local, CN=Configuration,DC=DC300151825-00,DC=local}
 SystemsContainer                   : CN=System,DC=DC300151825-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300151825-00,DC=local
 
-
-
 Get-ADDomainController -Filter * -Server $domainName
 
-
+# Résultat
 ComputerObjectDN           : CN=DC300151825,OU=Domain Controllers,DC=DC300151825-00,DC=local
 DefaultPartition           : DC=DC300151825-00,DC=local
 Domain                     : DC300151825-00.local
@@ -75,28 +72,25 @@ IsGlobalCatalog            : True
 IsReadOnly                 : False
 LdapPort                   : 389
 Name                       : DC300151825
-NTDSSettingsObjectDN       : CN=NTDS Settings,CN=DC300151825,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configur
-                             ation,DC=DC300151825-00,DC=local
+NTDSSettingsObjectDN       : CN=NTDS Settings,CN=DC300151825,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=DC300151825-00,DC=local
 OperatingSystem            : Windows Server 2022 Datacenter
 OperatingSystemHotfix      :
 OperatingSystemServicePack :
 OperatingSystemVersion     : 10.0 (20348)
 OperationMasterRoles       : {SchemaMaster, DomainNamingMaster, PDCEmulator, RIDMaster...}
-Partitions                 : {DC=ForestDnsZones,DC=DC300151825-00,DC=local,
-                             DC=DomainDnsZones,DC=DC300151825-00,DC=local,
-                             CN=Schema,CN=Configuration,DC=DC300151825-00,DC=local,
-                             CN=Configuration,DC=DC300151825-00,DC=local...}
-ServerObjectDN             : CN=DC300151825,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=DC300151
-                             825-00,DC=local
+Partitions                 : {DC=ForestDnsZones,DC=DC300151825-00,DC=local, DC=DomainDnsZones,DC=DC300151825-00,DC=local, CN=Schema,CN=Configuration,DC=DC300151825-00,DC=local, CN=Configuration,DC=DC300151825-00,DC=local...}
+ServerObjectDN             : CN=DC300151825,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=DC300151825-00,DC=local
 ServerObjectGuid           : b22c4f6c-93cd-4a6a-8c55-9dd50aa231ea
 Site                       : Default-First-Site-Name
 SslPort                    : 636
 
+---
 
 2️⃣ Liste des utilisateurs du domaine
 
 Get-ADUser -Filter *
 
+# Résultat
 DistinguishedName : CN=Administrator,CN=Users,DC=DC300151825-00,DC=local
 Enabled           : True
 GivenName         :
@@ -109,6 +103,7 @@ Surname           :
 UserPrincipalName :
 
 DistinguishedName : CN=Guest,CN=Users,DC=DC300151825-00,DC=local
+Enabled           : True
 GivenName         :
 Name              : Guest
 ObjectClass       : user
@@ -133,7 +128,6 @@ DistinguishedName : CN=krbtgt,CN=Users,DC=DC300151825-00,DC=local
 Enabled           : False
 GivenName         :
 Name              : krbtgt
-
 ObjectClass       : user
 ObjectGUID        : cefcd677-c3cc-4e63-bb7b-28cdf96b3dff
 SamAccountName    : krbtgt
@@ -141,6 +135,7 @@ SID               : S-1-5-21-447135690-91861430-3213525697-502
 Surname           :
 UserPrincipalName :
 
+---
 
 3️⃣ Créer un nouvel utilisateur
 
@@ -155,34 +150,41 @@ New-ADUser `
   -Enabled $true `
   -Credential $cred
 
+---
 
 4️⃣ Modifier un utilisateur
 
-  Set-ADUser -Identity "leandre.ebah" `
+Set-ADUser -Identity "leandre.ebah" `
            -EmailAddress "leandre.ebah@DC300151825-00.local" `
            -GivenName "Leandre-Freedy" `
            -Credential $cred
 
+---
 
 5️⃣ Désactiver un utilisateur
 
-Disable-ADAccount -Identity "Leandre.ebah" -Credential $cred
+Disable-ADAccount -Identity "leandre.ebah" -Credential $cred
 
+---
 
 6️⃣ Réactiver un utilisateur
 
-Enable-ADAccount -Identity "Leandre.ebah" -Credential $cred
+Enable-ADAccount -Identity "leandre.ebah" -Credential $cred
 
+---
 
 7️⃣ Supprimer un utilisateur
-Remove-ADUser -Identity "Leandre.ebah" -Confirm:$false -Credential $cred
 
+Remove-ADUser -Identity "leandre.ebah" -Confirm:$false -Credential $cred
+
+---
 
 8️⃣ Rechercher des utilisateurs avec un filtre
 
- Get-ADUser -Filter "GivenName -like 'T*'"
+Get-ADUser -Filter "GivenName -like 'T*'"
 
- DistinguishedName : CN=Thomas Girard,CN=Users,DC=DC300151825-00,DC=local
+# Résultat
+DistinguishedName : CN=Thomas Girard,CN=Users,DC=DC300151825-00,DC=local
 Enabled           : True
 GivenName         : Thomas
 Name              : Thomas Girard
@@ -193,6 +195,7 @@ SID               : S-1-5-21-447135690-91861430-3213525697-1107
 Surname           : Girard
 UserPrincipalName : thomas.girard@DC300151825-00.local
 
+---
 
 9️⃣ Exporter les utilisateurs dans un CSV
 
@@ -201,12 +204,11 @@ Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName, EmailAddress, Enabled |
 Export-Csv -Path "C:\Users\Student1\INF1084-202-25A-03\4.OUs\300151825\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 
+---
 
-10️⃣ Déplacer un utilisateur vers une OU Students
+🔟 Déplacer un utilisateur vers une OU Students
 
-1. Crée l’OU si elle n’existe pas :
-
-# Vérifier si l'OU Students existe, sinon la créer
+# 1️⃣ Créer l’OU si elle n’existe pas
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
     New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Credential $cred
     Write-Host "OU 'Students' créée avec succès ✅"
@@ -214,18 +216,18 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
     Write-Host "OU 'Students' existe déjà."
 }
 
+# Résultat
 OU 'Students' créée avec succès
 
-2. Déplacer l’utilisateur depuis CN=Users :
-
+# 2️⃣ Déplacer l’utilisateur depuis CN=Users
 Move-ADObject -Identity "CN=Thomas Girard,CN=Users,DC=$netbiosName,DC=local" `
               -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
               -Credential $cred
 
-3. Vérifier le déplacement :
-
+# 3️⃣ Vérifier le déplacement
 Get-ADUser -Identity "thomas.girard" | Select-Object Name, DistinguishedName
 
+# Résultat
 Name          DistinguishedName
 ----          -----------------
 Thomas Girard CN=Thomas Girard,OU=Students,DC=DC300151825-00,DC=local

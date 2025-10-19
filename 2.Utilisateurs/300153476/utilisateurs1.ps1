@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Définition initiale de $Users
 $Users = @(
     @{Nom="Dupont";  Prenom="Alice";   Login="adupont";  OU="Stagiaires"},

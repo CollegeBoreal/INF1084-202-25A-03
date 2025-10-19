@@ -1,4 +1,4 @@
-. "..\utilisateurs2.ps1"
+. .\utilisateurs2.ps1
 
 # Lister tous les utilisateurs dont le nom commence par "B"
 $Users | Where-Object {$_.Nom -like "B*"}

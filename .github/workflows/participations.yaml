@@ -51,6 +51,14 @@ jobs:
           pwsh .scripts/run.ps1
           Set-Location ..
 
+          ##
+          ## Évaluation du chapitre 4.OUs
+          ##
+          Write-Host "Evaluating chapter 4.OUs Participation"
+          Set-Location 4.OUs
+          pwsh .scripts/run.ps1
+          Set-Location ..
+
       - name: Commit files
         shell: pwsh
         run: |

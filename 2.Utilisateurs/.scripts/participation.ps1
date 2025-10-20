@@ -35,11 +35,11 @@ $s = 0
 
 foreach ($id in $ETUDIANTS) {
     $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"
-    $FILE = "$id\README.md"
-    $USR1 = "$id\utilisateurs1.ps1"; $OK_USR1 = ":x:"
-    $USR2 = "$id\utilisateurs2.ps1"; $OK_USR2 = ":x:"
-    $USR3 = "$id\utilisateurs3.ps1"; $OK_USR3 = ":x:"
-    $USR4 = "$id\utilisateurs4.ps1"; $OK_USR4 = ":x:"
+    $FILE = "$id/README.md"
+    $USR1 = "$id/utilisateurs1.ps1"; $OK_USR1 = ":x:"
+    $USR2 = "$id/utilisateurs2.ps1"; $OK_USR2 = ":x:"
+    $USR3 = "$id/utilisateurs3.ps1"; $OK_USR3 = ":x:"
+    $USR4 = "$id/utilisateurs4.ps1"; $OK_USR4 = ":x:"
     $KO = "| $i | [$id](../$FILE) $URL | :x: | :x: | :x: | :x: | :x: |"
 
     if (Test-Path $FILE) {

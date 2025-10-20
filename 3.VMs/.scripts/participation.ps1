@@ -37,7 +37,7 @@ $s = 0
 
 foreach ($id in $ETUDIANTS) {
     $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"
-    $FILE = "$id\README.md"
+    $FILE = "$id/README.md"
     $server = $SERVERS[$i]
 
     $OK = "| $i | [$id](../$FILE) $URL | $server | :heavy_check_mark: | :heavy_check_mark: |"

@@ -185,3 +185,55 @@ Remove-ADUser -Identity "bob.martin" -Confirm:$false
 | OU                   | `New-ADOrganizationalUnit`        | Structure hiérarchique créée      |
 | Propriétés           | `Set-ADUser`, `Disable-ADAccount` | Attributs modifiés                |
 
+## :busts: **GPO** (Group Policy Object)
+
+Une **GPO** (Group Policy Object) est un **objet de stratégie de groupe** dans Active Directory qui permet de **centraliser et automatiser la configuration des ordinateurs et des utilisateurs** dans un domaine.
+
+### 🔹 Explications détaillées
+
+1. **But principal**
+
+   * Appliquer des paramètres de sécurité, des configurations système ou des restrictions logicielles à un ensemble d’utilisateurs ou d’ordinateurs.
+   * Par exemple : forcer un mot de passe complexe, définir l’écran de veille, installer des logiciels automatiquement.
+
+2. **Comment ça fonctionne**
+
+   * Une GPO est liée à un **conteneur Active Directory** :
+
+     * Domaine
+     * Unité d’Organisation (OU)
+     * Site
+   * Tous les objets (utilisateurs/ordinateurs) dans ce conteneur héritent de la GPO, sauf si des exceptions sont définies.
+
+3. **Types de paramètres**
+
+   * **Configuration ordinateur** : s’applique à la machine, indépendamment de l’utilisateur. Exemple : paramètres du pare-feu, scripts de démarrage.
+   * **Configuration utilisateur** : s’applique à l’utilisateur, indépendamment de la machine. Exemple : redirection de dossiers, restrictions du bureau.
+
+4. **Outils de gestion**
+
+   * **GUI** : `gpmc.msc` (Group Policy Management Console)
+   * **PowerShell** : module `GroupPolicy`
+
+     ```powershell
+     # Créer une nouvelle GPO
+     New-GPO -Name "MotDePasseComplexe"
+
+     # Lier une GPO à une OU
+     New-GPLink -Name "MotDePasseComplexe" -Target "OU=Students,DC=Lab,DC=local"
+
+     # Modifier un paramètre (exemple : mot de passe)
+     Set-GPRegistryValue -Name "MotDePasseComplexe" `
+                         -Key "HKLM\Software\Policies\Microsoft\Windows\PasswordPolicy" `
+                         -ValueName "MinimumPasswordLength" -Type DWORD -Value 12
+     ```
+
+5. **Héritage et priorité**
+
+   * Les GPO peuvent se **combiner** : si plusieurs GPO affectent le même objet, la **priorité et l’ordre d’application** déterminent le paramètre effectif.
+   * Un objet peut **bloquer l’héritage** si nécessaire.
+
+---
+
+💡 **En résumé** : une GPO est un moyen puissant pour les administrateurs de contrôler et standardiser l’environnement des utilisateurs et des ordinateurs dans un domaine Active Directory.
+

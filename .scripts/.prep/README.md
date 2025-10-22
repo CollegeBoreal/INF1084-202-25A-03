@@ -57,6 +57,8 @@ What's included
 * Practice Quiz: AD DS Security Principals•6 minutes
 * Graded quiz: AD DS Environments: Management and Security•30 minutes
 
+## Module :three: Hybrid Identities and Group Policies
+
 In this module, you will explore hybrid identity management and group policies. You will learn about the best practices for integrating on-premises domains with Microsoft Entra ID. You will learn about the features of Microsoft Entra Connect and Microsoft Entra Connect cloud sync. In addition, you will learn about the behavior differences when running Microsoft Entra Domain Services compared to traditional on-premises AD DS environments. You will understand the key benefits of using Microsoft Entra Connect Health. You will learn about the authentication methods used in Microsoft Entra and how Microsoft Entra ensures password protection. You will understand the various settings associated with domain-based GPOs. You will also learn how to administer group policy in a Microsoft Entra Domain Services managed domain.
 
 What's included

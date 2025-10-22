@@ -185,7 +185,7 @@ Remove-ADUser -Identity "bob.martin" -Confirm:$false
 | OU                   | `New-ADOrganizationalUnit`        | Structure hiérarchique créée      |
 | Propriétés           | `Set-ADUser`, `Disable-ADAccount` | Attributs modifiés                |
 
-## :busts: **GPO** (Group Policy Object)
+## &#x1F465; **GPO** (Group Policy Object)
 
 Une **GPO** (Group Policy Object) est un **objet de stratégie de groupe** dans Active Directory qui permet de **centraliser et automatiser la configuration des ordinateurs et des utilisateurs** dans un domaine.
 

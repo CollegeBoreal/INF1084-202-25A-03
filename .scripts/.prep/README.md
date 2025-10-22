@@ -1,4 +1,4 @@
-# [Managing Identity Services using AD DS and Microsoft Entra](https://www.coursera.org/learn/managing-identity-services-using-ad-ds-and-microsoft-entra)
+# Managing Identity Services using AD DS and Microsoft Entra
 
 ## Module :one: Introduction to AD DS Domain Controllers
 

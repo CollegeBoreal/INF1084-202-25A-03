@@ -1,18 +1,11 @@
-# TP : Gestion des utilisateurs Active Directory avec PowerShell
+# 300151403
 
-## Description
+# 0️⃣ Nom du domaine basé sur le numéro étudiant
 
-J'ai créé **10 fichiers PowerShell** (`utilisateur1.ps1` à `utilisateur10.ps1`),  
-et dans chacun d’eux, j’ai ajouté des scripts qui exécutent le fichier précédent pour assurer une exécution séquentielle.
-
----
-## Objectifs atteints
-** Après ce TP, j'ai pu :**
-1. Lister tous les utilisateurs d’un domaine
-2. Créer, modifier, activer/désactiver et supprimer des utilisateurs
-3. Appliquer des filtres et exporter les données
-4. Déplacer des utilisateurs depuis le container par défaut CN=Users vers une OU spécifique
-
-
----
-
+```powershell
+$studentNumber = 300133071
+$studentInstance = "00"
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+```
+<img src="images/0.PNG" alt="images" width="450"/>

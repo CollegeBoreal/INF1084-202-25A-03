@@ -6,10 +6,7 @@ In this module, you will learn about Active Directory Domain Services (AD DS) do
 
 What's included
 
-7 videos
-3 readings
-2 assignments
-1 discussion prompt
+:tv: 7 videos :book: 3 readings :abacus: 2 assignments :receipt: 1 discussion prompt
 
 ### :tv: 7 videos • Total 35 minutes
 

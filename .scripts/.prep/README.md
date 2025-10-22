@@ -1,6 +1,6 @@
+# [Managing Identity Services using AD DS and Microsoft Entra](https://www.coursera.org/learn/managing-identity-services-using-ad-ds-and-microsoft-entra)
 
-
-## Introduction to AD DS Domain Controllers
+## Module :one: Introduction to AD DS Domain Controllers
 
 In this module, you will learn about Active Directory Domain Services (AD DS) domain controllers. You will become familiar with terms such as domain and forest. You will learn about the configuration and deployment options that are considered when deploying AD DS domain controllers on-premises and on Azure IaaS. This includes configuration options for on-premises deployment, such as DNS name, and deployment options such as network topology. You will also learn how to maintain business continuity of the authentication services provided by AD DS domain controllers, such as implementing backup and restore options. In addition, you will learn about the key factors to be considered when setting up a read-only domain controller. You will also learn about the AD DS operations master roles, such as schema master.
 

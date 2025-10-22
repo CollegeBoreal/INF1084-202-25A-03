@@ -8,4 +8,4 @@ $studentInstance = "00"
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 ```
-<img src="images/0.PNG" alt="images" width="450"/>
+<img src="images/0" alt="images" width="450"/>

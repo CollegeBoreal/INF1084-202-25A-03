@@ -1,11 +1,28 @@
-# Lister tous les utilisateurs dont le nom commence par "B"
-Write-Host "`n--- Utilisateurs dont le nom commence par 'B' ---"
-$Users | Where-Object {$_.Nom -like "B*"} | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
+# Importer le script utilisateurs1.ps1
+. "$PSScriptRoot\utilisateurs1.ps1" > $null
 
-# Lister tous les utilisateurs dans l'OU "Stagiaires"
-Write-Host "`n--- Utilisateurs dans l'OU 'Stagiaires' ---"
-$Users | Where-Object {$_.OU -eq "Stagiaires"} | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
+# Définir le chemin du fichier CSV RELATIF au script
+$CsvPath = "$PSScriptRoot\file_utilisateurs1.csv"
 
-# Exercice 3 : Lister tous les utilisateurs dont le prénom contient "a"
-Write-Host "`n--- Utilisateurs dont le prénom contient 'a' ---"
-$Users | Where-Object { $_.Prenom -match "(?i)a" } | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
+# Exporter $Users vers un fichier CSV
+$Users | Export-Csv -Path $CsvPath -NoTypeInformation
+Write-Host "`nImportation des utilisateurs depuis : $CsvPath `n"
+
+# Importer les utilisateurs depuis le CSV
+$UsersImportes = Import-Csv -Path $CsvPath
+
+# Vérifier que le CSV contient des utilisateurs
+if (-not $UsersImportes) {
+    Write-Host "Aucun utilisateur trouvé dans le CSV."
+    return
+}
+
+# Créer le groupe "ImportGroupe" sous forme de tableau vide
+$ImportGroupe = @()
+
+# Ajouter tous les utilisateurs importés au groupe
+$ImportGroupe += $UsersImportes
+
+# Afficher les membres du groupe
+Write-Host "Membres du groupe ImportGroupe `n"
+$ImportGroupe | Format-Table Prenom, Nom, Login, OU -AutoSize

@@ -20,12 +20,12 @@ Ce projet consiste à :
 
 ## Fichiers inclus
 
-- `Utilisateur1.ps1` : Création de 5 utilisateurs simulés.  
-- `Utilisateur2.ps1` : Filtrage des utilisateurs selon différentes conditions.  
-- `Utilisateur3.ps1` : Filtrage des utilisateurs dont le prénom ou le nom contient certaines lettres.  
-- `Utilisateur4.ps1` : Importation depuis un CSV et création d’un groupe avec tous les utilisateurs importés.  
+- `utilisateurs1.ps1` : Création de 5 utilisateurs simulés.  
+- `utilisateurs2.ps1` : Filtrage des utilisateurs selon différentes conditions.  
+- `utilisateurs3.ps1` : Filtrage des utilisateurs dont le prénom ou le nom contient certaines lettres.  
+- `utilisateurs4.ps1` : Importation depuis un CSV et création d’un groupe avec tous les utilisateurs importés.  
 - `Etudiants2025.csv` : Fichier CSV généré pour le mini-projet.  
-- `Projet.ps1` : Mini-projet complet combinant la création d’utilisateurs, de groupe et l’export CSV.  
+- `mini_projet.ps1` : Mini-projet complet combinant la création d’utilisateurs, de groupe et l’export CSV.  
 - `UsersSimules.csv` : CSV des utilisateurs exporté depuis `Utilisateur1.ps1`.
 
 ---
@@ -36,7 +36,7 @@ Ce projet consiste à :
 | Étape | Commande | Description |
 |-------|----------|-------------|
 | Modifier la politique d’exécution | `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` | Autoriser l’exécution des scripts PowerShell bloqués par défaut |
-| Exécuter les scripts | `.\Ikram1.ps1`<br>`.\Utilisateur1.ps1`<br>`.\Utilisateur2.ps1`<br>`.\Utilisateur3.ps1`<br>`.\Utilisateur4.ps1`<br>`.\Projet.ps1` | Exécution de tous les scripts du projet |
+| Exécuter les scripts | `.\Ikram1.ps1`<br>`.\utilisateurs1.ps1`<br>`.\utilisateurs2.ps1`<br>`.\utilisateurs3.ps1`<br>`.\utilisateurs4.ps1`<br>`.\mini_projet.ps1` | Exécution de tous les scripts du projet |
 | Export CSV | `$Users \| Export-Csv -Path "C:\Users\ikram\Developer\INF1084-202-25A-03\2.Utilisateurs\300146418\UsersSimules.csv" -NoTypeInformation -Encoding UTF8` | Exporter les utilisateurs simulés vers un fichier CSV |
 | Import CSV | `$ImportedUsers = Import-Csv -Path "C:\Users\ikram\Developer\INF1084-202-25A-03\2.Utilisateurs\300146418\UsersSimules.csv"` | Importer les utilisateurs depuis le fichier CSV |
 
@@ -69,7 +69,7 @@ Ce projet consiste à :
 
 1. Cloner le dépôt :  
 ```bash
-git clone <URL-de-ton-repo>
+git clone <https://github.com/CollegeBoreal/INF1084-202-25A-03.git>
 ```
 2. Aller dans le dossier des scripts :
 ```bash
@@ -80,11 +80,11 @@ cd .Utilisateurs/300146418
 3.Exécuter les scripts PowerShell dans l’ordre :
 ```bash
 
-.\Utilisateur1.ps1
-.\Utilisateur2.ps1
-.\Utilisateur3.ps1
-.\Utilisateur4.ps1
-.\Projet.ps1
+.\utilisateurs1.ps1
+.\utilisateurs2.ps1
+.\utilisateurs3.ps1
+.\utilisateurs4.ps1
+.\mini_projet.ps1
 
 
 Les fichiers CSV seront générés automatiquement dans le dossier 300146418.
@@ -96,7 +96,3 @@ Tous les scripts PowerShell fonctionnent correctement et affichent les utilisate
 
 Les fichiers CSV (UsersSimules.csv et Etudiants2025.csv) sont correctement générés.
 ```
-
-
-
-

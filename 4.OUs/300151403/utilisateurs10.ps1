@@ -13,7 +13,7 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'" -Server "$netbi
 }
 
 # 2️⃣ Déplacer l’utilisateur depuis CN=Users vers OU=Students
-$sourcePath = "CN=Thomas Girard,CN=Users,DC=$($netbiosName),DC=local"
+$sourcePath = "CN=Benoit Diallo,CN=Users,DC=$($netbiosName),DC=local"
 $targetPath = "OU=Students,DC=$($netbiosName),DC=local"
 
 Move-ADObject -Identity $sourcePath `
@@ -21,8 +21,9 @@ Move-ADObject -Identity $sourcePath `
               -Server "$netbiosName.local" `
               -Credential $cred
 
-Write-Host "✅ Utilisateur 'Thomas Girard' déplacé vers l'OU 'Students' avec succès !"
+Write-Host "✅ Utilisateur 'Benoit Diallo' déplacé vers l'OU 'Students' avec succès !"
 
 # 3️⃣ Vérifier le déplacement
-Get-ADUser -Identity "thomas.girard" -Server "$netbiosName.local" |
+Get-ADUser -Identity "benoit.diallo" -Server "$netbiosName.local" |
 Select-Object Name, DistinguishedName
+

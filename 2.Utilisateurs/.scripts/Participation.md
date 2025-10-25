@@ -1,4 +1,4 @@
-# Participation au 24-10-2025 19:36
+# Participation au 25-10-2025 11:11
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -46,5 +46,5 @@
 | 26 | [300151825](../300151825/README.md) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :heavy_check_mark: | :boom: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | :abacus: | \$\\frac{20}{30}$ = 66.67% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 20 |

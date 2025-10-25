@@ -1,4 +1,4 @@
-# Participation au 10-10-2025 15:29
+# Participation au 24-10-2025 19:36
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -6,7 +6,6 @@
 | :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |
 
 :bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@**:two::zero::two::four:
-
 
 ## Légende
 
@@ -49,4 +48,4 @@
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | 10.7.236.222 | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | 10.7.236.223 | :heavy_check_mark: | :heavy_check_mark: |
 | 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | 10.7.236.224 | :heavy_check_mark: | :heavy_check_mark: |
-| :abacus: |  $\frac{21}{30}$  =  70% | | $\displaystyle\sum_{i=1}^{30} s_i$ = 21 |
+| :abacus: | \$\\frac{21}{30}$ = 70% | | \$\displaystyle\sum_{i=1}^{30} s_i$ = 21 |

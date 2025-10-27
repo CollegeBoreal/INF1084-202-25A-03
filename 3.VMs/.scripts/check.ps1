@@ -1,13 +1,13 @@
 # --------------------------------------
-# Script pour accÃ©der aux AD DS des Ã©tudiants
+# Script pour accéder aux AD DS des étudiants et générer README.md
 # --------------------------------------
 
 # Charger la liste des VMs depuis students.ps1
 . ../../../.scripts/students.ps1 # le point suivi d'espace permet d'importer les variables
 
-# VÃ©rifier que $SERVERS existe
+# Vérifier que $SERVERS existe
 if (-not $SERVERS) {
-    Write-Host "La variable `$SERVERS n'a pas Ã©tÃ© trouvÃ©e dans students.ps1" -ForegroundColor Red
+    Write-Host "La variable `$SERVERS n'a pas été trouvée dans students.ps1" -ForegroundColor Red
     exit
 }
 
@@ -15,35 +15,59 @@ if (-not $SERVERS) {
 $User = "Administrator"
 $Password = Read-Host -AsSecureString "Mot de passe de $User"
 
-# PrÃ©parer le rapport
-$Report = @()
+# Préparer le contenu Markdown
+$timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
+$md = @()
+$md += "# Participation au $timestamp"
+$md += ""
+$md += "| Table des matières            | Description                                             |"
+$md += "|-------------------------------|---------------------------------------------------------|"
+$md += "| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |"
+$md += "| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |"
+$md += ""
+$md += ":bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**"
+$md += ""
+$md += "## Légende"
+$md += ""
+$md += "| Signe              | Signification                 |"
+$md += "|--------------------|-------------------------------|"
+$md += "| :heavy_check_mark: | Prêt à être corrigé           |"
+$md += "| :x:                | Projet inexistant             |"
+$md += ""
+$md += "## :a: Présence"
+$md += ""
+$md += "| :hash: | Boréal :id: | :link: | :id:.md | :rocket: |"
+$md += "|-------|------------|--------|----------|----------|"
 
 # Boucle sur chaque VM
+$counter = 1
 foreach ($VM in $SERVERS) {
-    Write-Host "Connexion Ã  $VM ..." -ForegroundColor Cyan
+    Write-Host "Connexion à $VM ..." -ForegroundColor Cyan
     try {
         $Session = New-PSSession -ComputerName $VM -Credential (New-Object PSCredential ($User, $Password))
         
-        # VÃ©rifier le service AD DS (NTDS)
+        # Vérifier le service AD DS (NTDS)
         $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
             $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-            if ($svc) { $svc.Status } else { "Non installÃ©" }
+            if ($svc) { $svc.Status } else { "Non installé" }
         }
 
-        # Ajouter au rapport
-        $Report += [PSCustomObject]@{ VM = $VM; ADDS_Status = $ADStatus }
+        $statusIcon = if ($ADStatus -eq "Running") { ":heavy_check_mark:" } else { ":x:" }
+
+        # Ajouter la ligne Markdown
+        $md += "| $counter | $VM | [Lien](#) | $VM.md | $statusIcon |"
 
         # Fermer la session
         Remove-PSSession $Session
     }
     catch {
-        Write-Host "Ãchec de connexion Ã  $VM : $($_.Exception.Message)" -ForegroundColor Red
-        $Report += [PSCustomObject]@{ VM = $VM; ADDS_Status = "Inaccessible" }
+        Write-Host "Échec de connexion à $VM : $($_.Exception.Message)" -ForegroundColor Red
+        $md += "| $counter | $VM | [Lien](#) | $VM.md | :x: |"
     }
+    $counter++
 }
 
-# Exporter le rapport CSV
-$Report | Export-Csv -Path "ADDS_Report.csv" -NoTypeInformation -Encoding UTF8
-Write-Host "Rapport gÃ©nÃ©rÃ© : ADDS_Report.csv" -ForegroundColor Green
-
+# Exporter le README.md
+$md | Set-Content -Path "README.md" -Encoding UTF8
+Write-Host "README.md généré avec succès !" -ForegroundColor Green
 

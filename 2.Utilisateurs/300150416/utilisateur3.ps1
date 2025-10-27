@@ -1,33 +1,33 @@
-# === BLOC USERS AUTONOME (sans chemin) ===
-$Users = @(
-    [pscustomobject]@{Nom="Dupont";     Prenom="Alice";    Login="adupont";  OU="Stagiaires"},
-    [pscustomobject]@{Nom="Lemoine";    Prenom="Sarah";    Login="slemoine"; OU="Stagiaires"},
-    [pscustomobject]@{Nom="Benali";     Prenom="Karim";    Login="kbenali";  OU="Stagiaires"},
-    [pscustomobject]@{Nom="Lionel";     Prenom="Messi";    Login="lm10";     OU="Stagiaires"},
-    [pscustomobject]@{Nom="Cristiano";  Prenom="Ronaldo";  Login="cr7";      OU="Stagiaires"}
+# === Entrée telle que tu l'as affichée ===
+$raw = @(
+    'Alice Dupont - Login: adupont - OU: Stagiaires',
+    'Sarah Lemoine - Login: slemoine - OU: Stagiaires',
+    'Karim Benali - Login: kbenali - OU: Stagiaires',
+    'messi lionel - Login: lm10 - OU: Stagiaires',
+    'ronaldo cristiano - Login: cr7 - OU: Stagiaires'
 )
 
-# Affichage de contrôle
-$Users | ForEach-Object {
-    "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
+# === Conversion -> objets (Prenom, Nom, Login, OU) ===
+$Users = foreach ($line in $raw) {
+    $p1, $p2 = $line -split ' - Login: ', 2
+    $login, $ou = $p2 -split ' - OU: ', 2
+    $fn, $ln = $p1 -split '\s+', 2
+    [pscustomobject]@{
+        Prenom = $fn
+        Nom    = $ln
+        Login  = $login.Trim()
+        OU     = $ou.Trim()
+    }
 }
 
-# Dossier du script (ou dossier courant si lancé en interactif)
-$Here = $PSScriptRoot
-if ([string]::IsNullOrEmpty($Here)) { $Here = (Get-Location).Path }
+# 1) Noms commençant par 'B'
+"--- Noms commençant par 'B' ---"
+$Users | Where-Object { $_.Nom -like 'B*' } | Select-Object Prenom, Nom, Login, OU
 
-# Exporter les utilisateurs dans le même dossier
-$csvPath = Join-Path $Here "UsersSimules.csv"
-$Users | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
+# 2) OU = 'Stagiaires'
+"--- OU = 'Stagiaires' ---"
+$Users | Where-Object { $_.OU -eq 'Stagiaires' } | Select-Object Prenom, Nom, OU
 
-# Importer le CSV
-$ImportedUsers = Import-Csv -Path $csvPath
-
-# Créer un groupe "ImportGroupe" et y ajouter tous les importés
-$Groups = @{ "ImportGroupe" = @() }
-$Groups["ImportGroupe"] += $ImportedUsers
-
-# Contrôle
-"CSV importé depuis: $csvPath"
-"Total dans ImportGroupe: $($Groups["ImportGroupe"].Count)"
-$Groups["ImportGroupe"] | Select-Object Prenom,Nom,Login,OU
+# 3) Prénom contient 'a' (insensible à la casse)
+"--- Prénom contient 'a' (case-insensitive) ---"
+$Users | Where-Object { $_.Prenom -match '(?i)a' } | Select-Object Prenom, Nom, Login, OU

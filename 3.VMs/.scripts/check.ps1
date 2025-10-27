@@ -3,7 +3,7 @@
 # --------------------------------------
 
 # Charger la liste des VMs depuis students.ps1
-. ../../../.scripts/students.ps1 # le point suivi d'espace permet d'importer les variables
+. ../../.scripts/students.ps1 # le point suivi d'espace permet d'importer les variables
 
 # Vérifier que $SERVERS existe
 if (-not $SERVERS) {

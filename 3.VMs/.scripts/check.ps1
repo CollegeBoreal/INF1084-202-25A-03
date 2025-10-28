@@ -2,6 +2,10 @@
 # Script pour accéder aux AD DS des étudiants et générer README.md
 # --------------------------------------
 
+# Forcer UTF-8 dans tout le script
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+
 # Charger la liste des VMs depuis students.ps1
 . ../../.scripts/students.ps1 # le point suivi d'espace permet d'importer les variables
 
@@ -35,7 +39,7 @@ $md += "| :heavy_check_mark: | AD DS a été installé          |"
 $md += "| :x:                | AD DS est inexistant          |"
 $md += "| :no_entry:         | Accès refusé                  |"
 $md += ""
-$md += "## :a: PrÃ©sence"
+$md += "## :a: Présence"
 $md += ""
 $md += "| :hash: | Boréal :id: | VM       | :rocket: |"
 $md += "|--------|-------------|----------|----------|"

@@ -1,9 +1,9 @@
-﻿# Participation au 27-10-2025 21:52
+﻿# Participation au 27-10-2025 21:56
 
-| Table des matiÃ¨res            | Description                                             |
+| Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
-| :a: [PrÃ©sence](#a-prÃ©sence)   | L'Ã©tudiant.e a fait son travail    :heavy_check_mark:   |
-| :b: [PrÃ©cision](#b-prÃ©cision) | L'Ã©tudiant.e a rÃ©ussi son travail  :tada:               |
+| :a: [Presence](#a-presence)   | L'Ã©tudiant.e a fait son travail    :heavy_check_mark:   |
+| :b: [Precision](#b-precision) | L'Ã©tudiant.e a reussi son travail  :tada:               |
 
 :bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**
 
@@ -11,13 +11,13 @@
 
 | Signe              | Signification                 |
 |--------------------|-------------------------------|
-| :heavy_check_mark: | AD DS a Ã©tÃ© installÃ©          |
+| :heavy_check_mark: | AD DS a ete installe          |
 | :x:                | AD DS est inexistant          |
-| :no_entry:         | AccÃ¨s refusÃ©                  |
+| :no_entry:         | Acces refuse                  |
 
-## :a: PrÃ©sence
+## :a: Presence
 
-| :hash: | BorÃ©al :id: | VM       | :rocket: |
+| :hash: | Boreal :id: | VM       | :rocket: |
 |--------|-------------|----------|----------|
 | 1 | [300133071](300133071/README.md) | 10.7.236.194 | :heavy_check_mark: |
 | 2 | [300141550](300141550/README.md) | 10.7.236.196 | :heavy_check_mark: |

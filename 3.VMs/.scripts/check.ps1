@@ -49,10 +49,12 @@ foreach ($VM in $SERVERS) {
         # Vérifier le service AD DS (NTDS)
         $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
             $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-            if ($svc) { $svc.Status } else { "Non installé" }
-        }
+             $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
+             if ($svc) { $svc.Status } else { -1 }
+         }
 
-        $statusIcon = if ($ADStatus -eq "Running") { ":heavy_check_mark:" } else { ":x:" }
+        $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:" } else { ":x:" }
+        }
 
         # Ajouter la ligne Markdown
         $md += "| $counter | $VM | [Lien](#) | $VM.md | $statusIcon |"
@@ -62,7 +64,7 @@ foreach ($VM in $SERVERS) {
     }
     catch {
         Write-Host "Échec de connexion à $VM : $($_.Exception.Message)" -ForegroundColor Red
-        $md += "| $counter | $VM | [Lien](#) | $VM.md | :x: |"
+        $md += "| $counter | $VM | [Lien](#) | $VM.md | :no_entry: |"
     }
     $counter++
 }

@@ -22,7 +22,7 @@ $Password = Read-Host -AsSecureString "Mot de passe de $User"
 # Préparer le contenu Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
 $md = @()
-$md += "# Participation au $timestamp"
+$md += "# Precision au $timestamp"
 $md += ""
 $md += "| Table des matieres            | Description                                             |"
 $md += "|-------------------------------|---------------------------------------------------------|"
@@ -31,7 +31,7 @@ $md += "| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :ta
 $md += ""
 $md += ":bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**"
 $md += ""
-$md += "## Légende"
+$md += "## Legende"
 $md += ""
 $md += "| Signe              | Signification                 |"
 $md += "|--------------------|-------------------------------|"
@@ -39,10 +39,10 @@ $md += "| :heavy_check_mark: | AD DS a ete installe          |"
 $md += "| :x:                | AD DS est inexistant          |"
 $md += "| :no_entry:         | Acces refuse                  |"
 $md += ""
-$md += "## :a: Presence"
+$md += "## :a: Precision"
 $md += ""
-$md += "| :hash: | Boreal :id: | VM       | :rocket: |"
-$md += "|--------|-------------|----------|----------|"
+$md += "| :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |"
+$md += "|--------|-------------|---------------------|----------|"
 
 # Boucle sur chaque VM
 $i = 0

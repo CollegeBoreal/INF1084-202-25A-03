@@ -31,17 +31,26 @@ $md += "## Légende"
 $md += ""
 $md += "| Signe              | Signification                 |"
 $md += "|--------------------|-------------------------------|"
-$md += "| :heavy_check_mark: | Prêt à être corrigé           |"
-$md += "| :x:                | Projet inexistant             |"
+$md += "| :heavy_check_mark: | AD DS a été installé          |"
+$md += "| :x:                | AD DS est inexistant          |"
+$md += "| :no_entry:         | Accès refusé                  |"
 $md += ""
 $md += "## :a: Présence"
 $md += ""
-$md += "| :hash: | Boréal :id: | :link: | :id:.md | :rocket: |"
-$md += "|-------|------------|--------|----------|----------|"
+$md += "| :hash: | Boréal :id: | VM       | :rocket: |"
+$md += "|--------|-------------|----------|----------|"
 
 # Boucle sur chaque VM
+$i = 0
+$s = 0
 $counter = 1
+
 foreach ($VM in $SERVERS) {
+    
+    $id = $ETUDIANTS[$i]
+    $FILE = "$id/README.md"
+    $server = $SERVERS[$i]
+
     Write-Host "Connexion à $VM ..." -ForegroundColor Cyan
     try {
         $Session = New-PSSession -ComputerName $VM -Credential (New-Object PSCredential ($User, $Password))
@@ -49,25 +58,30 @@ foreach ($VM in $SERVERS) {
         # Vérifier le service AD DS (NTDS)
         $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
             $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-             $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-             if ($svc) { $svc.Status } else { -1 }
-         }
+            if ($svc) { $svc.Status } else { -1 }
+        }
 
-        $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:" } else { ":x:" }
+        $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:"; $s++ } else { ":x:" }
         }
 
         # Ajouter la ligne Markdown
-        $md += "| $counter | $VM | [Lien](#) | $VM.md | $statusIcon |"
+        $md += "| $counter | [$id]($FILE) | $VM | $statusIcon |"
 
         # Fermer la session
         Remove-PSSession $Session
     }
     catch {
         Write-Host "Échec de connexion à $VM : $($_.Exception.Message)" -ForegroundColor Red
-        $md += "| $counter | $VM | [Lien](#) | $VM.md | :no_entry: |"
+        $md += "| $counter | [$id]($FILE) | $VM | :no_entry: |"
     }
+    $i++
     $counter++
+    $COUNT = "\$\\frac{$s}{$i}$"
+    $STATS = [math]::Round(($s * 100) / $i, 2)
+    $SUM = "\$\displaystyle\sum_{i=1}^{$i} s_i$"
 }
+
+$md += "| :abacus: | $COUNT = $STATS% | | $SUM = $s |"
 
 # Exporter le README.md
 $md | Set-Content -Path "README.md" -Encoding UTF8

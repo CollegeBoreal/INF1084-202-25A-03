@@ -62,7 +62,6 @@ foreach ($VM in $SERVERS) {
         }
 
         $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:"; $s++ } else { ":x:" }
-        }
 
         # Ajouter la ligne Markdown
         $md += "| $counter | [$id]($FILE) | $VM | $statusIcon |"

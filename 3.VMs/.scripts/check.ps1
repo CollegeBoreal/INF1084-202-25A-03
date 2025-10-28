@@ -50,7 +50,7 @@ $s = 0
 $counter = 1
 
 foreach ($VM in $SERVERS) {
-    
+    $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"    
     $id = $ETUDIANTS[$i]
     $FILE = "$id/README.md"
     $server = $SERVERS[$i]
@@ -68,14 +68,14 @@ foreach ($VM in $SERVERS) {
         $statusIcon = if ($ADStatus -eq 4) { ":heavy_check_mark:"; $s++ } else { ":x:" }
 
         # Ajouter la ligne Markdown
-        $md += "| $counter | [$id]($FILE) | $VM | $statusIcon |"
+        $md += "| $counter | [$id](../$FILE) $URL | $VM | $statusIcon |"
 
         # Fermer la session
         Remove-PSSession $Session
     }
     catch {
         Write-Host "Échec de connexion à $VM : $($_.Exception.Message)" -ForegroundColor Red
-        $md += "| $counter | [$id]($FILE) | $VM | :no_entry: |"
+        $md += "| $counter | [$id](../$FILE) $URL | $VM | :no_entry: |"
     }
     $i++
     $counter++

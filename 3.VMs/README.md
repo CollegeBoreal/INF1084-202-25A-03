@@ -1,6 +1,6 @@
 # :link: VMs
 
-[:tada: Participation](.scripts/Participation.md) 
+[:tada: Participation](.scripts/Participation.md) [:checkered_flag: Verification](.scripts/Check.md)
 
 Installer et configurer un contrôleur de domaine Active Directory sur **Windows Server 2022**.
 

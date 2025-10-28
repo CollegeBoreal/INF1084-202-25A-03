@@ -1,23 +1,23 @@
 # Participation au 27-10-2025 21:23
 
-| Table des mati□~C¨res            | Description                                             |
+| Table des matiÃ¨res            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
-| :a: [Pr□~C©sence](#a-pr□~C□~R□~B©sence)   | L'□~C©tudiant.e a fait son travail    :heavy_check_mark:   |
-| :b: [Pr□~C©cision](#b-pr□~C□~R□~B©cision) | L'□~C©tudiant.e a r□~C©ussi son travail  :tada:               |
+| :a: [PrÃ©sence](#a-prÃƒÂ©sence)   | L'Ã©tudiant.e a fait son travail    :heavy_check_mark:   |
+| :b: [PrÃ©cision](#b-prÃƒÂ©cision) | L'Ã©tudiant.e a rÃ©ussi son travail  :tada:               |
 
 :bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**
 
-## L□~C©gende
+## LÃ©gende
 
 | Signe              | Signification                 |
 |--------------------|-------------------------------|
-| :heavy_check_mark: | AD DS a □~C□~R□~B©t□~C□~R□~B© install□~C□~R□~B©       |
+| :heavy_check_mark: | AD DS a ÃƒÂ©tÃƒÂ© installÃƒÂ©       |
 | :x:                | AD DS est inexistant          |
-| :no_entry:         | Acc□~C¨s refus□~C□~R□~B©                 |
+| :no_entry:         | AccÃ¨s refusÃƒÂ©                 |
 
-## :a: Pr□~C□~R□~B©sence
+## :a: PrÃƒÂ©sence
 
-| :hash: | Bor□~C□~R□~B©al :id: | VM       | :rocket: |
+| :hash: | BorÃƒÂ©al :id: | VM       | :rocket: |
 |--------|-------------|----------|----------|
 | 1 | [300133071](300133071/README.md) | 10.7.236.194 | :heavy_check_mark: |
 | 2 | [300141550](300141550/README.md) | 10.7.236.196 | :heavy_check_mark: |
@@ -50,3 +50,4 @@
 | 29 | [300152260](300152260/README.md) | 10.7.236.223 | :heavy_check_mark: |
 | 30 | [300153476](300153476/README.md) | 10.7.236.224 | :heavy_check_mark: |
 | :abacus: | \$\\frac{23}{30}$ = 76.67% | | \$\displaystyle\sum_{i=1}^{30} s_i$ = 23 |
+

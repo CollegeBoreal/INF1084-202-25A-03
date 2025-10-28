@@ -1,4 +1,4 @@
-﻿# Precision au 27-10-2025 22:04
+﻿# Precision au 27-10-2025 22:07
 
 | Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -15,7 +15,7 @@
 | :x:                | AD DS est inexistant          |
 | :no_entry:         | Acces refuse                  |
 
-## :a: Precision
+## :b: Precision
 
 | :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |
 |--------|-------------|---------------------|----------|

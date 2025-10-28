@@ -1,4 +1,4 @@
-﻿# Participation au 27-10-2025 22:00
+﻿# Precision au 27-10-2025 22:04
 
 | Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -7,7 +7,7 @@
 
 :bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**
 
-## LÃ©gende
+## Legende
 
 | Signe              | Signification                 |
 |--------------------|-------------------------------|
@@ -15,10 +15,10 @@
 | :x:                | AD DS est inexistant          |
 | :no_entry:         | Acces refuse                  |
 
-## :a: Presence
+## :a: Precision
 
-| :hash: | Boreal :id: | VM       | :rocket: |
-|--------|-------------|----------|----------|
+| :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |
+|--------|-------------|---------------------|----------|
 | 1 | [300133071](300133071/README.md) | 10.7.236.194 | :heavy_check_mark: |
 | 2 | [300141550](300141550/README.md) | 10.7.236.196 | :heavy_check_mark: |
 | 3 | [300141625](300141625/README.md) | 10.7.236.197 | :heavy_check_mark: |

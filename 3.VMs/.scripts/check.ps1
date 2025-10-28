@@ -87,6 +87,6 @@ foreach ($VM in $SERVERS) {
 $md += "| :abacus: | $COUNT = $STATS% | | $SUM = $s |"
 
 # Exporter le README.md
-$md | Set-Content -Path "README.md" -Encoding UTF8
+$md | Set-Content -Path "Check.md" -Encoding UTF8
 Write-Host "README.md généré avec succès !" -ForegroundColor Green
 

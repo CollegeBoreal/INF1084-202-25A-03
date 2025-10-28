@@ -1,4 +1,4 @@
-﻿# Participation au 27-10-2025 21:46
+﻿# Participation au 27-10-2025 21:52
 
 | Table des matiÃ¨res            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -15,7 +15,7 @@
 | :x:                | AD DS est inexistant          |
 | :no_entry:         | AccÃ¨s refusÃ©                  |
 
-## :a: PrÃƒÂ©sence
+## :a: PrÃ©sence
 
 | :hash: | BorÃ©al :id: | VM       | :rocket: |
 |--------|-------------|----------|----------|

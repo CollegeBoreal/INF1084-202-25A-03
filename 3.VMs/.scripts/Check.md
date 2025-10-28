@@ -1,9 +1,9 @@
-﻿# Participation au 27-10-2025 21:56
+﻿# Participation au 27-10-2025 22:00
 
 | Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
-| :a: [Presence](#a-presence)   | L'Ã©tudiant.e a fait son travail    :heavy_check_mark:   |
-| :b: [Precision](#b-precision) | L'Ã©tudiant.e a reussi son travail  :tada:               |
+| :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |
+| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |
 
 :bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@2024**
 

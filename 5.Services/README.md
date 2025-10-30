@@ -194,9 +194,17 @@ net stop DFSR
 
 ## 2️⃣ Visualiser les logs d’un service
 
-### **Événements Windows via Event Viewer**
+#### 💠 En PowerShell :
 
-1. Ouvrir **Event Viewer** : `eventvwr.msc`
+1. Tu peux aussi l’ouvrir via :
+
+```powershell
+Start-Process eventvwr.msc
+```
+
+> 📋 Cette console permet de gérer logs.
+
+
 2. Naviguer vers :
 
    ```
@@ -235,4 +243,7 @@ Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\L
 ```
 
 
+
+
+# :abacus: Laboratoires
 

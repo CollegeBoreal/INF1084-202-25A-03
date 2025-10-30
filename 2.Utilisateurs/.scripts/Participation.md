@@ -1,4 +1,4 @@
-# Participation au 30-10-2025 23:42
+# Participation au 30-10-2025 23:46
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -27,7 +27,7 @@
 | 7 | [300143951](../300143951/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994994?s=460&v=4' width=20 height=20></image>](https://github.com/frank17art) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 8 | [300144176](../300144176/README.md) [<image src='https://avatars0.githubusercontent.com/u/223561186?s=460&v=4' width=20 height=20></image>](https://github.com/awaworks) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 9 | [300146418](../300146418/README.md) [<image src='https://avatars0.githubusercontent.com/u/198275764?s=460&v=4' width=20 height=20></image>](https://github.com/IkramSidhoum) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 10 | [300146676](../300146676/README.md) [<image src='https://avatars0.githubusercontent.com/u/211595997?s=460&v=4' width=20 height=20></image>](https://github.com/harkatiaymen) | :x: | :x: | :x: | :x: | :x: |
+| 10 | [300146676](../300146676/README.md) [<image src='https://avatars0.githubusercontent.com/u/211595997?s=460&v=4' width=20 height=20></image>](https://github.com/harkatiaymen) | :heavy_check_mark: | :x: | :heavy_check_mark: | :x: | :x: |
 | 11 | [300146721](../300146721/README.md) [<image src='https://avatars0.githubusercontent.com/u/222739217?s=460&v=4' width=20 height=20></image>](https://github.com/smailikh) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 12 | [300147510](../300147510/README.md) [<image src='https://avatars0.githubusercontent.com/u/212286223?s=460&v=4' width=20 height=20></image>](https://github.com/ghikanotes) | :x: | :x: | :x: | :x: | :x: |
 | 13 | [300147816](../300147816/README.md) [<image src='https://avatars0.githubusercontent.com/u/230452383?s=460&v=4' width=20 height=20></image>](https://github.com/HananeZerrouki) | :x: | :x: | :x: | :x: | :x: |
@@ -47,4 +47,4 @@
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| :abacus: | \$\\frac{24}{30}$ = 80% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 24 |
+| :abacus: | \$\\frac{25}{30}$ = 83.33% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 25 |

@@ -1,5 +1,5 @@
 # Charger les utilisateurs depuis utilisateur1.ps1
-. "$PSScriptRoot\utilisateur1.ps1"
+. "$PSScriptRoot\utilisateurs1.ps1"
 
 # Définir le chemin CSV dans le dossier du script pour éviter les erreurs
 $CsvPath = "$PSScriptRoot\UsersSimules.csv"

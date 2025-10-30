@@ -1,5 +1,5 @@
 # Charger les utilisateurs depuis utilisateur1.ps1
-. "$PSScriptRoot\utilisateur1.ps1"
+. "$PSScriptRoot\utilisateurs1.ps1"
 
 # Créer des groupes
 $Groups = @{

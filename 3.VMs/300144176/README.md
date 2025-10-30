@@ -1,4 +1,28 @@
+1. Renommage de la machine
+Rename-Computer -NewName "DC300144176" -Restart
 
+🔹 2. Installation du rôle Active Directory Domain Services
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+
+</details>
+
+🔹 3. Création d’une nouvelle forêt Active Directory
+Install-ADDSForest `
+    -DomainName "DC300144176-01.local" `
+    -DomainNetbiosName "DC300144176-01" `
+    -InstallDns:$true `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "Cameroon2️⃣0️⃣2️⃣4️⃣&" -AsPlainText -Force) `
+    -Force
+</details>
+🔹 4. Connexion au domaine
+
+Se connecter avec :
+Utilisateur : DC300144176-01\Administrator
+Mot de passe : celui de la VM
+
+🔹 5. Vérification de l’installation du contrôleur de domaine
+Get-ADDomain
+Get-ADForest
 PS C:\Users\Administrator> Get-ADDomain
 
 

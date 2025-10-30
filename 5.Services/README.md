@@ -56,7 +56,7 @@ Voici un schéma Mermaid simplifié pour visualiser les interactions :
 
 ```mermaid
 flowchart LR
-    A[Utilisateur / Ordinateur] -->|Auth via Kerberos| KDC - Kerberos KDC
+    A[Utilisateur / Ordinateur] -->|Auth via Kerberos| [KDC - Kerberos KDC]
     A -->|Connexion / Authentification| Netlogon[Netlogon Service]
     KDC --> NTDS[Active Directory Domain Services]
     Netlogon --> NTDS

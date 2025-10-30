@@ -200,11 +200,11 @@ net stop DFSR
 2. Naviguer vers :
 
    ```
-   Journaux Windows → Système
-   Journaux Windows → Application
-   Journaux des services → Directory Service (pour NTDS)
+   Event Viewer → Applications and Services Logs → Directory Service
    ```
 3. Filtrer par service ou ID d’événement.
+
+<img src=images/EventViewer.png width='50%' height='50%' > </img>
 
 ---
 

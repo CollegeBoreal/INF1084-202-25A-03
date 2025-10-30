@@ -1,9 +1,13 @@
 # 1️⃣ Préparer l’environnement
 
-# Importer le module AD
+# Définir le nom du domaine
+$domainName = "DC300151825-00.local"
+
+# Importer le module Active Directory
 Import-Module ActiveDirectory
 
-# Vérifier le domaine et les DC
+# Vérifier le domaine
 Get-ADDomain -Server $domainName
-Get-ADDomainController -Filter * -Server $domainName
 
+# Vérifier les contrôleurs de domaine
+Get-ADDomainController -Filter * -Server $domainName

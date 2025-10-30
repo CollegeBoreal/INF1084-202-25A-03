@@ -95,3 +95,48 @@ flowchart LR
    * Administration distante (ADWS)
 3. Un problème sur un service AD critique peut **paralyser l’authentification** et la **gestion des ressources** dans le domaine.
 
+## Dépendances
+
+Dépendances critiques entre les services Active Directory et l’impact possible de l’arrêt d’un service :
+
+```mermaid
+flowchart TB
+    NTDS[NTDS - Active Directory Domain Services]
+    KDC[KDC - Kerberos Key Distribution Center]
+    Netlogon[Netlogon Service]
+    DFSR[DFSR - Réplication SYSVOL]
+    ADWS[AD Web Services]
+    IsmServ[Intersite Messaging Service]
+    
+    %% Dépendances principales
+    KDC -->|Dépend de| NTDS
+    Netlogon -->|Dépend de| NTDS
+    DFSR -->|Dépend de| NTDS
+    ADWS -->|Dépend de| NTDS
+    IsmServ -->|Dépend de| NTDS
+    
+    %% Dépendances secondaires
+    ADWS -->|Peut échouer si Netlogon arrêté| Netlogon
+    DFSR -->|Réplique via Netlogon| Netlogon
+    
+    %% Styles pour visualiser les services critiques
+    style NTDS fill:#ffe4b5,stroke:#f08080,stroke-width:2px
+    style KDC fill:#add8e6,stroke:#1e90ff,stroke-width:2px
+    style Netlogon fill:#98fb98,stroke:#008000,stroke-width:2px
+    style DFSR fill:#f0e68c,stroke:#bdb76b,stroke-width:2px
+    style ADWS fill:#dda0dd,stroke:#9400d3,stroke-width:2px
+    style IsmServ fill:#fafad2,stroke:#daa520,stroke-width:2px
+```
+
+---
+
+### 💡 Explications
+
+* **NTDS** est le cœur : si arrêté, tous les autres services AD sont impactés.
+* **KDC** : arrêt → impossible de générer des tickets Kerberos.
+* **Netlogon** : arrêt → clients ne peuvent plus s’authentifier ; services dépendants peuvent fonctionner mais seront limités.
+* **DFSR** : arrêt → bloque la réplication SYSVOL.
+* **ADWS** : arrêt → empêche la gestion à distance.
+* **IsmServ** : arrêt → réplication inter-sites bloquée.
+
+

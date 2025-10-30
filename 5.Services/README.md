@@ -146,7 +146,7 @@ Les principales abréviations et services d’Active Directory et leurs relation
 
 ```mermaid
 flowchart TB
-    subgraph DC[Domain Controller (DC)]
+    subgraph DC[Domain Controller - DC]
         NTDS[NTDS - AD DS]
         KDC[KDC - Kerberos]
         Netlogon[Netlogon]

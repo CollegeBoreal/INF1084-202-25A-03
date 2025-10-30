@@ -9,6 +9,7 @@ $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 ```
 <img src="images/0" alt="images" width="450"/>
+```powershell
 1️⃣ Préparer l’environnement
 # Importer le module AD
 Import-Module ActiveDirectory

@@ -22,6 +22,7 @@ Feature Result : Active Directory Domain Services, Group Policy Management
 Cette commande installe le rôle AD DS et les outils nécessaires à la gestion de l’Active Directory.
 
 🌐 3. Créer un nouveau domaine
+
 Install-ADDSForest `
   -DomainName "DC300151825-00.local" `
   -DomainNetbiosName "DC300151825-00" `

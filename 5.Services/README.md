@@ -354,3 +354,95 @@ Stop-Service -Name DFSR
 (Get-Service -name DFSR).status
 Start-Service -Name DFSR
 ```
+
+# :books: References
+
+Voici un **guide clair des principales abréviations et concepts d’Active Directory** (AD) :
+
+---
+
+## 1️⃣ **DC – Domain Controller (Contrôleur de Domaine)**
+
+* **Rôle :** Serveur qui **authentifie les utilisateurs et ordinateurs** dans un domaine.
+* **Fonctions principales :**
+
+  * Stocke la base de données AD (NTDS.dit)
+  * Applique les **GPO**
+  * Fournit les services **Kerberos** et **Netlogon**
+  * Réplique les données avec d’autres DC
+* **Exemple :** Si un utilisateur se connecte à Windows avec un compte AD, le DC vérifie ses identifiants.
+
+---
+
+## 2️⃣ **GPO – Group Policy Object (Objet de Stratégie de Groupe)**
+
+* **Rôle :** Permet de **configurer automatiquement des paramètres pour utilisateurs et ordinateurs** dans un domaine.
+* **Exemples de paramètres :**
+
+  * Verrouillage automatique des écrans
+  * Scripts de connexion/déconnexion
+  * Installation d’applications
+* Les GPO sont **stockés dans SYSVOL** et répliqués via **DFSR**.
+
+---
+
+## 3️⃣ **AD DS – Active Directory Domain Services**
+
+* **Rôle :** Fournit l’**infrastructure principale de gestion des identités** et des ressources réseau.
+* **Fonctions principales :**
+
+  * Gestion des comptes et groupes
+  * Authentification et autorisation (via Kerberos)
+  * Réplication inter-sites
+* Le service principal côté serveur est **NTDS**.
+
+---
+
+## 4️⃣ **ADWS – Active Directory Web Services**
+
+* Permet la **gestion à distance** de l’AD via PowerShell ou ADUC.
+* Sert pour les outils modernes d’administration.
+
+---
+
+## 5️⃣ **DFSR – Distributed File System Replication**
+
+* Réplique **SYSVOL** et d’autres dossiers entre DC.
+* Garantit que les **scripts, GPO et politiques** sont identiques sur tous les DC.
+
+---
+
+## 6️⃣ **KDC – Key Distribution Center (Centre de distribution de clés)**
+
+* Partie du service Kerberos.
+* Génère les **tickets d’authentification** pour les utilisateurs et ordinateurs.
+
+---
+
+## 7️⃣ **Netlogon**
+
+* Service qui :
+
+  * Authentifie les comptes sur le réseau
+  * Permet aux clients de **localiser les DC**
+  * Met à jour les enregistrements DNS du DC
+
+---
+
+## 8️⃣ **ISM / IsmServ – Intersite Messaging Service**
+
+* Assure la **réplication inter-sites** pour que tous les sites AD aient les mêmes données.
+
+---
+
+## 9️⃣ Autres abréviations utiles
+
+| Abréviation | Signification                         | Rôle                                                                  |
+| ----------- | ------------------------------------- | --------------------------------------------------------------------- |
+| **OU**      | Organizational Unit                   | Conteneur pour organiser les comptes et appliquer des GPO spécifiques |
+| **FSMO**    | Flexible Single Master Operations     | Rôles spéciaux qui ne peuvent être détenus que par certains DC        |
+| **LDAP**    | Lightweight Directory Access Protocol | Protocole utilisé pour interroger et modifier l’annuaire              |
+| **SYSVOL**  | System Volume                         | Dossier partagé contenant scripts et GPO à répliquer                  |
+| **RDP**     | Remote Desktop Protocol               | Connexion distante vers les DC pour administration                    |
+
+

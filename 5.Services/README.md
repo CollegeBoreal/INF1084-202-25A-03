@@ -139,6 +139,69 @@ flowchart TB
 * **ADWS** : arrêt → empêche la gestion à distance.
 * **IsmServ** : arrêt → réplication inter-sites bloquée.
 
+
+# :blue_book: Abbréviations
+
+Les principales abréviations et services d’Active Directory et leurs relations:
+
+```mermaid
+flowchart TB
+    subgraph DC[Domain Controller (DC)]
+        NTDS[NTDS - AD DS]
+        KDC[KDC - Kerberos]
+        Netlogon[Netlogon]
+        ADWS[AD Web Services]
+        DFSR[DFSR - Réplication SYSVOL]
+        IsmServ[ISM / IsmServ - Réplication inter-sites]
+        SYSVOL[SYSVOL]
+    end
+
+    subgraph AD[Active Directory]
+        OU[OU - Organizational Unit]
+        GPO[GPO - Group Policy Object]
+        LDAP[LDAP - Lightweight Directory Access Protocol]
+        FSMO[FSMO - Flexible Single Master Operations]
+    end
+
+    %% Relations
+    DC --> AD
+    NTDS --> SYSVOL
+    NTDS --> GPO
+    DFSR --> SYSVOL
+    IsmServ --> SYSVOL
+    KDC --> NTDS
+    Netlogon --> NTDS
+    ADWS --> NTDS
+    OU --> GPO
+    LDAP --> NTDS
+    FSMO --> NTDS
+
+    %% Styles
+    style DC fill:#ffe4b5,stroke:#f08080,stroke-width:2px
+    style AD fill:#add8e6,stroke:#1e90ff,stroke-width:2px
+    style NTDS fill:#fff0f5,stroke:#ff69b4,stroke-width:1px
+    style KDC fill:#e0ffff,stroke:#00ced1,stroke-width:1px
+    style Netlogon fill:#98fb98,stroke:#008000,stroke-width:1px
+    style ADWS fill:#dda0dd,stroke:#9400d3,stroke-width:1px
+    style DFSR fill:#f0e68c,stroke:#bdb76b,stroke-width:1px
+    style IsmServ fill:#fafad2,stroke:#daa520,stroke-width:1px
+    style SYSVOL fill:#fffacd,stroke:#ff8c00,stroke-width:1px
+    style GPO fill:#ffebcd,stroke:#ff8c00,stroke-width:1px
+    style OU fill:#e6e6fa,stroke:#9370db,stroke-width:1px
+    style LDAP fill:#f5f5dc,stroke:#8b4513,stroke-width:1px
+    style FSMO fill:#ffe4e1,stroke:#ff4500,stroke-width:1px
+```
+
+---
+
+### 💡 Explications du schéma
+
+* **DC** contient tous les services critiques : NTDS, KDC, Netlogon, DFSR, ADWS, ISM.
+* **NTDS** est le cœur d’AD DS, lié à SYSVOL et aux GPO.
+* **DFS et ISM** assurent la réplication des dossiers et des politiques.
+* **OU, GPO, LDAP, FSMO** représentent les concepts et objets AD utilisés par les services.
+* Les flèches indiquent les dépendances et interactions entre services et concepts.
+
 # Gestion des services 
 
 **Récapitulatif des commandes de base Windows** pour gérer les services et visualiser leurs logs, avec un focus sur les services AD si nécessaire.

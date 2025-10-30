@@ -442,3 +442,6 @@ Voici un **guide clair des principales abréviations et concepts d’Active Dire
 | **FSMO**    | Flexible Single Master Operations     | Rôles spéciaux qui ne peuvent être détenus que par certains DC        |
 | **LDAP**    | Lightweight Directory Access Protocol | Protocole utilisé pour interroger et modifier l’annuaire              |
 | **SYSVOL**  | System Volume                         | Dossier partagé contenant scripts et 
+et GPO à répliquer                  |
+| **RDP**     | Remote Desktop Protocol               | Connexion distante vers les DC pour administration                    |
+

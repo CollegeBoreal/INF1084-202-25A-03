@@ -56,14 +56,21 @@ Voici un schéma Mermaid simplifié pour visualiser les interactions :
 
 ```mermaid
 flowchart LR
-    A[Utilisateur / Ordinateur] -->|Auth via Kerberos| KDC(Kerberos KDC)
+    A[Utilisateur / Ordinateur] -->|Auth via Kerberos| KDC - Kerberos KDC
     A -->|Connexion / Authentification| Netlogon[Netlogon Service]
-    KDC --> NTDS[Active Directory Domain Services (NTDS)]
+    KDC --> NTDS[Active Directory Domain Services]
     Netlogon --> NTDS
     NTDS --> DFSR[DFSR - Réplication SYSVOL]
     NTDS --> ADWS[AD Web Services - Gestion à distance]
     DFSR -->|Réplique SYSVOL| NTDS_Other[Autres DCs]
     NTDS -->|Services intersites| IsmServ[Intersite Messaging Service]
+    
+    style NTDS fill:#ffe4b5,stroke:#f08080,stroke-width:2px
+    style KDC fill:#add8e6,stroke:#1e90ff,stroke-width:2px
+    style Netlogon fill:#98fb98,stroke:#008000,stroke-width:2px
+    style DFSR fill:#f0e68c,stroke:#bdb76b,stroke-width:2px
+    style ADWS fill:#dda0dd,stroke:#9400d3,stroke-width:2px
+    style IsmServ fill:#fafad2,stroke:#daa520,stroke-width:2px
 ```
 
 **Explications :**

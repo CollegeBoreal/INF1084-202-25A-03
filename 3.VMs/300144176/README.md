@@ -11,7 +11,7 @@ Install-ADDSForest `
     -DomainName "DC300144176-01.local" `
     -DomainNetbiosName "DC300144176-01" `
     -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "Cameroon2️⃣0️⃣2️⃣4️⃣&" -AsPlainText -Force) `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "awa&" -AsPlainText -Force) `
     -Force
 </details>
 🔹 4. Connexion au domaine

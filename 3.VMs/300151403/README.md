@@ -1,4 +1,4 @@
----
+```powershell
 # 1-J'ai  Renommé le serveuur
 
 Rename-Computer -NewName "DC-300151403" -Restart

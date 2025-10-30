@@ -139,4 +139,100 @@ flowchart TB
 * **ADWS** : arrêt → empêche la gestion à distance.
 * **IsmServ** : arrêt → réplication inter-sites bloquée.
 
+# Gestion des services 
+
+**Récapitulatif des commandes de base Windows** pour gérer les services et visualiser leurs logs, avec un focus sur les services AD si nécessaire.
+
+---
+
+## 1️⃣ Démarrer et arrêter un service
+
+### **PowerShell**
+
+```powershell
+# Démarrer un service
+Start-Service -Name <NomService>
+
+# Exemple : démarrer le service Netlogon
+Start-Service -Name Netlogon
+
+# Arrêter un service
+Stop-Service -Name <NomService>
+
+# Exemple : arrêter le service DFSR
+Stop-Service -Name DFSR
+
+# Redémarrer un service
+Restart-Service -Name <NomService>
+
+# Vérifier l’état d’un service
+Get-Service -Name <NomService>
+
+# Exemple : état des services AD principaux
+Get-Service -Name NTDS, ADWS, DFSR, KDC, Netlogon, IsmServ
+```
+
+---
+
+### **Invite de commandes (cmd)**
+
+```cmd
+# Démarrer un service
+net start <NomService>
+
+# Exemple :
+net start Netlogon
+
+# Arrêter un service
+net stop <NomService>
+
+# Exemple :
+net stop DFSR
+```
+
+---
+
+## 2️⃣ Visualiser les logs d’un service
+
+### **Événements Windows via Event Viewer**
+
+1. Ouvrir **Event Viewer** : `eventvwr.msc`
+2. Naviguer vers :
+
+   ```
+   Journaux Windows → Système
+   Journaux Windows → Application
+   Journaux des services → Directory Service (pour NTDS)
+   ```
+3. Filtrer par service ou ID d’événement.
+
+---
+
+### **PowerShell pour consulter les logs**
+
+```powershell
+# Afficher les 20 derniers événements liés à NTDS
+Get-EventLog -LogName "Directory Service" -Newest 20
+
+# Afficher les logs du système
+Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogon"}
+
+# Afficher les logs via le journal moderne (Event Viewer v2)
+Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
+```
+
+---
+
+## 3️⃣ Bonnes pratiques
+
+* Toujours **vérifier les dépendances** avant d’arrêter un service critique (ex. NTDS, KDC, Netlogon).
+* Utiliser `Restart-Service` pour redémarrer un service sans avoir à l’arrêter puis le démarrer manuellement.
+* Sur un DC, consultez **Directory Service** dans Event Viewer pour détecter des problèmes liés à l’AD.
+* Pour un suivi régulier, on peut **exporter les logs vers un fichier CSV** :
+
+```powershell
+Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\Logs\ADLogs.csv" -NoTypeInformation
+```
+
+
 

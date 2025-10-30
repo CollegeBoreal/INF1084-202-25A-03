@@ -1,8 +1,4 @@
-HEAD
-# Participation au 30-10-2025 22:03
-
-# Participation au 30-10-2025 21:35
-f27d7fb8 (Vérification de la participation)
+# Participation au 30-10-2025 22:20
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|

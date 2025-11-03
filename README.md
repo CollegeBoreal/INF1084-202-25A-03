@@ -7,9 +7,9 @@ INF1084 (202) - Introduction à l'administration des systèmes
 
 | :hash:  | Date   | Leçons                                                           | 🎉 Participations | 🏁 Vérifications |
 |-------- |--------|:-----------------------------------------------------------------|:------------------|:--------------|
-| :one:   |01-sept | [0.PlanDeCours](0.PlanDeCours/.scripts/Participation.md)         | [🎉](0.PlanDeCours/.scripts/Participation.md) 👉  â Noter :x:       |
-| :two:   |08-sept | [0.Tutoriel sur GIT](.scripts/Participation.md)                  | [🎉](.scripts/Participation.md) 👉  â Noter :x:       |
-| :three: |15-sept | [1.SSH](1.SSH/.scripts/Participation.md)                         | [🎉](1.SSH/.scripts/Participation.md) 👉  â Noter :x:       |
+| :one:   |01-sept | [0.PlanDeCours](0.PlanDeCours)             | [🎉](0.PlanDeCours/.scripts/Participation.md) 👉  â Noter :x:       |
+| :two:   |08-sept | [0.Tutoriel sur GIT](../Tutoriels/tree/main/0.GIT)                     | [🎉](.scripts/Participation.md) 👉  â Noter :x:       |
+| :three: |15-sept | [1.SSH](1.SSH/.scripts/Participation.md)   | [🎉](1.SSH/.scripts/Participation.md) 👉  â Noter :x:       |
 | :four:  |22-sept | [2.Utilisateurs](2.Utilisateurs)              | [🎉](2.Utilisateurs/.scripts/Participation.md) 👉  â Noter :x:       |
 | :five:  |29-sept | [3.VMs](3.VMs)                  | [🎉](3.VMs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](3.VMs/.scripts/Check.md) â Noter :x: 
 | :six:   |13-oct  | [4.OUs](4.OUs/.scripts/Participation.md)                         | â Noter :x:       |

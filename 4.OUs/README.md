@@ -33,6 +33,8 @@ Pour permettre une vérification des scripts, cloner le cours sur votre machine 
 
 - [ ] Dans le répertoire principal
 
+:bulb: De votre utilisateur `Administrator`
+
 ```powershell
 cd $HOME
 ```

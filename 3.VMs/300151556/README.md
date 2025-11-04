@@ -2,31 +2,33 @@
 
 #J'ai renommé mon serveur
 
-'''powershell
+```powershell
 Rename-Computer -NewName "DC300151556" -Restart
-'''
+```
 
 # j'ai installé active directory
-'''powershell
-'''powershell
+
+```powershell
 Rename-Computer -NewName "DC300151556" -Restart
-'''
+```
 # J'ai crée un nouveau domaine
 
-'''powershell
+```powershell
 Install-ADDSForest `
     -DomainName "DC999999999-00.local" `
     -DomainNetbiosName "DC999999999-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
     -Force
-    '''
+   ```
 
 # J'ai verifié:
-'''powershell
+```powershell
 Get-ADDomain
-'''
+```
  #Le resultat est:
+
+ ```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300151556-00,DC=local
@@ -60,13 +62,16 @@ SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151556-00,DC=loc
                                      CN=Configuration,DC=DC300151556-00,DC=local}
 SystemsContainer                   : CN=System,DC=DC300151556-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300151556-00,DC=local
+```
 
-
-'''powershell
+```powershell
 Get-ADForest
-'''
+```
 
  #Le resultat est:
+ 
+  ```powershell
+ 
  ApplicationPartitions : {DC=DomainDnsZones,DC=DC300151556-00,DC=local, DC=ForestDnsZones,DC=DC300151556-00,DC=local}
 CrossForestReferences : {}
 DomainNamingMaster    : DC300151556.DC300151556-00.local
@@ -80,7 +85,7 @@ SchemaMaster          : DC300151556.DC300151556-00.local
 Sites                 : {Default-First-Site-Name}
 SPNSuffixes           : {}
 UPNSuffixes           : {}
-
+```
 
 
     

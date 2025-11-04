@@ -2,8 +2,13 @@
 $Users = @(
     @{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"},
     @{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Stagiaires"},
-    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"}
-    @{Nom="Aymen"; Prenom="Harkati"; Login="kbenali"; OU="Stagiaires"}
-    @{Nom="Ontario"; Prenom="Toronto"; Login="kbenali"; OU="Stagiaires"}
+    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"},
+    @{Nom="Martin"; Prenom="Lucas"; Login="lmartin"; OU="Stagiaires"},
+    @{Nom="Nguyen"; Prenom="Emma"; Login="enguyen"; OU="Stagiaires"}
 )
+
+# Afficher les utilisateurs
+$Users | ForEach-Object {
+    "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
+}
 

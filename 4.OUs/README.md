@@ -3,8 +3,10 @@
 
 # :rocket: **TP : Gestion des utilisateurs Active Directory avec PowerShell**
 
-[:tada: Participation](.scripts/Participation.md) 
-
+|:hash: | Fonctions                                          |
+|-------|:---------------------------------------------------|
+| :one: | [:tada: Participation](.scripts/Participation.md)  |
+| :two: | [:checkered_flag: Verification](.scripts/Check.md) |
 
 Gérer les utilisateurs dans ton domaine **`DC999999999-0.local`**, avec les corrections pour le container `CN=Users` et la création de l’OU `Students`.
 
@@ -24,6 +26,38 @@ Gérer les utilisateurs dans ton domaine **`DC999999999-0.local`**, avec les cor
   - [ ] `git add `:id:
   - [ ] `git commit -m "mon fichier ..."`
   - [ ] `git push`
+
+### :o: Vérification
+
+Pour permettre une vérification des scripts, cloner le cours sur votre machine virtuelle.
+
+- [ ] Dans le répertoire principal
+
+:bulb: De votre utilisateur `Administrator`
+
+```powershell
+cd $HOME
+```
+
+- [ ] Créer le répertoire `Developer`
+
+```powershell
+mkdir Developer
+```
+
+- [ ] Cloner le cours
+
+:bulb: Vous pouvez également cloner avec SSH. 
+
+```powershell
+git clone https://github.com/CollegeBoreal/INF1084-202-25A-03.git
+```
+
+:bangbang: Le répertoire ci-dessous doit être présent sur votre machine virtuelle
+
+```powershell
+~/Developer/INF1084-202-25A-03
+```
 
 ---
 
@@ -158,7 +192,7 @@ Export-Csv -Path "TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 
 ---
 
-## **10️⃣ Déplacer un utilisateur vers une OU `Students`**
+## **1️⃣ 0️⃣ Déplacer un utilisateur vers une OU `Students`**
 
 1. Crée l’OU si elle n’existe pas :
 

@@ -58,7 +58,7 @@ Set-Content -Path $ScriptPath -Value "net use $DriveLetter $SharePath"
 ## 3️⃣ Schéma Mermaid simplifié
 
 ```mermaid
-graph TD
+graph LR
     A[🌐 Active Directory] --> B[👤 Utilisateurs]
     A --> C[👥 Groupes]
     A --> D[💻 Ordinateurs]

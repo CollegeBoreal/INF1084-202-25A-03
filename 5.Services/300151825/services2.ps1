@@ -6,3 +6,4 @@ Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogo
 
 # Afficher les logs via le journal moderne (Event Viewer v2)
 Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
+

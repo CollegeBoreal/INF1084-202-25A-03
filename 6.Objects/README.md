@@ -245,20 +245,20 @@ New-GPLink -Name $GPOName -Target $OU
 $DriveLetter = "Z:"
 $SharePath = "\\$netbiosName\SharedResources"
 
-# Créer l’action de mapping via XML (GPP Drive Maps)
-$XML = @"
-<DriveMap clsid="{4FD5B7DD-5FCE-4F73-9211-169C4D47F5D5}" action="U" label="$DriveLetter" letter="$DriveLetter" path="$SharePath" />
-"@
+# Créer un script logon
+$ScriptFolder = "C:\Scripts"
+$ScriptPath = "$ScriptFolder\MapDrive-$DriveLetter.bat"
+if (-not (Test-Path $ScriptFolder)) { New-Item -ItemType Directory -Path $ScriptFolder }
 
-# Importer via PowerShell GPP (nécessite module GroupPolicy et GPP XML)
-Import-GPO -BackupGpoName $GPOName -Path $XML
-```
+$scriptContent = "net use $DriveLetter $SharePath /persistent:no"
+Set-Content -Path $ScriptPath -Value $scriptContent
 
-> ⚠ Remarque : La création complète d’un GPP via PowerShell est un peu complexe, car `New-GPPreference` n’existe pas en natif. On peut contourner via **`Set-GPRegistryValue`** pour mapper le lecteur avec un script logon :
-
-```powershell
-$Script = "net use Z: \\DC999999999-00\SharedResources"
-Set-GPStartupScript -Name $GPOName -ScriptName "MapDrive.bat" -ScriptParameters $Script
+# Lier le script logon à la GPO
+Set-GPRegistryValue -Name $GPOName `
+                    -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
+                    -ValueName "LogonScript" `
+                    -Type String `
+                    -Value $ScriptPath
 ```
 
 ---

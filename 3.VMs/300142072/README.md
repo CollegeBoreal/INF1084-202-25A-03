@@ -14,8 +14,25 @@ Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 
 ``` sh
 Install-ADDSForet `
-   -DomainNmae "DC300142072-00.local"
-   -DomaineNetbiosName "DC300142072-00"
-   -InstallDns:$true
-   -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText)
-    -Force
+   -DomainNmae "DC300142072-00.local" `
+   -DomaineNetbiosName "DC300142072-00" `
+   -InstallDns:$true `
+   -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
+   -Force `
+```
+
+🔢 Verification de l'installation
+
+``` sh
+    DC300142072/Administrator
+```
+
+puis avec :
+
+```sh
+Get-ADDomain
+Get-ADForest
+```
+
+
+

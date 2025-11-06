@@ -26,7 +26,7 @@ Install-ADDSForest `
 ```powershell
 Get-ADDomain
 ```
- #Le resultat est:
+ # Le resultat est:
 
  ```powershell
 AllowedDNSSuffixes                 : {}
@@ -68,7 +68,7 @@ UsersContainer                     : CN=Users,DC=DC300151556-00,DC=local
 Get-ADForest
 ```
 
- #Le resultat est:
+ # Le resultat est:
  
   ```powershell
  

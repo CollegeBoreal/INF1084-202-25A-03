@@ -8,3 +8,13 @@ Rename-Computer -NewName "DC300142072" -Restart
 
 ``` sh
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+```
+
+🔢 Creer un nouveau domaine (nouvelle foret)
+
+``` sh
+Install-ADDSForet `
+   -DomainNmae "DC300142072-00.local"
+   -DomaineNetbiosName "DC300142072-00"
+   -InstallDns:$true
+   -SafeModeAdministratorPassword (

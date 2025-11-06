@@ -15,8 +15,8 @@ Rename-Computer -NewName "DC300151556" -Restart
 
 ```powershell
 Install-ADDSForest `
-    -DomainName "DC999999999-00.local" `
-    -DomainNetbiosName "DC999999999-00" `
+    -DomainName "DC300151556-00.local" `
+    -DomainNetbiosName "DC300151556-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
     -Force

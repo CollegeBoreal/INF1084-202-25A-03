@@ -155,6 +155,8 @@ graph TD
 
 ---
 
+### :books: Quelques commandes liées au GPO
+
 #### ✅ 1️⃣ Lister **toutes** les GPO du domaine
 
 ```powershell
@@ -188,7 +190,23 @@ Get-GPO -Guid "200a4ea8-cfe5-460f-ac45-d2ea43792127"
 Get-GPO -All | Format-Table DisplayName, Owner, GpoStatus, CreationTime
 ```
 
-## :a: Leçon pratique : Partage de ressources et RDP via PowerShell
+## :abacus: Laboratoire: Partage de ressources et RDP via PowerShell
+
+- [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)
+  - [ ] `mkdir ` :id:
+  - [ ] `cd ` :id:
+- [ ] dans le répertoire ajouter le fichier `README.md`
+  - [ ] `touch README.md`
+  - [ ] Créer un répertoire images
+    - [ ] `mkdir images`
+    - [ ] `touch images/.gitkeep`
+- [ ] envoyer vers le serveur `git`
+  - [ ] remonter au repertoire précédent
+    - [ ] `cd ..`
+  - [ ] `git add `:id:
+  - [ ] `git commit -m "mon fichier ..."`
+  - [ ] `git push`
+
 
 ### 1️⃣ Pré-requis
 
@@ -197,9 +215,13 @@ Get-GPO -All | Format-Table DisplayName, Owner, GpoStatus, CreationTime
 * Module GroupPolicy disponible (`Import-Module GroupPolicy`)
 * VM membre pour tester le partage et RDP
 
+- [ ] Utiliser le fichier `4.OUs/bootstrap.ps1` concernant vos informations. (utiliser dot-sourcing )
+
 ---
 
 ### 2️⃣ Créer le dossier partagé
+
+* `utilisateurs1.ps1`
 
 ```powershell
 # Chemin du dossier
@@ -229,6 +251,8 @@ New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
 
 ### 3️⃣ Créer une GPO pour mapper le lecteur réseau
 
+* `utilisateurs2.ps1`
+
 ```powershell
 # Nom de la GPO
 $GPOName = "MapSharedFolder"
@@ -236,7 +260,7 @@ $GPOName = "MapSharedFolder"
 # Créer la GPO
 New-GPO -Name $GPOName
 
-# Lier la GPO à une OU spécifique (ex: "StudentsOU")
+# Lier la GPO à une OU spécifique (ex: "Students")
 $OU = "OU=Students,DC=$netbiosName,DC=local"
 New-GPLink -Name $GPOName -Target $OU
 

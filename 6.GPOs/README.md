@@ -218,15 +218,3 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 * Aucun besoin d’interface graphique
 * Tout peut être reproduit sur Hyper-V pour plusieurs VMs
 
----
-
-Si tu veux, je peux te créer **un script PowerShell complet prêt à exécuter** pour la leçon, qui fait **tout d’un coup** :
-
-* Création du dossier
-* Création du groupe et des utilisateurs
-* Partage du dossier
-* Mapping du lecteur réseau via script GPO
-* Activation RDP pour le groupe
-
-Veux‑tu que je fasse ce script ?
-

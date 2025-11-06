@@ -17,4 +17,5 @@ Install-ADDSForet `
    -DomainNmae "DC300142072-00.local"
    -DomaineNetbiosName "DC300142072-00"
    -InstallDns:$true
-   -SafeModeAdministratorPassword (
+   -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText)
+    -Force

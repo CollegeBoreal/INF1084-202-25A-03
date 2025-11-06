@@ -1,4 +1,4 @@
-# Participation au 06-11-2025 22:40
+# Participation au 06-11-2025 22:52
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -33,7 +33,7 @@
 | 14 | [300148094](../300148094/README.md) [<image src='https://avatars0.githubusercontent.com/u/212054634?s=460&v=4' width=20 height=20></image>](https://github.com/ouailg28) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 15 | [300148450](../300148450/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994730?s=460&v=4' width=20 height=20></image>](https://github.com/adjaoud-git) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 16 | [300150195](../300150195) [<image src='https://avatars0.githubusercontent.com/u/211596474?s=460&v=4' width=20 height=20></image>](https://github.com/amelzourane) | [:heavy_check_mark:](../300150195/README.md) | [:x:](../300150195/bootstrap.ps1) | :x: | :x: | :x: | :x: |
-| 17 | [300150416](../300150416) [<image src='https://avatars0.githubusercontent.com/u/211596263?s=460&v=4' width=20 height=20></image>](https://github.com/hachemsouyadi) | [:heavy_check_mark:](../300150416/README.md) | [:x:](../300150416/bootstrap.ps1) | :x: | :x: | :x: | :x: |
+| 17 | [300150416](../300150416) [<image src='https://avatars0.githubusercontent.com/u/211596263?s=460&v=4' width=20 height=20></image>](https://github.com/hachemsouyadi) | [:heavy_check_mark:](../300150416/README.md) | [:x:](../300150416/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 18 | [300150433](../300150433/README.md) [<image src='https://avatars0.githubusercontent.com/u/211743410?s=460&v=4' width=20 height=20></image>](https://github.com/zakariadjellouli) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 19 | [300150558](../300150558/README.md) [<image src='https://avatars0.githubusercontent.com/u/212186770?s=460&v=4' width=20 height=20></image>](https://github.com/amirasadouni00) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 20 | [300150562](../300150562/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994758?s=460&v=4' width=20 height=20></image>](https://github.com/isako29) | :x: | :x: | :x: | :x: | :x: | :x: |

@@ -45,7 +45,7 @@ New-Item -Path "C:\Scripts" -ItemType Directory -Force
 Set-Content -Path $ScriptPath -Value "net use $DriveLetter $SharePath"
 
 # Ajouter le script logon à la GPO
-Set-GPLogonScript -Name $GPOName -ScriptName $ScriptPath
+# Set-GPLogonScript -Name $GPOName -ScriptName $ScriptPath
 ```
 
 ✅ Résultat :
@@ -235,12 +235,12 @@ $GPOName = "MapSharedFolder"
 New-GPO -Name $GPOName
 
 # Lier la GPO à une OU spécifique (ex: "StudentsOU")
-$OU = "OU=StudentsOU,DC=DC999999999-00,DC=local"
+$OU = "OU=Students,DC=$netbiosName,DC=local"
 New-GPLink -Name $GPOName -Target $OU
 
 # Créer une preference pour mapper le lecteur réseau
 $DriveLetter = "Z:"
-$SharePath = "\\DC999999999-00\SharedResources"
+$SharePath = "\\$netbiosName\SharedResources"
 
 # Créer l’action de mapping via XML (GPP Drive Maps)
 $XML = @"

@@ -27,7 +27,7 @@
 
 ```powershell
 # Variables
-$OU = "OU=StudentsOU,DC=$netbiosName,DC=local"
+$OU = "OU=Students,DC=$netbiosName,DC=local"
 $GPOName = "MapSharedFolder-$netbiosName"
 
 # Créer une GPO

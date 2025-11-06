@@ -7,7 +7,7 @@
 | Objet                         | Description                                                               | Exemple                            | Emoji |
 | ----------------------------- | ------------------------------------------------------------------------- | ---------------------------------- | ----- |
 | **Utilisateur**               | Compte représentant une personne qui se connecte au domaine               | `Etudiant1`                        | 👤    |
-| **Groupe**                    | Collection d’utilisateurs ou d’ordinateurs pour appliquer des permissions | `RD-Users`                         | 👥    |
+| **Groupe**                    | Collection d’utilisateurs ou d’ordinateurs pour appliquer des permissions | `Students`                         | 👥    |
 | **Ordinateur**                | Machine jointe au domaine et gérée via GPO                                | VM étudiant                        | 💻    |
 | **Unité d’Organisation (OU)** | Conteneur logique pour organiser objets et appliquer des GPO              | `StudentsOU`                       | 📂    |
 | **Domaine**                   | Conteneur regroupant les objets et définissant la sécurité                | `DC999999999-00.local`             | 🏢    |
@@ -150,7 +150,7 @@ graph TD
     B --> F[Computer: VM-Student2]
 
     %% Groupes AD
-    G[AD Group: RD-Users] --> C
+    G[AD Group: [Students] --> C
     G --> D
 
     %% Dossier partagé
@@ -206,8 +206,8 @@ $SharedFolder = "C:\SharedResources"
 # Créer le dossier
 New-Item -Path $SharedFolder -ItemType Directory -Force
 
-# Créer un partage SMB pour le groupe RD-Users
-$GroupName = "RD-Users"
+# Créer un partage SMB pour le groupe Students
+$GroupName = "Students"
 
 # Créer le groupe AD
 New-ADGroup -Name $GroupName -GroupScope Global -Description "Users allowed RDP and shared folder access"
@@ -269,9 +269,9 @@ Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" 
 # Autoriser le firewall RDP
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
-# Donner le droit logon via RDP au groupe RD-Users
+# Donner le droit logon via RDP au groupe Students
 secedit /export /cfg C:\secpol.cfg
-# Modifier le fichier pour inclure RD-Users dans "SeRemoteInteractiveLogonRight"
+# Modifier le fichier pour inclure Students dans "SeRemoteInteractiveLogonRight"
 # Puis réimporter
 secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 ```
@@ -282,7 +282,7 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 
 ### 5️⃣ Test
 
-1. Connecte-toi avec un des utilisateurs du groupe `RD-Users`
+1. Connecte-toi avec un des utilisateurs du groupe `Students`
 2. Vérifie que :
 
    * Le lecteur réseau `Z:` est mappé automatiquement

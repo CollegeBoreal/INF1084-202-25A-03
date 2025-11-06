@@ -1,4 +1,4 @@
-:accessibility: Installation et configuration d'un controlleur de domine    Active Directory sur Windows Serve 2022
+:accessibility: Installation et configuration d'un controlleur de domine    Active Directory sur Windows Server 2022
 
 🔢 Renommer le serveur 
 ``` sh

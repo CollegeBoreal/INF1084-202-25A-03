@@ -1,4 +1,4 @@
-# Participation au 06-11-2025 15:54
+# Participation au 06-11-2025 15:58
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -14,8 +14,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id:                | README.md    | bootstrap.ps1 | :one: | :two: | :three: | :four: |
-|------|----------------------------|--------------|---------------|-------|-------|---------|--------|
+|:hash:| Boréal :id:                | README.md    | :one: | :two: |
+|------|----------------------------|--------------|-------|-------|
 | 0 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | :x: | :x: | :x: |
 | 1 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | :x: | :x: | :x: |
 | 2 | [300141625](../300141625/README.md) [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) | :x: | :x: | :x: |

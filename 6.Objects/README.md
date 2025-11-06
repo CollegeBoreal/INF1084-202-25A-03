@@ -141,7 +141,7 @@ Chacun peut contenir :
 ```mermaid
 graph TD
     %% Domaine
-    A[Domain: $domainName] --> B[OU: StudentsOU]
+    A[Domain: $domainName] --> B[OU: Students]
 
     %% Utilisateurs et ordinateurs
     B --> C[User: Etudiant1-$netbiosName]

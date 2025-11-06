@@ -1,5 +1,9 @@
 # 🌐 Leçon : Objets gérables par Active Directory
 
+|:hash: | Fonctions                                          |
+|-------|:---------------------------------------------------|
+| :one: | [:tada: Participation](.scripts/Participation.md)  |
+
 ---
 
 ## 1️⃣ Les objets principaux d’AD

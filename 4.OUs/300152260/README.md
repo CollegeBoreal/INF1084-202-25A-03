@@ -1,4 +1,7 @@
-$studentNumber = 300152260
+300152260
+0️⃣ Nom du domaine basé sur le numéro étudiant
+
+$studentNumber = 300151825
 $studentInstance = 00
 
 ```powershell
@@ -7,6 +10,6 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 
 ```powershell
 $domainName
-# DC3001522605-0.local
+# DC300151825-0.local
 $netbiosName
-# DC300152260-0
+# DC300151825-0

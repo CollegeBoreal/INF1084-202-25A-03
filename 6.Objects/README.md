@@ -141,39 +141,42 @@ Chacun peut contenir :
 ```mermaid
 graph TD
     %% Domaine
-    A[Domain: DC999999999-00.local] --> B[OU: Students]
+    A[Domain: $domainName] --> B[OU: StudentsOU]
 
     %% Utilisateurs et ordinateurs
-    B --> C[User: Etudiant1]
-    B --> D[User: Etudiant2]
-    B --> E[Computer: VM-Student1]
-    B --> F[Computer: VM-Student2]
+    B --> C[User: Etudiant1-$netbiosName]
+    B --> D[User: Etudiant2-$netbiosName]
+    B --> E[User: Etudiant3-$netbiosName]
+    B --> F[Computer: VM-Student1]
+    B --> G[Computer: VM-Student2]
 
-    %% Groupes AD
-    G[AD Group: [OU: Students] --> C
-    G --> D
+    %% Groupe AD
+    H[AD Group: RD-Users-$netbiosName] --> C
+    H --> D
+    H --> E
 
     %% Dossier partagé
-    H[Shared Folder: C:\SharedResources] -->|Full Access| G
+    I[Shared Folder: C:\SharedResources] -->|Full Access| H
 
     %% GPOs
-    I[GPO: MapSharedFolder] --> B
-    J[GPO: Allow-RDP-RDUsers] --> B
+    J[GPO: MapSharedFolder-$netbiosName] --> B
+    K[GPO: Allow-RDP-RDUsers-$netbiosName] --> B
 
     %% Effets des GPO
-    C -->|Mapped Drive Z:| H
-    D -->|Mapped Drive Z:| H
-    E -->|RDP Access| G
-    F -->|RDP Access| G
+    C -->|Mapped Drive Z:| I
+    D -->|Mapped Drive Z:| I
+    E -->|Mapped Drive Z:| I
+    F -->|RDP Access| H
+    G -->|RDP Access| H
 
-    %% Légende
+    %% Légende GPO
     subgraph GPO_Applied
-        I
         J
+        K
     end
 
-    click I "https://learn.microsoft.com/en-us/windows-server/identity/group-policy/group-policy-overview" "GPO Documentation"
-    click J "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/welcome" "RDP Documentation"
+    click J "https://learn.microsoft.com/en-us/windows-server/identity/group-policy/group-policy-overview" "GPO Documentation"
+    click K "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/welcome" "RDP Documentation"
 ```
 
 ---

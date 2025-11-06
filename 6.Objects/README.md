@@ -1,9 +1,88 @@
-# GPO
+# 🌐 Leçon : Objets gérables par Active Directory
+
 ---
 
-## Qu’est-ce qu’un **GPO** ?
+## 1️⃣ Les objets principaux d’AD
 
-**GPO** = **Group Policy Object**
+| Objet                         | Description                                                               | Exemple                            | Emoji |
+| ----------------------------- | ------------------------------------------------------------------------- | ---------------------------------- | ----- |
+| **Utilisateur**               | Compte représentant une personne qui se connecte au domaine               | `Etudiant1`                        | 👤    |
+| **Groupe**                    | Collection d’utilisateurs ou d’ordinateurs pour appliquer des permissions | `RD-Users`                         | 👥    |
+| **Ordinateur**                | Machine jointe au domaine et gérée via GPO                                | VM étudiant                        | 💻    |
+| **Unité d’Organisation (OU)** | Conteneur logique pour organiser objets et appliquer des GPO              | `StudentsOU`                       | 📂    |
+| **Domaine**                   | Conteneur regroupant les objets et définissant la sécurité                | `DC999999999-00.local`             | 🏢    |
+| **Forêt**                     | Ensemble de domaines partageant le schéma et la configuration globale     | `CollegeBoreal.local`              | 🌲    |
+| **Confiance (Trust)**         | Relation entre deux domaines ou forêts pour permettre l’accès partagé     | Forest trust                       | 🤝    |
+| **Partage de ressources**     | Dossier ou fichier partagé sur le réseau                                  | `\\DC999999999-00\SharedResources` | 📁    |
+| **Imprimante**                | Objet représentant une imprimante réseau                                  | `Printer1`                         | 🖨️   |
+| **GPO (Group Policy Object)** | Objet appliquant des politiques aux utilisateurs ou ordinateurs           | `MapSharedFolder`                  | 📜    |
+| **Contacts**                  | Personne ou entité externe sans compte AD                                 | `Contact-Prof`                     | 📇    |
+| **Service Account**           | Compte spécial pour services ou applications                              | `SQLService`                       | ⚙️    |
+
+---
+
+## 2️⃣ Exemple pratique avec GPO
+
+💡 **Objectif** : appliquer une politique sur des utilisateurs et ordinateurs
+
+```powershell
+# Variables
+$OU = "OU=StudentsOU,DC=$netbiosName,DC=local"
+$GPOName = "MapSharedFolder-$netbiosName"
+
+# Créer une GPO
+New-GPO -Name $GPOName
+
+# Lier la GPO à l'OU des étudiants
+New-GPLink -Name $GPOName -Target $OU
+
+# Script logon pour mapper le lecteur Z: sur le dossier partagé
+$DriveLetter = "Z:"
+$SharePath = "\\$netbiosName\SharedResources"
+$ScriptPath = "C:\Scripts\MapDrive-$netbiosName.bat"
+
+New-Item -Path "C:\Scripts" -ItemType Directory -Force
+Set-Content -Path $ScriptPath -Value "net use $DriveLetter $SharePath"
+
+# Ajouter le script logon à la GPO
+Set-GPLogonScript -Name $GPOName -ScriptName $ScriptPath
+```
+
+✅ Résultat :
+
+* Tous les **utilisateurs de l’OU** auront automatiquement **le lecteur réseau Z:** mappé.
+* L’exemple peut être étendu pour **activer RDP, appliquer des restrictions, installer des logiciels**, etc.
+
+---
+
+## 3️⃣ Schéma Mermaid simplifié
+
+```mermaid
+graph TD
+    A[🌐 Active Directory] --> B[👤 Utilisateurs]
+    A --> C[👥 Groupes]
+    A --> D[💻 Ordinateurs]
+    A --> E[📂 OU]
+    A --> F[🏢 Domaines]
+    A --> G[🌲 Forêts]
+    A --> H[🤝 Confiances]
+    A --> I[📁 Partages]
+    A --> J[🖨️ Imprimantes]
+    A --> K[📜 GPO]
+    A --> L[📇 Contacts]
+    A --> M[⚙️ Service Accounts]
+```
+
+---
+
+### 🔹 Points clés
+
+* AD gère **tout objet nécessitant sécurité ou accès centralisé**.
+* Les **GPO** permettent d’appliquer automatiquement **paramètres, partages, RDP et sécurité** à des utilisateurs et ordinateurs.
+* Les emojis aident à **visualiser rapidement** chaque type d’objet.
+
+## **GPO** = **Group Policy Object**
+
 En français : **Objet de stratégie de groupe**.
 
 C’est un **ensemble de règles et configurations** que l’on peut appliquer à des ordinateurs ou des utilisateurs dans un **domaine Active Directory**.
@@ -107,9 +186,9 @@ graph TD
 
 ---
 
-# Leçon pratique : Partage de ressources et RDP via PowerShell
+## :a: Leçon pratique : Partage de ressources et RDP via PowerShell
 
-## 1️⃣ Pré-requis
+### 1️⃣ Pré-requis
 
 * DC Windows Server 2022 avec AD DS installé
 * Module Active Directory disponible (`Import-Module ActiveDirectory`)
@@ -118,7 +197,7 @@ graph TD
 
 ---
 
-## 2️⃣ Créer le dossier partagé
+### 2️⃣ Créer le dossier partagé
 
 ```powershell
 # Chemin du dossier
@@ -146,7 +225,7 @@ New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
 
 ---
 
-## 3️⃣ Créer une GPO pour mapper le lecteur réseau
+### 3️⃣ Créer une GPO pour mapper le lecteur réseau
 
 ```powershell
 # Nom de la GPO
@@ -181,7 +260,7 @@ Set-GPStartupScript -Name $GPOName -ScriptName "MapDrive.bat" -ScriptParameters 
 
 ---
 
-## 4️⃣ Activer RDP pour le groupe
+### 4️⃣ Activer RDP pour le groupe
 
 ```powershell
 # Autoriser RDP sur la machine
@@ -201,7 +280,7 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 
 ---
 
-## 5️⃣ Test
+### 5️⃣ Test
 
 1. Connecte-toi avec un des utilisateurs du groupe `RD-Users`
 2. Vérifie que :

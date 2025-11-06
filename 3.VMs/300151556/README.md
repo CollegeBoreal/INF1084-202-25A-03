@@ -1,6 +1,6 @@
 #300151556
 
-#J'ai renommé mon serveur
+# J'ai renommé mon serveur
 
 ```powershell
 Rename-Computer -NewName "DC300151556" -Restart

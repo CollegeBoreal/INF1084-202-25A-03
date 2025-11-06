@@ -21,41 +21,7 @@
 
 ---
 
-## 2️⃣ Exemple pratique avec GPO
-
-💡 **Objectif** : appliquer une politique sur des utilisateurs et ordinateurs
-
-```powershell
-# Variables
-$OU = "OU=Students,DC=$netbiosName,DC=local"
-$GPOName = "MapSharedFolder-$netbiosName"
-
-# Créer une GPO
-New-GPO -Name $GPOName
-
-# Lier la GPO à l'OU des étudiants
-New-GPLink -Name $GPOName -Target $OU
-
-# Script logon pour mapper le lecteur Z: sur le dossier partagé
-$DriveLetter = "Z:"
-$SharePath = "\\$netbiosName\SharedResources"
-$ScriptPath = "C:\Scripts\MapDrive-$netbiosName.bat"
-
-New-Item -Path "C:\Scripts" -ItemType Directory -Force
-Set-Content -Path $ScriptPath -Value "net use $DriveLetter $SharePath"
-
-# Ajouter le script logon à la GPO
-# Set-GPLogonScript -Name $GPOName -ScriptName $ScriptPath
-```
-
-✅ Résultat :
-
-* Tous les **utilisateurs de l’OU** auront automatiquement **le lecteur réseau Z:** mappé.
-* L’exemple peut être étendu pour **activer RDP, appliquer des restrictions, installer des logiciels**, etc.
-
----
-
-## 3️⃣ Schéma Mermaid simplifié
+## :three: Schéma Mermaid simplifié
 
 ```mermaid
 graph LR
@@ -188,6 +154,39 @@ graph TD
 5. Appliquer les **GPO sur une OU spécifique**
 
 ---
+
+#### ✅ 1️⃣ Lister **toutes** les GPO du domaine
+
+```powershell
+Get-GPO -All
+```
+
+👉 Cela affiche une liste complète avec les `DisplayName`, `ID`, `Owner`, etc.
+
+---
+
+#### ✅ 2️⃣ Afficher une **GPO spécifique** par son nom
+
+```powershell
+$GPOName = "MapSharedFolder"
+Get-GPO -Name $GPOName
+```
+
+---
+
+#### ✅ 3️⃣ Ou si tu connais déjà le GUID (pas nécessaire la plupart du temps)
+
+```powershell
+Get-GPO -Guid "200a4ea8-cfe5-460f-ac45-d2ea43792127"
+```
+
+---
+
+💡 Le plus utile est :
+
+```powershell
+Get-GPO -All | Format-Table DisplayName, Owner, GpoStatus, CreationTime
+```
 
 ## :a: Leçon pratique : Partage de ressources et RDP via PowerShell
 

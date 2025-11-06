@@ -9,7 +9,7 @@
 | **Utilisateur**               | Compte représentant une personne qui se connecte au domaine               | `Etudiant1`                        | 👤    |
 | **Groupe**                    | Collection d’utilisateurs ou d’ordinateurs pour appliquer des permissions | `Students`                         | 👥    |
 | **Ordinateur**                | Machine jointe au domaine et gérée via GPO                                | VM étudiant                        | 💻    |
-| **Unité d’Organisation (OU)** | Conteneur logique pour organiser objets et appliquer des GPO              | `StudentsOU`                       | 📂    |
+| **Unité d’Organisation (OU)** | Conteneur logique pour organiser objets et appliquer des GPO              | `Students`                       | 📂    |
 | **Domaine**                   | Conteneur regroupant les objets et définissant la sécurité                | `DC999999999-00.local`             | 🏢    |
 | **Forêt**                     | Ensemble de domaines partageant le schéma et la configuration globale     | `CollegeBoreal.local`              | 🌲    |
 | **Confiance (Trust)**         | Relation entre deux domaines ou forêts pour permettre l’accès partagé     | Forest trust                       | 🤝    |
@@ -150,7 +150,7 @@ graph TD
     B --> F[Computer: VM-Student2]
 
     %% Groupes AD
-    G[AD Group: [Students] --> C
+    G[AD Group: [OU: Students] --> C
     G --> D
 
     %% Dossier partagé

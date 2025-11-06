@@ -1,4 +1,4 @@
-# Participation au 06-11-2025 22:30
+# Participation au 06-11-2025 22:35
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -42,7 +42,7 @@
 | 23 | [300151403](../300151403) [<image src='https://avatars0.githubusercontent.com/u/211593057?s=460&v=4' width=20 height=20></image>](https://github.com/JustinSandy99) | [:heavy_check_mark:](../300151403/README.md) | [:x:](../300151403/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 24 | [300151469](../300151469) [<image src='https://avatars0.githubusercontent.com/u/212077526?s=460&v=4' width=20 height=20></image>](https://github.com/33070733) | [:heavy_check_mark:](../300151469/README.md) | [:x:](../300151469/bootstrap.ps1) | :x: | :x: | :x: | :x: |
 | 25 | [300151556](../300151556) [<image src='https://avatars0.githubusercontent.com/u/231781132?s=460&v=4' width=20 height=20></image>](https://github.com/Kahinazerkani) | [:heavy_check_mark:](../300151556/README.md) | [:x:](../300151556/bootstrap.ps1) | :x: | :x: | :x: | :x: |
-| 26 | [300151825](../300151825) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | [:heavy_check_mark:](../300151825/README.md) | [:x:](../300151825/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 26 | [300151825](../300151825) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | [:heavy_check_mark:](../300151825/README.md) | [:hiking_boot:](../300151825/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 29 | [300153476](../300153476) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | [:heavy_check_mark:](../300153476/README.md) | [:x:](../300153476/bootstrap.ps1) | :x: | :x: | :x: | :x: |

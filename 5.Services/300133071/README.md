@@ -1,4 +1,4 @@
-> Référence : Ce README s'inspire du modèle fourni par monsieur [@Brice](https://https://github.com/b300098957) dans le cadre du cours Administration Windows.
+> Référence : Ce README s'inspire du modèle fourni par monsieur [@brice](https://github.com/b300098957) dans le cadre du cours Administration Windows.
 
 
 ## :zero: Introduction aux services Windows
@@ -395,6 +395,9 @@ Voici un **guide clair des principales abréviations et concepts d’Active Dire
 | **LDAP**    | Lightweight Directory Access Protocol | Protocole utilisé pour interroger et modifier l’annuaire              |
 | **SYSVOL**  | System Volume                         | Dossier partagé contenant scripts et GPO à répliquer                  |
 | **RDP**     | Remote Desktop Protocol               | Connexion distante vers les DC pour administration                    |
+
+
+
 
 
 

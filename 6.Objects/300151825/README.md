@@ -18,6 +18,7 @@ Laboratoire: Partage de ressources et RDP via PowerShell
  git commit -m "mon fichier ..."
  git push
 ```
+
 ---
 
  1️⃣ Pré-requis
@@ -30,6 +31,7 @@ VM membre pour tester le partage et RDP
 ```
 
  2️⃣ Créer le dossier partagé
+
  utilisateurs1.ps1
 ```powershell
  # Chemin du dossier
@@ -53,6 +55,45 @@ foreach ($user in $Users) {
 
 # Partager le dossier avec le groupe
 New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
+```
+
+Resultat:
+
+```powershell
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         11/6/2025   7:59 PM                SharedResources
+
+AvailabilityType      : NonClustered
+CachingMode           : Manual
+CATimeout             : 0
+CompressData          : False
+ConcurrentUserLimit   : 0
+ContinuouslyAvailable : False
+CurrentUsers          : 0
+Description           :
+EncryptData           : False
+FolderEnumerationMode : Unrestricted
+IdentityRemoting      : False
+Infrastructure        : False
+LeasingMode           : Full
+Name                  : SharedResources
+Path                  : C:\SharedResources
+Scoped                : False
+ScopeName             : *
+SecurityDescriptor    : O:SYG:SYD:(A;;FA;;;S-1-5-21-447135690-91861430-3213525697-1108)
+ShadowCopy            : False
+ShareState            : Online
+ShareType             : FileSystemDirectory
+SmbInstance           : Default
+Special               : False
+Temporary             : False
+Volume                : \\?\Volume{d9f7716d-765c-4de2-bbd2-1c33f3e87e19}\
+PSComputerName        :
+PresetPathAcl         : System.Security.AccessControl.DirectorySecurity
 ```
 ---
 
@@ -89,6 +130,43 @@ Set-GPRegistryValue -Name $GPOName `
                     -Type String `
                     -Value $ScriptPath
 ```
+
+Resultat:
+
+```powershell
+DisplayName      : MapSharedFolder
+DomainName       : DC300151825-00.local
+Owner            : DC300151825-00\Domain Admins
+Id               : 304a7f53-1e97-4447-8648-45586d66c1d3
+GpoStatus        : AllSettingsEnabled
+Description      :
+CreationTime     : 11/6/2025 8:01:47 PM
+ModificationTime : 11/6/2025 8:01:47 PM
+UserVersion      : AD Version: 0, SysVol Version: 0
+ComputerVersion  : AD Version: 0, SysVol Version: 0
+WmiFilter        :
+
+New-GPLink : Unknown error (0x80005000)
+At line:9 char:1
++ New-GPLink -Name $GPOName -Target $OU
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-GPLink], COMException
+    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Microsoft.GroupPolicy.Commands.NewGPLinkComm
+   and
+
+DisplayName      : MapSharedFolder
+DomainName       : DC300151825-00.local
+Owner            : DC300151825-00\Domain Admins
+Id               : 304a7f53-1e97-4447-8648-45586d66c1d3
+GpoStatus        : AllSettingsEnabled
+Description      :
+CreationTime     : 11/6/2025 8:01:47 PM
+ModificationTime : 11/6/2025 8:01:46 PM
+UserVersion      : AD Version: 1, SysVol Version: 1
+ComputerVersion  : AD Version: 0, SysVol Version: 0
+WmiFilter        :
+```
+
 ---
 
 4️⃣ Activer RDP pour le groupe
@@ -107,6 +185,14 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 ```
 Astuce : on peut aussi utiliser ntrights.exe du Resource Kit pour assigner RDP à un groupe via PowerShell.
 
+```powershell
+Resultat:
+
+The task has completed successfully.
+See log %windir%\security\logs\scesrv.log for detail info.
+Configuring the current system with this template in the /overwrite mode will result in losing the existing security records in the database specified.Do you want to continue this operation ? [y/n] y
+PS C:\Users\Administrator\Developper\INF1084-202-25A-03\6.Objects\300151825>
+```
 ---
 
 5️⃣ Test

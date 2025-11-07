@@ -1,6 +1,6 @@
 - [ ]  Création d'un fichier bootstrap.ps1
 
-``PowerShell
+``powershell
  # vos informations
 >> $studentNumber = 300141550
 >> $studentInstance = 00
@@ -13,8 +13,7 @@
 >> $plain = 'Infra@2024'
 >> $secure = ConvertTo-SecureString $plain -AsPlainText -Force
 >> $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName",$secure)
->>
->> 
+
 `` 
 
 - [ ] operations néscessitant les informations sécurisées de l'administrateur
@@ -46,4 +45,5 @@ New-ADUser -Name "Alice Dupont" `
 Set-ADUser -Identity "alice.dupont" `
            -EmailAddress "alice.dupont@exemple.com" `
            -GivenName "Alice-Marie" `
+
 

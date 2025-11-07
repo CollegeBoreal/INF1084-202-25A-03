@@ -5,11 +5,12 @@
 ```powershell
 $studentNumber = 300151825
 $studentInstance = 00
+```
 
 ```powershell
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
-
+```
 ```powershell
 $domainName
 # DC300151825-0.local
@@ -263,3 +264,4 @@ Name          DistinguishedName
 ----          -----------------
 Thomas Girard CN=Thomas Girard,OU=Students,DC=DC300151825-00,DC=local
 ```
+

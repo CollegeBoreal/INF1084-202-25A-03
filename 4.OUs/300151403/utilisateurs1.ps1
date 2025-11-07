@@ -1,6 +1,5 @@
-# Importer le module AD
-Import-Module ActiveDirectory
+Import-Module ActiveDirectory   # importer le module AD
 
-# Vérifier le domaine et les DC
+#Vérifier le domaine et les contrôleurs
 Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName

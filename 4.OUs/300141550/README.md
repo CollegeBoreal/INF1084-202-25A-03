@@ -6,15 +6,15 @@ nano bootstrap.ps1
 
 ```powershell
  # vos informations
->> $studentNumber = 300141550
->> $studentInstance = 00
+$studentNumber = 300141550
+$studentInstance = 00
 # les noms respectifs
->> $domainName = "DC$300141550-$0.local"
->> $netbiosName = "DC$300141550-$0"
->> # les informations de sécurité
->> $plain = 'Infra@2024'
->> $secure = ConvertTo-SecureString $plain -AsPlainText -Force
->> $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName",$secure)
+$domainName = "DC$300141550-$0.local"
+$netbiosName = "DC$300141550-$0"
+ # les informations de sécurité
+$plain = 'Infra@2024'
+$secure = ConvertTo-SecureString $plain -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName",$secure)
 
 ```
 <img width="421" height="153" alt="image" src="https://github.com/user-attachments/assets/b4ac65a0-16f3-4026-84fd-4caa6706dcaf" />
@@ -49,6 +49,7 @@ New-ADUser -Name "Alice Dupont" `
 Set-ADUser -Identity "alice.dupont" `
            -EmailAddress "alice.dupont@exemple.com" `
            -GivenName "Alice-Marie" `
+
 
 
 

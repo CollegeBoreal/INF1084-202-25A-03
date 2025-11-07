@@ -1,11 +1,3 @@
-# 🌐 Leçon : Objets gérables par Active Directory
-
-|:hash: | Fonctions                                          |
-|-------|:---------------------------------------------------|
-| :one: | [:tada: Participation](.scripts/Participation.md)  |
-
----
-
 ## 1️⃣ Les objets principaux d’AD
 
 | Objet                         | Description                                                               | Exemple                            | Emoji |
@@ -326,4 +318,5 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 * Les étudiants manipulent **AD, GPO, RDP, SMB** uniquement via **PowerShell**
 * Aucun besoin d’interface graphique
 * Tout peut être reproduit sur Hyper-V pour plusieurs VMs
+
 

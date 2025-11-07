@@ -1,5 +1,5 @@
 $studentNumber = 300151556
-$studentInstance = 0
+$studentInstance = 00
 
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"

@@ -1,4 +1,4 @@
-# Participation au 07-11-2025 00:33
+# Participation au 08-11-2025 18:36
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -47,5 +47,5 @@
 | 26 | [300151825](../300151825/README.md) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | 10.7.236.217 | :heavy_check_mark: | :heavy_check_mark: |
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | 10.7.236.222 | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | 10.7.236.223 | :heavy_check_mark: | :heavy_check_mark: |
-| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | 10.7.236.224 | :heavy_check_mark: | :heavy_check_mark: |
-| :abacus: | \$\\frac{25}{30}$ = 83.33% | | \$\displaystyle\sum_{i=1}^{30} s_i$ = 25 |
+| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | 10.7.236.224 | :heavy_check_mark: | :x: |
+| :abacus: | \$\\frac{24}{30}$ = 80% | | \$\displaystyle\sum_{i=1}^{30} s_i$ = 24 |

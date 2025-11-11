@@ -10,7 +10,7 @@ utilisateurs, des groupes, l'utilisation de tableaux et l'import/ export de fich
 ### 1. utilisateurs1.ps1
 Création de 5 utilisateurs simulés.
 
-![utilisateurs1](captures/utilisateurs1.png)
+![Capture utilisateurs1](captures/utilisateurs1.png)
 
 ---
 

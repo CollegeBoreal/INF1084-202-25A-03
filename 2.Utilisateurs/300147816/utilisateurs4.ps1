@@ -1,14 +1,31 @@
-
 . "$PSScriptRoot\utilisateurs1.ps1" > $null
-# 1. Importer le fichier CSV
 
-$ImportedUsers = Import-Csv -Path "C:\Users\Amin\Developer\INF1084-202-25A-03\2.Utilisateurs\300147816\import.csv"
+# Exporter les utilisateurs simulés
+$Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
 
-# 2. Créer un groupe "ImportGroupe" (dans Active Directory)
-New-ADGroup -Name "ImportGroupe" -SamAccountName "ImportGroupe" -GroupScope Global -GroupCategory Security -Path "OU=Stagiaires,DC=mondomaine,DC=local"
+# Importer depuis CSV
+$ImportedUsers = Import-Csv -Path "C:\Temp\UsersSimules.csv"
+Write-host "`n===voila la liste des utilisateurs importes"
+$ImportedUsers|Format-Table
 
-# 3. Ajouter tous les utilisateurs importés dans ce groupe
-foreach ($user in $ImportedUsers) {
-    Add-ADGroupMember -Identity "ImportGroupe" -Members $user.SamAccountName
+
+
+# Créer le groupe "ImportGroupe" et y ajouter tous les utilisateurs mportes
+Write-host "`n=== Creer le groupe ImportGroupe en ajoutant les utilisateurs importes==="
+$Groups = @{}
+
+$Groups["ImportGroupe"] = $ImportedUsers
+
+# Afficher le contenu du groupe
+Write-host "`n===Groupe ImportGroupe==="
+$Groups["ImportGroupe"] | ForEach-Object {
+    "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
+
+
+# Afficher le nombre d'utilisateurs dans le groupe
+Write-Host "`nNombre d'utilisateurs dans ImportGroupe est : $($Groups['ImportGroupe'].Count)" -ForegroundColor Green
+
+
+
 

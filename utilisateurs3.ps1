@@ -8,6 +8,6 @@ $Users | Where-Object {$_.Nom -like "B*"}|Format-Table
 # Lister tous les utilisateurs dans l'OU "Stagiaires"
 write-host "`nliste  les utilisateurs dans l'OU est stagiaires`n"
 $Users | Where-Object {$_.OU -eq "Stagiaires"}|Format-Table
-# Lister tous les utilisateurs dans le prenom contient a "majuscule ou miniscule: incensible a la casse"
+# Lister tous les utilisateurs dans le prenom contient a "majuscule ou miniscule: donc incensible a la casse"
 write-host "`nliste  les utilisateurs dont le prenom contient a majuscule ou miniscule`n"
 $Users | Where-Object {$_.Prenom -like "*a*"}|Format-Table

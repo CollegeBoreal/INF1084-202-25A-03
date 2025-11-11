@@ -13,7 +13,7 @@ $ImportedUsers|Format-Table
 
 
 
-# Créer le groupe "ImportGroupe" et y ajouter tous les utilisateurs iportes
+# Créer le groupe "ImportGroupe" et y ajouter tous les utilisateurs mportes
 Write-host "`n=== Creer le groupe ImportGroupe en ajoutant les utilisateurs importes==="
 $Groups = @{}
 

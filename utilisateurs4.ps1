@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -33,3 +34,17 @@ Write-Host "`nNombre d'utilisateurs dans ImportGroupe est : $($Groups['ImportGro
 
     
  
+=======
+# ===== utilisateurs4.ps1 : Créer l'OU Students et déplacer un utilisateur =====
+
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
+}
+
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
+              -Credential $cred
+
+Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
+
+>>>>>>> c8fc1e6666a8b24b02fb49c7196da3d313e7cf38

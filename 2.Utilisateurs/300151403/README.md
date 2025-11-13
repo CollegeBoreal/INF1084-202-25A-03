@@ -41,7 +41,7 @@ $Users = @(
 ```
 
 ## 2️⃣: Groupe des utilisateurs
-:secret: utiliser la commande ```"$PSScriptRoot\utilisateurs.ps1" ``` pour importer votre script utilisateur dans votre scprit groupe
+⚽: utiliser la commande ```"$PSScriptRoot\utilisateurs.ps1" ``` pour importer votre script utilisateur dans votre scprit groupe
 
 ## 3️⃣: Flitres
 - [ ] Editer votre scripts pour créer un flitre et l'executer

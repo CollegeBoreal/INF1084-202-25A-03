@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+
+
 . "$PSScriptRoot\utilisateurs1.ps1" > $null
 
 # Exporter les utilisateurs simulés
@@ -21,11 +25,26 @@ Write-host "`n===Groupe ImportGroupe==="
 $Groups["ImportGroupe"] | ForEach-Object {
     "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
-
+ 
 
 # Afficher le nombre d'utilisateurs dans le groupe
 Write-Host "`nNombre d'utilisateurs dans ImportGroupe est : $($Groups['ImportGroupe'].Count)" -ForegroundColor Green
 
 
 
+    
+ 
+=======
+# ===== utilisateurs4.ps1 : Créer l'OU Students et déplacer un utilisateur =====
 
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
+}
+
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
+              -Credential $cred
+
+Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
+
+>>>>>>> c8fc1e6666a8b24b02fb49c7196da3d313e7cf38

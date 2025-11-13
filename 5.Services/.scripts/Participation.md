@@ -1,4 +1,4 @@
-# Participation au 13-11-2025 22:53
+# Participation au 13-11-2025 22:56
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -17,7 +17,7 @@
 |:hash:| Boréal :id:                | README.md    | :one: | :two: | :three: | :four: |
 |------|----------------------------|--------------|-------|-------|---------|--------|
 | 0 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 1 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | :x: | :x: | :x: | :x: | :x: |
+| 1 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | :heavy_check_mark: | :x: | :x: | :x: | :x: |
 | 2 | [300141625](../300141625/README.md) [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 3 | [300141657](../300141657/README.md) [<image src='https://avatars0.githubusercontent.com/u/194731088?s=460&v=4' width=20 height=20></image>](https://github.com/leandre00126) | :x: | :x: | :x: | :x: | :x: |
 | 4 | [300141716](../300141716/README.md) [<image src='https://avatars0.githubusercontent.com/u/125617838?s=460&v=4' width=20 height=20></image>](https://github.com/nabilaouladbouih) | :x: | :x: | :x: | :x: | :x: |
@@ -46,4 +46,4 @@
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :x: | :x: | :x: | :x: | :x: |
 | 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :x: | :x: | :x: | :x: | :x: |
-| :abacus: | \$\\frac{9}{30}$ = 30% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 9 |
+| :abacus: | \$\\frac{10}{30}$ = 33.33% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 10 |

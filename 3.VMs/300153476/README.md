@@ -170,8 +170,7 @@ UPNSuffixes           : {}
 
 ## 🏁 7️⃣ Conclusion
 
-🎯 **Ton domaine et ta forêt Active Directory ont été installés avec succès.**
-Le contrôleur de domaine `DC300153476.DC300153476-00.local` gère la sécurité, l’authentification et les stratégies de ton réseau.
+Le contrôleur de domaine `DC300153476.DC300153476-00.local` gère la sécurité, l’authentification et les stratégies du réseau.
 
 Grâce à cette installation :
 

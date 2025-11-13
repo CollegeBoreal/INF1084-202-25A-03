@@ -1,4 +1,20 @@
 <<<<<<< HEAD
+# Créer une liste d'utilisateurs simulés
+$Users = @(
+[PSCustomObject]@{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"},
+[PSCustomObject]@{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Stagiaires"},
+[PSCustomObject]@{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"},
+[PSCustomObject]@{Nom="Zerrouki"; Prenom="Hanane"; Login="Hzerrouki"; OU="Stagiaires"},
+ 
+[PSCustomObject]@{Nom="Zerrouki"; Prenom="Wahiba"; Login="Wzerrouki"; OU="Stagiaires"}
+)
+
+# Afficher les utilisateurs
+$Users | ForEach-Object { "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)" }
+
+
+=======
+<<<<<<< HEAD
 # Importer le module AD
 Import-Module ActiveDirectory
 
@@ -30,3 +46,4 @@ Get-ADDomainController -Filter * -Server $domainName
 $cred = Get-Credential -Message "Entrez vos identifiants (Administrator@$domainName)"
 
 >>>>>>> f0d0727bc244e2b9287e6fefbb63c49254d32a9f
+>>>>>>> c8fc1e6666a8b24b02fb49c7196da3d313e7cf38

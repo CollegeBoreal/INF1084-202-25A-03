@@ -9,6 +9,6 @@ $Users | Where-Object {$_.Nom -like "B*"}
 write-host "`nliste  les utilisateurs dans l'OU est stagiaire`n"
 $Users | Where-Object {$_.OU -eq "Stagiaires"}
 # Lister tous les utilisateurs dans le nom contient a "majuscule ou miniscule"
-write-host "`nliste  les utilisateurs dont le nom contient a majuscule ou miniscule`n"
-$Users |Where-Object { $_.Prenom -match "aA" }
+write-host "`nliste  les utilisateurs dont le prenom contient a majuscule ou miniscule`n"
+$Users | Where-Object {$_.Prenom -like "*a*"}
 

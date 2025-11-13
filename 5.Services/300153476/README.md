@@ -1,19 +1,27 @@
-📘 README – Laboratoire : Gestion des Services Active Directory avec PowerShell
-🧮 Objectifs du laboratoire
+# 📘 README – Laboratoire : Gestion des Services Active Directory avec PowerShell
 
-Ce laboratoire a pour but de manipuler différents services liés à Active Directory (AD) à l’aide de PowerShell :
+## 🧮 Objectifs du laboratoire
 
-✔️ Lister les services AD et vérifier leur état
-✔️ Afficher les événements des services AD
-✔️ Exporter les journaux d’événements dans un fichier
-✔️ Arrêter et redémarrer un service AD
+Ce laboratoire a pour but de manipuler différents services liés à **Active Directory (AD)** à l’aide de PowerShell :
 
-🔖 Convention de nommage
-Les scripts PowerShell doivent être nommés selon le format :
-services1.ps1 → services4.ps1
+✔️ Lister les services AD et vérifier leur état  
+✔️ Afficher les événements des services AD  
+✔️ Exporter les journaux d’événements dans un fichier  
+✔️ Arrêter et redémarrer un service AD  
 
-📂 Contenu des scripts
-🔹 services1.ps1 – Lister les services AD
+> 🔖 **Convention de nommage**  
+> Les scripts PowerShell doivent être nommés selon le format :  
+> **services1.ps1 → services4.ps1**
+
+---
+
+## 📂 Contenu des scripts
+
+---
+
+### 🔹 services1.ps1 – Lister les services AD
+
+```powershell
 # Lister tous les services liés à AD
 Get-Service | Where-Object {
     $_.DisplayName -like "*Directory*" -or $_.Name -match "NTDS|ADWS|DFSR|kdc|Netlogon|IsmServ"
@@ -21,114 +29,117 @@ Get-Service | Where-Object {
 
 # Vérifier l’état d’un service spécifique
 Get-Service -Name NTDS, ADWS, DFSR
+```
+# 📚 Références Active Directory
 
-🔹 services2.ps1 – Afficher les événements AD
-# Afficher les 20 derniers événements liés à NTDS
-Get-EventLog -LogName "Directory Service" -Newest 20
+Voici un résumé clair des principaux services et concepts d’Active Directory.
 
-# Afficher les logs du système filtrés par Netlogon
-Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogon"}
+---
 
-# Afficher les logs via le journal moderne (Event Viewer v2)
-Get-WinEvent -LogName "Directory Service" -MaxEvents 20 |
-    Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
+## 🏛️ 1️⃣ DC – Domain Controller (Contrôleur de domaine)
 
-🔹 services3.ps1 – Exporter les événements
-Get-WinEvent -LogName "Directory Service" -MaxEvents 50 |
-    Export-Csv -Path "C:\Logs\ADLogs.csv" -NoTypeInformation
+- Authentifie utilisateurs et ordinateurs  
+- Stocke la base de données **NTDS.dit**  
+- Réplique les données entre DC  
+- Fournit **Kerberos** & **Netlogon**
 
-🔹 services4.ps1 – Gestion d'un service
-Stop-Service -Name DFSR
-(Get-Service -Name DFSR).Status
-Start-Service -Name DFSR
+➡️ C’est le **cœur d’Active Directory**.
 
-📚 Références Active Directory (Résumé clair et utile)
+---
 
-Voici un résumé des principaux services et concepts rencontrés dans Active Directory :
+## 🧰 2️⃣ GPO – Group Policy Object
 
-🏛️ 1️⃣ DC – Domain Controller (Contrôleur de domaine)
+Permet de gérer automatiquement les paramètres des utilisateurs et ordinateurs :
 
-✔️ Authentifie utilisateurs et ordinateurs
-✔️ Stocke la base AD NTDS.dit
-✔️ Réplique les données entre DC
-✔️ Fournit Kerberos & Netlogon
+- Verrouillage automatique  
+- Scripts de connexion  
+- Installation d’applications  
 
-➡️ C’est le cœur d’Active Directory.
+📍 Stockées dans **SYSVOL** et répliquées via **DFSR**.
 
-🧰 2️⃣ GPO – Group Policy Object
+---
 
-Permet de gérer automatiquement :
+## 🌐 3️⃣ AD DS – Active Directory Domain Services
 
-Verrouillage automatique
+- Gestion des comptes et groupes  
+- Authentification (Kerberos)  
+- Autorisation  
+- Réplication AD  
 
-Scripts de connexion
+➡️ Le service principal est **NTDS**.
 
-Installation d’applications
+---
 
-📍 Stockées dans SYSVOL et répliquées via DFSR.
+## 🔗 4️⃣ ADWS – Active Directory Web Services
 
-🌐 3️⃣ AD DS – Active Directory Domain Services
+Permet la gestion d’Active Directory via :
 
-Service principal d’Active Directory.
-Il gère :
-✔️ Comptes & groupes
-✔️ Authentification Kerberos
-✔️ Autorisations
-✔️ Réplication
+- PowerShell  
+- ADAC  
+- Outils modernes  
 
-🔗 4️⃣ ADWS – Active Directory Web Services
-
-Permet la gestion AD via :
-
-PowerShell
-
-ADAC
-
-Outils modernes
 Indispensable pour les cmdlets ActiveDirectory.
 
-🔁 5️⃣ DFSR – Distributed File System Replication
+---
 
-Réplique :
+## 🔁 5️⃣ DFSR – Distributed File System Replication
 
-SYSVOL
+Assure la réplication :  
 
-Scripts
+- **SYSVOL**  
+- Scripts  
+- GPO  
 
-GPO
+➡️ Garantit une synchronisation cohérente entre DC.
 
-➡️ Essentiel pour garder tous les DC synchronisés.
+---
 
-🔐 6️⃣ KDC – Key Distribution Center
+## 🔐 6️⃣ KDC – Key Distribution Center
 
-Service Kerberos :
+Service Kerberos chargé de créer :
 
-Génère les tickets d’authentification (TGT, TGS)
+- Les tickets d’authentification **TGT**  
+- Les tickets de service **TGS**
 
-🔧 7️⃣ Netlogon
+---
 
-Assure :
-✔️ Localisation d’un DC
-✔️ Authentification réseau
-✔️ Mise à jour des enregistrements DNS des DC
+## 🔧 7️⃣ Netlogon
 
-📨 8️⃣ ISM / IsmServ – Intersite Messaging Service
+Assure :  
 
-Gestion de la réplication inter-sites.
-Utilisé lorsque les DC sont dans différents sites AD.
+- Localisation d’un DC  
+- Authentification réseau  
+- Mise à jour des enregistrements DNS des DC  
 
-🗂️ 9️⃣ Autres abréviations utiles
-Abréviation	Signification	Rôle
-OU	Organizational Unit	Organiser les objets AD, appliquer des GPO
-FSMO	Flexible Single Master Operations	Rôles critiques détenus par certains DC
-LDAP	Lightweight Directory Access Protocol	Protocole utilisé pour interroger AD
-SYSVOL	System Volume	Contient GPO & scripts répliqués sur les DC
-RDP	Remote Desktop Protocol	Connexion distante aux serveurs
-🎯 Conclusion
+---
 
-Ce laboratoire vous a permis d’apprendre à :
+## 📨 8️⃣ ISM / IsmServ – Intersite Messaging Service
 
-✔ Manipuler et analyser les services Active Directory
-✔ Lire et exporter les journaux d’événements
-✔ Contrôler un service système via PowerShell
-✔ Identifier les composants clés d’Active Directory
+Assure la **réplication inter-sites** dans AD.
+
+---
+
+## 🗂️ 9️⃣ Autres abréviations utiles
+
+| Abréviation | Signification | Rôle |
+|------------|--------------|------|
+| **OU** | Organizational Unit | Organiser les objets, appliquer des GPO |
+| **FSMO** | Flexible Single Master Operations | Rôles spéciaux détenus par certains DC |
+| **LDAP** | Lightweight Directory Access Protocol | Protocole utilisé pour interroger AD |
+| **SYSVOL** | System Volume | Contient scripts & GPO répliqués |
+| **RDP** | Remote Desktop Protocol | Accès distant aux serveurs |
+
+---
+
+# 🎯 Conclusion
+
+Ce laboratoire vous a permis de :
+
+✔️ Manipuler les services Active Directory  
+✔️ Lire et exporter les journaux d’événements  
+✔️ Arrêter et redémarrer un service système  
+✔️ Comprendre les composants clés d’Active Directory  
+
+---
+
+

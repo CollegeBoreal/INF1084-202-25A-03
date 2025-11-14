@@ -59,6 +59,77 @@ NTDS Quotas          msDS-QuotaContainer  CN=NTDS Quotas,DC=ForestDnsZones,DC=LA
 
 </details>
 
+
+Pour **lister seulement `student1`**, tu as 3 méthodes simples.
+Comme tu vois, `student1` apparaît déjà dans le résultat global du conteneur **CN=Users**, donc il suffit de filtrer ou cibler l'objet directement.
+
+---
+
+# ✅ **1. Filtrer dans le conteneur Users**
+
+Utilise `Where-Object` :
+
+```powershell
+ls 'AD:\CN=Users,DC=DC300098957-90,DC=local' |
+    Where-Object { $_.Name -eq "student1" }
+```
+
+---
+
+# ✅ **2. Accès direct via chemin AD**
+
+Si tu connais le DN exact (il apparaît dans ton résultat) :
+
+```powershell
+ls 'AD:\CN=student1,CN=Users,DC=DC300098957-90,DC=local'
+```
+
+---
+
+# ✅ **3. Via le cmdlet Get-ADUser**
+
+Méthode la plus propre :
+
+```powershell
+Get-ADUser -Identity student1 -Properties *
+```
+
+Ou seulement le résumé :
+
+```powershell
+Get-ADUser student1
+```
+
+---
+
+# ⭐ Le DN exact de ton utilisateur
+
+Tu peux toujours vérifier avec :
+
+```powershell
+Get-ADUser student1 -Properties DistinguishedName
+```
+
+---
+
+# ✔️ Résumé
+
+Pour **lister student1**, le plus simple est :
+
+> ls ou gci # ou Get-ChildItem
+
+```powershell
+ls 'AD:\CN=student1,CN=Users,DC=DC300098957-90,DC=local'
+```
+
+ou filtrer :
+
+```powershell
+ls 'AD:\CN=Users,DC=DC300098957-90,DC=local' | where Name -eq "student1"
+```
+
+
+
 # :books: References
 
 - [ ] [MASTERING ACTIVE DIRECTORY

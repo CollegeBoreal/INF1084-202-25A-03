@@ -1,54 +1,24 @@
-# Projet INF1084-2025-o3-Utilisateurs
+# INF1084-202-25A-03
+INF1084 (202) - Introduction à l'administration des systèmes
 
-## Description
-Ce projet contient des scripts PowerShell pour la gestion d'utilisateurs et de groupes dans un environnement de type Active Directory. Chaque script explique la creation des 
-utilisateurs, des groupes, l'utilisation de tableaux et l'import/ export de fichiers csv
----
+## :date: [Épreuves](.epreuves)
 
-## Contenu du projet
+## :one: [Devoirs](Devoirs)
 
-### 1. utilisateurs1.ps1
-Création de 5 utilisateurs simulés.
+| :hash:  | Date   | Leçons                                                           | 🎉 Participations | 🏁 Vérifications |
+|-------- |--------|:-----------------------------------------------------------------|:------------------|:--------------|
+| :one:   |01-sept | [0.PlanDeCours](0.PlanDeCours)                       | [🎉](0.PlanDeCours/.scripts/Participation.md) 👉  â Noter :x:|
+| :two:   |08-sept | [0.Tutoriel sur GIT](.PlanDeCours/README.md#bulb-tutoriel-sur-git) | [🎉](.scripts/Participation.md) 👉  â Noter :x:|
+| :three: |15-sept | [1.SSH](1.SSH/.scripts/Participation.md)                     | [🎉](1.SSH/.scripts/Participation.md) 👉  â Noter :x:|
+| :four:  |22-sept | [2.Utilisateurs](2.Utilisateurs)              | [🎉](2.Utilisateurs/.scripts/Participation.md) 👉  â Noter :x:|
+| :five:  |29-sept | [3.VMs](3.VMs)     | [🎉](3.VMs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](3.VMs/.scripts/Check.md) â Noter :x: 
+| :six:   |13-oct  | [4.OUs](4.OUs)     | [🎉](4.OUs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](4.OUs/.scripts/Check.md) â Noter :x: 
+| :seven: |27-oct  | [5.Services](5.Services) | [🎉](5.Services/.scripts/Participation.md) 👉 â Noter :x: |  
+| :eight: |03-nov  | [6.Objects](6.Objects) | [🎉](6.Objects/.scripts/Participation.md) 👉 â Noter :x: |  
 
-![Capture utilisateurs1](captures/Capture1.png)
 
----
+# :books: References
 
-### 2. utilisateurs2.ps1
-Création de groupes simulés et ajoutes utilisateurs selon leur OU.
-
-![utilisateurs2](captures/Capture2.png)
-
----
-
-### 3. utilisateurs3.ps1
-Filtrage des utilisateurs selon différentes conditions :
-- Nom commençant par "B"
-- OU = "Stagiaires"
-- Prénom contenant "a" (insensible à la casse)
-
-![utilisateurs3](captures/Capture3.png)
-
----
-
-### 4. utilisateurs4.ps1
-Import depuis CSV, création 'un groupe "ImportGroupe",Il illustre également l'export des utilisateurs vers un fichier CSV, la manipulation des tableaux et la visualisation du contenu
- du groupe, tout en affichant des informations claires sur chaque utilisateur.
-![utilisateurs4](captures/Capture4.png)
-
----
-
-### 5. Mini-projet.ps1
-Création des utilisateurs de la promo2025, groupe "Etudiants2025", ajout des utilisateurs au groupe et export CSV.
-
-![mini-projet](captures/miniprojet1.png)
-
----
-
-## Instructions pour exécuter les scripts
-1. Ouvrir PowerShell.
-2. Se placer dans le dossier contenant les scripts.
-3. Pour exécuter un script et utiliser les variables d'un autre script, utilisez le **dot sourcing** :
-```powershell
-. .\utilisateurs1.ps1
- 
+- [ ] Comment vérifier que le `commit` a été fait par le `CLI`
+      
+`git log --format=fuller -- `:id:`.md`

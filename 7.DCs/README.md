@@ -130,4 +130,3 @@ New-ADUser -Name "Alice Dupont" `
 3. **Isoler les VM sur un réseau interne** (Hyper-V/VMware/VirtualBox).
 4. **Scripts PowerShell multi-lignes** pour lisibilité.
 5. Créer des OU, groupes et utilisateurs directement avec le numéro étudiant pour éviter les collisions.
-

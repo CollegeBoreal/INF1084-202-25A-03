@@ -2,7 +2,7 @@
 
 ## Description
 
-J'ai créé **10 fichiers PowerShell** (`utilisateur1.ps1` à `utilisateur10.ps1`),  
+J'ai créé **10 fichiers PowerShell** (`utilisateurs1.ps1` à `utilisateurs10.ps1`),  
 et dans chacun d’eux, j’ai ajouté des scripts qui exécutent le fichier précédent pour assurer une exécution séquentielle.
 
 ---

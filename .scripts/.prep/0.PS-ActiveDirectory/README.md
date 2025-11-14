@@ -34,6 +34,23 @@ set-location "DC=LABINFO,DC=LOCAL"
 PS AD:\DC=LABINFO,DC=LOCAL> set-location $HOME
 PS C:\Users\300098957> get-ADDomain
 
+
+```bash
+ls ad:
+```
+<details>
+
+```lua
+Name                 ObjectClass          DistinguishedName
+----                 -----------          -----------------
+Infrastructure       infrastructureUpdate CN=Infrastructure,DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
+LostAndFound         lostAndFound         CN=LostAndFound,DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
+MicrosoftDNS         container            CN=MicrosoftDNS,DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
+NTDS Quotas          msDS-QuotaContainer  CN=NTDS Quotas,DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
+```
+
+</details>
+
 # :books: References
 
 - [ ] [MASTERING ACTIVE DIRECTORY

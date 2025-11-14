@@ -38,10 +38,11 @@ cd ad: # ou set-location ad:
 Le prompt `PowerShell` changera à 
 > PS AD:\> 
 
+```powershell
 set-location "DC=LABINFO,DC=LOCAL"
 PS AD:\DC=LABINFO,DC=LOCAL> set-location $HOME
 PS C:\Users\300098957> get-ADDomain
-
+```
 
 ```bash
 ls ad:

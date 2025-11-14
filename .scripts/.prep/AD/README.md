@@ -1,6 +1,16 @@
 
 
 ```powershell
+$strRemoteForest = "DC300098957.DC300098957-40.local" 
+$strRemoteAdmin = "Administrator" 
+$strRemoteAdminPassword = "Infra@2024" 
+$remoteContext = New-Object `
+    -TypeName"System.DirectoryServices.ActiveDirectory.DirectoryContext" `
+    -ArgumentList @( "Forest",$strRemoteForest, $strRemoteAdmin, $strRemoteAdminPassword) 
+```
+
+
+```powershell
 # Change following parameters 
 $strRemoteForest = "forestName1.something" 
 

@@ -23,6 +23,17 @@ ForestDnsZones       domainDNS            DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
 
 </details>
 
+
+```powershell
+set-location ad: # ou cd ad:
+```
+
+> PS AD:\> 
+
+set-location "DC=LABINFO,DC=LOCAL"
+PS AD:\DC=LABINFO,DC=LOCAL> set-location $HOME
+PS C:\Users\300098957> get-ADDomain
+
 # :books: References
 
 - [ ] [MASTERING ACTIVE DIRECTORY

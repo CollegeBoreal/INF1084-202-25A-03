@@ -128,7 +128,16 @@ ou filtrer :
 ```powershell
 ls 'AD:\CN=Users,DC=DC300098957-90,DC=local' | where Name -eq "student1"
 ```
+>
+<details>
 
+```powershell
+Name                 ObjectClass          DistinguishedName
+----                 -----------          -----------------
+student1             user                 CN=student1,CN=Users,DC=DC300098957-90,DC=local
+```
+
+</details>
 
 
 # :books: References

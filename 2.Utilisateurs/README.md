@@ -1,150 +1,54 @@
-# TP : Simulation Active Directory avec PowerShell
+# Projet INF1084-2025-o3-Utilisateurs
 
-[:tada: Participation](.scripts/Participation.md) 
+## Description
+Ce projet contient des scripts PowerShell pour la gestion d'utilisateurs et de groupes dans un environnement de type Active Directory. Chaque script explique la creation des 
+utilisateurs, des groupes, l'utilisation de tableaux et l'import/ export de fichiers csv
+---
 
-## Objectifs
+## Contenu du projet
 
-* Comprendre la structure AD (utilisateurs, groupes, OU).
-* S’entraîner aux cmdlets PowerShell pour la création, la recherche et la manipulation d’objets.
-* Se préparer aux scripts AD réels.
+### 1. utilisateurs1.ps1
+Création de 5 utilisateurs simulés.
 
-:bookmark: Nommez vos scripts Powershell selon le format suivant `utilisateurs`[1-4]`.ps1`
+![Capture utilisateurs1](captures/Capture1.png)
 
 ---
 
-## 1️⃣ Création d’objets utilisateurs simulés
+### 2. utilisateurs2.ps1
+Création de groupes simulés et ajoutes utilisateurs selon leur OU.
 
-```powershell
-# Créer une liste d'utilisateurs simulés
-$Users = @(
-    @{Nom="Dupont"; Prenom="Alice"; Login="adupont"; OU="Stagiaires"},
-    @{Nom="Lemoine"; Prenom="Sarah"; Login="slemoine"; OU="Stagiaires"},
-    @{Nom="Benali"; Prenom="Karim"; Login="kbenali"; OU="Stagiaires"}
-)
-
-# Afficher les utilisateurs
-$Users | ForEach-Object { "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)" }
-```
-
-**Exercice 1** : Ajouter 2 nouveaux utilisateurs à la liste et vérifier qu’ils s’affichent correctement.
+![utilisateurs2](captures/Capture2.png)
 
 ---
 
-## 2️⃣ Création de groupes simulés
+### 3. utilisateurs3.ps1
+Filtrage des utilisateurs selon différentes conditions :
+- Nom commençant par "B"
+- OU = "Stagiaires"
+- Prénom contenant "a" (insensible à la casse)
 
-```powershell
-# Créer des groupes
-$Groups = @{
-    "GroupeFormation" = @()
-    "ProfesseursAD" = @()
-}
-
-# Ajouter un utilisateur à un groupe
-$Groups["GroupeFormation"] += $Users[0]   # Alice Dupont
-```
-
-**Exercice 2** : Ajouter tous les utilisateurs dont l’OU = "Stagiaires" dans "GroupeFormation".
+![utilisateurs3](captures/Capture3.png)
 
 ---
 
-## 3️⃣ Requêtes et filtres
-
-```powershell
-# Lister tous les utilisateurs dont le nom commence par "B"
-$Users | Where-Object {$_.Nom -like "B*"}
-
-# Lister tous les utilisateurs dans l'OU "Stagiaires"
-$Users | Where-Object {$_.OU -eq "Stagiaires"}
-```
-
-**Exercice 3** : Lister tous les utilisateurs dont le prénom contient "a" (majuscule/minuscule).
+### 4. utilisateurs4.ps1
+Import depuis CSV, création 'un groupe "ImportGroupe",Il illustre également l'export des utilisateurs vers un fichier CSV, la manipulation des tableaux et la visualisation du contenu
+ du groupe, tout en affichant des informations claires sur chaque utilisateur.
+![utilisateurs4](captures/Capture4.png)
 
 ---
 
-## 4️⃣ Export et import CSV
+### 5. Mini-projet.ps1
+Création des utilisateurs de la promo2025, groupe "Etudiants2025", ajout des utilisateurs au groupe et export CSV.
 
-```powershell
-# Exporter les utilisateurs simulés
-$Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
-
-# Importer depuis CSV
-$ImportedUsers = Import-Csv -Path "C:\Temp\UsersSimules.csv"
-$ImportedUsers
-```
-
-**Exercice 4** : Importer le fichier CSV et créer un groupe "ImportGroupe" en ajoutant tous les utilisateurs importés.
+![mini-projet](captures/miniprojet1.png)
 
 ---
 
-## 5️⃣ Mini-projet : script complet de simulation
-
-1. Créer 5 utilisateurs simulés dans l’OU "Promo2025".
-2. Créer un groupe "Etudiants2025".
-3. Ajouter tous les utilisateurs de "Promo2025" dans le groupe.
-4. Exporter la liste finale du groupe en CSV.
-
----
-
-# :books: References
-
-:bulb: Il y a **plusieurs façons d’importer ou d’exécuter un fichier PowerShell**. Voici un résumé :
-
----
-
-## **1️⃣ Exécution avec le point (`.`) : dot-sourcing**
-
+## Instructions pour exécuter les scripts
+1. Ouvrir PowerShell.
+2. Se placer dans le dossier contenant les scripts.
+3. Pour exécuter un script et utiliser les variables d'un autre script, utilisez le **dot sourcing** :
 ```powershell
 . .\utilisateurs1.ps1
-```
-
-* Le **premier `.`** : dot-sourcing
-* Le **deuxième `.`** : chemin relatif vers le script
-* ⚡ Effet : les fonctions et variables du script **restent disponibles dans la session courante**.
-
----
-
-## **2️⃣ Exécution directe**
-
-```powershell
-.\utilisateurs1.ps1
-```
-
-* ⚡ Effet : le script s’exécute **dans un contexte isolé**.
-* Les variables ou fonctions définies **ne restent pas** après l’exécution.
-
----
-
-## **3️⃣ Avec `Invoke-Command`**
-
-```powershell
-Invoke-Command -ScriptBlock { . C:\chemin\utilisateurs1.ps1 }
-```
-
-* Permet d’exécuter le script **localement ou à distance**.
-* Nécessaire si tu veux l’exécuter sur une **autre machine** via PowerShell Remoting.
-
----
-
-## **4️⃣ Importer comme module (si c’est un module)**
-
-Si ton script est structuré en **fonctions réutilisables**, tu peux le transformer en **module PowerShell `.psm1`** :
-
-```powershell
-Import-Module .\utilisateurs1.psm1
-```
-
-* Les fonctions deviennent disponibles dans la session.
-* ⚡ Pratique pour regrouper plusieurs scripts réutilisables.
-
----
-
-### ✅ **Résumé**
-
-| Méthode          | Conservation des variables/fonctions |
-| ---------------- | ------------------------------------ |
-| `. .\script.ps1` | Oui                                  |
-| `.\script.ps1`   | Non                                  |
-| `Invoke-Command` | Selon le contexte                    |
-| `Import-Module`  | Oui, pour les fonctions/modules      |
-
-
+  

@@ -28,6 +28,7 @@ ForestDnsZones       domainDNS            DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
 set-location ad: # ou cd ad:
 ```
 
+Le prompt `PowerShell` changera à 
 > PS AD:\> 
 
 set-location "DC=LABINFO,DC=LOCAL"

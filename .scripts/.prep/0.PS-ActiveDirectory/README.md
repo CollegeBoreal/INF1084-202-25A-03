@@ -120,14 +120,28 @@ Pour **lister student1**, le plus simple est :
 > ls ou gci # ou Get-ChildItem
 
 ```powershell
-ls 'AD:\CN=student1,CN=Users,DC=DC300098957-90,DC=local'
+ls 'AD:\CN=student2,CN=Users,DC=DC300098957-90,DC=local'
 ```
+<details>
+
+```powershell
+ls : Cannot find path '//RootDSE/CN=student2,CN=Users,DC=DC300098957-90,DC=local' because it does not exist.
+At line:1 char:1
++ ls 'AD:\CN=student2,CN=Users,DC=DC300098957-90,DC=local'
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (//RootDSE/CN=st...957-90,DC=local:String) [Get-ChildItem], ItemNotFound
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+```
+
+</details>
 
 ou filtrer :
 
 ```powershell
 ls 'AD:\CN=Users,DC=DC300098957-90,DC=local' | where Name -eq "student1"
 ```
+
 >
 <details>
 

@@ -55,3 +55,4 @@ NTDS Quotas          msDS-QuotaContainer  CN=NTDS Quotas,DC=ForestDnsZones,DC=LA
 
 - [ ] [MASTERING ACTIVE DIRECTORY
 WITH POWERSHELL](https://adsecurity.org/wp-content/uploads/2015/04/NoVaPowerShellUsersGroup2015-ActiveDirectoryPowerShell.pdf)
+- [ ] [How to Install and Import Active Directory PowerShell Module](https://www.varonis.com/blog/powershell-active-directory-module)

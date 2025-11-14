@@ -22,3 +22,8 @@ ForestDnsZones       domainDNS            DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
 ```
 
 </details>
+
+# :books: References
+
+- [ ] [MASTERING ACTIVE DIRECTORY
+WITH POWERSHELL](https://adsecurity.org/wp-content/uploads/2015/04/NoVaPowerShellUsersGroup2015-ActiveDirectoryPowerShell.pdf)

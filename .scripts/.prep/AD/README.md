@@ -58,3 +58,4 @@ Write-Warning "CreateTrustRelationship: Failed for domain$($remoteForest)`n`tErr
 # :books: References
 
 - [ ] [Powershell to Create AD Trust](https://www.anujvarma.com/powershell-to-create-ad-trust)
+- [ ] [Querying Active Directory With PowerShell](https://evilsaint.com/article/querying-active-directory-with-powershell.html)

@@ -2,12 +2,18 @@
 
 ### 🪗 [Gathering AD Data with the Active Directory PowerShell Module](https://adsecurity.org/?p=3719)
 
+## 🎋 Naviguer dans l'arborescence d'AD
+
+- [ ] Charger le module de commande
+
 ```powershell
 import-module ActiveDirectory
 ```
 
+- [ ] Afficher le `Driver` **ad:**
+
 ```powershell
-dir ad:
+ls ad:
 ```
 <details>
 
@@ -23,9 +29,10 @@ ForestDnsZones       domainDNS            DC=ForestDnsZones,DC=LABINFO,DC=LOCAL
 
 </details>
 
+- [ ] Se déplacer vers le `Driver`
 
 ```powershell
-set-location ad: # ou cd ad:
+cd ad: # ou set-location ad: 
 ```
 
 Le prompt `PowerShell` changera à 

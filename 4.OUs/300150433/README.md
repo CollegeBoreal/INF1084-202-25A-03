@@ -1,6 +1,3 @@
-Parfait ! Voici un exemple de **README.md** adapté à ton TP avec ton ID (300150433) :
-
-````markdown
 # 🧠 TP : Gestion des utilisateurs Active Directory avec PowerShell
 
 Étudiant : Zakaria Djellouli  

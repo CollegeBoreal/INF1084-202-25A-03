@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+mon fichier README.md
+=======
 # INF1084-202-25A-03
 INF1084 (202) - Introduction à l'administration des systèmes
 
@@ -22,3 +25,4 @@ INF1084 (202) - Introduction à l'administration des systèmes
 - [ ] Comment vérifier que le `commit` a été fait par le `CLI`
       
 `git log --format=fuller -- `:id:`.md`
+>>>>>>> f289c1045d7f2db4d1e098b72a15269a8c33d52e

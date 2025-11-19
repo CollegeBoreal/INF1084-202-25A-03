@@ -1,3 +1,4 @@
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
 # Activer RDP sur la machine
 Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
 

@@ -1,4 +1,4 @@
-. "C:\Users\kelek\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
 
 # Nom de la GPO
 $GPOName = "MapSharedFolder"

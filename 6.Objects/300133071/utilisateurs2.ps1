@@ -10,7 +10,7 @@ if (-not (Get-GPO -Name $GPOName -ErrorAction SilentlyContinue)) {
 
 # Lier la GPO à une OU spécifique
 $OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU -Enforced:$false
+New-GPLink -Name $GPOName -Target $OU
 
 # Paramètres du mapping
 $DriveLetter = "Z"

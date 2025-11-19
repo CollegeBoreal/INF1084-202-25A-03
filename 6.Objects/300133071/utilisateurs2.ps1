@@ -12,7 +12,7 @@ if (-not (Get-GPO -Name $GPOName -ErrorAction SilentlyContinue)) {
 $netbiosName = (Get-ADDomain).NetBIOSName
 
 # Lier la GPO à une OU spécifique (ex: "Students")
-$OU = "OU=Students,DC=300133071-00,DC=local"
+$OU = "OU=Students,DC=$netbiosName,DC=local"
 New-GPLink -Name $GPOName -Target $OU 
 
 # Définir les variables pour le lecteur réseau

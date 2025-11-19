@@ -34,8 +34,8 @@ $DriveMapFile = "$PreferencesPath\ZDrive.xml"
 $xml = @"
 <?xml version="1.0" encoding="utf-8"?>
 <Drives cls="search">
-  <Drive cls="I" name="$DriveLetter:"">
-    <Properties action="U" thisDrive="$DriveLetter:"" path="$SharePath" label="Shared Resources" persistent="0"/>
+  <Drive cls="I" name="${DriveLetter}">
+    <Properties action="U" thisDrive="${DriveLetter}"" path="${SharePath}" label="Shared Resources" persistent="0"/>
   </Drive>
 </Drives>
 "@

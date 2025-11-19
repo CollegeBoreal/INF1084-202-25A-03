@@ -1,6 +1,16 @@
 . "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
-. "C:\Users\Administrator\developer\INF1084-202-25A-03\6.Objects\300133071\Utilisateurs2.ps1"
 
+# cree le Ou s'il n'existe pas
+$OUName = "Students"
+$domainDN = (Get-ADDomain).DistinguishedName
+$OU = "OU=$OUName,$domainDN"
+
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq '$OUName'" -ErrorAction SilentlyContinue)) {
+    New-ADOrganizationalUnit -Name $OUName -Path $domainDN
+    Write-Host "OU '$OUName' créée."
+} else {
+    Write-Host "OU '$OUName' existe déjà."
+}
 # Nom de la GPO
 $GPOName = "MapSharedFolder"
 

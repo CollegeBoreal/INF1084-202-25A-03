@@ -1,15 +1,15 @@
 # Charger les informations du bootstrap
-. "C:\Users\kelek\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
 
 # Définir le chemin du dossier partagé
-$SharedFolder = "C:\Users\kelek\developer\INF1084-202-25A-03\6.DCs\300133071\SharedResources"
+$SharedFolder = "C:\Users\Administrator\developer\INF1084-202-25A-03\6.DCs\300133071\SharedResources"
 
 # Créer le dossier
 if (-not (Test-Path $SharedFolder)) {
     New-Item -Path $SharedFolder -ItemType Directory -Force
-    Write-Host "��� Dossier créé : $SharedFolder"
+    Write-Host "Nouveau dossier  : $SharedFolder"
 } else {
-    Write-Host " Dossier déjà existant : $SharedFolder"
+    Write-Host " Dossier � existant : $SharedFolder"
 }
 
 # Créer le groupe AD

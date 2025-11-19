@@ -17,21 +17,20 @@ secedit /export /cfg $cfgPath /areas USER_RIGHTS | Out-Null
 $content = Get-Content $cfgPath
 
 # Chercher la ligne actuelle (si elle existe)
-$lineIndex = $content.IndexOf($content | Where-Object { $_ -match "^SeRemoteInteractiveLogonRight" })
+$matchLine = $content | Where-Object { $_ -match "^SeRemoteInteractiveLogonRight" }
 
-if ($lineIndex -ge 0) {
+if ($matchLine) {
+    # Récupérer l’index correct
+    $lineIndex = $content.IndexOf($matchLine)
 
-    # Ligne existante
-    $current = $content[$lineIndex]
-
-    if ($current -notmatch $group) {
-        # Ajouter le groupe au format *domain\group ou *group
-        $updated = $current + ",*$group"
-        $content[$lineIndex] = $updated
+    # Ajouter le groupe s’il n’est pas présent
+    if ($matchLine -notmatch "\*$group") {
+        $newLine = $matchLine + ",*$group"
+        $content[$lineIndex] = $newLine
     }
 }
 else {
-    # La ligne n’existe pas : on la crée
+    # La ligne n’existe pas → on la crée
     Add-Content -Path $cfgPath -Value "SeRemoteInteractiveLogonRight = *$group"
 }
 
@@ -41,4 +40,4 @@ $content | Set-Content $cfgPath
 # Appliquer la nouvelle configuration
 secedit /configure /db $dbPath /cfg $cfgPath /areas USER_RIGHTS | Out-Null
 
-Write-Host "RDP activé et droits appliqués pour le groupe '$group'."
+Write-Host "RDP activé et droits appliqués pour le groupe $group."

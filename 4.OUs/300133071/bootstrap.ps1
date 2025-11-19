@@ -1,6 +1,7 @@
 # vos informations
 $studentNumber = 300133071
 $studentInstance = "00"
+$shareName = "SharedResources"
 
 # les noms respectifs
 $domainName = "DC$studentNumber-$studentInstance.local"

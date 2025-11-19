@@ -13,7 +13,7 @@ $netbiosName = (Get-ADDomain).NetBIOSName
 
 # Lier la GPO à une OU spécifique (ex: "Students")
 $OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU -Enforced No
+New-GPLink -Name $GPOName -Target $OU 
 
 # Définir les variables pour le lecteur réseau
 $DriveLetter = "Z:"

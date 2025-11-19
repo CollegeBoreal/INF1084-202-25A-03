@@ -7,9 +7,9 @@ $OU = "OU=$OUName,$domainDN"
 
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq '$OUName'" -ErrorAction SilentlyContinue)) {
     New-ADOrganizationalUnit -Name $OUName -Path $domainDN
-    Write-Host "OU '$OUName' créée."
+    Write-Host "OU '$OUName' cree."
 } else {
-    Write-Host "OU '$OUName' existe déjà."
+    Write-Host "OU '$OUName' existe ."
 }
 # Nom de la GPO
 $GPOName = "MapSharedFolder"

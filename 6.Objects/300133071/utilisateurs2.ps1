@@ -13,7 +13,7 @@ $netbiosName = (Get-ADDomain).NetBIOSName
 
 # Lier la GPO à une OU spécifique (ex: "Students")
 $OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU -Enforced:$false
+New-GPLink -Name $GPOName -Target $OU -Enforced No
 
 # Définir les variables pour le lecteur réseau
 $DriveLetter = "Z:"
@@ -29,10 +29,6 @@ if (-not (Test-Path $ScriptFolder)) {
 $ScriptPath = "$ScriptFolder\MapDrive-$DriveLetter.bat"
 $scriptContent = "net use $DriveLetter $SharePath /persistent:no"
 Set-Content -Path $ScriptPath -Value $scriptContent -Encoding ASCII
-
-# Copier le script dans le dossier de scripts du domaine
-$DomainSysvol = "\\$netbiosName\SYSVOL\$netbiosName\scripts"
-Copy-Item -Path $ScriptPath -Destination $DomainSysvol -Force
 
 # Ajouter le script de connexion à la GPO
 Set-GPRegistryValue -Name $GPOName `

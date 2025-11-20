@@ -1,50 +1,43 @@
-# Activer RDP sur la machine
-Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
+# Autoriser les connexions RDP
+Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" `
+                 -Name "fDenyTSConnections" -Value 0
 
-# Activer la règle du pare-feu pour le Bureau à distance
+# Autoriser RDP dans le firewall
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-
 # Définir le groupe à autoriser
-$Group = "Students"
+$group = "Students"
+$cfgPath = "$env:TEMP\secpol.cfg"
+$dbPath  = "$env:TEMP\secpol.sdb"
 
-# Vérifier si le groupe existe localement ou dans le domaine
-try {
-    $GroupSID = (Get-ADGroup $Group -ErrorAction Stop).SID
-} catch {
-    $GroupSID = (Get-LocalGroup $Group -ErrorAction SilentlyContinue).SID
+# Exporter la configuration actuelle
+secedit /export /cfg $cfgPath /areas USER_RIGHTS | Out-Null
+
+# Lire le fichier
+$content = Get-Content $cfgPath
+
+# Chercher la ligne actuelle (si elle existe)
+$matchLine = $content | Where-Object { $_ -match "^SeRemoteInteractiveLogonRight" }
+
+if ($matchLine) {
+    # Récupérer l’index correct
+    $lineIndex = $content.IndexOf($matchLine)
+
+    # Ajouter le groupe s’il n’est pas présent
+    if ($matchLine -notmatch "\*$group") {
+        $newLine = $matchLine + ",*$group"
+        $content[$lineIndex] = $newLine
+    }
+}
+else {
+    # La ligne n’existe pas → on la crée
+    Add-Content -Path $cfgPath -Value "SeRemoteInteractiveLogonRight = *$group"
 }
 
-if (-not $GroupSID) {
-    Write-Host "Le groupe '$Group' n'existe pas localement ou dans le domaine." -ForegroundColor Red
-    exit
-}
+# Réécrire le fichier mis à jour
+$content | Set-Content $cfgPath
 
-# Récupérer les droits actuels de connexion à distance
-$PolicyKey = "HKLM:\System\CurrentControlSet\Control\Terminal Server\UserRights"
-if (-not (Test-Path $PolicyKey)) {
-    New-Item -Path $PolicyKey | Out-Null
-}
+# Appliquer la nouvelle configuration
+secedit /configure /db $dbPath /cfg $cfgPath /areas USER_RIGHTS | Out-Null
 
-# Vérifier les utilisateurs déjà autorisés pour le droit RDP
-$CurrentValue = (secedit /export /cfg "$env:TEMP\secpol.cfg" | Out-Null; 
-(Get-Content "$env:TEMP\secpol.cfg") -match "SeRemoteInteractiveLogonRight").Trim()
-
-# Ajouter le groupe Students s’il n’est pas déjà présent
-if ($CurrentValue -notmatch $Group) {
-    $TempFile = "$env:TEMP\secpol.cfg"
-    (Get-Content $TempFile) | ForEach-Object {
-        if ($_ -match "^SeRemoteInteractiveLogonRight") {
-            if ($_ -notmatch $Group) {
-                $_ = $_ + ",*$Group"
-            }
-        }
-        $_
-    } | Set-Content $TempFile -Encoding ASCII
-
-    # Réimporter la politique de sécurité mise à jour
-    secedit /import /cfg $TempFile /db "$env:TEMP\secpol.sdb" /overwrite
-    secedit /configure /db "$env:TEMP\secpol.sdb" /cfg $TempFile /areas USER_RIGHTS
-    gpupdate /force
-}
-
-Write-Host "RDP activé et groupe '$Group' ajouté aux autorisations." -ForegroundColor Grn
+Write-Host "RDP activé et droits appliqués pour le groupe $group."

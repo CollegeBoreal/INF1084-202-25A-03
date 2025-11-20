@@ -1,81 +1,54 @@
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
+
+# cree le Ou s'il n'existe pas
+$OUName = "Students"
+$domainDN = (Get-ADDomain).DistinguishedName
+$OU = "OU=$OUName,$domainDN"
+
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq '$OUName'" -ErrorAction SilentlyContinue)) {
+    New-ADOrganizationalUnit -Name $OUName -Path $domainDN
+    Write-Host "OU '$OUName' cree."
+} else {
+    Write-Host "OU '$OUName' existe ."
+}
 # Nom de la GPO
 $GPOName = "MapSharedFolder"
 
-# Créer la GPO (si elle n'existe pas déjà)
+# Créer la GPO si elle n'existe pas
 if (-not (Get-GPO -Name $GPOName -ErrorAction SilentlyContinue)) {
-    New-GPO -Name $GPOName
+    New-GPO -Name $GPOName | Out-Null
 }
 
-# Nom NetBIOS du domaine
-$netbiosName = (Get-ADDomain).NetBIOSName
-
-# Lier la GPO à une OU spécifique (ex: "Students")
+# Lier la GPO à une OU spécifique
 $OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU -Enforced:$false
+New-GPLink -Name $GPOName -Target $OU
 
-# Définir les variables pour le lecteur réseau
-$DriveLetter = "Z:"
+# Paramètres du mapping
+$DriveLetter = "Z"
 $SharePath = "\\$netbiosName\SharedResources"
 
-# Créer le dossier du script
-$ScriptFolder = "C:\Scripts"
-if (-not (Test-Path $ScriptFolder)) {
-    New-Item -ItemType Directory -Path $ScriptFolder | Out-Null
+# Créer la préférence Drive Map (GPP)
+$GPO = Get-GPO -Name $GPOName
+$GpoId = $GPO.Id
+
+# Chemin d'écriture de la préférence Drive Maps
+$PreferencesPath = "\\$env:USERDNSDOMAIN\SYSVOL\$env:USERDNSDOMAIN\Policies\{$GpoId}\User\Preferences\Drives"
+
+# Créer le dossier Drives si absent
+if (-not (Test-Path $PreferencesPath)) {
+    New-Item -ItemType Directory -Path $PreferencesPath | Out-Null
 }
 
-# Créer le script batch pour mapper le lecteur
-$ScriptPath = "$ScriptFolder\MapDrive-$DriveLetter.bat"
-$scriptContent = "net use $DriveLetter $SharePath /persistent:no"
-Set-Content -Path $ScriptPath -Value $scriptContent -Encoding ASCII
+# Fichier XML pour la préférence Drive Map
+$DriveMapFile = "$PreferencesPath\ZDrive.xml"
 
-# Copier le script dans le dossier de scripts du domaine
-$DomainSysvol = "\\$netbiosName\SYSVOL\$netbiosName\scripts"
-Copy-Item -Path $ScriptPath -Destination $DomainSysvol -Force
+$xml = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Drives cls="search">
+  <Drive cls="I" name="${DriveLetter}">
+    <Properties action="U" thisDrive="${DriveLetter}"" path="${SharePath}" label="Shared Resources" persistent="0"/>
+  </Drive>
+</Drives>
+"@
 
-# Ajouter le script de connexion à la GPO
-Set-GPRegistryValue -Name $GPOName `
-    -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
-    -ValueName "LogonScript" `
-    -Type String `
-    -Value "$DomainSysvol\MapDrive-$DriveLetter.bat"
-# Nom de la GPO
-$GPOName = "MapSharedFolder"
-
-# Créer la GPO (si elle n'existe pas déjà)
-if (-not (Get-GPO -Name $GPOName -ErrorAction SilentlyContinue)) {
-    New-GPO -Name $GPOName
-}
-
-# Nom NetBIOS du domaine
-$netbiosName = (Get-ADDomain).NetBIOSName
-
-# Lier la GPO à une OU spécifique (ex: "Students")
-$OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU -Enforced:$false
-
-# Définir les variables pour le lecteur réseau
-$DriveLetter = "Z:"
-$SharePath = "\\$netbiosName\SharedResources"
-
-# Créer le dossier du script
-$ScriptFolder = "C:\Scripts"
-if (-not (Test-Path $ScriptFolder)) {
-    New-Item -ItemType Directory -Path $ScriptFolder | Out-Null
-}
-
-# Créer le script batch pour mapper le lecteur
-$ScriptPath = "$ScriptFolder\MapDrive-$DriveLetter.bat"
-$scriptContent = "net use $DriveLetter $SharePath /persistent:no"
-Set-Content -Path $ScriptPath -Value $scriptContent -Encoding ASCII
-
-# Copier le script dans le dossier de scripts du domaine
-$DomainSysvol = "\\$netbiosName\SYSVOL\$netbiosName\scripts"
-Copy-Item -Path $ScriptPath -Destination $DomainSysvol -Force
-
-# Ajouter le script de connexion à la GPO
-Set-GPRegistryValue -Name $GPOName `
-    -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
-    -ValueName "LogonScript" `
-    -Type String `
-    -Value "$DomainSysvol\MapDrive-$DriveLetter.bat"
-
+Set-Content -Path $DriveMapFile -Value $xml -Encoding UTF8

@@ -1,47 +1,47 @@
 # Charger les informations du bootstrap
-. "C:\Users\kelek\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
+. "C:\Users\Administrator\developer\INF1084-202-25A-03\4.OUs\300133071\bootstrap.ps1"
 
-# Définir le chemin du dossier partagé
-$SharedFolder = "C:\Users\kelek\developer\INF1084-202-25A-03\6.DCs\300133071\SharedResources"
+# Chemin du dossier
+$SharedFolder = "C:\SharedResources"
 
-# Créer le dossier
+# Créer le dossier (si déjà existe, -Force évite l'erreur)
 if (-not (Test-Path $SharedFolder)) {
-    New-Item -Path $SharedFolder -ItemType Directory -Force
-    Write-Host "��� Dossier créé : $SharedFolder"
-} else {
-    Write-Host " Dossier déjà existant : $SharedFolder"
+    New-Item -Path $SharedFolder -ItemType Directory -Force | Out-Null
 }
 
-# Créer le groupe AD
+# Nom du groupe
 $GroupName = "Students"
-New-ADGroup -Name $GroupName `
-    -GroupScope Global `
-    -GroupCategory Security `
-    -Description "Users allowed RDP and shared folder access" `
-    -Server $domainName `
-    -Credential $cred
 
-# Créer des utilisateurs et les ajouter au groupe
-$Users = @("Etudiant1","Etudiant2")
-foreach ($user in $Users) {
-    New-ADUser -Name $user `
-        -SamAccountName $user `
-        -UserPrincipalName "$user@$domainName" `
-        -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
-        -Enabled $true `
-        -Server $domainName `
-        -Credential $cred
-
-    Add-ADGroupMember -Identity $GroupName -Members $user -Server $domainName -Credential $cred
+# Créer le groupe AD seulement s'il n'existe pas
+if (-not (Get-ADGroup -Filter "Name -eq '$GroupName'" -ErrorAction SilentlyContinue)) {
+    New-ADGroup -Name $GroupName -GroupScope Global -Description "Users allowed RDP and shared folder access"
 }
 
-# Créer le partage SMB et donner 'accès complet au groupe
+# Liste des utilisateurs
+$Users = @("Etudiant1","Etudiant2")
 
-if (-not (Get-SmbShare -Name $shareName -ErrorAction SilentlyContinue)) {
-    New-SmbShare -Name $shareName `
-        -Path $SharedFolder `
-        -FullAccess "$netbiosName\$GroupName"
-    Write-Host " Partage SMB créé : \\$netbiosName\$shareName"
+# Créer les utilisateurs et les ajouter au groupe
+foreach ($user in $Users) {
+
+    # Vérifier s'il existe déjà
+    if (-not (Get-ADUser -Filter "SamAccountName -eq '$user'" -ErrorAction SilentlyContinue)) {
+
+        New-ADUser `
+            -Name $user `
+            -SamAccountName $user `
+            -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
+            -Enabled $true
+    }
+
+    # Ajouter au groupe (evite l'erreur si déjà membre)
+    Add-ADGroupMember -Identity $GroupName -Members $user -ErrorAction SilentlyContinue
+}
+
+# Créer un partage SMB
+# Vérifier si le partage existe déjà
+if (-not (Get-SmbShare -Name "SharedResources" -ErrorAction SilentlyContinue)) {
+    New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
 } else {
-    Write-Host "Le partage SMB '$shareName' existe déjà."
+    # Mettre à jour les permissions au cas où le groupe ne serait pas présent
+    Grant-SmbShareAccess -Name "SharedResources" -AccountName $GroupName -AccessRight Full -Force
 }

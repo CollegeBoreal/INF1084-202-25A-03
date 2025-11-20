@@ -112,6 +112,6 @@ Get-ChildItem
 
 - [ ] Assigner un DNS
 
-https://www.name.com/partner/github-students
-https://www.youtube.com/watch?v=YXqqfjjVXmo
+* https://www.name.com/partner/github-students
+* https://www.youtube.com/watch?v=YXqqfjjVXmo
 

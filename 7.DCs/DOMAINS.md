@@ -1,18 +1,4 @@
-# Participation au 20-11-2025 22:08
-
-| Table des matières            | Description                                             |
-|-------------------------------|---------------------------------------------------------|
-| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |
-| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |
-
-:bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@**:two::zero::two::four:
-
-## Légende
-
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Projet inexistant             |
+# Domaines
 
 ## :a: Présence
 

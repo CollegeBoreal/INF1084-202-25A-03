@@ -2,7 +2,7 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id:                | :link: | :id:.md    | :rocket: |
+|:hash:| Boréal :id:                | :link: | :id:.md    | adds |
 |------|----------------------------|--------|------------|----------|
 | 0 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | 10.7.236.194 | :heavy_check_mark: | nelson.me |
 | 1 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | 10.7.236.196 | :heavy_check_mark: | :heavy_check_mark: |

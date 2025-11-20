@@ -14,7 +14,8 @@ Ce projet contient 4 scripts PowerShell pour apprendre à manipuler des utilisat
 **Objectif** : Créer 5 utilisateurs fictifs
 
 **À faire** :
-- ▶️ Exécutez le script dans PowerShell: 
+- ▶️ Exécutez le script dans PowerShell:
+![Capture de code de script 1](images/script1.jpg) "Code de script 1")")
 On aura le resultat suivant:
 ![Capture de l'exécution du Script 1](images/boreal.jpg "Résultat de utilisateurs1.ps1")
 *

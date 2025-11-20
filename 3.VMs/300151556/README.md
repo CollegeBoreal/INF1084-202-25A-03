@@ -1,6 +1,6 @@
 #300151556
 
-#J'ai renommé mon serveur
+# J'ai renommé mon serveur
 
 ```powershell
 Rename-Computer -NewName "DC300151556" -Restart
@@ -15,8 +15,8 @@ Rename-Computer -NewName "DC300151556" -Restart
 
 ```powershell
 Install-ADDSForest `
-    -DomainName "DC999999999-00.local" `
-    -DomainNetbiosName "DC999999999-00" `
+    -DomainName "DC300151556-00.local" `
+    -DomainNetbiosName "DC300151556-00" `
     -InstallDns:$true `
     -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
     -Force
@@ -26,7 +26,7 @@ Install-ADDSForest `
 ```powershell
 Get-ADDomain
 ```
- #Le resultat est:
+ # Le resultat est:
 
  ```powershell
 AllowedDNSSuffixes                 : {}
@@ -68,7 +68,7 @@ UsersContainer                     : CN=Users,DC=DC300151556-00,DC=local
 Get-ADForest
 ```
 
- #Le resultat est:
+ # Le resultat est:
  
   ```powershell
  

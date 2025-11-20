@@ -1,24 +1,10 @@
-# Participation au 20-11-2025 22:45
-
-| Table des matières            | Description                                             |
-|-------------------------------|---------------------------------------------------------|
-| :a: [Présence](#a-présence)   | L'étudiant.e a fait son travail    :heavy_check_mark:   |
-| :b: [Précision](#b-précision) | L'étudiant.e a réussi son travail  :tada:               |
-
-:bulb: Le mot de passe Administrateur (en Anglais) de la VM est **Infra@**:two::zero::two::four:
-
-## Légende
-
-| Signe              | Signification                 |
-|--------------------|-------------------------------|
-| :heavy_check_mark: | Prêt à être corrigé           |
-| :x:                | Projet inexistant             |
+# Domaines
 
 ## :a: Présence
 
-|:hash:| Boréal :id:                | :link: | :id:.md    | :rocket: |
+|:hash:| Boréal :id:                | :link: | :id:.md    | netbios |
 |------|----------------------------|--------|------------|----------|
-| 0 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | 10.7.236.194 | :heavy_check_mark: | :x: |
+| 0 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | 10.7.236.194 | :heavy_check_mark: | nelson.me |
 | 1 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | 10.7.236.196 | :heavy_check_mark: | :heavy_check_mark: |
 | 2 | [300141625](../300141625/README.md) [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) | 10.7.236.197 | :heavy_check_mark: | :heavy_check_mark: |
 | 3 | [300141657](../300141657/README.md) [<image src='https://avatars0.githubusercontent.com/u/194731088?s=460&v=4' width=20 height=20></image>](https://github.com/leandre00126) | 10.7.236.198 | :heavy_check_mark: | :heavy_check_mark: |
@@ -47,5 +33,4 @@
 | 26 | [300151825](../300151825/README.md) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | 10.7.236.217 | :heavy_check_mark: | :heavy_check_mark: |
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | 10.7.236.222 | :x: |
 | 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | 10.7.236.223 | :heavy_check_mark: | :heavy_check_mark: |
-| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | 10.7.236.224 | :heavy_check_mark: | :x: |
-| :abacus: | \$\\frac{24}{30}$ = 80% | | \$\displaystyle\sum_{i=1}^{30} s_i$ = 24 |
+| 29 | [300153476](../300153476/README.md) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | 10.7.236.224 | :heavy_check_mark: | ramatoulaye.me |

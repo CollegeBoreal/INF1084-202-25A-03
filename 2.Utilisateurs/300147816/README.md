@@ -1,4 +1,4 @@
-🎈 Description
+🎈 **Description**
 
 Ce projet consiste en une série de scripts PowerShell pour la gestion et la manipulation de données d'utilisateurs simulés. Les scripts démontrent diverses opérations courantes en administration système.
 
@@ -6,7 +6,7 @@ Ce projet consiste en une série de scripts PowerShell pour la gestion et la man
 
 
 
-##◆ Fichiers du Projet
+◆ **Fichiers du Projet**
 
 • `utilisateurs1.ps1` - Crée des utilisateurs
 
@@ -94,7 +94,7 @@ On aura le résultat suivant:
 • Statistiques sur le groupe
 
 **A faire**:
--Exécutez le script suivant dans PowerShell:
+- Exécutez le script suivant dans PowerShell:
 
 ![Capture de code de script 5](images/code_miniprojet.jpg)
 

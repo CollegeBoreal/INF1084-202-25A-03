@@ -1,81 +1,57 @@
-##############################################################
-#        LABORATOIRE ACTIVE DIRECTORY – OBJETS AD & GPO      #
-##############################################################
+## Laboratoire Active Directory : Objets gérables et GPO
 
-==============================================================
-                    1. INFORMATIONS ÉTUDIANTE
-==============================================================
+## Étudiante
+- **Nom :** Hocine  
+- **Prénom :** Sara  
+- **ID Étudiant :** 300151347 
 
-Nom      : Hocine
-Prénom   : Sara
-ID       : 300151347
-Cours    : INF1084 – Administration des systèmes
-Session  : 2025
+---
 
+## Sujet du laboratoire
+**Titre :** Objets gérables par Active Directory et automatisation via GPO (Group Policy Object)
 
-==============================================================
-                    2. SUJET DU LABORATOIRE
-==============================================================
+Ce laboratoire vise à manipuler les principaux objets Active Directory (utilisateurs, groupes, OU, ordinateurs, etc.) et à automatiser la gestion des ressources réseau à l’aide de PowerShell et des GPO.
 
-Ce laboratoire porte sur :
+---
 
-- La gestion des objets Active Directory (utilisateurs, groupes, OU, PC).
-- La création d’un dossier partagé (SMB).
-- L’automatisation de la gestion AD avec PowerShell.
-- La création d’une GPO pour mapper automatiquement le lecteur Z:.
-- L'activation du RDP pour un groupe d'utilisateurs.
-- Les tests sur une VM membre du domaine.
+## Objectifs
+- Comprendre les objets AD et leur utilité  
+- Créer et partager un dossier réseau SMB  
+- Créer des utilisateurs et groupes AD  
+- Mapper un lecteur réseau (Z:) via un GPO  
+- Activer le RDP pour un groupe spécifique  
+- Tester les accès et  Environnement requis
 
+## Environnement requis 
+- Windows Server 2022 avec AD DS installé  
+- Modules PowerShell : ActiveDirectory, GroupPolicy  
+- VM membre du domaine pour les tests  
+- Domaine : **DC300151347-00.local**  
+- OU : **Students**
 
-==============================================================
-                     3. OBJECTIFS DU LABO
-==============================================================
+---
+##Étapes du laboratoire 
 
-1. Comprendre les objets AD.
-2. Créer un dossier partagé accessible au groupe Students.
-3. Créer des utilisateurs via PowerShell.
-4. Mapper automatiquement un lecteur réseau (Z:).
-5. Activer le RDP pour un groupe AD.
-6. Vérifier l'application des GPO sur une VM cliente.
-
-
-==============================================================
-                4. ENVIRONNEMENT ET PRÉ-REQUIS
-==============================================================
-
-- Windows Server 2022 avec AD DS.
-- Modules PowerShell : ActiveDirectory, GroupPolicy.
-- VM cliente jointe au domaine.
-- Domaine : DC300151347-00.local
-- OU utilisée : Students
-
-
-==============================================================
-     5. SCRIPT 1 : CRÉATION DU DOSSIER PARTAGÉ + UTILISATEURS
-==============================================================
-
+## 1️⃣ Création du dossier partagé et du groupe AD
 ```powershell
 $SharedFolder = "C:\SharedResources"
 New-Item -Path $SharedFolder -ItemType Directory -Force
 
 $GroupName = "Students"
-New-ADGroup -Name $GroupName -GroupScope Global `
--Description "Users allowed RDP and shared folder access"
+New-ADGroup -Name $GroupName -GroupScope Global -Description "Users allowed RDP and shared folder access"
 
 $Users = @("Etudiant1","Etudiant2")
 foreach ($user in $Users) {
-    New-ADUser -Name $user -SamAccountName $user `
-    -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
-    -Enabled $true
-
+    New-ADUser -Name $user -SamAccountName $user -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) -Enabled $true
     Add-ADGroupMember -Identity $GroupName -Members $user
 }
 
 New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
-==============================================================
-6. SCRIPT 2 : CRÉATION DE LA GPO (MAPPING DRIVE Z:)
-powershell
-Copier le code
+```
+---
+## 2️⃣ Création du GPO pour mapper le lecteur réseau
+
+```powershell
 $GPOName = "MapSharedFolder"
 New-GPO -Name $GPOName
 
@@ -88,60 +64,74 @@ $SharePath = "\\DC300151347-00\SharedResources"
 $ScriptFolder = "C:\Scripts"
 $ScriptPath = "$ScriptFolder\MapDrive-$DriveLetter.bat"
 
-if (-not (Test-Path $ScriptFolder)) {
-    New-Item -ItemType Directory -Path $ScriptFolder
-}
+if (-not (Test-Path $ScriptFolder)) { New-Item -ItemType Directory -Path $ScriptFolder }
 
 $scriptContent = "net use $DriveLetter $SharePath /persistent:no"
 Set-Content -Path $ScriptPath -Value $scriptContent
 
 Set-GPRegistryValue -Name $GPOName `
--Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
--ValueName "LogonScript" -Type String -Value $ScriptPath
-==============================================================
-7. SCRIPT 3 : ACTIVATION DU RDP POUR LE GROUPE
-powershell
-Copier le code
-Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" `
--Name "fDenyTSConnections" -Value 0
+                    -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
+                    -ValueName "LogonScript" `
+                    -Type String `
+                    -Value $ScriptPath
+```
+---
+## 3️⃣ Activation du RDP pour le groupe Students
 
+```powershell
+Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
 secedit /export /cfg C:\secpol.cfg
-# Modifier le fichier pour inclure Students dans SeRemoteInteractiveLogonRight
+# Ajouter "Students" à SeRemoteInteractiveLogonRight
 secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
-==============================================================
-8. TESTS
-UTILISATEURS : Etudiant1 / Etudiant2 (membres de Students)
-✔ Le lecteur Z: apparaît automatiquement
-✔ Le dossier partagé est accessible
-✔ Le RDP fonctionne
+```
+---
 
-UTILISATEUR NON MEMBRE DU GROUPE
-✘ Aucun lecteur Z:
-✘ Pas d’accès RDP
+# ✅ Vérifications
 
-==============================================================
-9. COMMANDES POWERSHELL UTILES
-Lister les GPO :
-Get-GPO -All
+### ✔ Connexion avec Etudiant1 ou Etudiant2 :
+- Le lecteur Z: est mappé vers :  
+  `\\DC300151347-00\SharedResources`  
+- Le RDP fonctionne  
 
-Voir une GPO :
-Get-GPO -Name "MapSharedFolder"
+### ❌ Connexion avec un utilisateur hors du groupe :
+- Pas d’accès RDP  
+- Aucun lecteur réseau  Commandes PowerShell utiles
 
-Lier une GPO à une OU :
-New-GPLink -Name "MapSharedFolder" -Target "OU=Students,DC=..."
+---
+# Commandes Pwershell utiles
 
-Lister utilisateurs :
-Get-ADUser -Filter *
+| Action | Commande |
+|--------|----------|
+| Lister toutes les GPO | `Get-GPO -All` |
+| Afficher une GPO spécifique | `Get-GPO -Name "MapSharedFolder"` |
+| Lier une GPO à une OU | `New-GPLink -Name "MapSharedFolder" -Target "OU=Students,DC=..."` |mappé
+  
+---
+# Points d<apprentissage 
+ 
+- Administration d’Active Directory via PowerShell  
+- Création et gestion centralisée des objets AD  
+- Déploiement automatisé des ressources via GPO  
+- Sécurisation des accès avec les groupes AD et RDP  
+- Validation des stratégies dans un environnement de domaine  
+        
+---
 
-Lister groupes :
-Get-ADGroup -Filter *
+# Structure du depot
+```
+300151347/
+├── README.md
+├── utilisateurs1.ps1
+├── utilisateurs2.ps1
+├── utilisateurs3.ps1
+└── images/
+    └── .gitkeep
+```
 
-==============================================================
-10. CONCLUSION
-Ce laboratoire m’a permis de comprendre le fonctionnement des objets AD et
-l’automatisation de tâches via PowerShell et GPO.
+---
 
-L’utilisation combinée des scripts et des stratégies rend l’administration
-Windows plus efficace, centralisée et sécurisée.    
+# Conclusion
+Ce laboratoire m’a permis de maîtriser la gestion des objets Active Directory et l’automatisation des tâches administratives via PowerShell et GPO.  
+J’ai pu mettre en pratique la création d’un partage réseau, la configuration d’un GPO, ainsi que l’accès distant (RDP) dans un environnement Active Directory complet.

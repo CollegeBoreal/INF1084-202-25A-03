@@ -26,7 +26,8 @@ Mappage automatique du lecteur Z:
 Liaison avec l'OU Students
 
 🚀 Commandes utiles
-powershell
+```powershell
+
 # Vérifier un utilisateur AD
 Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
 
@@ -36,6 +37,7 @@ Import-Module GroupPolicy
 
 # Tester le partage
 Get-SmbShare -Name "SharedResources"
+```
 ⚠️ Notes importantes
 Exécuter les scripts PowerShell en tant qu'administrateur
 

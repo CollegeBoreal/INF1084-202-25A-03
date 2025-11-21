@@ -1,23 +1,38 @@
+ğŸˆ Descriptn
 
-## í»©ï¸ Descriptn
-Ce projet contient 4 scripts PowerShell pour apprendre Ã  manipuler des utilisateurs simulÃ©s.
+Ce projet consiste en une sÃ©rie de scripts PowerShell pour la gestion et la manipulation de donnÃ©es d'utilisateurs simulÃ©s. Les scripts dÃ©montrent diverses opÃ©rations courantes en administration systÃ¨me.
+## í³  Fichiers du Projet
+â• utilisateurs1.ps1` - CrÃ©e des utilisateurs
+â• utilisateurs2.ps1` - GÃ¨re les groupes  
+â• utilisateurs3.ps1` - Filtre les utilisateurs
+â• utilisteurs4.ps1` - Exporte/importe en CSV
 
-## í·‚ï¸ Fichiers du Projet
-- `í³„ utilisateurs1.ps1` - CrÃ©e des utilisateurs
-- `í³„ utilisateurs2.ps1` - GÃ¨re les groupes  
-- `í³„ utilisateurs3.ps1` - Filtre les utilisateurs
-- `í³„ utilisteurs4.ps1` - Exporte/importe en CSV
+
+
+
+## í³ Fichiers du Projet
+
+â€¢ `utilisateurs1.ps1` - CrÃ©e des utilisateurs
+â€¢ `utilisateurs2.ps1` - GÃ¨re les groupes  
+â€¢ `utilisateurs3.ps1` - Filtre les utilisateurs
+â€¢ `utilisateurs4.ps1` - Exporte/importe en CSV
+â€¢ `miniprojet.ps1` - Projet complet
 
 ## í±¨â€í¿« Comment Utiliser
 
-### 1. í·‘â€í²¼ Premier Script : utilisateurs1.ps1
-**Objectif** : CrÃ©er 5 utilisateurs fictifs
+### 1. Premier Script : utilisateurs1.ps1
+**Objectif** : CrÃ©er 5 utilisateurs de base
 
-**Ã€ faire** :
-- â–¶ï¸ ExÃ©cutez le script dans PowerShell:
+**A faire** :
+- â–¶ï¸ ExÃ©cutez le script suivant dans PowerShell:
 ![Capture de code de script 1](images/script1.jpg) 
 On aura le resultat suivant:
 ![Capture de l'exÃ©cution du Script 1](images/boreal.jpg "RÃ©sultat de utilisateurs1.ps1")
 *
-# íº€ Gestion d'Utilisateurs - Exercice PowerShell
-
+### 2. Deuxieme Script : utilisateurs2.ps1
+**Objectif** : Creer et grer les groupes
+**A faire** :
+- â–¢â–¢ Executez le script suivant dans PowerShell:
+![Capture de code de script 2](images/script2.jpg)
+On aura le resultat suivant:
+![Capture de l'execution du script 2](images/execution_de_script 2)

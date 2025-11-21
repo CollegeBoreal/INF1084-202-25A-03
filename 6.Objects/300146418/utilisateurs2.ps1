@@ -10,12 +10,12 @@ if (-not (Get-GPO -Name $GPOName -ErrorAction SilentlyContinue)) {
 $netbiosName = (Get-ADDomain).NetBIOSName
 
 # Lier la GPO à une OU spécifique (ex: "Students")
-$OU = "OU=Students,DC=$netbiosName,DC=local"
+$OU = "OU=Students,DC=DC300146418-00,DC=local"
 New-GPLink -Name $GPOName -Target $OU -Enforced:$false
 
 # Définir les variables pour le lecteur réseau
 $DriveLetter = "Z:"
-$SharePath = "\\$netbiosName\SharedResources"
+$SharePath = "\\DC300146418-00\SharedResources"
 
 # Créer le dossier du script
 $ScriptFolder = "C:\Scripts"

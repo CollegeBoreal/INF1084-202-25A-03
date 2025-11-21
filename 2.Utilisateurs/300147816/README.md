@@ -103,7 +103,7 @@ On aura le résultat suivant:
 ![Capture de l'execution du script 5](images/execution_de_script5.jpg)
 ![Capture de l'execution du script 5](images/miniprojet2.jpg)
 
-- Résultats Obtenu:
+**Résultats Obtenu:**
 
 🧨 Statistiques des Groupes: 
 
@@ -115,9 +115,9 @@ On aura le résultat suivant:
 
 🧨 Fichiers Générés:
 
-C:\Temp\UsersSimules.csv - Liste complète des utilisateurs
+• C:\Temp\UsersSimules.csv - Liste complète des utilisateurs
 
-C:\Temp\Etudiants2025.csv - Groupe des étudiants 2025
+• C:\Temp\Etudiants2025.csv - Groupe des étudiants 2025
 
 ## Commandes PowerShell Utilisées
 
@@ -131,7 +131,7 @@ C:\Temp\Etudiants2025.csv - Groupe des étudiants 2025
 | `ForEach-Object` | Itération sur les collections |
 
 
-(⓿_⓿) Instructions d'Exécution
+(⓿_⓿) **Instructions d'Exécution**
 
 • Prérequis : PowerShell 5.0 ou supérieur
 
@@ -150,12 +150,12 @@ C:\Temp\Etudiants2025.csv - Groupe des étudiants 2025
 
 🎀🎀 Objectifs de mon travail:
 
-En faisant ce travail, j'ai appris a :
+En faisant ce travail, j'ai appris:
 
-• Maîtrise de la manipulation d'objets PowerShell
+• La maîtrise de la manipulation d'objets PowerShell
 
-• Import/Export de données structurées
+• L'Import/Export de données structurées
 
-• Filtrage et recherche avancée
+• Le filtrage et la recherche avancée
 
-• Gestion des groupes d'utilisateurs
+• La gestion des groupes d'utilisateurs

@@ -121,3 +121,8 @@ See log %windir%\security\logs\scesrv.log for detail info.
 ```
 <img width="969" height="70" alt="image" src="https://github.com/user-attachments/assets/145ab3f5-1cd5-4141-966f-976cbd180b6b" />
 
+
+
+
+verification : 
+NetBios : DC300141550

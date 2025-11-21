@@ -50,9 +50,9 @@ foreach ($id in $GROUPES) {
     $FILE = "$id/README.md"
     $FOLDER = "$id/images"
 
-    $OK = "| $i | [$id](../$FILE) :busts_in_silhouette: $URL1 - $URL2 | :heavy_check_mark: | :x: |"
-    $FULL_OK = "| $i | [$id](../$FILE) :busts_in_silhouette: $URL1 - $URL2 | :heavy_check_mark: | :heavy_check_mark: |"
-    $KO = "| $i | [$id](../$FILE) :busts_in_silhouette: $URL1 - $URL2 | :x: | :x: |"
+    $OK = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :heavy_check_mark: | :x: |"
+    $FULL_OK = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :heavy_check_mark: | :heavy_check_mark: |"
+    $KO = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :x: | :x: |"
 
     if (Test-Path $FILE) {
         $ACTUAL_NAME = Split-Path -Leaf (Resolve-Path $FILE)

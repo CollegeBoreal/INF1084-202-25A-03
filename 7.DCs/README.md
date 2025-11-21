@@ -1,5 +1,9 @@
 # 🎛️ DC Domain Controler
 
+|:hash: | Fonctions                                          |
+|-------|:---------------------------------------------------|
+| :one: | [:tada: Participation](.scripts/Participation.md)  |
+
 ## :books: Travail à soumettre :
 
 - [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)

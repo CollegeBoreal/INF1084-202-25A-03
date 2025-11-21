@@ -103,9 +103,9 @@ On aura le r√©sultat suivant:
 ![Capture de l'execution du script 5](images/execution_de_script5.jpg)
 ![Capture de l'execution du script 5](images/miniprojet2.jpg)
 
-Ì≥ä R√©sultats Obtenu:
+- R√©sultats Obtenu:
 
-Statistiques des Groupes: 
+üß® Statistiques des Groupes: 
 
 ‚Åé GroupeFormation : 5 utilisateurs
 
@@ -113,33 +113,38 @@ Statistiques des Groupes:
 
 ‚Åé Etudiants2025 : 5 utilisateurs
 
-Fichiers G√©n√©r√©s:
+üß® Fichiers G√©n√©r√©s:
+
 C:\Temp\UsersSimules.csv - Liste compl√®te des utilisateurs
 
 C:\Temp\Etudiants2025.csv - Groupe des √©tudiants 2025
 
-## Ìª†Ô∏è Commandes PowerShell Utilis√©es
+## Commandes PowerShell Utilis√©es
 
 | Commande | Utilisation |
 |----------|-------------|
-| Ì¥ß `PSCustomObject` | Cr√©ation d'objets personnalis√©s |
-| Ì¥ç `Where-Object` | Filtrage des donn√©es |
-| Ì≥ä `Format-Table` | Affichage tabulaire |
-| Ì≤æ `Export-Csv` | Export vers CSV |
-| Ì≥• `Import-Csv` | Import depuis CSV |
-| Ì¥Ñ `ForEach-Object` | It√©ration sur les collections |
-
+| `PSCustomObject` | Cr√©ation d'objets personnalis√©s |
+| `Where-Object` | Filtrage des donn√©es |
+| `Format-Table` | Affichage tabulaire |
+| `Export-Csv` | Export vers CSV |
+| `Import-Csv` | Import depuis CSV |
+| `ForEach-Object` | It√©ration sur les collections |
 
 
 (‚ìø_‚ìø) Instructions d'Ex√©cution
+
 ‚Ä¢ Pr√©requis : PowerShell 5.0 ou sup√©rieur
 
 ‚Ä¢ Droits : Ex√©cution avec droits suffisants pour √©crire dans C:\Temp
 
 ‚Ä¢ Ex√©cution : Lancer les scripts dans l'ordre : en tapant les commandes suivantes:
+
 .\utilisateurs1.ps1
+
 .\utilisateurs2.ps1
+
 .\utilisateurs3.ps1
+
 .\utilisateurs4.ps1
 .\Mini-projet_300147816.ps1
 

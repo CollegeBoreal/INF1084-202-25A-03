@@ -5,7 +5,18 @@ Ce projet consiste en une sÃ©rie de scripts PowerShell pour la gestion et la man
 â• utilisateurs1.ps1` - CrÃ©e des utilisateurs
 â• utilisateurs2.ps1` - GÃ¨re les groupes  
 â• utilisateurs3.ps1` - Filtre les utilisateurs
-â•utilisteurs4.ps1` - Exporte/importe en CSV
+â• utilisteurs4.ps1` - Exporte/importe en CSV
+
+
+
+
+## í³ Fichiers du Projet
+
+â€¢ `utilisateurs1.ps1` - CrÃ©e des utilisateurs
+â€¢ `utilisateurs2.ps1` - GÃ¨re les groupes  
+â€¢ `utilisateurs3.ps1` - Filtre les utilisateurs
+â€¢ `utilisateurs4.ps1` - Exporte/importe en CSV
+â€¢ `miniprojet.ps1` - Projet complet
 
 ## í±¨â€í¿« Comment Utiliser
 

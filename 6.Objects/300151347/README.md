@@ -1,0 +1,1 @@
+ ConclusionCe travail m’a permis de comprendre en profondeur le fonctionnement des objets AD et l’automatisation de tâches via PowerShell et GPO.La combinaison de scripts et de stratégies rend l’administration Windows plus efficace, sécurisée et centralisée.

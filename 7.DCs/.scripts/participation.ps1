@@ -34,13 +34,25 @@ $s = 0
 
 # Loop through student IDs
 foreach ($id in $GROUPES) {
-    # $URL = "[{0}](https://github.com/{0}) <image src='https://avatars0.githubusercontent.com/u/{1}?s=460&v=4' width=20 height=20></image>" -f $IDS[$i], $AVATARS[$i]
+
+    $first, $second = $id -split '-'
+
+    # Convert to int
+    $first = [int]$first
+    $second = [int]$second
+
+    $i1 = [Array]::IndexOf($ETUDIANTS, $first)
+    $i2 = [Array]::IndexOf($ETUDIANTS, $second)
+
+    $URL1 = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i1])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i1]))"
+    $URL2 = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i2])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i2]))"
+
     $FILE = "$id/README.md"
     $FOLDER = "$id/images"
 
-    $OK = "| $i | [$id](../$FILE) :point_right: $URL | :heavy_check_mark: | :x: |"
-    $FULL_OK = "| $i | [$id](../$FILE) :point_right: $URL | :heavy_check_mark: | :heavy_check_mark: |"
-    $KO = "| $i | [$id](../$FILE) :point_right: $URL | :x: | :x: |"
+    $OK = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :heavy_check_mark: | :x: |"
+    $FULL_OK = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :heavy_check_mark: | :heavy_check_mark: |"
+    $KO = "| $i | [$id](../$FILE) :point_right: $URL1 :busts_in_silhouette: $URL2 | :x: | :x: |"
 
     if (Test-Path $FILE) {
         $ACTUAL_NAME = Split-Path -Leaf (Resolve-Path $FILE)

@@ -19,5 +19,5 @@ foreach ($group in $Groups.Keys) {
     $Groups[$group] | ForEach-Object { 
         Write-Host "$($_.Prenom) $($_.Nom) ($($_.Login))"
     }
-    Write-Host ""
+   
 }

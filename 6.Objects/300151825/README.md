@@ -211,3 +211,17 @@ J'ai verifié que :
 .Aucun besoin d’interface graphique
 .Tout peut être reproduit sur Hyper-V pour plusieurs VMs
 ```
+---
+
+```powershell
+Pour tester la connexion
+Windows + R
+
+\\10.7.236.217\SharedResources
+
+Nom d'utilisateur:DC300151825-00\Etudiant1
+Mot de pass: Pass123!
+```
+
+
+

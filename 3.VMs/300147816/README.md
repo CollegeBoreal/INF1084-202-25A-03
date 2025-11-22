@@ -1,6 +1,6 @@
 Voila mon README -300147816-
 
-**Etape 01:** J'ai renommé le nom de serveur:
+**Etape 01:** J'ai renomme le nom de serveur:
 ```powershell
 Rename-Computer -NewName "DC300147816" -Restart
 ```
@@ -10,11 +10,11 @@ Le serveur va se redemarrer
 ```powershell
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 ```
-J'ai �x�cuté la commande suivante pour vérifier l'installation:
+J'ai execute la commande suivante pour vérifier l'installation:
 
 ![Ma Capture](images/MM.PNG)
  
-**Etape 03:** J'ajoute une nouvelle forêt a mon Active Directory:
+**Etape 03:** J'ajoute une nouvelle foret a mon Active Directory:
 ```powershell
 Install-ADDSForest `
     -DomainName "DC300147816-00.local" `
@@ -26,17 +26,18 @@ Install-ADDSForest `
 Enfin, je peux me connecter a mon domaine avec le nom d'utilisateur suivant: DC300147816-00\Administrator et le mot de passe de la machine virtuelle: INFRA@2024
 
 ![Ma Capture](images/activedirectory.PNG)
-Donc l'image confirme que le service est bien installé.
+Donc l'image confirme que le service est bien installe.
 
-**Etape 04:** Je v�rifie que mon controlleur de domaine est bien installé en tapant les commandes suivantes:
+**Etape 04:** Je verifie que mon controlleur de domaine est bien installé en tapant les commandes suivantes:
 ```powershell
 Get-ADDomain
 ```
-On aura le résultat suivant:
+On aura le resultat suivant:
 
 ![Ma Capture](images/controldomaine.PNG)
  ```powershell
 Get-ADForest
 ```
-On aura le résultat suivant:
+On aura le resultat suivant:
+
 ![Ma Capture](images/moncontroldomaine.PNG)

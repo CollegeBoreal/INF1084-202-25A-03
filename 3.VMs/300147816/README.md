@@ -20,7 +20,7 @@ Install-ADDSForest `
     -DomainName "DC300147816-00.local" `
     -DomainNetbiosName "DC300147816-00" `
     -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "Canada***karim33!" -AsPlainText -Force) `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "Infra@2024" -AsPlainText -Force) `
     -Force
 ```
 Enfin, je peux me connecter a mon domaine avec le nom d'utilisateur suivant: DC300147816-00\Administrator et le mot de passe de la machine virtuelle: INFRA@2024

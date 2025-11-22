@@ -14,32 +14,17 @@ Numéro étudiant : 300146418
 ## Fichiers créés pour le TP
 
 ### services1.ps1
-Write-Host "Liste des services liés à Active Directory..." -ForegroundColor Cyan
-Get-Service | Where-Object { $_.DisplayName -like "*Directory*" -or $_.Name -match "NTDS|ADWS|DFSR|kdc|Netlogon|IsmServ" } | Sort-Object DisplayName
-Write-Host "Vérification de l'état des services principaux AD..." -ForegroundColor Cyan
-Get-Service -Name NTDS, ADWS, DFSR, KDC, Netlogon, IsmServ
+- **But :** Lister tous les services liés à Active Directory et vérifier l’état des services principaux (NTDS, ADWS, DFSR, KDC, Netlogon, IsmServ).
 
 ### services2.ps1
-Get-EventLog -LogName "Directory Service" -Newest 20
-Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogon"}
-Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
+- **But :** Afficher les logs récents des services Active Directory et du système, afin de vérifier leur fonctionnement et détecter d’éventuelles erreurs.
 
 ### services3.ps1
-$exportPath = "C:\Logs\ADLogs.csv"
-if (-not (Test-Path "C:\Logs")) { New-Item -ItemType Directory -Path "C:\Logs" }
-Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path $exportPath -NoTypeInformation
-Write-Host "Événements exportés dans $exportPath" -ForegroundColor Green
+- **But :** Exporter les événements récents du service Directory Service dans un fichier CSV pour analyse et suivi.
 
 ### services4.ps1
-Write-Host "Arrêt du service DFSR..." -ForegroundColor Cyan
-Stop-Service -Name DFSR
-Write-Host "État après arrêt :" -ForegroundColor Yellow
-(Get-Service -Name DFSR).Status
-Write-Host "Redémarrage du service DFSR..." -ForegroundColor Cyan
-Start-Service -Name DFSR
-Write-Host "État après redémarrage :" -ForegroundColor Yellow
-(Get-Service -Name DFSR).Status
-
+- **But :** Arrêter et redémarrer le service DFSR, puis vérifier son état pour s’assurer que le service fonctionne correctement après le redémarrage.
+---
 ## Étapes d’exécution
 1. Ouvrir PowerShell en mode administrateur.
 2. Se rendre dans le dossier TP :

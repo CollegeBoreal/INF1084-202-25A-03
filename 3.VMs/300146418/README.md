@@ -28,7 +28,7 @@ Install-ADDSForest `
     -DomainName "DC300146418-00.local" `
     -DomainNetbiosName "DC300146418-00" `
     -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "Ikram@2025" -AsPlainText -Force) `
+    -SafeModeAdministratorPassword (ConvertTo-SecureString "Ikram123" -AsPlainText -Force) `
     -Force
 ```
 
@@ -69,7 +69,7 @@ ManagedBy                          :
 Name                               : DC300146418-00
 NetBIOSName                        : DC300146418-00
 ObjectClass                        : domainDNS
-ObjectGUID                         : f4ab6369-7629-4201-adaa-941b88b15e17
+ObjectGUID                         : 462da5dc-4e4f-4ec6-953c-734deb8c90f8
 ParentDomain                       :
 PDCEmulator                        : DC300146418.DC300146418-00.local
 PublicKeyRequiredPasswordRolling   : True
@@ -92,7 +92,7 @@ Get-ADForest
     <summary>Output</summary>
     
 ```powershell
-ApplicationPartitions : {DC=DomainDnsZones,DC=DC300146418-00,DC=local, DC=ForestDnsZones,DC=DC300146418-00,DC=local}
+ApplicationPartitions : {DC=ForestDnsZones,DC=DC300146418-00,DC=local, DC=DomainDnsZones,DC=DC300146418-00,DC=local}
 CrossForestReferences : {}
 DomainNamingMaster    : DC300146418.DC300146418-00.local
 Domains               : {DC300146418-00.local}

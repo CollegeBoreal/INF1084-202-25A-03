@@ -17,3 +17,4 @@ Get-ADUser -Filter "Name -like 'a*'" -Server $domainName -Properties Name, SamAc
 # Lister tous les utilisateurs
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName |
     Select-Object Name, SamAccountName
+ 

@@ -1,4 +1,4 @@
-Set-ADUser -Identity "alice.dupont" `
+Set-ADUser -Identity "alice.adupont" `
            -EmailAddress "alice.dupont@exemple.com" `
            -GivenName "Alice-Marie" `
            -Credential $cred

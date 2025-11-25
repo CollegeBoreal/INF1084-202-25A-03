@@ -1,1 +1,1 @@
-Enable-ADAccount -Identity "alice.dupont" -Credential $cred
+Enable-ADAccount -Identity "adupont" -Credential $cred

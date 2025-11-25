@@ -1,1 +1,1 @@
-Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
+Remove-ADUser -Identity "adupont" -Confirm:$false -Credential $cred

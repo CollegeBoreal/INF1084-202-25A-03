@@ -1,24 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-"OU","Login","Prenom","Nom"
-"Stagiaires","adupont","Alice","Dupont"
-"Stagiaires","slemoine","Sarah","Lemoine"
-"Stagiaires","kbenali","Karim","Benali"
-"Stagiaires","isidhom","Ikram","Sidhom"
-"Stagiaires","sdiarra","Siga","Diarra"
-=======
-"Login","Prenom","OU","Nom"
-"adupont","Alice","Stagiaires","Dupont"
-"slemoine","Sarah","Stagiaires","Lemoine"
-"kbenali","Karim","Stagiaires","Benali"
-"isidhom","Ikram","Stagiaires","Sidhom"
-"sdiarra","Siga","Stagiaires","Diarra"
->>>>>>> e531e11938a31f19675ed2afb245165b0b97d956
-=======
-"OU","Prenom","Nom","Login"
-"Stagiaires","Alice","Dupont","adupont"
-"Stagiaires","Sarah","Lemoine","slemoine"
-"Stagiaires","Karim","Benali","kbenali"
-"Stagiaires","Ikram","Sidhom","isidhom"
-"Stagiaires","Siga","Diarra","sdiarra"
->>>>>>> 9080fc375a774666cb131bd58596ff16fdad9991
+"OU","Nom","Login","Prenom"
+"Stagiaires","Dupont","adupont","Alice"
+"Stagiaires","Lemoine","slemoine","Sarah"
+"Stagiaires","Benali","kbenali","Karim"
+"Stagiaires","Sidhom","isidhom","Ikram"
+"Stagiaires","Diarra","sdiarra","Siga"

@@ -1,3 +1,5 @@
+
+Import-Module ActiveDirectory
 New-ADUser -Name "Alice Dupont" `
            -GivenName "Alice" `
            -Surname "Dupont" `

@@ -18,7 +18,7 @@ INF1084 (202) - Introduction à l'administration des systèmes
 | :eight: |10-nov  | [7.DCs](7.DCs) | [🎉](7.DCs/.scripts/Participation.md) 👉 â Noter :x: |  
 
 
-# :books: References
+# :books: References :zero:
 
 - [ ] Comment vérifier que le `commit` a été fait par le `CLI`
       

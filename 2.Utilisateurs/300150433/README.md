@@ -139,29 +139,6 @@ Le fichier CSV est importé et tous les utilisateurs importés sont ajoutés dan
 
 ---
 
-# 🏗 5. Mini-projet (optionnel)
-
-Si demandé, tu peux ajouter ici ton script utilisateurs5.ps1 :
-
-* Création OU Promo2025
-* Création groupe Etudiants2025
-* Ajout des utilisateurs
-* Export final
-
-*(Ajoute-le ici si tu veux que je l’intègre.)*
-
----
-
-# 📚 Référence : exécution des scripts PowerShell
-
-| Méthode          | Description                     | Conserve les variables ? |
-| ---------------- | ------------------------------- | ------------------------ |
-| `. .\script.ps1` | Dot-sourcing                    | ✔ Oui                    |
-| `.\script.ps1`   | Exécution simple                | ❌ Non                    |
-| `Invoke-Command` | Local ou distant                | ↔ Selon contexte         |
-| `Import-Module`  | Charger fonctions réutilisables | ✔ Oui                    |
-
----
 
 # ✅ Conclusion
 

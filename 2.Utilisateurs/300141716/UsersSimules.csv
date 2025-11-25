@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Nom","OU","Prenom","Login"
 "Dupont","Stagiaires","Alice","adupont"
 "Lemoine","Stagiaires","Sarah","slemoine"
@@ -13,3 +14,11 @@
 "Stagiaires","isidhom","Sidhom","Ikram"
 "Stagiaires","sdiarra","Diarra","Siga"
 >>>>>>> e531e11938a31f19675ed2afb245165b0b97d956
+=======
+"OU","Nom","Login","Prenom"
+"Stagiaires","Dupont","adupont","Alice"
+"Stagiaires","Lemoine","slemoine","Sarah"
+"Stagiaires","Benali","kbenali","Karim"
+"Stagiaires","Sidhom","isidhom","Ikram"
+"Stagiaires","Diarra","sdiarra","Siga"
+>>>>>>> 9080fc375a774666cb131bd58596ff16fdad9991

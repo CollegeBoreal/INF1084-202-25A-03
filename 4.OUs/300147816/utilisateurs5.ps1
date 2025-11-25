@@ -1,1 +1,1 @@
-Disable-ADAccount -Identity "alice.dupont" -Credential $cred
+Disable-ADAccount -Identity "alice.adupont" -Credential $cred

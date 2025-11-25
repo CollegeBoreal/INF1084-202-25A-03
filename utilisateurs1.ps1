@@ -4,6 +4,5 @@
 Import-Module ActiveDirectory
 
 # Vérifier le domaine et les DC
-Get-ADDomain -Server $DC300147816.local
-Get-ADDomainController -Filter * -Server $DC300147816.local
-
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName

@@ -1,10 +1,8 @@
 
-# vos informations
+#vos informations
 $studentNumber = 300147816
-<<<<<<< HEAD
-=======
+
 $studentInstance = "0"
->>>>>>> ff3ca12a08a659e48aadf4faab6459e9f433be89
 
 # les noms respectifs
 $domainName = "DC300147816.local"

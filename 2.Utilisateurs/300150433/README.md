@@ -1,27 +1,32 @@
-### 📘 TP : Simulation Active Directory avec PowerShell
+# 📘 TP : Simulation Active Directory avec PowerShell
 
-Étudiant : 300150433 — Zakaria Djellouli
+**Étudiant : 300150433 — Zakaria Djellouli**
+**Cours : INF1084 — Services Réseaux**
+**Session : 2025**
 
-🎯 Objectifs du TP
+---
+
+## 🎯 Objectifs du TP
 
 Ce travail pratique a pour but de :
 
-Comprendre la structure Active Directory (utilisateurs, groupes, OUs).
-
-Manipuler des objets AD simulés via PowerShell.
-
-S’exercer aux cmdlets de filtrage, manipulation de données, et export CSV.
-
-Apprendre à structurer un mini-projet PowerShell.
+* Comprendre la structure Active Directory (utilisateurs, groupes, OUs).
+* Manipuler des objets AD simulés via PowerShell.
+* S’exercer aux cmdlets de filtrage, manipulation de données, et export CSV.
+* Apprendre à structurer un mini-projet PowerShell.
 
 Les scripts sont nommés selon le format requis :
-utilisateurs1.ps1 → utilisateurs4.ps1
+**utilisateurs1.ps1 → utilisateurs4.ps1**
 
-🟦 1. utilisateurs1.ps1 — Création d’utilisateurs simulés
-✔ Objectif
+---
+
+# 🟦 1. utilisateurs1.ps1 — Création d’utilisateurs simulés
+
+### ✔ Objectif
 
 Créer une liste d’utilisateurs sous forme de hashtable et les afficher.
 
+```powershell
 # Créer une liste d'utilisateurs simulés
 $Users = @(
     @{ Nom="Dupont";  Prenom="Alice";  Login="adupont";    OU="Stagiaires" },
@@ -35,16 +40,21 @@ $Users = @(
 $Users | ForEach-Object {
     "$($_.Prenom) $($_.Nom) - Login: $($_.Login) - OU: $($_.OU)"
 }
+```
 
-✔ Résultat
+### ✔ Résultat
 
 Les 5 utilisateurs s’affichent correctement, dont 2 ajoutés pour l’exercice.
 
-🟩 2. utilisateurs2.ps1 — Création et gestion de groupes
-✔ Objectif
+---
+
+# 🟩 2. utilisateurs2.ps1 — Création et gestion de groupes
+
+### ✔ Objectif
 
 Créer des groupes, ajouter des utilisateurs selon leur OU.
 
+```powershell
 # Créer des groupes
 $Groups = @{
     "GroupeFormation" = @()
@@ -68,16 +78,21 @@ foreach ($group in $Groups.GetEnumerator()) {
         Write-Host " - $($member.Prenom) $($member.Nom) - Login: $($member.Login)"
     }
 }
+```
 
-✔ Résultat
+### ✔ Résultat
 
-Tous les stagiaires sont inclus dans GroupeFormation.
+Tous les stagiaires sont inclus dans **GroupeFormation**.
 
-🟨 3. utilisateurs3.ps1 — Filtres et requêtes
-✔ Objectif
+---
+
+# 🟨 3. utilisateurs3.ps1 — Filtres et requêtes
+
+### ✔ Objectif
 
 Appliquer des filtres PowerShell : par lettre, par OU, par caractère dans le prénom.
 
+```powershell
 # Noms commençant par B
 $Users | Where-Object { $_.Nom -like "B*" }
 
@@ -86,16 +101,21 @@ $Users | Where-Object { $_.OU -eq "Stagiaires" }
 
 # Prénoms contenant 'a' (ignore case)
 $Users | Where-Object { $_.Prenom -match "(?i)a" }
+```
 
-✔ Résultat
+### ✔ Résultat
 
 Le script affiche les utilisateurs correspondant à chaque filtre.
 
-🟦 4. utilisateurs4.ps1 — Export / Import CSV et groupe ImportGroupe
-✔ Objectif
+---
+
+# 🟦 4. utilisateurs4.ps1 — Export / Import CSV et groupe ImportGroupe
+
+### ✔ Objectif
 
 Exporter les utilisateurs, les réimporter et créer un groupe basé sur le CSV.
 
+```powershell
 # Export CSV
 $Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
 
@@ -113,41 +133,48 @@ foreach ($user in $ImportedUsers) {
 $Groups["ImportGroupe"] | ForEach-Object {
     Write-Host "$($_.Prenom) $($_.Nom) - Login: $($_.Login)"
 }
+```
 
-✔ Résultat
+### ✔ Résultat
 
-Le fichier CSV est importé et tous les utilisateurs importés sont ajoutés dans ImportGroupe.
+Le fichier CSV est importé et tous les utilisateurs importés sont ajoutés dans **ImportGroupe**.
 
-🏗 5. Mini-projet (optionnel)
+---
+
+# 🏗 5. Mini-projet (optionnel)
 
 Si demandé, tu peux ajouter ici ton script utilisateurs5.ps1 :
 
-Création OU Promo2025
+* Création OU Promo2025
+* Création groupe Etudiants2025
+* Ajout des utilisateurs
+* Export final
 
-Création groupe Etudiants2025
+*(Ajoute-le ici si tu veux que je l’intègre.)*
 
-Ajout des utilisateurs
+---
 
-Export final
+# 📚 Référence : exécution des scripts PowerShell
 
-(Ajoute-le ici si tu veux que je l’intègre.)
+| Méthode          | Description                     | Conserve les variables ? |
+| ---------------- | ------------------------------- | ------------------------ |
+| `. .\script.ps1` | Dot-sourcing                    | ✔ Oui                    |
+| `.\script.ps1`   | Exécution simple                | ❌ Non                    |
+| `Invoke-Command` | Local ou distant                | ↔ Selon contexte         |
+| `Import-Module`  | Charger fonctions réutilisables | ✔ Oui                    |
 
-📚 Référence : exécution des scripts PowerShell
-Méthode	Description	Conserve les variables ?
-. .\script.ps1	Dot-sourcing	✔ Oui
-.\script.ps1	Exécution simple	❌ Non
-Invoke-Command	Local ou distant	↔ Selon contexte
-Import-Module	Charger fonctions réutilisables	✔ Oui
-✅ Conclusion
+---
+
+# ✅ Conclusion
 
 Ce TP m’a permis de :
 
-Manipuler des objets AD simulés avec PowerShell
-
-Utiliser des filtres avancés (-like, -match, conditions…)
-
-Exporter et importer des données en CSV
-
-Structurer un mini-projet complet autour des utilisateurs et groupes
+* Manipuler des objets AD simulés avec PowerShell
+* Utiliser des filtres avancés (`-like`, `-match`, conditions…)
+* Exporter et importer des données en CSV
+* Structurer un mini-projet complet autour des utilisateurs et groupes
 
 Tous les scripts fonctionnent et respectent les consignes du travail.
+
+---
+

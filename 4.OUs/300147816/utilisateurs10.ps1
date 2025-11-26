@@ -3,7 +3,7 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
     New-ADOrganizationalUnit -Name "Students" -Path "DC=$DC300147816,DC=local"
 }
 
-Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$DC300147816VM,DC=local" `
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$DC300147816,DC=local" `
               -TargetPath "OU=Students,DC=$DC300147816,DC=local" `
               -Credential $cred
 

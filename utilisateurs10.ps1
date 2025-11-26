@@ -1,13 +1,23 @@
-$netbiosName = "DC300147816"
 
-# Vérifier si l'OU existe
+# Variables
+$domain = "DC300147816"
+$cred = Get-Credential
+
+# Vérifier si l'OU Students existe
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$domain,DC=local"
+    Write-Host "OU 'Students' créée."
+} else {
+    Write-Host "OU 'Students' existe déjà."
 }
 
-# Déplacer l'utilisateur
-Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
-              -TargetPath "OU=Students,DC=$netbiosName,DC=local"
+# Déplacer l'utilisateur Alice Dupont
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$domain,DC=local" `
+              -TargetPath "OU=Students,DC=$domain,DC=local" `
+              -Credential $cred
 
-# Vérifier le déplacement - CORRECTION : utiliser "adupont" 
+Write-Host "Utilisateur déplacé."
+
+# Vérifier le déplacement
 Get-ADUser -Identity "adupont" | Select-Object Name, DistinguishedName
+

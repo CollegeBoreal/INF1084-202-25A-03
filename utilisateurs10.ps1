@@ -1,3 +1,4 @@
+$netbiosName = "DC300147816VM"
 # Vérifier si l'OU existe
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
     New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"

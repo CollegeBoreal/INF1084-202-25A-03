@@ -8,4 +8,4 @@ Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
               -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
               
 
-Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
+Get-ADUser -Identity "alice.adupont" | Select-Object Name, DistinguishedName

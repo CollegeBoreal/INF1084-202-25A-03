@@ -81,7 +81,7 @@ Write-Host "TargetDomain: $TargetDomain"
 
 ```powershell
 # Exemple : trust bidirectionnel
-$Direction = "TwoWay"  # ou "OneWay"
+$directionArg = "TwoWay"  # ou "OneWay"
 
 # Construire les arguments netdom
 $argList = @(
@@ -92,9 +92,8 @@ $argList = @(
     "/UserD:$($credTarget.UserName)",
     "/PasswordD:$($credTarget.GetNetworkCredential().Password)",
     "/Add",
-    $Direction,
-    "/PasswordT:$trustPassword",
-    "/Verify"
+    $directionArg,
+    "/PasswordT:$trustPassword"
 )
 ```
 

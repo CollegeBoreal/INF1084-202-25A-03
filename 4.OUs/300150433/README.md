@@ -2,7 +2,6 @@
 
 Étudiant : Zakaria Djellouli  
 ID : 300150433  
-Cours : INF1084-202-25A-03 – Administration Windows Server  
 Date : 16 novembre 2025
 
 ---

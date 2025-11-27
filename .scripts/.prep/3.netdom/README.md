@@ -42,7 +42,69 @@ You have built a bridge between two separate security domains:
 
 Because the trust is **Two-Way**, users from either side can be granted permission to use files, applications, or services (like logging in to a computer) on the other side. This is a fundamental mechanism for enabling single sign-on and resource sharing across different network environments.
 
-## :two: How do I test it?
+
+## :o: What would be the CLI command to create the trust?
+
+The CLI command to create a trust like the one in your screenshot is **`netdom trust`**. Here's the specific command that would create your two-way realm trust:
+
+## Basic Command Structure
+
+```cmd
+netdom trust DC300098957-90.local /Domain:DC300098957-40.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+```
+
+## Detailed Breakdown
+
+- **`netdom trust`** - The main command for managing domain trusts
+- **`DC300098957-90.local`** - Your local domain (the one you're running the command from)
+- **`/Domain:DC300098957-40.local`** - The target MIT Kerberos realm
+- **`/UserD:administrator`** - Administrator account with privileges in your domain
+- **`/PasswordD:*`** - Prompts for the administrator password securely
+- **`/Add`** - Creates the trust relationship
+- **`/Realm`** - Specifies this is a Kerberos realm trust (not a Windows domain trust)
+- **`/TwoWay`** - Makes the trust bidirectional
+
+## Additional Common Parameters
+
+You might also need these based on your environment:
+
+```cmd
+netdom trust DC300098957-90.local /Domain:DC300098957-40.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay /Transitive:No /EnableSIDHistory:No
+```
+
+- **`/Transitive:No`** - Makes it non-transitive (common for realm trusts)
+- **`/EnableSIDHistory:No`** - Disables SID history (typically not used with realm trusts)
+- **`/Quarantine:No`** - If you need to disable SID filtering
+
+## Step-by-Step Process
+
+1. **Open Command Prompt as Administrator**
+2. **Run the command:**
+   ```cmd
+   netdom trust DC300098957-90.local /Domain:DC300098957-40.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+   ```
+3. **Enter the administrator password** when prompted
+4. **Verify the trust** was created:
+   ```cmd
+   nltest /trusted_domains
+   ```
+
+## Important Prerequisites
+
+- Run from a **Domain Controller** or machine with AD admin tools
+- Need **Domain Admin** privileges or delegation
+- The Kerberos realm (`DC300098957-40.local`) must be reachable via DNS
+- Corresponding trust configuration needed on the MIT Kerberos side
+
+## PowerShell Alternative (Windows Server 2012 R2 and later)
+
+```powershell
+New-ADTrust -Name "DC300098957-40.local" -Type Forest -Direction Bidirectional -ForestTransitive $false -TargetUserName administrator -TargetPassword (Read-Host -AsSecureString)
+```
+
+The `netdom trust` command is the standard way to create this type of trust relationship from the command line and would replicate the configuration shown in your GUI screenshot.
+
+## :ab: How do I test it?
 
 Excellent question. Testing the trust is crucial to ensure it's working correctly. Here are several methods to test the trust relationship you've created, ranging from simple to advanced.
 

@@ -82,7 +82,10 @@ Write-Host "TargetDomain: $TargetDomain"
 
 ```powershell
 # Exemple : trust bidirectionnel
-$directionArg = "TwoWay"  # ou "OneWay"
+$Direction = "TwoWay"  # ou "OneWay"
+
+# Déterminer la direction correctement
+$directionArg = if ($Direction -eq "TwoWay") { "/TWOWAY" } else { "/ONEDIRECTION" }
 
 # Construire les arguments netdom
 $argList = @(

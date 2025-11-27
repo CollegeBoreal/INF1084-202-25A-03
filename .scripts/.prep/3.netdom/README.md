@@ -55,8 +55,8 @@ Pour passer des **IP des VM → FQDN du domaine** et préparer le trust :
 
 ```powershell
 # Exemple : IP des DC
-$SourceIP = "10.0.0.5"
-$TargetIP = "10.0.0.6"
+$SourceIP = "10.7.236.149"  # (get-ADDomain).DNSRoot => DC300098957-40.local
+$TargetIP = "10.7.236.149"  # (get-ADDomain).DNSRoot => DC300098957-90.local
 
 # Récupérer le nom de machine / FQDN
 $SourceHost = [System.Net.Dns]::GetHostEntry($SourceIP).HostName

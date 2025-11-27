@@ -56,12 +56,6 @@ klist
 netdom trust DC300098957-90.local /Domain:DC300098957-40.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
-### Méthode PowerShell (sur un contrôleur de domaine) :
-```powershell
-Import-Module ActiveDirectory
-New-ADTrust -Name "DC300098957-40.local" -Type "MIT" -Direction "Bidirectional"
-```
-
 ## Outils Graphiques Alternatifs
 
 ### Console de Gération :

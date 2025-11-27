@@ -1,16 +1,11 @@
-# Charger les utilisateurs depuis utilisateur1.ps1
-. "$PSScriptRoot\utilisateurs1.ps1"
 
-# Cr�er des groupes
-$Groups = @{
-    "GroupeFormation" = @()
-    "ProfesseursAD"   = @()
-}
+Write-Host "Modification des utilisateurs..."
 
-# Ajouter tous les utilisateurs dont lOU = "Stagiaires" dans GroupeFormation (Exercice 2)
-$Groups["GroupeFormation"] = $Users | Where-Object { $_.OU -eq "Stagiaires" }
+Set-ADUser "alice.dupont" -Description "Employée de test" -Credential $cred
+Set-ADUser "marc.petit" -Department "Informatique" -Credential $cred
 
-# V�rifier
-Write-Host "=== Membres du GroupeFormation ===" -ForegroundColor Green
-$Groups["GroupeFormation"] | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
+Set-ADAccountPassword "alice.dupont" `
+  -NewPassword (ConvertTo-SecureString "NewPass123!" -AsPlainText -Force) `
+  -Reset `
+  -Credential $cred
 

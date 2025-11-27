@@ -1,10 +1,9 @@
+# utilisateurs3.ps1
+. .\bootstrap.ps1
 
-New-ADUser -Name "Alice Dupont" `
-           -GivenName "Alice" `
-           -Surname "Dupont" `
-           -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@$domainName" `
-           -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
-           -Enabled $true `
-           -Path "CN=Users,DC=$netbiosName,DC=local" `
-           -Credential $cred
+Write-Host "Désactivation d'utilisateurs..." -ForegroundColor Cyan
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred
+
+Write-Host "Réactivation d'utilisateurs..." -ForegroundColor Cyan
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred
+

@@ -1,6 +1,6 @@
 # Plan De Cours
 
-[:tada: Participation](.scripts/Participation.md) 
+[:tada: Participation](.scripts/Participation.md)
 
 ## :a: Github
 
@@ -15,7 +15,7 @@
 - [ ] Ajouter des images dans le répertoire `images`
 - [ ] Ajouter les images au fichier `README.md`
 
-:bulb: [Tutoriel sur GIT](https://github.com/CollegeBoreal/Tutoriels/tree/main/0.GIT)
+## :bulb: [Tutoriel sur GIT](https://github.com/CollegeBoreal/Tutoriels/tree/main/0.GIT)
 
 ## :b: Azure Education
 

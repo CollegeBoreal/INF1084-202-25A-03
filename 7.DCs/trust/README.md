@@ -77,3 +77,7 @@ domain.msc  # Active Directory Domains and Trusts
 - Permet le partage de ressources entre les environnements
 
 L'approbation bidirectionnelle permet maintenant aux utilisateurs des deux domaines d'accéder aux ressources de l'autre domaine en utilisant leur identité native.
+
+# :books: References
+
+- [ ] [NetDom examples](https://homeworks.it/Pdf/NetDom%20Examples.pdf)

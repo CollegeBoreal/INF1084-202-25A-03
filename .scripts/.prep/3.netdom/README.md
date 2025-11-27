@@ -1,0 +1,141 @@
+# **Création simplifiée d’un trust AD avec netdom – étape par étape**
+
+---
+
+## **1️⃣ Vérifier que `netdom` est disponible**
+
+```powershell
+# Vérifie que netdom est installé
+if (-not (Get-Command netdom -ErrorAction SilentlyContinue)) {
+    Write-Error "netdom introuvable. Installe RSAT ou exécute sur un DC."
+    exit 1
+}
+```
+
+💡 **Explication** : `netdom` est l’outil officiel pour créer un trust. Il doit être présent sur la machine (RSAT ou DC).
+
+---
+
+## **2️⃣ Demander les informations d’identification pour chaque domaine**
+
+```powershell
+# Identifiants administrateur pour le domaine source
+$credSource = Get-Credential -Message "Admin du domaine source (SourceDomain)"
+
+# Identifiants administrateur pour le domaine cible
+$credTarget = Get-Credential -Message "Admin du domaine cible (TargetDomain)"
+```
+
+💡 **Explication** : On a besoin des comptes admin pour pouvoir créer le trust sur **les deux domaines**.
+
+---
+
+## **3️⃣ Demander le mot de passe du trust**
+
+```powershell
+# Mot de passe partagé pour le trust
+$secureTrustPwd = Read-Host "Mot de passe du trust" -AsSecureString
+
+# Convertir SecureString en texte pour netdom
+$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureTrustPwd)
+$trustPassword = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
+[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)  # libérer la mémoire
+```
+
+💡 **Explication** : `netdom` nécessite un mot de passe pour le trust. On utilise un `SecureString` pour sécuriser la saisie.
+
+---
+
+## **4️⃣ Construire la commande `netdom` pour créer le trust**
+
+```powershell
+# Exemple : trust bidirectionnel
+$SourceDomain = "source.local"
+$TargetDomain = "target.local"
+$Direction = "TwoWay"  # ou "OneWay"
+
+$argList = @(
+    "trust", $SourceDomain,
+    "/Domain:$TargetDomain",
+    "/UserO:$($credSource.UserName)",
+    "/PasswordO:$($credSource.GetNetworkCredential().Password)",
+    "/UserD:$($credTarget.UserName)",
+    "/PasswordD:$($credTarget.GetNetworkCredential().Password)",
+    "/Add",
+    if ($Direction -eq "TwoWay") { "/TwoWay" } else { "/OneWay" },
+    "/PasswordT:$trustPassword",
+    "/Verify"
+) | Where-Object { $_ -ne $null }  # retire les valeurs nulles
+```
+
+💡 **Explication** :
+
+* `UserO` / `PasswordO` : compte admin du domaine **source**
+* `UserD` / `PasswordD` : compte admin du domaine **cible**
+* `/Add` : création du trust
+* `/TwoWay` ou `/OneWay` : type du trust
+* `/PasswordT` : mot de passe partagé
+* `/Verify` : vérifie immédiatement après la création
+
+---
+
+## **5️⃣ Exécuter `netdom` pour créer le trust**
+
+```powershell
+Write-Host "Création du trust..."
+$proc = Start-Process -FilePath "netdom" -ArgumentList $argList -NoNewWindow -Wait -PassThru
+
+if ($proc.ExitCode -eq 0) {
+    Write-Host "Trust créé avec succès !"
+} else {
+    Write-Error "Erreur netdom (code $($proc.ExitCode))"
+}
+```
+
+💡 **Explication** : `Start-Process` lance la commande `netdom` avec les arguments que l’on a construits.
+
+* `ExitCode 0` = succès
+
+---
+
+## **6️⃣ Vérification du trust**
+
+```powershell
+Write-Host "Vérification du trust..."
+$verifyProc = Start-Process -FilePath "netdom" -ArgumentList @("trust",$SourceDomain,"/domain:$TargetDomain","/Verify") -NoNewWindow -Wait -PassThru
+
+if ($verifyProc.ExitCode -eq 0) {
+    Write-Host "Vérification OK."
+} else {
+    Write-Warning "Vérification échouée (code $($verifyProc.ExitCode))"
+}
+```
+
+💡 **Explication** : Cette étape permet de s’assurer que le trust a été créé correctement et que les domaines peuvent communiquer.
+
+---
+
+## ✅ **7️⃣ Résultat final**
+
+Après ces étapes, ton trust AD entre `source.local` et `target.local` est créé et vérifié.
+
+---
+
+### **Utilisation complète pour un étudiant**
+
+```powershell
+# Définir les domaines
+$SourceDomain = "source.local"
+$TargetDomain = "target.local"
+$Direction = "TwoWay"
+
+# Étapes 1 à 6 : copier-coller les instructions ci-dessus dans l’ordre
+```
+
+> Chaque bloc peut être copié-collé séparément dans PowerShell pour tester étape par étape.
+
+---
+
+Si tu veux, je peux te faire **une version “une seule ligne” prête à copier-coller**, où l’étudiant n’a besoin que de changer **SourceDomain, TargetDomain et Direction**, et tout est exécuté en une fois.
+
+Veux‑tu que je fasse ça ?

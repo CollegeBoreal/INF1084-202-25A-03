@@ -50,10 +50,37 @@ $trustPassword = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
 
 ## **4️⃣ Construire la commande `netdom` pour créer le trust**
 
+
+Pour passer des **IP des VM → FQDN du domaine** et préparer le trust :
+
+```powershell
+# Exemple : IP des DC
+$SourceIP = "10.0.0.5"
+$TargetIP = "10.0.0.6"
+
+# Récupérer le nom de machine / FQDN
+$SourceHost = [System.Net.Dns]::GetHostEntry($SourceIP).HostName
+$TargetHost = [System.Net.Dns]::GetHostEntry($TargetIP).HostName
+
+# Depuis chaque DC, récupérer le FQDN du domaine AD
+$SourceDomain = Invoke-Command -ComputerName $SourceHost -ScriptBlock { (Get-ADDomain).DNSRoot }
+$TargetDomain = Invoke-Command -ComputerName $TargetHost -ScriptBlock { (Get-ADDomain).DNSRoot }
+
+# Afficher résultats
+Write-Host "SourceDomain: $SourceDomain"
+Write-Host "TargetDomain: $TargetDomain"
+```
+
+✅ **Explications condensées :**
+
+1. `GetHostEntry(IP)` → obtient le nom de la machine.
+2. `Invoke-Command` sur le DC → récupère le **FQDN exact du domaine AD**.
+3. Utilise `$SourceDomain` et `$TargetDomain` dans ton script `netdom`.
+
+---
+
 ```powershell
 # Exemple : trust bidirectionnel
-$SourceDomain = "source.local"
-$TargetDomain = "target.local"
 $Direction = "TwoWay"  # ou "OneWay"
 
 $argList = @(

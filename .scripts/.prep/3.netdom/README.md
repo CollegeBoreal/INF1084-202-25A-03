@@ -64,7 +64,8 @@ $TargetHost = [System.Net.Dns]::GetHostEntry($TargetIP).HostName
 
 # Depuis chaque DC, récupérer le FQDN du domaine AD
 $SourceDomain = Invoke-Command -ComputerName $SourceHost -ScriptBlock { (Get-ADDomain).DNSRoot }
-$TargetDomain = Invoke-Command -ComputerName $TargetHost -ScriptBlock { (Get-ADDomain).DNSRoot }
+# $TargetDomain = Invoke-Command -ComputerName $TargetHost -ScriptBlock { (Get-ADDomain).DNSRoot }
+$TargetDomain = "VM01.DC300098957-90.local"
 
 # Afficher résultats
 Write-Host "SourceDomain: $SourceDomain"

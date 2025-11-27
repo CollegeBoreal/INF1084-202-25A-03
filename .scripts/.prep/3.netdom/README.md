@@ -33,13 +33,15 @@ $credTarget = Get-Credential -Message "Admin du domaine cible (TargetDomain)"
 ## **3️⃣ Demander le mot de passe du trust**
 
 ```powershell
-# Mot de passe partagé pour le trust
+# Mot de passe sécurisé pour le trust
 $secureTrustPwd = Read-Host "Mot de passe du trust" -AsSecureString
 
-# Convertir SecureString en texte pour netdom
+# Convertir SecureString en texte clair
 $ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secureTrustPwd)
 $trustPassword = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
-[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)  # libérer la mémoire
+
+# Libérer la mémoire
+[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)
 ```
 
 💡 **Explication** : `netdom` nécessite un mot de passe pour le trust. On utilise un `SecureString` pour sécuriser la saisie.

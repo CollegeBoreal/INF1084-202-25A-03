@@ -1,8 +1,7 @@
 # 🧠 TP : Gestion des utilisateurs Active Directory avec PowerShell
 
 Étudiant : Zakaria Djellouli  
-ID : 300150433  
-Date : 16 novembre 2025
+
 
 ---
 

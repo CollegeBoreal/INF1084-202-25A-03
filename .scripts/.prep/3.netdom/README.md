@@ -1,5 +1,9 @@
 # 🙋‍♂️ Trust: using `netdom`
 
+| | |
+|-|-|
+| <img src=images/netdom1.png width='' height='' > </img> | <img src=images/netdom2.png width='' height='' > </img> 
+
 Based on the screenshot you provided, you have created a **trust relationship** between two **Active Directory domains** (or more specifically, two realms, indicating this might be in a mixed or pure Kerberos environment).
 
 Here is a breakdown of what the trust is referring to:

@@ -83,6 +83,7 @@ Write-Host "TargetDomain: $TargetDomain"
 # Exemple : trust bidirectionnel
 $Direction = "TwoWay"  # ou "OneWay"
 
+# Construire les arguments netdom
 $argList = @(
     "trust", $SourceDomain,
     "/Domain:$TargetDomain",
@@ -91,10 +92,10 @@ $argList = @(
     "/UserD:$($credTarget.UserName)",
     "/PasswordD:$($credTarget.GetNetworkCredential().Password)",
     "/Add",
-    if ($Direction -eq "TwoWay") { "/TwoWay" } else { "/OneWay" },
+    $Direction,
     "/PasswordT:$trustPassword",
     "/Verify"
-) | Where-Object { $_ -ne $null }  # retire les valeurs nulles
+)
 ```
 
 💡 **Explication** :

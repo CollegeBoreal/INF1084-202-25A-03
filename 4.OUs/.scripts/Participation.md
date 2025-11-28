@@ -1,4 +1,4 @@
-# Participation au 28-11-2025 08:46
+# Participation au 28-11-2025 08:59
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -44,6 +44,6 @@
 | 25 | [300151556](../300151556) [<image src='https://avatars0.githubusercontent.com/u/231781132?s=460&v=4' width=20 height=20></image>](https://github.com/Kahinazerkani) | [:heavy_check_mark:](../300151556/README.md) | [:hiking_boot:](../300151556/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 26 | [300151825](../300151825) [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) | [:heavy_check_mark:](../300151825/README.md) | [:hiking_boot:](../300151825/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: | :x: |
-| 28 | [300152260](../300152260/README.md) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :x: | :x: | :x: | :x: | :x: | :x: |
+| 28 | [300152260](../300152260) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | [:heavy_check_mark:](../300152260/README.md) | [:hiking_boot:](../300152260/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 29 | [300153476](../300153476) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | [:heavy_check_mark:](../300153476/README.md) | [:hiking_boot:](../300153476/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| :abacus: | \$\\frac{25}{30}$ = 83.33% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 25 |
+| :abacus: | \$\\frac{26}{30}$ = 86.67% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 26 |

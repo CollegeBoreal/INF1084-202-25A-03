@@ -1,3 +1,3 @@
 
-Get-ADUser -Filter "GivenName -like 'W*'" -Properties Name, MohAccountName |
-Select-Object Name, MohAccountName
+Get-ADUser -Filter "GivenName -like 'W*'" -Properties Name, SamAccountName |
+Select-Object Name, SamAccountName

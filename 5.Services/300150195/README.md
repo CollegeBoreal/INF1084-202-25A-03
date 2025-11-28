@@ -1,10 +1,11 @@
-1. Introduction
+## README.md — Laboratoire : Services Active Directory
+## 1. Introduction
 
 Ce laboratoire fait partie du cours INF1084 – Systèmes d’exploitation du Collège Boréal.
 Il vise à manipuler différents services d’Active Directory (AD) à l’aide d’outils d’administration et de scripts PowerShell.
 L’ensemble des travaux a été réalisé dans un environnement Windows Server accessible via connexion Bureau à distance.
 
-2. Objectifs du laboratoire
+## 2. Objectifs du laboratoire
 
 Les objectifs étaient les suivants :
 
@@ -20,13 +21,13 @@ Arrêter puis redémarrer un service AD via un script PowerShell.
 
 Utiliser Git pour versionner les scripts et les publier sur GitHub.
 
-3. Structure des fichiers remis
+## 3. Structure des fichiers remis
 
 Les fichiers ont été déposés dans le dossier :
 
 5.Services/300150195/
 
-3.1 Script : services1.ps1
+## 3.1 Script : services1.ps1
 
 Ce script :
 
@@ -38,7 +39,7 @@ Trie les résultats par ordre alphabétique.
 
 Vérifie l’état des services NTDS, ADWS et DFSR.
 
-3.2 Script : services2.ps1
+## 3.2 Script : services2.ps1
 
 Ce script :
 
@@ -48,7 +49,7 @@ Affiche les 20 derniers événements du journal System, filtrés pour la source 
 
 Permet une lecture rapide des logs essentiels au diagnostic AD.
 
-3.3 Script : services3.ps1
+## 3.3 Script : services3.ps1
 
 Ce script :
 
@@ -60,7 +61,7 @@ Exporte les données dans un fichier CSV :
 
 C:\Logs\ADLogs.csv
 
-3.4 Script : services4.ps1
+## 3.4 Script : services4.ps1
 
 Ce script :
 
@@ -72,11 +73,11 @@ Redémarre le service.
 
 Permet de tester la gestion des services à l’aide de PowerShell.
 
-4. Fichier généré
+## 4. Fichier généré
 
 ADLogs.csv : fichier contenant l’export des événements Active Directory (NTDS) généré par services3.ps1.
 
-5. Commandes Git utilisées
+## 5. Commandes Git utilisées
 
 Les scripts ont été versionnés à l’aide des commandes suivantes :
 
@@ -85,7 +86,7 @@ git commit -m "Ajout des scripts services AD"
 git pull --rebase
 git push
 
-6. Compétences acquises
+## 6. Compétences acquises
 
 À travers ce laboratoire, les compétences suivantes ont été développées :
 
@@ -99,7 +100,7 @@ Maîtrise de la gestion de version via Git et GitHub.
 
 Production de scripts fiables pour l’automatisation administrative.
 
-7. Auteur
+## 7. Auteur
 
 Amel Zourane — 300150195
 Programme : Techniques de systèmes informatiques

@@ -1,5 +1,8 @@
 - [ ]  service1
 ``` sh
+notepad services1.ps1
+```
+``` sh
 .\services1.ps1
 ```
 ``` powershell
@@ -33,6 +36,10 @@ NTDS     Running Active Directory Domain Services
 ```
 
 - [ ]  service2
+
+``` sh
+notepad services2.ps1
+```
 ``` sh
 .\services2.ps1
 ```
@@ -149,8 +156,14 @@ TimeCreated             Id LevelDisplayName Message
 ```
 
 - [ ]  service3
+
+
 ``` sh
-nano services3.ps1
+notepad services3.ps1
+```
+
+``` sh
+.\services3.ps1
 ```
 ``` powershell
 
@@ -162,8 +175,15 @@ Fichier crÃ©Ã© : C:\Logs\ADLogs.csv
 
 ```
 
+
+- [ ]  service4
+``` sh
+notepad services3.ps1
+```
+```
 .\services4.ps1
 ```
+
 ``` powershell
 === Etat actuel du service DFSR ===
 

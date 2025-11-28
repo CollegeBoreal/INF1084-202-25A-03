@@ -26,6 +26,10 @@ On cree ce fichier en tapant la commande: nano bootstrap.ps1
 
 - Configure les informations de securite
 
+👵 **Operations néscessitant les informations sécurisées de l'administrateur:**
+```powershell
+$cred = Get-Credential 
+```
 **1. Vérification Domaine (utilisateurs1.ps1)**
 
 Voici le code de fichier utilisateurs1.ps1:
@@ -35,7 +39,7 @@ Voici le code de fichier utilisateurs1.ps1:
 On aura a l'execution :
 
 ![resultat utilisateurs1.ps1](images/executionutilisateur1.PNG)
-![resultat](images/executionutilisateur1suite.PNg)
+![resultat](images/executionutilisateur1suite.PNG)
 
 **2. Liste des utilisateurs du domaine**
 
@@ -53,13 +57,13 @@ Voici le code de fichier utilisateurs3.ps1:
 
 ![code utilisateurs3.ps1](images/codeutilisateur3.JPG)
 
-Si on execute de nouveau le fichier utilisateurs2.ps1, on aura au resultat:
+Si on execute de nouveau le fichier utilisateurs2.ps1, on aura ce resultat:
 
 ![Resultat de test d'ajout](images/ajoutreussi.PNG)
 
  On peut afficher les informations de cet utilisateur cree avec :
 
-![resultat](images/informations.JPG)
+![resultat](images/informations.PNG)
 
 **4. Modifier un utilisateur**
 
@@ -109,13 +113,13 @@ Voici le code de fichier utilisateurs8.ps1:
 
 ![code utilisateurs8.ps1](images/codeutilisateur8.JPG)
 
-Vu qu'on a supprime l'utilisateur dans le fichier utilisateurs7.ps1, on doit executer les commandes suivantes pour pouvoir arriver au resultat de fichier utilisateurs8.ps1:
+Vu qu'on a supprime l'utilisateur dans le fichier utilisateurs7.ps1, on doit executer d'abord les commandes suivantes, puis on execute le fichier utilisateurs8.ps1:
 
 ![test](images/filtre.PNG)
 
 **9. Exporter les utilisateurs dans un CSV**
 
-Dans cette étape, nous exportons la liste des utilisateurs du domaine Active Directory vers un fichier CSV afin de pouvoir les consulter facilement et les analyser. Voici le code de fichier utilisateurs.ps1:
+Dans cette étape, nous exportons la liste des utilisateurs du domaine Active Directory vers un fichier CSV afin de pouvoir les consulter facilement et les analyser. Voici le code de fichier utilisateurs9.ps1:
 
 ![code utilisateurs9.ps1](images/codeutilisateur9.JPG)
 
@@ -133,7 +137,7 @@ Il contient la liste des utilisateurs du domaine, avec les colonnes :
 
 L'image suivante confirme la creation de fichier TP_AD_Users.csv:
 
-![CSV](images/csv.PNG)
+![CSV](images/cvs.PNG)
 
 **10. Déplacer un utilisateur vers une OU Students**
 

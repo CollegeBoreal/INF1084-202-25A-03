@@ -51,12 +51,12 @@ foreach ($id in $GROUPES) {
     }
 
     # Domaines
-    $URL3 = "$($DOMAINS[$i1])"
+    $URL3 = "netbios.$($DOMAINS[$i1])"
     if ($second -eq 300098957) {
        $URL4 = "lab208.collegeboreal.ca"
     }
     else {
-       $URL4 = "$($DOMAINS[$i2])"
+       $URL4 = "netbios.$($DOMAINS[$i2])"
     }
 
     # ---- REMPLACEMENT PAR :eyes: SI monboreal.ca ----

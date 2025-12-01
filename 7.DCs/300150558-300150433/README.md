@@ -21,7 +21,7 @@
 - NetBIOS : `DC300150433-00`
 - Contrôleur de domaine : `DC300150433`
 
-### 🟩 Domaine du binôme (AD2)
+### 🟩 Domaine de amira (AD2)
 - Domaine : `DC300150558-00.local`
 - NetBIOS : `DC300150558-00`
 - Contrôleur de domaine : `DC300150558`

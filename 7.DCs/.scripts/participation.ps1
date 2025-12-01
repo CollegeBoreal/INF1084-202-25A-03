@@ -112,5 +112,5 @@ foreach ($id in $GROUPES) {
     $SUM = "\$\displaystyle\sum_{i=1}^{$i} s_i\$"
 }
 
-Write-Output "| :abacus: | $COUNT = $STATS% | $SUM = $s |"
+Write-Output "| :abacus: | $COUNT = $STATS% | | | $SUM = $s |"
 

@@ -1,4 +1,4 @@
-# Participation au 01-12-2025 23:07
+# Participation au 01-12-2025 18:10
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -36,4 +36,4 @@
 | 12 | [300142072-300144176](../300142072-300144176/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/230452797?s=460&v=4' width=20 height=20></image>](https://github.com/sigadiarra) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/223561186?s=460&v=4' width=20 height=20></image>](https://github.com/awaworks) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |
 | 13 | [300148094-300152260](../300148094-300152260/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/212054634?s=460&v=4' width=20 height=20></image>](https://github.com/ouailg28) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |
 | 14 | [300151863-300147510](../300151863-300147510/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/212286223?s=460&v=4' width=20 height=20></image>](https://github.com/ghikanotes) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |
-| :abacus: | \$\\frac{4}{15}\$ = 26.67% | \$\displaystyle\sum_{i=1}^{15} s_i\$ = 4 |
+| :abacus: | \$\\frac{4}{15}\$ = 26.67% | | | \$\displaystyle\sum_{i=1}^{15} s_i\$ = 4 |

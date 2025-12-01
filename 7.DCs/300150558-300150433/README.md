@@ -102,7 +102,7 @@ Cependant :
 
 # 🖼️ 7. Captures d'écran
 
--Les captures suivantes montrent l'exécution réelle du script :
+Les captures suivantes montrent l'exécution réelle du script :
 -#vm de ZAKARIA
 -#Capture : Test de connectivité réussi (Ping) 
 

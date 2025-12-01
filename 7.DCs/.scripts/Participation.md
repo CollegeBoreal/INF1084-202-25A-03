@@ -1,4 +1,4 @@
-# Participation au 01-12-2025 23:10
+# Participation au 01-12-2025 18:12
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -11,7 +11,6 @@
 |--------------------|-------------------------------|
 | 🗒️                 | ***README.md***               |
 | 🖼️📂               | ***images***                  |
-| T :one:            | ***trusts1.ps1***             |
 | T :one:            | ***trusts1.ps1***             |
 | T :two:            | ***trusts2.ps1***             |
 | :heavy_check_mark: | Prêt à être corrigé           |

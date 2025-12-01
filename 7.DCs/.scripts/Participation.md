@@ -1,4 +1,4 @@
-# Participation au 01-12-2025 18:05
+# Participation au 01-12-2025 18:08
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -9,6 +9,9 @@
 
 | Signe              | Signification                 |
 |--------------------|-------------------------------|
+| 🗒️                 | ***README.md***               |
+| 🖼️📂               | ***images***                  |
+| T :one:            | ***trusts1.ps1***             |
 | T :one:            | ***trusts1.ps1***             |
 | T :two:            | ***trusts2.ps1***             |
 | :heavy_check_mark: | Prêt à être corrigé           |
@@ -16,8 +19,8 @@
 
 ## :a: Présence
 
-|:hash:| Boréal :id:                | README.md | images | :globe_with_meridians: Domaines | T :one: | T :two: |
-|------|----------------------------|-----------|--------|---------------------------------|-------------|-------------|
+|:hash:| Boréal :id:                | 🗒️ | 🖼️📂 | :globe_with_meridians: Domaines | T :one: | T :two: |
+|------|----------------------------|----|------|---------------------------------|-------------|-------------|
 | 0 | [300151825-300153476](../300151825-300153476/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :heavy_check_mark: | :x: | netbios.featfreedy.xyz :link: netbios.ramatoulaye.me | :x: | :x: |
 | 1 | [300141625-300141858](../300141625-300141858/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/205304457?s=460&v=4' width=20 height=20></image>](https://github.com/karimcode24) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |
 | 2 | [300141657-300150562](../300141657-300150562/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/194731088?s=460&v=4' width=20 height=20></image>](https://github.com/leandre00126) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/205994758?s=460&v=4' width=20 height=20></image>](https://github.com/isako29) | :heavy_check_mark: | :x: | netbios.lmnzglobalshop.store :link: netbios.isako29.store | :x: | :x: |

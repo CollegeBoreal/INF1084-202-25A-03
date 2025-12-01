@@ -1,4 +1,4 @@
-# Participation au 01-12-2025 22:57
+# Participation au 01-12-2025 18:04
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -9,12 +9,14 @@
 
 | Signe              | Signification                 |
 |--------------------|-------------------------------|
+| T:one:             | ***trusts1.ps1***             |
+| T:two:             | ***trusts2.ps1***             |
 | :heavy_check_mark: | Prêt à être corrigé           |
 | :x:                | Projet inexistant             |
 
 ## :a: Présence
 
-|:hash:| Boréal :id:                | README.md | images | :globe_with_meridians: Domaines | trusts1.ps1 | trusts2.ps1 |
+|:hash:| Boréal :id:                | README.md | images | :globe_with_meridians: Domaines | T:one: | T:two: |
 |------|----------------------------|-----------|--------|---------------------------------|-------------|-------------|
 | 0 | [300151825-300153476](../300151825-300153476/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/195238262?s=460&v=4' width=20 height=20></image>](https://github.com/FeatFreedy) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | :heavy_check_mark: | :x: | netbios.featfreedy.xyz :link: netbios.ramatoulaye.me | :x: | :x: |
 | 1 | [300141625-300141858](../300141625-300141858/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/205304457?s=460&v=4' width=20 height=20></image>](https://github.com/karimcode24) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |
@@ -24,7 +26,7 @@
 | 5 | [300148450-300141716](../300148450-300141716/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/205994730?s=460&v=4' width=20 height=20></image>](https://github.com/adjaoud-git) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/125617838?s=460&v=4' width=20 height=20></image>](https://github.com/nabilaouladbouih) | :x: | :x: | netbios.adjhocine.me :link: :eyes: | :x: | :x: |
 | 6 | [300151258-300151556](../300151258-300151556/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/231778604?s=460&v=4' width=20 height=20></image>](https://github.com/hakimsb) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/231781132?s=460&v=4' width=20 height=20></image>](https://github.com/Kahinazerkani) | :x: | :x: | netbios.hakimsb.me :link: netbios.kahinazerkani.me | :x: | :x: |
 | 7 | [300151347-300150195](../300151347-300150195/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/207281891?s=460&v=4' width=20 height=20></image>](https://github.com/sarahocine) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/211596474?s=460&v=4' width=20 height=20></image>](https://github.com/amelzourane) | :heavy_check_mark: | :heavy_check_mark: | netbios.sarahocine.me :link: netbios.amelzourane.me | :x: | :x: |
-| 8 | [300150558-300150433](../300150558-300150433/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/212186770?s=460&v=4' width=20 height=20></image>](https://github.com/amirasadouni00) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/211743410?s=460&v=4' width=20 height=20></image>](https://github.com/zakariadjellouli) | :heavy_check_mark: | :heavy_check_mark: | netbios.amirasadouni.me :link: netbios.zakariadjellouli.me | :heavy_check_mark: | :heavy_check_mark: |
+| 8 | [300150558-300150433](../300150558-300150433/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/212186770?s=460&v=4' width=20 height=20></image>](https://github.com/amirasadouni00) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/211743410?s=460&v=4' width=20 height=20></image>](https://github.com/zakariadjellouli) | :heavy_check_mark: | :heavy_check_mark: | netbios.amirasadouni.me :link: netbios.zakariadjellouli.me | :x: | :x: |
 | 9 | [300141550-300133071](../300141550-300133071/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | :heavy_check_mark: | :heavy_check_mark: | netbios.emeraudesantu.me :link: netbios.nelsonwilliam.me | :x: | :x: |
 | 10 | [300146418-300146721](../300146418-300146721/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/198275764?s=460&v=4' width=20 height=20></image>](https://github.com/IkramSidhoum) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/222739217?s=460&v=4' width=20 height=20></image>](https://github.com/smailikh) | :x: | :x: | netbios.ikramsidhoum.me :link: :eyes: | :x: | :x: |
 | 11 | [300151469-300147816](../300151469-300147816/README.md) :point_right: [<image src='https://avatars0.githubusercontent.com/u/206001876?s=460&v=4' width=20 height=20></image>](https://github.com/Rabia-777) :busts_in_silhouette: [<image src='https://avatars0.githubusercontent.com/u/230452383?s=460&v=4' width=20 height=20></image>](https://github.com/HananeZerrouki) | :x: | :x: | :eyes: :link: :eyes: | :x: | :x: |

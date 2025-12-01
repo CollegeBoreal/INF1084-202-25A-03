@@ -103,8 +103,8 @@ Cependant :
 # 🖼️ 7. Captures d'écran
 
 Les captures suivantes montrent l'exécution réelle du script :
--#vm de ZAKARIA
--#Capture : Test de connectivité réussi (Ping) 
+## vm de ZAKARIA
+### Capture : Test de connectivité réussi (Ping) 
 
 
 La capture montre :
@@ -124,7 +124,7 @@ StatusCode : 0 → Ping réussi
 ResponseTime : 1 ms → la machine AD2 répond
 ProtocolAddress : 10.7.236.214 → IP correcte du DC d’Amira
 
--#Capture : Demande des identifiants AD2
+### Capture : Demande des identifiants AD2
 
 Cette capture montre la partie : === 3. Demande des identifiants AD2 ===
 
@@ -143,7 +143,7 @@ Cette fenêtre est générée par la commande :
 $credAD2 = Get-Credential
 
 
--#Capture : Vérification du trust 
+### Capture : Vérification du trust 
 On voit :
 === 7. Vérification du trust ===
 
@@ -158,8 +158,8 @@ netdom trust /verify
 
 ///////////
 
--#vm de amira
--#Capture : Test de connectivité réussi (Ping) 
+## vm de amira
+### Capture : Test de connectivité réussi (Ping) 
 ![2 1](https://github.com/user-attachments/assets/d9c106e6-a721-4741-8a18-5831d1c76a78)
 
 On voit clairement :
@@ -169,7 +169,7 @@ IPV4Address : 10.7.236.xxx
 ✔ Ce que ça prouve :
 Amira peut ping le contrôleur de domaine de zakaria.
 
--#Capture : Demande des identifiants 
+### Capture : Demande des identifiants 
 ![2 2](https://github.com/user-attachments/assets/e5904728-ce67-40c1-84b8-b7c635ca857a)
 
 Cette capture montre la partie :
@@ -186,7 +186,7 @@ L’étudiante utilise uniquement des commandes CLI (aucune interface graphique 
 
 La commande Get-Credential est utilisée pour demander un compte administrateur du domaine distant (DC300150433-00.local).
 
--#Capture : Vérification du trust 
+### Capture : Vérification du trust 
 On voit :
 === 7. Vérification du trust ===
 ![2 3](https://github.com/user-attachments/assets/496722da-210f-4760-a821-47b2ce54f44a)

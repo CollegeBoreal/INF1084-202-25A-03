@@ -4,11 +4,11 @@ Zakaria (DC300150433)
 
 Import-Module ActiveDirectory
 
-# === Domaine local (toi) ===
+# === Domaine local ===
 $LocalDomainDnsName  = "DC300150433-00.local"
 $LocalDomainNetbios  = "DC300150433-00"
 
-# === Domaine distant (ton binôme) ===
+# === Domaine distant de amira ===
 $RemoteDomainDnsName = "DC300150558-00.local"
 $RemoteDomainNetbios = "DC300150558-00"
 $RemoteDC            = "DC300150558"

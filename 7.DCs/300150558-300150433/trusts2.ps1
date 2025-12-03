@@ -4,11 +4,11 @@ amira
 
 Import-Module ActiveDirectory
 
-# === Domaine local (binôme) ===
+# === Domaine local  ===
 $LocalDomainDnsName  = "DC300150558-00.local"
 $LocalDomainNetbios  = "DC300150558-00"
 
-# === Domaine distant (Zakaria) ===
+# === Domaine distant de zakaria ===
 $RemoteDomainDnsName = "DC300150433-00.local"
 $RemoteDomainNetbios = "DC300150433-00"
 $RemoteDC            = "DC300150433"

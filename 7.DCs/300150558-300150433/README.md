@@ -70,6 +70,8 @@ Chaque script est configuré pour :
 - Crée un PSDrive AD2  
 - Tente la création du trust via `netdom`  
 - Vérifie le trust
+  
+```powershell
 <# =========================================================
 Zakaria (DC300150433)
 ========================================================= #>
@@ -130,8 +132,10 @@ Get-ADTrust -Filter *
 netdom trust $RemoteDomainDnsName /Domain:$LocalDomainDnsName /verify
 
 Write-Host "=== Script terminé ==="
+```
 
 ## ▶ Script du amira : `Trust-DC300150558-00.ps1`
+```powershell
 - <# =========================================================
 amira
 ========================================================= #>
@@ -193,7 +197,7 @@ netdom trust $RemoteDomainDnsName /Domain:$LocalDomainDnsName /verify
 
 Write-Host "=== Script terminé ==="
 ---
-
+```
 # 📌  Résultats obtenus
 
 Dans notre environnement, les VMs **ne sont pas réellement connectées** à travers Active Directory.  

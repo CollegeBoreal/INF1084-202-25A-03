@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
 
 # Vérifier si l'OU existe

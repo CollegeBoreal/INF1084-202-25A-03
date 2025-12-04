@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
 
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, EmailAddress, Enabled |

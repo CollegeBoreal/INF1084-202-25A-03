@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
 
 New-ADUser -Name "Alice Dupont" `

@@ -4,7 +4,7 @@
 
 Import-Module ActiveDirectory
 
-# === Domaine LOCAL(sara) ===
+# === Domaine LOCAL (Sara) ===
 $LocalDomainDnsName = "DC300151347-00.local"
 $LocalDomainNetbios = "DC300151347-00"
 $LocalDC            = "DC300151347"
@@ -59,3 +59,4 @@ Get-ADTrust -Filter *
 netdom trust $RemoteDomainDnsName /Domain:$LocalDomainDnsName /verify
 
 Write-Host "=== Script terminé ==="
+

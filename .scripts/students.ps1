@@ -91,7 +91,7 @@ $AVATARS = @(
     231778604
     207281891
     211593057
-    212077526
+    206001876
     231781132
     195238262
     205994935
@@ -149,4 +149,37 @@ $GROUPES = @(
     '300142072-300144176'
     '300148094-300152260'
     '300151863-300147510'
+)
+
+$DOMAINS = @(
+    'nelsonwilliam.me'
+    'emeraudesantu.me'
+    '300141625@monboreal.ca'
+    'lmnzglobalshop.store'
+    '300141716@monboreal.ca'
+    '300141858@monboreal.ca'
+    '300142072@monboreal.ca'
+    'frankkadji.dev'
+    '300144176@monboreal.ca'
+    'ikramsidhoum.me'
+    'harkati.me'
+    '300146721@monboreal.ca'
+    '300147510@monboreal.ca'
+    '300147816@monboreal.ca'
+    '300148094@monboreal.ca'
+    'adjhocine.me'
+    'amelzourane.me'
+    '300150416@monboreal.ca'
+    'zakariadjellouli.me'
+    'amirasadouni.me'
+    'isako29.store'
+    'hakimsb.me'
+    'sarahocine.me'
+    'sandyjustin.me'
+    '300151469@monboreal.ca'
+    'kahinazerkani.me'
+    'featfreedy.xyz'
+    '300151863@monboreal.ca'
+    '300152260@monboreal.ca'
+    'ramatoulaye.me'
 )

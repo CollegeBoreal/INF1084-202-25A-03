@@ -1,4 +1,4 @@
-﻿# Precision au 20-11-2025 19:45
+﻿# Precision au 25-11-2025 19:54
 
 | Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -26,9 +26,9 @@
 | 5 | [300141716](../300141716/README.md) [<image src='https://avatars0.githubusercontent.com/u/125617838?s=460&v=4' width=20 height=20></image>](https://github.com/nabilaouladbouih) | 10.7.236.199 | :heavy_check_mark: |
 | 6 | [300141858](../300141858/README.md) [<image src='https://avatars0.githubusercontent.com/u/205304457?s=460&v=4' width=20 height=20></image>](https://github.com/karimcode24) | 10.7.236.200 | :heavy_check_mark: |
 | 7 | [300142072](../300142072/README.md) [<image src='https://avatars0.githubusercontent.com/u/230452797?s=460&v=4' width=20 height=20></image>](https://github.com/sigadiarra) | 10.7.236.201 | :heavy_check_mark: |
-| 8 | [300143951](../300143951/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994994?s=460&v=4' width=20 height=20></image>](https://github.com/frank17art) | 10.7.236.202 | :heavy_check_mark: |
+| 8 | [300143951](../300143951/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994994?s=460&v=4' width=20 height=20></image>](https://github.com/frank17art) | 10.7.236.202 | :no_entry: |
 | 9 | [300144176](../300144176/README.md) [<image src='https://avatars0.githubusercontent.com/u/223561186?s=460&v=4' width=20 height=20></image>](https://github.com/awaworks) | 10.7.236.203 | :heavy_check_mark: |
-| 10 | [300146418](../300146418/README.md) [<image src='https://avatars0.githubusercontent.com/u/198275764?s=460&v=4' width=20 height=20></image>](https://github.com/IkramSidhoum) | 10.7.236.204 | :x: |
+| 10 | [300146418](../300146418/README.md) [<image src='https://avatars0.githubusercontent.com/u/198275764?s=460&v=4' width=20 height=20></image>](https://github.com/IkramSidhoum) | 10.7.236.204 | :heavy_check_mark: |
 | 11 | [300146676](../300146676/README.md) [<image src='https://avatars0.githubusercontent.com/u/211595997?s=460&v=4' width=20 height=20></image>](https://github.com/harkatiaymen) | 10.7.236.205 | :heavy_check_mark: |
 | 12 | [300146721](../300146721/README.md) [<image src='https://avatars0.githubusercontent.com/u/222739217?s=460&v=4' width=20 height=20></image>](https://github.com/smailikh) | 10.7.236.206 | :heavy_check_mark: |
 | 13 | [300147510](../300147510/README.md) [<image src='https://avatars0.githubusercontent.com/u/212286223?s=460&v=4' width=20 height=20></image>](https://github.com/ghikanotes) | 10.7.236.207 | :heavy_check_mark: |

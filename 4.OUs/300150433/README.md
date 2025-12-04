@@ -1,9 +1,7 @@
 # 🧠 TP : Gestion des utilisateurs Active Directory avec PowerShell
 
 Étudiant : Zakaria Djellouli  
-ID : 300150433  
-Cours : INF1084-202-25A-03 – Administration Windows Server  
-Date : 16 novembre 2025
+
 
 ---
 
@@ -26,15 +24,15 @@ Ce travail pratique avait pour but de gérer les utilisateurs d’un domaine Act
 
 ### 2️⃣ Configuration du domaine Active Directory
 - Numéro étudiant : 300150433  
-- Instance : 50  
-- Domaine créé : `DC300150433-50.local`  
-- Nom NetBIOS : `DC300150433-50`  
+- Instance : 00
+- Domaine créé : `DC300150433-00.local`  
+- Nom NetBIOS : `DC300150433-00`  
 
 Script PowerShell utilisé :
 
 ```powershell
 $studentNumber = 300150433
-$studentInstance = 50
+$studentInstance = 00
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 ````

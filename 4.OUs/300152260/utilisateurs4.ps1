@@ -1,6 +1,6 @@
-# 4️⃣ Modifier un utilisateur
 
-Set-ADUser -Identity "leandre.ebah" `
-           -EmailAddress "leandre.ebah@DC300152260-00.local" `
-           -GivenName "Leandre-Freedy" `
+Set-ADUser -Identity "alice.dupont" `
+           -EmailAddress "alice.dupont@exemple.com" `
+           -GivenName "Alice-Marie" `
            -Credential $cred
+

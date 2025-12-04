@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 # Importer le module AD
 Import-Module ActiveDirectory
 

@@ -1,35 +1,67 @@
- # ================================
-# Script 2 - Création de la GPO pour mapper Z:
+# ================================
+# Script 2 - GPO pour mapper le lecteur Z:
 # ================================
 
-# Nom de la GPO
-$GPOName = "MapSharedFolder"
+Import-Module ActiveDirectory
+Import-Module GroupPolicy
 
-# Créer la GPO
-New-GPO -Name $GPOName
+# 1. Récupérer automatiquement le domaine
+$domainDN = (Get-ADDomain).DistinguishedName
 
-# Lier la GPO à l’OU Students
-$OU = "OU=Students,DC=$netbiosName,DC=local"
-New-GPLink -Name $GPOName -Target $OU
+# 2. Création OU Students si elle n'existe pas
+$OUName = "Students"
+$OUPath = "OU=$OUName,$domainDN"
 
-# Créer une preference pour mapper le lecteur réseau
-$DriveLetter = "Z:"
-$SharePath = "\\$netbiosName\SharedResources"
-
-# Créer un script logon
-$ScriptFolder = "C:\Scripts"
-$ScriptPath   = "$ScriptFolder\MapDrive-$DriveLetter.bat"
-
-if (-not (Test-Path $ScriptFolder)) { 
-    New-Item -ItemType Directory -Path $ScriptFolder 
+if (-not (Get-ADOrganizationalUnit -LDAPFilter "(ou=Students)" -ErrorAction SilentlyContinue)) {
+    New-ADOrganizationalUnit -Name $OUName -Path $domainDN -ProtectedFromAccidentalDeletion $false
+    Write-Host "OU 'Students' créée."
+} else {
+    Write-Host "OU 'Students' existe déjà."
 }
 
-$scriptContent = "net use $DriveLetter $SharePath /persistent:no"
-Set-Content -Path $ScriptPath -Value $scriptContent
+# 3. Nom de la GPO
+$GPOName = "MapSharedFolder"
 
-# Lier le script logon à la GPO
-Set-GPRegistryValue -Name $GPOName `
-                    -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
-                    -ValueName "LogonScript" `
-                    -Type String `
-                    -Value $ScriptPath
+# 4. Créer la GPO si elle n'existe pas
+$GPO = Get-GPO -Name $GPOName -ErrorAction SilentlyContinue
+if (-not $GPO) {
+    $GPO = New-GPO -Name $GPOName
+    Write-Host "GPO créée : $GPOName"
+} else {
+    Write-Host "GPO existe déjà."
+}
+
+# 5. Lier la GPO à l'OU Students
+New-GPLink -Name $GPOName -Target $OUPath -Enforced No
+Write-Host "GPO liée à l'OU : $OUPath"
+
+# 6. Préparer Drive Map Z: via GPP
+$Server = $env:COMPUTERNAME
+$SharePath = "\\$Server\SharedResources"
+$DriveLetter = "Z"
+
+# 7. Chemin GPP de la GPO
+$GpoId = $GPO.Id
+$PreferencesPath = "\\$env:USERDNSDOMAIN\SYSVOL\$env:USERDNSDOMAIN\Policies\{$GpoId}\User\Preferences\Drives"
+
+# 8. Créer le dossier si manquant
+if (-not (Test-Path $PreferencesPath)) {
+    New-Item -ItemType Directory -Path $PreferencesPath -Force | Out-Null
+}
+
+# 9. Fichier XML du Drive Map
+$DriveMapFile = "$PreferencesPath\ZDrive.xml"
+
+$xml = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Drives cls="search">
+  <Drive cls="I" name="${DriveLetter}" status="A" userContext="0">
+    <Properties action="U" thisDrive="${DriveLetter}" path="${SharePath}" label="Shared Resources" persistent="0"/>
+  </Drive>
+</Drives>
+"@
+
+Set-Content -Path $DriveMapFile -Value $xml -Encoding UTF8
+
+Write-Host "✔ Drive Map Z: configuré dans la GPO"
+Write-Host "✔ Script utilisateurs2.ps1 terminé avec succès !"

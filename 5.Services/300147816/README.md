@@ -22,11 +22,11 @@ Description : Script qui identifie et liste tous les services liés à Active Di
 
 Voila le fichier services1.ps1:
 
-![code services1.ps1](images/codeservices1.jpg)
+![code services1.ps1](images/codeservices1.JPG)
 
 On aura a l'execution les services detectes suivants :
 
-![resultat services1.ps1](images/resultat1.png)
+![resultat services1.ps1](images/resultat1.PNG)
 
 2. **services2.ps1 - Analyse des logs AD**
 
@@ -34,7 +34,7 @@ Description : Script d'analyse des journaux d'événements Active Directory pour
 
 Voila le fichier services2.ps1:
 
-![code services2.ps1](images/codeservices2.jpg)
+![code services2.ps1](images/codeservices2.JPG)
 
 On aura a l'execution: 
 
@@ -116,7 +116,7 @@ Description : Exporte les journaux Active Directory vers un fichier CSV pour ana
 
 Voila le fichier services3.ps1:
 
-![code services3.ps1](images/codeservices3.jpg)
+![code services3.ps1](images/codeservices3.JPG)
 
 On aura a l'execution:
 
@@ -132,8 +132,8 @@ Description : Script de gestion du service DFS Replication, incluant arrêt et r
 
 Voila le fichier services4.ps1:
 
-![code services4.ps1](images/codeservices4.jpg)
+![code services4.ps1](images/codeservices4.jpG)
 
 On aura a l'execution: 
 
-![resultat services4.ps1](images/resultat4.png)
+![resultat services4.ps1](images/resultat4.PNG)

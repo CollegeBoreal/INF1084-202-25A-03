@@ -1,0 +1,109 @@
+# 300151825
+---
+
+# Lister tous les services liés à AD
+```powershell
+Get-Service | Where-Object {
+    $_.DisplayName -like "*Directory*" -or $_.Name -match "NTDS|ADWS|DFSR|kdc|Netlogon|IsmServ"
+} | Sort-Object DisplayName
+```
+
+```powershell
+# Vérifier l’état d’un service spécifique
+Get-Service -Name NTDS, ADWS, DFSR
+```
+
+```powershell
+Resultat: 
+Status   Name               DisplayName
+------   ----               -----------
+Running  NTDS               Active Directory Domain Services
+Running  ADWS               Active Directory Web Services
+Running  DFSR               DFS Replication
+Running  IsmServ            Intersite Messaging
+Running  Kdc                Kerberos Key Distribution Center
+Running  Netlogon           Netlogon
+Running  ADWS               Active Directory Web Services
+Running  DFSR               DFS Replication
+Running  NTDS               Active Directory Domain Services
+```
+
+---
+
+```powershell
+# Afficher les 20 derniers événements liés à NTDS
+Get-EventLog -LogName "Directory Service" -Newest 20
+```
+
+---
+
+```powershell
+# Afficher les logs du système
+Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogon"}
+```
+---
+
+```powershell
+# Afficher les logs via le journal moderne (Event Viewer v2)
+Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
+```
+
+Resultat:
+```powershell
+Index Time          EntryType   Source                 InstanceID Message
+   ----- ----          ---------   ------                 ---------- -------
+     450 Nov 06 06:56  Information NTDS General           1073744851 Internal event: Online Defragment Start succeed...
+     449 Nov 06 06:56  Information NTDS General           1073744857 Internal event: Online Defragment Stop invoked ...
+     448 Nov 06 06:56  Information NTDS ISAM                     701 NTDS (836,D,0) NTDSA: Online defragmentation ha...
+     447 Nov 06 06:56  Information NTDS ISAM                     700 NTDS (836,D,0) NTDSA: Online defragmentation is...
+     446 Nov 06 06:41  Information NTDS General           1073742986 Internal event: The Address Book hierarchy tabl...
+     445 Nov 05 18:56  Information NTDS General           1073744851 Internal event: Online Defragment Start succeed...
+     444 Nov 05 18:56  Information NTDS General           1073744857 Internal event: Online Defragment Stop invoked ...
+     443 Nov 05 18:56  Information NTDS ISAM                     701 NTDS (836,D,0) NTDSA: Online defragmentation ha...
+     442 Nov 05 18:56  Information NTDS ISAM                     700 NTDS (836,D,0) NTDSA: Online defragmentation is...
+     441 Nov 05 18:41  Information NTDS General           1073742986 Internal event: The Address Book hierarchy tabl...
+     440 Nov 05 18:41  Warning     NTDS General           2147486689 The security of this directory server can be si...
+     439 Nov 05 06:56  Information NTDS General           1073744851 Internal event: Online Defragment Start succeed...
+     438 Nov 05 06:56  Information NTDS General           1073744857 Internal event: Online Defragment Stop invoked ...
+     437 Nov 05 06:56  Information NTDS ISAM                     701 NTDS (836,D,0) NTDSA: Online defragmentation ha...
+     436 Nov 05 06:56  Information NTDS ISAM                     700 NTDS (836,D,0) NTDSA: Online defragmentation is...
+     435 Nov 05 06:41  Information NTDS General           1073742986 Internal event: The Address Book hierarchy tabl...
+     434 Nov 04 18:56  Information NTDS General           1073744851 Internal event: Online Defragment Start succeed...
+     433 Nov 04 18:56  Information NTDS General           1073744857 Internal event: Online Defragment Stop invoked ...
+     432 Nov 04 18:56  Information NTDS ISAM                     701 NTDS (836,D,0) NTDSA: Online defragmentation ha...
+     431 Nov 04 18:56  Information NTDS ISAM                     700 NTDS (836,D,0) NTDSA: Online defragmentation is...
+
+TimeCreated            Id LevelDisplayName Message
+-----------            -- ---------------- -------
+11/6/2025 6:56:11 AM 3027 Information      Internal event: Online Defragment Start succeeded. ...
+11/6/2025 6:56:11 AM 3033 Information      Internal event: Online Defragment Stop invoked but defrag was not running.
+11/6/2025 6:56:11 AM  701 Information      NTDS (836,D,0) NTDSA: Online defragmentation has completed a full pass on...
+11/6/2025 6:56:11 AM  700 Information      NTDS (836,D,0) NTDSA: Online defragmentation is beginning a full pass on ...
+11/6/2025 6:41:11 AM 1162 Information      Internal event: The Address Book hierarchy table has been rebuilt.
+11/5/2025 6:56:12 PM 3027 Information      Internal event: Online Defragment Start succeeded. ...
+11/5/2025 6:56:12 PM 3033 Information      Internal event: Online Defragment Stop invoked but defrag was not running.
+11/5/2025 6:56:12 PM  701 Information      NTDS (836,D,0) NTDSA: Online defragmentation has completed a full pass on...
+11/5/2025 6:56:12 PM  700 Information      NTDS (836,D,0) NTDSA: Online defragmentation is beginning a full pass on ...
+11/5/2025 6:41:12 PM 1162 Information      Internal event: The Address Book hierarchy table has been rebuilt.
+11/5/2025 6:41:11 PM 3041 Warning          The security of this directory server can be significantly enhanced by co...
+11/5/2025 6:56:13 AM 3027 Information      Internal event: Online Defragment Start succeeded. ...
+11/5/2025 6:56:13 AM 3033 Information      Internal event: Online Defragment Stop invoked but defrag was not running.
+11/5/2025 6:56:13 AM  701 Information      NTDS (836,D,0) NTDSA: Online defragmentation has completed a full pass on...
+11/5/2025 6:56:13 AM  700 Information      NTDS (836,D,0) NTDSA: Online defragmentation is beginning a full pass on ...
+11/5/2025 6:41:12 AM 1162 Information      Internal event: The Address Book hierarchy table has been rebuilt.
+11/4/2025 6:56:13 PM 3027 Information      Internal event: Online Defragment Start succeeded. ...
+11/4/2025 6:56:13 PM 3033 Information      Internal event: Online Defragment Stop invoked but defrag was not running.
+11/4/2025 6:56:14 PM  701 Information      NTDS (836,D,0) NTDSA: Online defragmentation has completed a full pass on...
+11/4/2025 6:56:13 PM  700 Information      NTDS (836,D,0) NTDSA: Online defragmentation is beginning a full pass on ...
+```
+---
+
+```powershell
+Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\Logs\ADLogs.csv" -NoTypeInformation
+```
+
+```powershell
+Stop-Service -Name DFSR
+(Get-Service -name DFSR).status
+Start-Service -Name DFSR
+```

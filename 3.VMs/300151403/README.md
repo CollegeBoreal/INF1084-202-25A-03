@@ -1,7 +1,8 @@
-##1-J'ai  Renommé le serveuur
+```powershell
+# 1-J'ai  Renommé le serveuur
 
 Rename-Computer -NewName "DC-300151403" -Restart
-2- Installer le rôle AD DS
+--- 2- Installer le rôle AD DS
 Rename-Computer -NewName "DC9999999990" -Restart
 3-Créer un nouveau domaine (nouvelle forêt)
 Install-ADDSForest `

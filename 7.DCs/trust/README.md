@@ -38,7 +38,13 @@ nltest /trusted_domains
 ```cmd
 nltest /server:DC300098957-90.local /trusted_domains
 ```
-
+>
+```lua
+List of domain trusts:
+    0: DC300098957-40 (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300098957-90 DC300098957-90.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+```
 **Test d'authentification :**
 ```cmd
 net use \\SERVEUR_LOCAL\Partage /user:DC300098957-40.local\utilisateur *

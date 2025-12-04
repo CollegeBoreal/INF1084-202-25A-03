@@ -1,21 +1,68 @@
-# INF1084-202-25A-03
-INF1084 (202) - Introduction à l'administration des systèmes
+# 300141858
 
-## :date: [Épreuves](.epreuves)
+## 0️⃣ Nom du domaine basé sur le numéro étudiant
 
-## :one: [Devoirs](Devoirs)
+```powershell
+$studentNumber = 300141858
+$studentInstance = "01"
 
-|:hash: | Date   | Cours                      | Intitulé                            |  Pratique                                                     |
-|-------|--------|:---------------------------|:------------------------------------|:--------------------------------------------------------------|
-| :one:   |01-sept| [0.PlanDeCours](0.PlanDeCours/.scripts/Participation.md)       | â Noter :x: |
-| :two:   |08-sept| [0.Tutoriel sur GIT](.scripts/Participation.md)       | â Noter :x: |
-| :three: |15-sept| [1.SSH](1.SSH/.scripts/Participation.md)       | â Noter :x: |
-| :four:  |22-sept| [2.Utilisateurs](2.Utilisateurs/.scripts/Participation.md)       | â Noter :x: |
-| :five:  |29-sept| [3.VMs](3.VMs/.scripts/Participation.md)       | â Noter :x: |
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+
+1️⃣ Préparer l’environnement
+# Importer le module Active Directory
+Import-Module ActiveDirectory
+
+# Vérifier le domaine et le contrôleur de domaine
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
+
+2️⃣ Liste des utilisateurs du domaine
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
+Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName
+
+3️⃣ Créer un nouvel utilisateur
+New-ADUser `
+  -Name "Karim Niang" `
+  -GivenName "Karim" `
+  -Surname "Niang" `
+  -SamAccountName "karim.niang" `
+  -UserPrincipalName "karim.niang@$domainName" `
+  -Path "CN=Users,DC=$netbiosName,DC=local" `
+  -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
+  -Enabled $true
+
+4️⃣ Modifier un utilisateur
+Set-ADUser -Identity "karim.niang" `
+           -EmailAddress "karim.niang@example.com" `
+           -GivenName "Karim-Ali"
+
+5️⃣ Désactiver et Réactiver un utilisateur
+Disable-ADAccount -Identity "karim.niang"
+Enable-ADAccount -Identity "karim.niang"
+
+6️⃣ Supprimer un utilisateur
+Remove-ADUser -Identity "karim.niang" -Confirm:$false
+
+7️⃣ Exporter les utilisateurs vers un fichier CSV
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, EmailAddress, Enabled |
+Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName, EmailAddress, Enabled |
+Export-Csv -Path "TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
+
+8️⃣ Déplacer un utilisateur vers une OU Students
+# Créer l'OU si elle n'existe pas
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
+}
+
+# Déplacer l'utilisateur
+Move-ADObject -Identity "CN=Karim Niang,CN=Users,DC=$netbiosName,DC=local" `
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local"
+
+🔟 Connexion à distance avec un utilisateur créé
+Add-ADGroupMember -Identity "Remote Desktop Users" -Members "karim.niang"
+Get-ADGroupMember "Remote Desktop Users"
 
 
-# :books: References
-
-- [ ] Comment vérifier que le `commit` a été fait par le `CLI`
-      
-`git log --format=fuller -- `:id:`.md`

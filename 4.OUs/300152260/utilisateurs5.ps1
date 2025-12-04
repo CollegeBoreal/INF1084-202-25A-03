@@ -1,3 +1,2 @@
-# 5️⃣ Désactiver un utilisateur
 
-Disable-ADAccount -Identity "leandre.ebah" -Credential $cred
+Disable-ADAccount -Identity "mohib" -Credential $cred

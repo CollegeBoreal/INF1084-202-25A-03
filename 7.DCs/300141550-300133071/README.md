@@ -11,11 +11,21 @@ Ce laboratoire a pour objectif de vérifier la communication et l’accès entre
 - Automatiser tous les tests via un script PowerShell  
 ---
 ## Étape 1 – Vérifier la connectivité
+```powershell
+# Vérifier la résolution DNS  
+Resolve-DnsName DC300133071.DC300133071-00.local
+Resolve-DnsName DC300141550.DC300141550.local
+
+# Vérifier la connectivité réseau entre les domaines 
+Test-Connection -ComputerName DC300133071.DC300133071-00.local -Count 2
+Test-Connection -ComputerName DC300141550.DC300141550.local -Count 2
 
 
-Test-Connection -ComputerName DC300133071-00 -Count 2
-Resolve-DnsName DC300133071-00.local
+```
+
+<img src="images/1.ong" alt="images" width="450"/>
 
 
 Étape 2 – Informations du domaine distant
+
 

@@ -1,8 +1,9 @@
-# Informations
+
+# vos informations
 $studentNumber = 300152260
 $studentInstance = "00"
 
-# Noms respectifs
+# les noms respectifs
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 
@@ -10,3 +11,5 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 $plain = 'Infra@2024'
 $secure = ConvertTo-SecureString $plain -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
+
+$shareName = "SharedResources"

@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
 
-Enable-ADAccount -Identity "siga.diarra" -Credential $cred
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred

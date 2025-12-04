@@ -1,4 +1,4 @@
 Import-Module ActiveDirectory
 
-Remove-ADUser -Identity "siga.diarra" -Confirm:$false -Credential $cred
+Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
 

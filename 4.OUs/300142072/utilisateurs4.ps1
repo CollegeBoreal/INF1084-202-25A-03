@@ -1,6 +1,6 @@
 Import-Module ActiveDirectory
 
-Set-ADUser -Identity "siga.diarra" `
-           -EmailAddress "siga.diarra@example.com" `
-           -GivenName "Siga-Aicha" `
+Set-ADUser -Identity "alice.dupont" `
+           -EmailAddress "alice.dupont@exemple.com" `
+           -GivenName "Alice-Marie" `
            -Credential $cred

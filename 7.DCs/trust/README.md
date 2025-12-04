@@ -59,7 +59,7 @@ klist
 
 ### Méthode Recommandée (NETDOM) :
 ```cmd
-netdom trust DC300098957-90 /Domain:DC300098957-40 /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+netdom trust DC300098957-90 /Domain:DC300098957-40 /UserD:Administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
 ## Outils Graphiques Alternatifs
@@ -102,4 +102,11 @@ Trust type: realm
 Transitive: No
 
 Sides of trust: Created the trust for this domain only.
+```
+
+```powershell
+netdom trust ATHENA `
+             /Domain:DC300098957-40 `
+             /UserD:Administrator /PasswordD:* `
+             /Add /Realm /TwoWay
 ```

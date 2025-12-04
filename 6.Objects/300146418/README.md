@@ -152,3 +152,5 @@ Ce TP démontre la capacité à :
 💡 administrer un environnement Windows Server comme en entreprise
 
 
+<img src="images/2.jpg">
+

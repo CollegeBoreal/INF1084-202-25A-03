@@ -1,6 +1,6 @@
 <# =========================================================
  Script Trust1.ps1 – Domaine LOCAL : 300151556-00.local
- Auteur : Kahina
+ Auteur :; Kahina
  Objectif : Créer un trust bidirectionnel vers 300151258
 =========================================================  #>
 

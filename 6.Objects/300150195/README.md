@@ -1,6 +1,6 @@
-Partage de ressources & RDP via PowerShell
+##Partage de ressources & RDP via PowerShell
 
-Dossier : 300150195
+##Dossier : 300150195
 
 Ce projet a pour objectif d’automatiser, à l’aide de PowerShell, la configuration d’un environnement Active Directory comprenant :
 
@@ -14,7 +14,7 @@ La création de comptes étudiants
 
 Des tests de validation
 
-1️⃣ Pré-requis
+##1️⃣ Pré-requis
 
 Windows Server 2022 installé avec AD DS
 
@@ -32,9 +32,9 @@ Une VM membre du domaine pour tester le partage + RDP
 
 Le fichier 4.OUs/bootstrap.ps1 doit être exécuté (dot-sourcing) pour charger les variables du domaine.
 
-2️⃣ Script : Création du dossier partagé
+##2️⃣ Script : Création du dossier partagé
 
-📌 Script : utilisateurs1.ps1
+##📌 Script : utilisateurs1.ps1
 
 Ce script :
 
@@ -50,9 +50,9 @@ Ajoute les utilisateurs au groupe Students
 
 Il permet de préparer les ressources que les utilisateurs utiliseront.
 
-3️⃣ Script : GPO pour mapper le lecteur réseau
+##3️⃣ Script : GPO pour mapper le lecteur réseau
 
-📌 Script : utilisateurs2.ps1
+##📌 Script : utilisateurs2.ps1
 
 Ce script :
 
@@ -66,9 +66,9 @@ Mappe automatiquement le lecteur réseau Z: vers le dossier partagé
 
 Résultat : tous les utilisateurs de l’OU Students verront automatiquement le lecteur Z: en se connectant.
 
-4️⃣ Script : Activer RDP pour le groupe
+##4️⃣ Script : Activer RDP pour le groupe
 
-📌 Script : utilisateurs3.ps1
+##📌 Script : utilisateurs3.ps1
 
 Ce script :
 
@@ -80,7 +80,7 @@ Donne le droit SeRemoteInteractiveLogonRight au groupe Students
 
 Permet aux étudiants de se connecter en RDP à la VM membre
 
-5️⃣ Tests à effectuer
+##5️⃣ Tests à effectuer
 
 Connexion avec un utilisateur du groupe Students
 
@@ -92,7 +92,7 @@ L’utilisateur peut se connecter en RDP
 
 Tester un utilisateur non membre → il ne doit PAS avoir accès.
 
-🎓 Avantages pédagogiques
+##🎓 Avantages pédagogiques
 
 Automatisation complète via PowerShell (AD, partages, RDP, GPO)
 

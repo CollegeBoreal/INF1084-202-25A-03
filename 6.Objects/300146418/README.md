@@ -1,180 +1,154 @@
-Bien sûr Ikram ! Voici **tout ton README.md prêt à être collé directement dans ton fichier GitHub**, **dans un seul bloc Markdown**, sans texte autour.
 
-👇 **Copie-colle tel quel dans ton fichier README.md** :
 
-```markdown
-# 🧪 TP Active Directory – Partage réseau, GPO et RDP  
-**Auteur : 300146418 — Ikram**  
-**Cours : INF1084 – Services Réseau (Windows Server 2022)**
+# **🧪 TP Active Directory – Partage réseau, GPO et RDP (via PowerShell)**
+
+**Auteur : 300146418 — Ikram**
 
 ---
 
-## 🎯 Objectif du TP
-Ce TP consiste à automatiser l’administration d’un domaine Active Directory uniquement avec **PowerShell**, sans interface graphique.
+## ## 🎯 **Objectif du TP**
 
-Objectifs :
+Ce laboratoire vise à configurer entièrement un environnement Active Directory **sans interface graphique**, uniquement via **PowerShell**.
 
-- créer des utilisateurs et un groupe AD  
-- créer un partage réseau sécurisé  
-- générer une GPO qui mappe automatiquement un lecteur Z:  
-- autoriser l’accès RDP à un groupe  
-- tester la configuration sur un utilisateur étudiant  
+Tu vas apprendre à :
+
+* Créer un partage réseau
+* Créer des utilisateurs et un groupe AD
+* Lier une GPO à une OU
+* Mapper automatiquement un lecteur réseau **Z:**
+* Donner l’accès RDP à un groupe
+* Tester les accès avec un utilisateur étudiant
+* Utiliser le script bootstrap.ps1 pour définir ton domaine
 
 ---
 
-## 🗂️ Structure du répertoire
+# ## 🗂️ Structure utilisée
+
+```
+INF1084-202-25A-03/
+ └── 6.Objects/
+      └── 300146418/
+           ├── utilisateurs1.ps1
+           ├── utilisateurs2.ps1
+           ├── utilisateurs3.ps1
+           └── README.md
 ```
 
-INF1084-202-25A-03/
-└── 6.Objects/
-└── 300146418/
-├── utilisateurs1.ps1
-├── utilisateurs2.ps1
-├── utilisateurs3.ps1
-├── README.md
-└── images/
-
-````
-
 ---
 
-## 🏛️ 1. Initialisation avec bootstrap.ps1
+# ## 🏛️ 1. Préparation de l’environnement
 
-Avant d’exécuter les scripts, les variables du domaine sont chargées depuis :
+Avant de lancer les scripts, j’ai exécuté :
 
 ```powershell
 . "C:\Users\Administrator\Developer\INF1084-202-25A-03\4.OUs\300146418\bootstrap.ps1"
-````
+```
 
-Ce script fournit automatiquement :
+Ce fichier définit automatiquement :
 
-* **domainName** → ex : `DC300146418-00.local`
-* **netbiosName** → ex : `DC300146418-00`
-* **cred** → identifiants administrateurs du domaine
+* `$domainName` → ex : **DC300146418-00.local**
+* `$netbiosName` → ex : **DC300146418-00**
+* `$cred` → les identifiants administrateurs du domaine
 
-Ces variables sont utilisées dans tous les scripts du TP.
+Ces variables sont ensuite utilisées dans chaque script.
 
 ---
 
-## 🧩 2. Description des scripts PowerShell
+# ## 🧩 2. Rôle des fichiers PowerShell
 
-### 📌 1️⃣ `utilisateurs1.ps1` — Création des objets Active Directory
+## ### 📌 **1️⃣ utilisateurs1.ps1 — Création des objets AD**
 
 Ce script :
 
-* crée le groupe AD **Students**
-* crée les utilisateurs (ex : Etudiant1, Etudiant2…)
-* configure un mot de passe initial
-* active les comptes
-* ajoute tous les utilisateurs dans le groupe Students
+✔️ crée un groupe Active Directory (ex : **Students**)
+✔️ crée les utilisateurs du labo (Etudiant1, Etudiant2…)
+✔️ active les comptes et leur assigne un mot de passe
+✔️ ajoute les utilisateurs dans le groupe Students
 
-**🎯 But : préparer tous les comptes nécessaires au TP.**
+➡️ **But : préparer les comptes qui vont utiliser le lecteur Z:**
 
 ---
 
-### 📌 2️⃣ `utilisateurs2.ps1` — Création de la GPO pour mapper le lecteur Z:
+## ### 📌 **2️⃣ utilisateurs2.ps1 — Création de la GPO + logon script**
 
 Ce script :
 
-* crée une GPO appelée **MapSharedFolder**
-* lie la GPO à l’OU : `OU=Utilisateurs`
-* génère un script `MapDriveZ.bat` dans SYSVOL
-* configure un mappage automatique :
+✔️ crée une GPO appelée **MapSharedFolder**
+✔️ attache la GPO à l’OU : `OU=Utilisateurs`
+✔️ génère un script logon `.bat` qui mappe automatiquement :
+`Z: → \\DC300146418-00\partage`
+✔️ place le script dans `SYSVOL`
 
-  ```
-  Z: → \\DC300146418-00\partage
-  ```
+➡️ **But : que chaque étudiant voie automatiquement un lecteur réseau Z: lors de sa connexion.**
 
-⚠️ **Étape manuelle obligatoire dans GPMC :**
-
-```
-GPMC → GPO "MapSharedFolder" → 
-User Configuration → Windows Settings → Scripts (Logon)
-Ajouter → MapDriveZ.bat
-```
-
-**🎯 But : chaque utilisateur de l'OU "Utilisateurs" obtient un lecteur Z: au login.**
+⚠️ Une petite étape manuelle reste nécessaire dans GPMC :
+Ajouter le script MapDriveZ.bat dans :
+**User Configuration → Windows Settings → Scripts (Logon)**
 
 ---
 
-### 📌 3️⃣ `utilisateurs3.ps1` — Partage réseau + Permissions + RDP
+## ### 📌 **3️⃣ utilisateurs3.ps1 — Partage réseau + RDP**
 
 Ce script :
 
-* crée le dossier `C:\Partage_Students`
-* applique les permissions NTFS au groupe Students
-* crée le partage SMB :
+✔️ crée un dossier partagé : `C:\Partage_Students`
+✔️ donne les permissions NTFS au groupe Students
+✔️ crée le partage SMB : `\\DC300146418-00\partage`
+✔️ active Remote Desktop (RDP)
+✔️ permet au groupe Students d’utiliser RDP
 
-  ```
-  \\DC300146418-00\partage
-  ```
-* active le Remote Desktop (RDP)
-* ajoute le groupe Students aux utilisateurs autorisés à se connecter en RDP
-
-**🎯 But : donner accès au partage réseau + autoriser RDP pour les étudiants.**
+➡️ **But : autoriser les étudiants à accéder au dossier partagé + connexion RDP.**
 
 ---
 
-## 🧪 3. Tests réalisés
+# ## 🧪 3. Tests effectués
 
-### ✔️ Vérification des utilisateurs
+### ✔️ **1. Test de la création des utilisateurs**
 
-```powershell
-Get-ADUser -Filter *
-```
+`Get-ADUser -Filter *`
 
-### ✔️ Vérification des GPO
+### ✔️ **2. Test de la GPO**
 
-```powershell
-Get-GPO -All
-```
+`Get-GPO -All`
 
-### ✔️ Test du partage
+### ✔️ **3. Test du partage SMB**
 
-Depuis l'explorateur ou PowerShell :
+`\\DC300146418-00\partage`
 
-```
-\\DC300146418-00\partage
-```
+### ✔️ **4. Test du lecteur Z**
 
-### ✔️ Test du lecteur Z:
+Avec un compte étudiant :
 
-1. Connexion avec Etudiant1
-2. Vérifier que Z: apparaît
-3. Essayer de créer un fichier dans Z:\
+* connexion sur une machine membre du domaine
+* vérifier que **Z:** apparaît automatiquement
+* créer un fichier dans Z:\ pour vérifier les permissions
 
-### ✔️ Test RDP
+### ✔️ **5. Test RDP**
 
-* Students → RDP autorisé ✔️
-* utilisateur non-membre → RDP refusé ❌
+Connexion avec un utilisateur du groupe Students
+→ accès autorisé
+Connexion avec un utilisateur hors du groupe
+→ accès bloqué
 
 ---
 
-## 📚 Conclusion
+# ## 📚 Conclusion
 
-Grâce à ce TP, j’ai automatisé :
+À travers ce TP, j’ai entièrement :
 
-* la création de comptes et groupes AD
-* le partage réseau sécurisé
-* une GPO complète avec script logon
-* l’activation et configuration de RDP
-* des tests réels avec un utilisateur étudiant
+* créé des objets Active Directory
+* configuré un partage réseau sécurisé
+* déployé une GPO pour mapper automatiquement un lecteur réseau
+* configuré et sécurisé l’accès RDP
+* testé <u>toutes</u> les fonctionnalités avec un compte utilisateur
 
-Tout a été fait **100 % PowerShell**, comme dans un environnement professionnel.
+Le tout **sans interface graphique**, uniquement en PowerShell.
 
----
+Ce TP démontre la capacité à :
 
-## 📸 Captures d'écran
+💡 automatiser un domaine AD
+💡 gérer des permissions NTFS et SMB
+💡 configurer GPO + scripts logon
+💡 administrer un environnement Windows Server comme en entreprise
 
-Ajouter vos images dans le dossier `/images`.
 
----
-
-```
-
-Tu peux maintenant l’ajouter dans GitHub !
-
-Si tu veux, je peux aussi te créer :
-✅ un schéma Mermaid  
-✅ une version PDF  
-```

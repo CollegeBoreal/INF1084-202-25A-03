@@ -81,3 +81,19 @@ L'approbation bidirectionnelle permet maintenant aux utilisateurs des deux domai
 # :books: References
 
 - [ ] [NetDom examples](https://homeworks.it/Pdf/NetDom%20Examples.pdf)
+
+---
+
+```txt
+
+Specified domain: DC300098957-40
+
+Direction:
+Two-way: Users in the local domain can authenticate in the specified domain and users in the specified domain can authenticate in the local domain.
+
+Trust type: realm
+
+Transitive: No
+
+Sides of trust: Created the trust for this domain only.
+```

@@ -1,16 +1,18 @@
-# vos informations
-$studentNumber = 300153476
-$studentInstance = 00
+# ==========================
+#   Informations étudiant
+# ==========================
 
-# les noms respectifs
+$studentNumber = 30015346
+$studentInstance = "00"
+
+# Domaines générés
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 
-# les informations de sécurité
+# Informations de sécurité
 $plain = 'Infra@2024'
 $secure = ConvertTo-SecureString $plain -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential("Administrator@ramatoulaye.me", $secure)
+$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
 
 # Import module Active Directory
 Import-Module ActiveDirectory
-

@@ -22,11 +22,16 @@ Test-Connection -ComputerName DC300141550.DC300141550.local -Count 2
 
 
 ```
-<row
-<img src="images/1.png" alt="images" width="450"/>
-<img src="images/2.jpg" alt="images" width="450"/>>
+<table>
+  <tr>
+    <td><img src="images/1.png" alt="Image 1"></td>
+    <td><img src="images/2.jpg" alt="Image 2"></td>
+  </tr>
+</table>
+
 
 Étape 2 – Informations du domaine distant
+
 
 
 

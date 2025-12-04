@@ -12,6 +12,8 @@ if (-not (Get-ADOrganizationalUnit -LDAPFilter "(ou=Students)" -ErrorAction Sile
 New-GPO -Name $GPOName -ErrorAction SilentlyContinue
 
 # === 3. Lier la GPO à l'OU ===
+
+Remove-GPLink -Name $GPOName -Target $OUPath -Confirm:$false -ErrorAction SilentlyContinue
 New-GPLink -Name $GPOName -Target $OUPath
 
 # === 4. Préférences pour mapper le lecteur réseau ===

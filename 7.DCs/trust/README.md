@@ -59,7 +59,7 @@ klist
 
 ### Méthode Recommandée (NETDOM) :
 ```cmd
-netdom trust DC300098957-90 /Domain:DC300098957-40 /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+netdom trust DC300098957-90 /Domain:DC300098957-40 /UserD:Administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
 ## Outils Graphiques Alternatifs

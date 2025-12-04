@@ -1,8 +1,5 @@
 # TP Active Directory – Vérification inter-domaines
-### Etudiants : Emeraude Santu (300141550) Nelson William (300133071)
-
 ---
-
 ## Objectif du laboratoire
 
 Ce laboratoire a pour objectif de vérifier la communication et l’accès entre deux contrôleurs de domaine :
@@ -12,7 +9,6 @@ Ce laboratoire a pour objectif de vérifier la communication et l’accès entre
 - Récupérer les informations du domaine distant  
 - Naviguer dans l’Active Directory distant via un PSDrive  
 - Automatiser tous les tests via un script PowerShell  
-
 ---
 ## Étape 1 – Vérifier la connectivité
 
@@ -22,3 +18,4 @@ Resolve-DnsName DC300133071-00.local
 
 
 Étape 2 – Informations du domaine distant
+

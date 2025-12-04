@@ -158,6 +158,7 @@ Name            ScopeName AccountName            AccessControlType AccessRight
 SharedResources *         DC300147816VM\Students Allow             Full
 ```
 2. **utilisateurs2.ps1 - Configuration GPO de mappage**
+
 Objectif : Automatiser le mappage du lecteur réseau Z: pour les étudiants
 
 **Fonctionnalités :**
@@ -192,9 +193,11 @@ ComputerVersion  : AD Version: 0, SysVol Version: 0
 WmiFilter        :
 ```
 3. **utilisateurs3.ps1 - Attribution des droits RDP**
+
 Objectif : Donner l'accès Bureau à distance au groupe Students
 
 **Fonctionnalités :**
+
 - Active le service RDP sur le serveur
 
 - Ouvre les règles firewall nécessaires

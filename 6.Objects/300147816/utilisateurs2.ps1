@@ -1,16 +1,16 @@
-## Nom de la GPO
+# Nom de la GPO
 $GPOName = "MapSharedFolder"
 
 # Créer la GPO
 New-GPO -Name $GPOName
 
 # Lier la GPO à une OU spécifique (ex: "Students")
-$OU = "OU=Students,DC=DC300150433-50,DC=local"
+$OU = "OU=Students,DC=DC300147816,DC=local"
 New-GPLink -Name $GPOName -Target $OU
 
-# Créer une préférence pour mapper le lecteur réseau
+# Créer une preference pour mapper le lecteur réseau
 $DriveLetter = "Z:"
-$SharePath = "\\DC300150433-50\SharedResources"
+$SharePath = "\\DC300147816VM\SharedResources"
 
 # Créer un script logon
 $ScriptFolder = "C:\Scripts"
@@ -26,3 +26,8 @@ Set-GPRegistryValue -Name $GPOName `
                     -ValueName "LogonScript" `
                     -Type String `
                     -Value $ScriptPath
+
+
+
+ 
+

@@ -2,7 +2,7 @@
 
 🔢 Renommer le serveur 
 ``` sh
-Rename-Computer -NewName "DC300142072" -Restart
+Rename-Computer -NewName "DC300142072-50" -Restart
 ```
 🔢 Installer le role AD DS
 
@@ -14,8 +14,8 @@ Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 
 ``` sh
 Install-ADDSForet `
-   -DomainNmae "DC300142072-00.local" `
-   -DomaineNetbiosName "DC300142072-00" `
+   -DomainName "DC300142072-50.local" `
+   -DomainNetbiosName "DC300142072-50" `
    -InstallDns:$true `
    -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
    -Force `
@@ -24,7 +24,7 @@ Install-ADDSForet `
 🔢 Verification de l'installation
 
 ``` sh
-    DC300142072/Administrator
+    DC300142072-50/Administrator
 ```
 
 puis avec :

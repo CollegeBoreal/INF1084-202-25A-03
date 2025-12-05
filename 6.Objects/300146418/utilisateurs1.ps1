@@ -1,48 +1,62 @@
-# Charger les informations du bootstrap
-. "C:\Users\kelek\developer\INF1084-202-25A-03\4.OUs\300146418\bootstrap.ps1"
+Write-Host "=== Création des utilisateurs, groupe Students et partage SMB ===" -ForegroundColor Cyan
 
-# Définir le chemin du dossier partagé
-$SharedFolder = "C:\Users\kelek\developer\INF1084-202-25A-03\6.DCs\300146418\SharedResources"
+# Charger les variables depuis bootstrap.ps1 (si non déjà chargé)
+# . .\bootstrap.ps1
 
-# Créer le dossier
+$domainDN = "DC=$netbiosName,DC=local"
+
+# --- 1) Créer le dossier partagé ---
+$SharedFolder = "C:\SharedResources"
+
 if (-not (Test-Path $SharedFolder)) {
-    New-Item -Path $SharedFolder -ItemType Directory -Force
-    Write-Host "��� Dossier créé : $SharedFolder"
+    New-Item -Path $SharedFolder -ItemType Directory -Force | Out-Null
+    Write-Host "[OK] Dossier SharedResources créé." -ForegroundColor Green
 } else {
-    Write-Host " Dossier déjà existant : $SharedFolder"
+    Write-Host "[!] Dossier SharedResources existe déjà." -ForegroundColor Yellow
 }
 
-# Créer le groupe AD
+# --- 2) Créer groupe Students ---
 $GroupName = "Students"
-New-ADGroup -Name $GroupName `
-    -GroupScope Global `
-    -GroupCategory Security `
-    -Description "Users allowed RDP and shared folder access" `
-    -Server $domainName `
-    -Credential $cred
 
-# Créer des utilisateurs et les ajouter au groupe
-$Users = @("Etudiant1","Etudiant2")
-foreach ($user in $Users) {
-    New-ADUser -Name $user `
-        -SamAccountName $user `
-        -UserPrincipalName "$user@$domainName" `
-        -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
-        -Enabled $true `
-        -Server $domainName `
-        -Credential $cred
-
-    Add-ADGroupMember -Identity $GroupName -Members $user -Server $domainName -Credential $cred
+if (-not (Get-ADGroup -Identity $GroupName -ErrorAction SilentlyContinue)) {
+    New-ADGroup -Name $GroupName -GroupScope Global -Description "Groupe Students pour accès RDP et partage"
+    Write-Host "[OK] Groupe Students créé." -ForegroundColor Green
+} else {
+    Write-Host "[!] Groupe Students existe déjà." -ForegroundColor Yellow
 }
 
-# Créer le partage SMB et donner 'accès complet au groupe
+# --- 3) Créer utilisateurs et les ajouter à l’OU Students ---
+$Users = @("Etudiant1","Etudiant2")
 
-if (-not (Get-SmbShare -Name $shareName -ErrorAction SilentlyContinue)) {
-    New-SmbShare -Name $shareName `
-        -Path $SharedFolder `
-        -FullAccess "$netbiosName\$GroupName"
-    Write-Host " Partage SMB créé : \\$netbiosName\$shareName"
+foreach ($user in $Users) {
+    if (-not (Get-ADUser -Identity $user -ErrorAction SilentlyContinue)) {
+        New-ADUser -Name $user `
+            -SamAccountName $user `
+            -UserPrincipalName "$user@$domainName" `
+            -Path "OU=Students,$domainDN" `
+            -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
+            -Enabled $true
+
+        Write-Host "[OK] Utilisateur $user créé." -ForegroundColor Green
+    } else {
+        Write-Host "[!] Utilisateur $user existe déjà." -ForegroundColor Yellow
+    }
+
+    Add-ADGroupMember -Identity $GroupName -Members $user -ErrorAction SilentlyContinue
+}
+
+# --- 4) Permissions NTFS au groupe ---
+$acl = Get-Acl $SharedFolder
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("$netbiosName\$GroupName","FullControl","ContainerInherit,ObjectInherit","None","Allow")
+$acl.SetAccessRule($rule)
+Set-Acl -Path $SharedFolder -AclObject $acl
+Write-Host "[OK] Permissions NTFS appliquées." -ForegroundColor Green
+
+# --- 5) Créer le partage SMB ---
+if (-not (Get-SmbShare -Name "SharedResources" -ErrorAction SilentlyContinue)) {
+    New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess "$netbiosName\$GroupName" | Out-Null
+    Write-Host "[OK] Partage SMB créé : \\$netbiosName\SharedResources" -ForegroundColor Green
 } else {
-    Write-Host "Le partage SMB '$shareName' existe déjà."
+    Write-Host "[!] Partage SMB existe déjà." -ForegroundColor Yellow
 }
 

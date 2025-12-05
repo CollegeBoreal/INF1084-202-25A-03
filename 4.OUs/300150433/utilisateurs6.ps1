@@ -1,12 +1,13 @@
-# Vérifier si l'OU "Students" existe, sinon la créer
-if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'" -Server $domainName -ErrorAction SilentlyContinue)) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Server $domainName
-}
+$domainName = "dc300150433-00.local"
 
-# Déplacer l'utilisateur Alice Dupont vers l'OU Students
-Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
-              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
-              -Server $domainName
+# Récupérer l'OU Students (crée-la avant si elle n'existe pas)
+$studentsOU = Get-ADOrganizationalUnit -Filter "Name -eq 'Students'" -Server $domainName
 
-# Vérifier que l'utilisateur a bien été déplacé
-Get-ADUser -Identity "alice.dupont" -Server $domainName | Select-Object Name, DistinguishedName
+# Récupérer Alice
+$user = Get-ADUser -Identity "alice.dupont" -Server $domainName -Properties DistinguishedName
+
+# Déplacer Alice dans Students
+Move-ADObject -Identity $user.DistinguishedName -TargetPath $studentsOU.DistinguishedName -Server $domainName
+
+# Vérifier
+Get-ADUser -Identity "alice.dupont" -Server $domainName | Select Name, DistinguishedName

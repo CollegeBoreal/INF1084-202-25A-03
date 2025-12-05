@@ -58,7 +58,7 @@ $IDS = @(
     'hakimsb'
     'sarahocine'
     'JustinSandy99'
-    '33070733'
+    'Rabia-777'
     'Kahinazerkani'
     'FeatFreedy'
     'Hannibalcarthage'
@@ -91,7 +91,7 @@ $AVATARS = @(
     231778604
     207281891
     211593057
-    212077526
+    206001876
     231781132
     195238262
     205994935
@@ -132,3 +132,54 @@ $SERVERS = @(
     '10.7.236.224'
 )
 
+# Groupe d'Étudiants (student numbers)
+$GROUPES = @(
+    '300151825-300153476'
+    '300141625-300141858'
+    '300141657-300150562'
+    '300146676-300150416'
+    '300151403-300143951'
+    '300148450-300141716'
+    '300151258-300151556'
+    '300151347-300150195'
+    '300150558-300150433'
+    '300141550-300133071'
+    '300146418-300146721'
+    '300151469-300147816'
+    '300142072-300144176'
+    '300148094-300152260'
+    '300151863-300147510'
+)
+
+$DOMAINS = @(
+    'nelsonwilliam.me'
+    'emeraudesantu.me'
+    '300141625@monboreal.ca'
+    'lmnzglobalshop.store'
+    '300141716@monboreal.ca'
+    '300141858@monboreal.ca'
+    '300142072@monboreal.ca'
+    'frankkadji.dev'
+    '300144176@monboreal.ca'
+    'ikramsidhoum.me'
+    'harkati.me'
+    '300146721@monboreal.ca'
+    '300147510@monboreal.ca'
+    '300147816@monboreal.ca'
+    '300148094@monboreal.ca'
+    'adjhocine.me'
+    'amelzourane.me'
+    '300150416@monboreal.ca'
+    'zakariadjellouli.me'
+    'amirasadouni.me'
+    'isako29.store'
+    'hakimsb.me'
+    'sarahocine.me'
+    'sandyjustin.me'
+    '300151469@monboreal.ca'
+    'kahinazerkani.me'
+    'featfreedy.xyz'
+    '300151863@monboreal.ca'
+    '300152260@monboreal.ca'
+    'ramatoulaye.me'
+)

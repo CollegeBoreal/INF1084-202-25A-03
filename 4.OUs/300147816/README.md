@@ -1,54 +1,150 @@
-# Projet INF1084-2025-o3-Utilisateurs
+**Gestion Active Directory - INF1084**
 
-## Description
-Ce projet contient des scripts PowerShell pour la gestion d'utilisateurs et de groupes dans un environnement de type Active Directory. Chaque script explique la creation des 
-utilisateurs, des groupes, l'utilisation de tableaux et l'import/ export de fichiers csv
----
+😊 **Informations du Projet**
 
-## Contenu du projet
+Ce projet contient des scripts PowerShell pour la gestion d'Active Directory dans le cadre du cours INF1084.
 
-### 1. utilisateurs1.ps1
-Création de 5 utilisateurs simulés.
+↝**Informations d'etudiant**
 
-![Capture utilisateurs1](captures/Capture1.png)
+- Numero d'etudiant : 300147816
 
----
+- Instance : 25A-03
 
-### 2. utilisateurs2.ps1
-Création de groupes simulés et ajoutes utilisateurs selon leur OU.
+- Domaine : DC300147816.local
 
-![utilisateurs2](captures/Capture2.png)
+- Nom NetBIOS : DC300147816
 
----
+😀Scripts Disponibles:
 
-### 3. utilisateurs3.ps1
-Filtrage des utilisateurs selon différentes conditions :
-- Nom commençant par "B"
-- OU = "Stagiaires"
-- Prénom contenant "a" (insensible à la casse)
+**0. Configuration Initiale (bootstrap.ps1):**
 
-![utilisateurs3](captures/Capture3.png)
+On cree ce fichier en tapant la commande: nano bootstrap.ps1
 
----
+![Mon bootstrap.ps1](images/hanane.JPG)
 
-### 4. utilisateurs4.ps1
-Import depuis CSV, création 'un groupe "ImportGroupe",Il illustre également l'export des utilisateurs vers un fichier CSV, la manipulation des tableaux et la visualisation du contenu
- du groupe, tout en affichant des informations claires sur chaque utilisateur.
-![utilisateurs4](captures/Capture4.png)
+- Definit les variables du domaine
 
----
+- Configure les informations de securite
 
-### 5. Mini-projet.ps1
-Création des utilisateurs de la promo2025, groupe "Etudiants2025", ajout des utilisateurs au groupe et export CSV.
-
-![mini-projet](captures/miniprojet1.png)
-
----
-
-## Instructions pour exécuter les scripts
-1. Ouvrir PowerShell.
-2. Se placer dans le dossier contenant les scripts.
-3. Pour exécuter un script et utiliser les variables d'un autre script, utilisez le **dot sourcing** :
+👵 **Operations néscessitant les informations sécurisées de l'administrateur:**
 ```powershell
-. .\utilisateurs1.ps1
+$cred = Get-Credential 
+```
+**1. Vérification Domaine (utilisateurs1.ps1)**
+
+Voici le code de fichier utilisateurs1.ps1:
+
+![Code utilisateurs1.ps1](images/codeutilisateurs1.JPG)
+
+On aura a l'execution :
+
+![resultat utilisateurs1.ps1](images/executionutilisateur1.PNG)
+![resultat](images/executionutilisateur1suite.PNG)
+
+**2. Liste des utilisateurs du domaine**
+
+Voici le code de fichier utilisateurs2.ps1:
+
+![Code utilisateurs2.ps1](images/codeutilisateur2.JPG)
+
+On aura a l'execution:
+
+![resultat utilisateurs2.ps1](images/executionutilisateur2.PNG)
+
+**3. Créer un nouvel utilisateur**
+
+Voici le code de fichier utilisateurs3.ps1:
+
+![code utilisateurs3.ps1](images/codeutilisateur3.JPG)
+
+Si on execute de nouveau le fichier utilisateurs2.ps1, on aura ce resultat:
+
+![Resultat de test d'ajout](images/ajoutreussi.PNG)
+
+ On peut afficher les informations de cet utilisateur cree avec :
+
+![resultat](images/informations.PNG)
+
+**4. Modifier un utilisateur**
+
+Voici le code de fichier utilisateurs4.ps1:
+
+![code utilisateurs4.ps1](images/codeutilisateur4.JPG)
+
+On peut verifier que la modification est bien faite en executant la commande suivante:
+
+![Resultat de modification](images/modificationreussite.PNG)
  
+On voit tres bien que le GivenName est devenue : **Alice-Marie**
+
+**5. Désactiver un utilisateur**
+
+Voici le code de fichier utilisateurs5.ps1:
+
+![code utilisateurs5.ps1](images/codeutilisateur5.JPG)
+
+On peut verifier que l'utilisateur est bien desactive en executant la commande suivante:
+
+![verification](images/verification.PNG)
+
+**6. Réactiver un utilisateur**
+
+Voici le code de fichier utilisateurs6.ps1:
+
+![code utilisateurs6.ps1](images/codeutilisateur6.JPG)
+
+On peut verifier que l'utilisateur est bien reactive en executant la commande suivante:
+
+![verification](images/reactivation.PNG)
+
+**7. Supprimer un utilisateur**
+
+Voici le code de fichier utilisateurs7.ps1:
+
+![code utilisateurs7.ps1](images/codeutilisateur7.JPG)
+
+On peut verifier que l'utilisateur est bien supprime en executant de nouveau le fichier utilisateurs2.ps1:
+
+![Supression](images/supression.PNG)
+
+**8. Rechercher des utilisateurs avec un filtre**
+
+Voici le code de fichier utilisateurs8.ps1:
+
+![code utilisateurs8.ps1](images/codeutilisateur8.JPG)
+
+Vu qu'on a supprime l'utilisateur dans le fichier utilisateurs7.ps1, on doit executer d'abord les commandes suivantes, puis on execute le fichier utilisateurs8.ps1:
+
+![test](images/filtre.PNG)
+
+**9. Exporter les utilisateurs dans un CSV**
+
+Dans cette étape, nous exportons la liste des utilisateurs du domaine Active Directory vers un fichier CSV afin de pouvoir les consulter facilement et les analyser. Voici le code de fichier utilisateurs9.ps1:
+
+![code utilisateurs9.ps1](images/codeutilisateur9.JPG)
+
+En executant ce code on aura un fichier TP_AD_Users.csv qui est créé dans le dossier courant.
+
+Il contient la liste des utilisateurs du domaine, avec les colonnes :
+
+- Name
+
+- SamAccountName
+
+- EmailAddress
+
+- Enabled
+
+L'image suivante confirme la creation de fichier TP_AD_Users.csv:
+
+![CSV](images/cvs.PNG)
+
+**10. Déplacer un utilisateur vers une OU Students**
+
+Voici le code de fichier utilisateurs10.ps1:
+
+![code utilisateurs10.ps1](images/codeutilisateur10.JPG)
+
+On aura a l'execution:
+
+![resultat](images/deplacement.PNG)

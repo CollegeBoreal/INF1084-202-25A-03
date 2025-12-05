@@ -1,51 +1,39 @@
-# Activer RDP sur la machine
-Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+Write-Host "=== Configuration du partage réseau ===" -ForegroundColor Cyan
 
-# Activer la règle du pare-feu pour le Bureau à distance
-Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+$SharePath = "C:\Partage_Students"
+$ShareName = "partage"
+$GroupName = "Students"
 
-# Définir le groupe à autoriser
-$Group = "Students"
-
-# Vérifier si le groupe existe localement ou dans le domaine
-try {
-    $GroupSID = (Get-ADGroup $Group -ErrorAction Stop).SID
-} catch {
-    $GroupSID = (Get-LocalGroup $Group -ErrorAction SilentlyContinue).SID
-}
-
-if (-not $GroupSID) {
-    Write-Host "Le groupe '$Group' n'existe pas localement ou dans le domaine." -ForegroundColor Red
+# Vérifier que le groupe existe
+$group = Get-ADGroup -Identity $GroupName -ErrorAction SilentlyContinue
+if (-not $group) {
+    Write-Host "[ERREUR] Le groupe '$GroupName' n'existe pas." -ForegroundColor Red
     exit
 }
 
-# Récupérer les droits actuels de connexion à distance
-$PolicyKey = "HKLM:\System\CurrentControlSet\Control\Terminal Server\UserRights"
-if (-not (Test-Path $PolicyKey)) {
-    New-Item -Path $PolicyKey | Out-Null
+# Créer le dossier
+if (-not (Test-Path $SharePath)) {
+    New-Item -Path $SharePath -ItemType Directory | Out-Null
+    Write-Host "[OK] Dossier créé : $SharePath"
+} else {
+    Write-Host "[OK] Dossier déjà existant."
 }
 
-# Vérifier les utilisateurs déjà autorisés pour le droit RDP
-$CurrentValue = (secedit /export /cfg "$env:TEMP\secpol.cfg" | Out-Null; 
-(Get-Content "$env:TEMP\secpol.cfg") -match "SeRemoteInteractiveLogonRight").Trim()
+# Appliquer permissions NTFS (VERSION FIX)
+icacls $SharePath /grant "${env:USERDOMAIN}\${GroupName}:(OI)(CI)M" /T | Out-Null
+Write-Host "[OK] Permissions NTFS appliquées."
 
-# Ajouter le groupe Students s’il n’est pas déjà présent
-if ($CurrentValue -notmatch $Group) {
-    $TempFile = "$env:TEMP\secpol.cfg"
-    (Get-Content $TempFile) | ForEach-Object {
-        if ($_ -match "^SeRemoteInteractiveLogonRight") {
-            if ($_ -notmatch $Group) {
-                $_ = $_ + ",*$Group"
-            }
-        }
-        $_
-    } | Set-Content $TempFile -Encoding ASCII
-
-    # Réimporter la politique de sécurité mise à jour
-    secedit /import /cfg $TempFile /db "$env:TEMP\secpol.sdb" /overwrite
-    secedit /configure /db "$env:TEMP\secpol.sdb" /cfg $TempFile /areas USER_RIGHTS
-    gpupdate /force
+# Supprimer ancien partage SMB
+if (Get-SmbShare -Name $ShareName -ErrorAction SilentlyContinue) {
+    Remove-SmbShare -Name $ShareName -Force
 }
 
-Write-Host "RDP activé et groupe '$Group' ajouté aux autorisations." -ForegroundColor Grn
+# Créer le partage SMB
+New-SmbShare -Name $ShareName -Path $SharePath -FullAccess "${env:USERDOMAIN}\${GroupName}" | Out-Null
+Write-Host "[OK] Partage SMB créé : \\$env:COMPUTERNAME\$ShareName"
+
+Write-Host "`n=== Test du lecteur Z (manuel) ===" -ForegroundColor Yellow
+Write-Host "1. Connecte-toi avec un utilisateur du domaine"
+Write-Host "2. Vérifie que le lecteur Z: apparaît"
+Write-Host "3. Crée un fichier dans Z:\ pour tester"
 

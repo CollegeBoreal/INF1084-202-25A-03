@@ -17,7 +17,7 @@
 
 | Étudiant | Domaine | Adresse IP |
 |----------|---------|-----------|
-| Frank | `DC-300143951-00.local` | 10.7.236.200 |
+| Frank | `DC-300143951-00.local` | 10.7.236.202 |
 | Justin | `DC-300151403-00.local` | 10.7.236.219 |
 
 ---
@@ -107,4 +107,5 @@ netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 

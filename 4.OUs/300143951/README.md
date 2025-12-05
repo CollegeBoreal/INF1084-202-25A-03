@@ -3,8 +3,8 @@
 ## 📋 Informations du Projet
 
 **Étudiant:** 300143951  
-**Domaine:** DC300143951-0.local  
-**NetBIOS:** DC300143951-00
+**Domaine:** DC-300143951-00.local  
+**NetBIOS:** DC-300143951-00
 
 ## 🔧 Configuration Initiale
 
@@ -15,7 +15,7 @@ Créez ce fichier avec vos informations de connexion :
 ```powershell
 # Informations de l'étudiant
 $studentNumber = 300143951
-$studentInstance = 0
+$studentInstance = 00
 
 # Noms du domaine
 $domainName = "DC$studentNumber-$studentInstance.local"
@@ -132,3 +132,4 @@ Le projet doit être cloné dans :
 
 **Cours:** INF1084-202-25A-03  
 **Collège Boréal**
+

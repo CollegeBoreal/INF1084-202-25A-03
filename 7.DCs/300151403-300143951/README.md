@@ -13,12 +13,12 @@
 
 ---
 
-## 📊 Domaines
+## 📊 Domaines Configurés
 
-| Étudiant | Domaine |
-|----------|---------|
-| Frank | `DC-300143951-00.local` |
-| Justin | `DC-300151403-00.local` |
+| Étudiant | Domaine | Adresse IP |
+|----------|---------|-----------|
+| Frank | `DC-300143951-00.local` | 10.7.236.202 |
+| Justin | `DC-300151403-00.local` | 10.7.236.219 |
 
 ---
 
@@ -36,35 +36,76 @@ netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
+![Trust Creation Success](./images/success.png)
+
 ---
 
-## ✅ Résultats
+## 📸 Visualisation des Trusts
+
+### Vue Frank (DC-300143951-00)
+![Trust Visibility Frank](./images/visibilitytrst_frank.png)
+
+**Trusts Visibles:**
+- Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
+
+### Vue Justin (DC-300151403-00)
+![Trust Visibility Justin](./images/visibilitytrust_justin.png)
+
+**Trusts Visibles:**
+- Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)
+
+---
+
+## 🖥️ Interrogation du Domaine Distant
+
+### Accès Cross-Domain
+```powershell
+Get-ADDomain -Server DC-300151403-00.local -Credential $cred
+```
+
+![Cross-Domain Access](./images/access.png)
+
+**Résultat:** Accès réussi au domaine distant avec authentification croisée
+justin a bien access au domaine de frand depuis sa machine virtuelle.
+
+---
+
+## ✅ Résultats de Vérification
 
 | Paramètre | Valeur | Statut |
 |-----------|--------|--------|
 | Direction | BiDirectional | ✓ |
 | Type | Realm | ✓ |
 | Transitivité | Non | ✓ |
+| Accès Cross-Domain | Fonctionnel | ✓ |
 
 ---
 
-## 🔍 Vérification
+## 🔍 Commandes de Vérification
+
 ```powershell
+# Lister tous les trusts
 Get-ADTrust -Filter *
+
+# Vérifier la connectivité
 netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local /verify
+netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 ```
 
 ---
 
 ## 📝 Scripts & Documents
 
-- `trusts1.ps1` - Script Frank
-- `trusts2.ps1` - Script Justin  
+- `trusts1..ps1` - Script de rapport Frank
+- `trusts2.ps1` - Script de rapport Justin
 
 ---
 
 ## ✨ Résultat Final
 
-✅ Trust bidirectionnel établi  
-✅ Authentification croisée active  
-✅ Communication sécurisée confirmée
+✅ Trust bidirectionnel établi avec succès  
+✅ Authentification croisée fonctionnelle  
+✅ Communication inter-domaines confirmée  
+✅ Accès aux ressources cross-domain validé
+
+

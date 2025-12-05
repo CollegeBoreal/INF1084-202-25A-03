@@ -23,11 +23,11 @@ Ce laboratoire consiste à :
 
 # 🎯 Objectifs pédagogiques
 
-✔ Comprendre les objets AD (User, Group, OU, Computer, Share)
-✔ Créer un partage réseau accessible uniquement par un groupe spécifique
-✔ Créer une GPO pour mapper automatiquement un lecteur réseau
-✔ Autoriser l’accès RDP pour un groupe AD
-✔ Tester depuis une machine cliente
+* ✔ Comprendre les objets AD (User, Group, OU, Computer, Share)
+* ✔ Créer un partage réseau accessible uniquement par un groupe spécifique
+* ✔ Créer une GPO pour mapper automatiquement un lecteur réseau
+* ✔ Autoriser l’accès RDP pour un groupe AD
+* ✔ Tester depuis une machine cliente
 
 ---
 

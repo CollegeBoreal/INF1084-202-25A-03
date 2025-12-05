@@ -1,0 +1,1 @@
+ Scripts & Documents- `rapport_frank.ps1` - Script Frank- `rapport_justin.ps1` - Script Justin  - `Rapport_Trust_Active_Directory.docx` - Rapport Word---## ✨ Résultat Final✅ Trust bidirectionnel établi  ✅ Authentification croisée active  ✅ Communication sécurisée confirmée

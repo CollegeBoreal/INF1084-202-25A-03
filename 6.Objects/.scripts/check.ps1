@@ -14,6 +14,13 @@ if (-not $SERVERS -or -not $ETUDIANTS) {
     exit
 }
 
+# Identifiants de l'étudiant
+$etudiant = "Etudiant1"
+$plainPassword = "Pass123!"  # changer si chaque étudiant a un mot de passe différent
+$Password = ConvertTo-SecureString $plainPassword -AsPlainText -Force
+$Creds = New-Object System.Management.Automation.PSCredential ($etudiant, $Password)
+
+
 # Préparer le Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
 $md = @()
@@ -24,28 +31,33 @@ $md += "|-------------------------------|---------------------------------------
 $md += "| :a: [Presence](#a-presence)   | L'étudiant.e a accès à son partage SMB :heavy_check_mark: |"
 $md += "| :b: [Precision](#b-precision) | Statut du partage SMB                                   |"
 $md += ""
+$md += "## Legende"
+$md += ""
+$md += "| Signe              | Signification                 |"
+$md += "|--------------------|-------------------------------|"
+$md += "| :heavy_check_mark: | AD DS et repertoire OK         |"
+$md += "| :x:                | AD DS ou repertoire inexistant |"
+$md += "| :no_entry:         | Acces refuse                  |"
+$md += ""
 $md += "## :b: Precision"
 $md += ""
-$md += "| # | Etudiant | VM/Serveur | Partage SMB | Statut |"
-$md += "|---|----------|------------|------------|--------|"
+$md += "| :hash: | Boreal :id: | VM/Serveur | Partage SMB | Statut |"
+$md += "|--------|-------------|------------|-------------|--------|"
 
 # Boucle sur chaque étudiant
 $counter = 1
 for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
 
-    $etudiant = "Etudiant1"
-    $vm = $SERVERS[$i]
+    $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"    
+    $id = $ETUDIANTS[$i]
+    $FILE = "$id/README.md"
 
-    # Identifiants de l'étudiant
-    $plainPassword = "Pass123!"  # changer si chaque étudiant a un mot de passe différent
-    $Password = ConvertTo-SecureString $plainPassword -AsPlainText -Force
-    $Creds = New-Object System.Management.Automation.PSCredential ($etudiant, $Password)
+    $vm = $SERVERS[$i]
+    Write-Host "Test SMB pour $etudiant sur $sharePath ..." -ForegroundColor Cyan
 
     # Chemin SMB et lecteur temporaire
     $sharePath = "\\$vm\SharedResources"
     $driveName = "S"  # Lettre temporaire, peut être dynamique si besoin
-
-    Write-Host "Test SMB pour $etudiant sur $sharePath ..." -ForegroundColor Cyan
 
     try {
         # Monter le partage SMB temporairement
@@ -53,9 +65,9 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
 
         # Vérifier l'accès correctement
         if (Test-Path "$($driveName):\") {
-            $status = ":heavy_check_mark:"
+            $statusIcon = ":heavy_check_mark:"
         } else {
-            $status = ":x:"
+            $statusIcon = ":x:"
         }
 
         # Démonter le lecteur
@@ -63,14 +75,14 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
     }
     catch {
         Write-Host "Erreur SMB pour $etudiant sur $vm : $($_.Exception.Message)" -ForegroundColor Red
-        $status = ":no_entry:"
+        $statusIcon = ":no_entry:"
     }
 
     # Ajouter la ligne au Markdown
-    $md += "| $counter | $etudiant | $vm | $sharePath | $status |"
+    $md += "| $counter | [$id](../$FILE) $URL  | $vm | $sharePath | $statusIcon |"
     $counter++
 }
 
-# Exporter le Markdown dans Verification.md
-$md | Set-Content -Path ".scripts/Verification.md" -Encoding UTF8
-Write-Host "Verification.md généré avec succès !" -ForegroundColor Green
+# Exporter le Markdown dans Check.md
+$md | Set-Content -Path ".scripts/Check.md" -Encoding UTF8
+Write-Host "Check.md généré avec succès !" -ForegroundColor Green

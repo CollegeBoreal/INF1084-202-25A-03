@@ -4,7 +4,7 @@ $SharedFolder = "C:\SharedResources"
 # Créer le dossier
 New-Item -Path $SharedFolder -ItemType Directory -Force
 
-# Nom du groupe AD
+# Créer un partage SMB pour le groupe Students
 $GroupName = "Students"
 
 # Créer le groupe AD
@@ -13,12 +13,14 @@ New-ADGroup -Name $GroupName -GroupScope Global -Description "Users allowed RDP 
 # Créer des utilisateurs AD et les ajouter au groupe
 $Users = @("Etudiant1","Etudiant2")
 foreach ($user in $Users) {
-    New-ADUser -Name $user `
-               -SamAccountName $user `
-               -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) `
-               -Enabled $true
+    New-ADUser -Name $user -SamAccountName $user -AccountPassword (ConvertTo-SecureString "Pass123!" -AsPlainText -Force) -Enabled $true
     Add-ADGroupMember -Identity $GroupName -Members $user
 }
 
 # Partager le dossier avec le groupe
 New-SmbShare -Name "SharedResources" -Path $SharedFolder -FullAccess $GroupName
+
+
+
+
+

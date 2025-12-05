@@ -96,9 +96,8 @@ netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 
 ## 📝 Scripts & Documents
 
-- `rapport_frank.ps1` - Script de rapport Frank
-- `rapport_justin.ps1` - Script de rapport Justin
-- `Rapport_Trust_Active_Directory.docx` - Rapport complet en Word
+- `trusts1..ps1` - Script de rapport Frank
+- `trusts2.ps1` - Script de rapport Justin
 
 ---
 
@@ -108,3 +107,4 @@ netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+

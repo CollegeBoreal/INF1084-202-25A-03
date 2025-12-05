@@ -169,15 +169,3 @@ on fais la verification :
 ```
 
 ---
-
-# 🎓 Bilan du laboratoire
-
-Ce laboratoire m’a permis de :
-
-*✔ Comprendre la gestion des objets AD (Users, Groups, OU)
-*✔ Automatiser la configuration d’un partage réseau via PowerShell
-*✔ Déployer un lecteur réseau avec des GPO
-*✔ Configurer un accès RDP sécurisé par groupe
-*✔ Travailler comme un administrateur système en environnement Windows Server
-
----

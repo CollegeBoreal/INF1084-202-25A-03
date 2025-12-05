@@ -64,14 +64,14 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
         New-PSDrive -Name $driveName -PSProvider FileSystem -Root $sharePath -Credential $Creds -ErrorAction Stop | Out-Null
 
         # Vérifier l'accès correctement
-        if (Test-Path "$($driveName):\") { $status = ":heavy_check_mark:" }
+        if (Test-Path "$($driveName):\") { $statusIcon = ":heavy_check_mark:" }
         Remove-PSDrive -Name $driveName
     }
     catch {
-        if ($_.Exception.Message -match "password is not correct|incorrect") { $status = ":no_entry:" }
-        elseif ($_.Exception.Message -match "must be changed") { $status = ":warning:" }
-        elseif ($_.Exception.Message -match "cannot be found") { $status = ":x:" }
-        else { $status = ":no_entry:" }
+        if ($_.Exception.Message -match "password is not correct|incorrect") { $statusIcon = ":no_entry:" }
+        elseif ($_.Exception.Message -match "must be changed") { $statusIcon = ":warning:" }
+        elseif ($_.Exception.Message -match "cannot be found") { $statusIcon = ":x:" }
+        else { $statusIcon = ":no_entry:" }
     }
 
 

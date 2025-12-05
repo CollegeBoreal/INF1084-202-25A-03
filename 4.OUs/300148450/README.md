@@ -156,7 +156,6 @@ J’ai validé que :
 
 
 
-On retrouve les images montrant :
 
 * Installation AD DS
 * Création du domaine

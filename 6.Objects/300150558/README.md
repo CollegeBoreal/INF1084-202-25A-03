@@ -142,6 +142,6 @@ Ce TP m’a permis de :
 * Configurer l’accès RDP pour un groupe spécifique
 * Comprendre les bases d’une infrastructure Windows Server automatisée
 
-
+<img src="images/1.png">
 
 

@@ -1,14 +1,6 @@
-Voici **un fichier README.md propre, clair, professionnel**, parfait pour GitHub et pour montrer que **tu as rÃ©alisÃ© tout le TP Active Directory â€“ Partage de ressources, GPO & RDP**.
 
-Je lâ€™ai Ã©crit **en franÃ§ais**, bien structurÃ©, avec sections + commandes + images (tu peux ajouter tes captures dans /images).
 
-Tu peux le copier/coller directement dans ton fichier :
-
-í³„ **`README.md`**
-
----
-
-# í¿« TP â€“ Active Directory : Partage de ressources, GPO & AccÃ¨s RDP
+#  TP â€“ Active Directory : Partage de ressources, GPO & AccÃ¨s RDP
 
 **Ã‰tudiant : 300148450 â€” Domaine : DC300148450-00.local**
 
@@ -24,7 +16,7 @@ Ce README explique **comment jâ€™ai rÃ©alisÃ© toutes les Ã©tapes du TP**, en uti
 
 ---
 
-# í³ 1ï¸âƒ£ Organisation des scripts
+# ï¿½ï¿½ï¿½ 1ï¸âƒ£ Organisation des scripts
 
 Tous mes scripts se trouvent dans :
 
@@ -45,9 +37,9 @@ Chaque script charge automatiquement les paramÃ¨tres du domaine via :
 
 ---
 
-# íº€ 2ï¸âƒ£ Script 1 â€“ CrÃ©ation du partage & utilisateurs
+# ï¿½ï¿½ï¿½ 2ï¸âƒ£ Script 1 â€“ CrÃ©ation du partage & utilisateurs
 
-í³Œ Fichier : **utilisateurs1.ps1**
+ï¿½ï¿½ï¿½ Fichier : **utilisateurs1.ps1**
 
 Ce script effectue :
 
@@ -57,7 +49,7 @@ Ce script effectue :
 âœ” Ajout des utilisateurs au groupe
 âœ” CrÃ©ation dâ€™un partage SMB accessible pour Students
 
-### í´§ Commandes principales utilisÃ©es
+### ï¿½ï¿½ï¿½ Commandes principales utilisÃ©es
 
 ```powershell
 New-Item -Path "C:\SharedResources" -ItemType Directory
@@ -67,19 +59,19 @@ Add-ADGroupMember -Identity Students -Members Etudiant1
 New-SmbShare -Name SharedResources -Path C:\SharedResources -FullAccess Students
 ```
 
-### í³¸ RÃ©sultats observÃ©s dans PowerShell
+### ï¿½ï¿½ï¿½ RÃ©sultats observÃ©s dans PowerShell
 
 * Utilisateurs crÃ©Ã©s avec succÃ¨s
 * Groupe Students bien ajoutÃ©
 * Partage SMB opÃ©rationnel
 
-í±‰ *Preuves en images dans /images/*
+ï¿½ï¿½ï¿½ *Preuves en images dans /images/*
 
 ---
 
-# í·‚ï¸ 3ï¸âƒ£ Script 2 â€“ CrÃ©ation de la GPO + Mapping du lecteur Z:
+# ï¿½ï¿½ï¿½ï¸ 3ï¸âƒ£ Script 2 â€“ CrÃ©ation de la GPO + Mapping du lecteur Z:
 
-í³Œ Fichier : **utilisateurs2.ps1**
+ï¿½ï¿½ï¿½ Fichier : **utilisateurs2.ps1**
 
 Ce script configure :
 
@@ -93,7 +85,7 @@ net use Z: \\DC300148450-00\SharedResources
 
 âœ” Ã‰criture du chemin du script dans la GPO (registre)
 
-### í´§ Commandes principales utilisÃ©es
+### ï¿½ï¿½ï¿½ Commandes principales utilisÃ©es
 
 ```powershell
 New-GPO -Name "MapSharedFolder"
@@ -102,7 +94,7 @@ Set-Content "C:\Scripts\MapDrive-Z.bat" "net use Z: \\DC300148450-00\SharedResou
 Set-GPRegistryValue -Name "MapSharedFolder" ...
 ```
 
-### í³¸ RÃ©sultats observÃ©s
+### ï¿½ï¿½ï¿½ RÃ©sultats observÃ©s
 
 * La GPO apparaÃ®t correctement dans le domaine
 * Le lien vers lâ€™OU existe
@@ -110,9 +102,9 @@ Set-GPRegistryValue -Name "MapSharedFolder" ...
 
 ---
 
-# í²» 4ï¸âƒ£ Script 3 â€“ Activation du RDP + Droits pour Students
+# ï¿½ï¿½ï¿½ 4ï¸âƒ£ Script 3 â€“ Activation du RDP + Droits pour Students
 
-í³Œ Fichier : **utilisateurs3.ps1**
+ï¿½ï¿½ï¿½ Fichier : **utilisateurs3.ps1**
 
 Ce script rÃ©alise :
 
@@ -124,7 +116,7 @@ Ce script rÃ©alise :
 
 âœ” RÃ©import de la stratÃ©gie modifiÃ©e
 
-### í´§ Commandes clÃ©s :
+### ï¿½ï¿½ï¿½ Commandes clÃ©s :
 
 ```powershell
 Set-ItemProperty "HKLM:\System\CurrentControlSet\Control\Terminal Server" fDenyTSConnections 0
@@ -133,7 +125,7 @@ secedit /export /cfg C:\secpol.cfg /areas USER_RIGHTS
 secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 ```
 
-í³¸ VÃ©rification :
+ï¿½ï¿½ï¿½ VÃ©rification :
 
 ```powershell
 (Get-ItemProperty ...).fDenyTSConnections = 0
@@ -143,7 +135,7 @@ secedit /import /cfg C:\secpol.cfg /db C:\secpol.sdb /overwrite
 
 # âœ”ï¸ 5ï¸âƒ£ VÃ©rifications finales
 
-### í´ Utilisateurs AD
+### ï¿½ï¿½ï¿½ Utilisateurs AD
 
 ```powershell
 Get-ADUser -Identity Etudiant1
@@ -155,7 +147,7 @@ Get-ADUser -Identity Etudiant2
 
 ---
 
-### í´ GPO
+### ï¿½ï¿½ï¿½ GPO
 
 ```powershell
 Get-GPO -Name "MapSharedFolder"
@@ -166,7 +158,7 @@ Get-GPO -Name "MapSharedFolder"
 
 ---
 
-### í´ RDP AutorisÃ©
+### ï¿½ï¿½ï¿½ RDP AutorisÃ©
 
 ```powershell
 (Get-ItemProperty ...).fDenyTSConnections
@@ -182,7 +174,7 @@ RÃ©sultat :
 
 ---
 
-# í¿ 6ï¸âƒ£ Conclusion
+# ï¿½ï¿½ï¿½ 6ï¸âƒ£ Conclusion
 
 Ce TP mâ€™a permis de :
 
@@ -196,29 +188,19 @@ Lâ€™ensemble du travail est **fonctionnel**, testÃ© et validÃ© dans mon domaine 
 
 ---
 
-# í³¸ Captures dâ€™Ã©cran
+# ï¿½ï¿½ï¿½ Captures dâ€™Ã©cran
 
-Ajoute ici tes images dans `/images` puis rÃ©fÃ©rence-les :
 
 ```md
-![CrÃ©ation utilisateurs](images/utilisateurs.png)
-![GPO MapSharedFolder](images/gpo.png)
-![RDP activÃ©](images/rdp.png)
+
 ```
 
 ---
 
-# í·‘â€í²» Auteur
+# ï¿½ï¿½ï¿½â€ï¿½ï¿½ï¿½ Auteur
 
 **Hocine Adjaoud â€“ 300148450**
 CollÃ¨ge BorÃ©al â€” INF1084
 
----
 
-Si tu veux, je peux aussi :
-âœ… tâ€™ajouter les images au README
-âœ… te prÃ©parer une version **anglais**
-âœ… te faire un README plus â€œprofessionnel entrepriseâ€
-
-Tu veux que je te fasse une version anglaise aussi ?
 

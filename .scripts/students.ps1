@@ -176,10 +176,10 @@ $DOMAINS = @(
     'hakimsb.me'
     'sarahocine.me'
     'sandyjustin.me'
-    '300151469@monboreal.ca'
+    'rabiabouhali.me'
     'kahinazerkani.me'
     'featfreedy.xyz'
     '300151863@monboreal.ca'
-    '300152260@monboreal.ca'
+    'mohibbekkai.me'
     'ramatoulaye.me'
 )

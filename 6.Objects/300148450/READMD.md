@@ -194,7 +194,8 @@ L’ensemble du travail est **fonctionnel**, testé et validé dans mon domaine 
 ```md
 
 ```
-
+<img src="images/1.png">
+<img src="images/2.png">
 ---
 
 # ���‍��� Auteur

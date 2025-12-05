@@ -1,6 +1,7 @@
 <# =========================================================
  Script Trust2.ps1 – Domaine LOCAL : 300151258-00.local
- Auteur : (binôme)
+ Auteur : C'est hakim 300151258
+
  Objectif : Créer un trust bidirectionnel vers 300151556
 ========================================================= #>
 

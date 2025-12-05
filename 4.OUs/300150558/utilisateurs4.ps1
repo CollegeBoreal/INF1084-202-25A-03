@@ -1,28 +1,23 @@
+# utilisateurs4.ps1
 
-# Identité étudiante
-$studentNumber   = 300150558
-$studentInstance = '00'      # garder l'underscore dans les noms
+$searchBase = "CN=Users,DC=DC300150558-00,DC=local"
 
-# Noms du domaine (avec underscore)
-$domainName  = "DC${studentNumber}_${studentInstance}.local"
-$netbiosName = "DC${studentNumber}_${studentInstance}"
+Write-Host "Recherche d'utilisateurs..." -ForegroundColor Cyan
+Get-ADUser -Filter * -SearchBase $searchBase |
+    Select-Object Name, SamAccountName
 
-# Mot de passe TP (fourni par le prof)
-$plain  = 'Infra@2024'
-$secure = ConvertTo-SecureString $plain -AsPlainText -Force
+Write-Host "Exporter les utilisateurs..." -ForegroundColor Cyan
+Get-ADUser -Filter * -SearchBase $searchBase |
+    Select-Object Name, SamAccountName, Enabled |
+    Export-Csv -Path ".\export_utilisateurs.csv" -NoTypeInformation -Encoding UTF8
 
-# Credential admin du domaine
-$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
+Write-Host "Suppression d'un utilisateur..." -ForegroundColor Cyan
+$user = Get-ADUser -Identity "marc.petit" -ErrorAction SilentlyContinue
 
-# Module AD et vérifications
-Import-Module ActiveDirectory
-
-# Vérifier que le domaine et le DC répondent
-Get-ADDomain -Server $domainName
-Get-ADDomainController -Filter * -Server $domainName | Select-Object HostName,IPv4Address,Site,IsGlobalCatalog
-
-# S'assurer que l'OU Students existe
-if (-not (Get-ADOrganizationalUnit -LDAPFilter '(ou=Students)' -Server $domainName -ErrorAction SilentlyContinue)) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Server $domainName -ProtectedFromAccidentalDeletion:$false
+if ($user) {
+    Remove-ADUser -Identity $user -Confirm:$false
+    Write-Host "Utilisateur 'marc.petit' supprimé." -ForegroundColor Green
+} else {
+    Write-Host "Utilisateur 'marc.petit' n'existe pas, rien à supprimer." -ForegroundColor Yellow
 }
 

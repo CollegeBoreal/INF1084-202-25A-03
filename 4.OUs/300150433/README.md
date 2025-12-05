@@ -60,6 +60,7 @@ $domainName = "dc300150433-00.local"
 Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
+<img width="1267" height="587" alt="1" src="https://github.com/user-attachments/assets/2a196d5a-0977-492d-8204-981e17256e3d" />
 
 ---
 
@@ -72,6 +73,7 @@ Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabl
 Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName
 ```
+<img width="657" height="142" alt="2" src="https://github.com/user-attachments/assets/7aca419e-80e6-4559-b66c-8fc9155497ca" />
 
 ---
 
@@ -89,6 +91,7 @@ New-ADUser -Name "Alice Dupont" `
   -Enabled $true `
   -Path "CN=Users,DC=DC300150433-00,DC=local"
 ```
+<img width="968" height="583" alt="3" src="https://github.com/user-attachments/assets/4016c466-5566-4a19-bcb9-daabc6816073" />
 
 ---
 
@@ -99,6 +102,7 @@ Set-ADUser -Identity "alice.dupont" `
            -EmailAddress "alice.dupont@exemple.com" `
            -GivenName "Alice-Marie"
 ```
+<img width="677" height="188" alt="4 5" src="https://github.com/user-attachments/assets/070eec42-6a0d-4c7c-91ea-118cf34cb1e1" />
 
 ---
 
@@ -126,6 +130,7 @@ Get-ADUser -Filter "Name -like 'a*'" -Server $domainName -Properties Name, SamAc
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName |
     Select-Object Name, SamAccountName
 ```
+<img width="677" height="188" alt="4 5" src="https://github.com/user-attachments/assets/a120e692-40ae-4305-9b56-9370fba12288" />
 
 ---
 

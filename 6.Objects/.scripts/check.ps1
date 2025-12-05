@@ -1,5 +1,5 @@
 # --------------------------------------
-# Script pour tester les partages SMB étudiants
+# Script pour tester les partages SMB étudiants avec montage temporaire
 # --------------------------------------
 
 # Forcer UTF-8
@@ -17,7 +17,7 @@ if (-not $SERVERS -or -not $ETUDIANTS) {
 # Préparer le Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
 $md = @()
-$md += "# SMB Check au $timestamp"
+$md += "# Verification au $timestamp"
 $md += ""
 $md += "| Table des matières            | Description                                             |"
 $md += "|-------------------------------|---------------------------------------------------------|"
@@ -33,7 +33,7 @@ $md += "|---|----------|------------|------------|--------|"
 $counter = 1
 for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
 
-    $etudiant = $ETUDIANTS[$i]
+    $etudiant = "Etudiant1"
     $vm = $SERVERS[$i]
 
     # Identifiants de l'étudiant
@@ -41,19 +41,25 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
     $Password = ConvertTo-SecureString $plainPassword -AsPlainText -Force
     $Creds = New-Object System.Management.Automation.PSCredential ($etudiant, $Password)
 
-    # Chemin SMB
+    # Chemin SMB et lecteur temporaire
     $sharePath = "\\$vm\SharedResources"
+    $driveName = "S"  # Lettre temporaire, peut être dynamique si besoin
 
     Write-Host "Test SMB pour $etudiant sur $sharePath ..." -ForegroundColor Cyan
 
     try {
-        $exists = Test-Path $sharePath -Credential $Creds
+        # Monter le partage SMB temporairement
+        New-PSDrive -Name $driveName -PSProvider FileSystem -Root $sharePath -Credential $Creds -ErrorAction Stop | Out-Null
 
-        if ($exists) {
+        # Vérifier l'accès correctement
+        if (Test-Path "$($driveName):\") {
             $status = ":heavy_check_mark:"
         } else {
             $status = ":x:"
         }
+
+        # Démonter le lecteur
+        Remove-PSDrive -Name $driveName
     }
     catch {
         Write-Host "Erreur SMB pour $etudiant sur $vm : $($_.Exception.Message)" -ForegroundColor Red
@@ -65,7 +71,6 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
     $counter++
 }
 
-# Exporter le README.md
-$md | Set-Content -Path ".scripts/SMBCheck.md" -Encoding UTF8
-Write-Host "SMBCheck.md généré avec succès !" -ForegroundColor Green
-
+# Exporter le Markdown dans Verification.md
+$md | Set-Content -Path ".scripts/Verification.md" -Encoding UTF8
+Write-Host "Verification.md généré avec succès !" -ForegroundColor Green

@@ -1,6 +1,6 @@
 <#
 ===========================================================
- Script : utilisateurs.ps1
+ Script : Trust2.ps1
  Objet  : Étapes PowerShell pour interrogation du domaine
  Auteur : FeatFreedy
  Domaine local : DC300151825-00.local

@@ -44,8 +44,8 @@ $md += "| :warning:          | Mot de passe a changer            |"
 $md += ""
 $md += "## :b: Precision"
 $md += ""
-$md += "| :hash: | Boreal :id: | :roll_of_paper: Partage SMB | :toilet: Statut SMB  | :mouse_trap: RDP GUI |"
-$md += "|--------|-------------|-----------------------------|----------------------|----------------------|"
+$md += "| :hash: | Boreal :id: | :roll_of_paper: Partage SMB | :toilet: Statut SMB  | :rat: netbios | :mouse_trap: RDP GUI |"
+$md += "|--------|-------------|-----------------------------|----------------------|---------------|----------------------|"
 
 # ------------------------------
 # Boucle sur chaque étudiant
@@ -97,7 +97,7 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
     # ------------------------------
     # Ligne Markdown
     # ------------------------------
-    $md += "| $i | [$id](../$FILE) $URL | \\\\$vm\\SharedResources | $statusIcon | $rdpIcon |"
+    $md += "| $i | [$id](../$FILE) $URL | \\\\$vm\\SharedResources | $statusIcon | $NETBIOS[$i] | $rdpIcon |"
 }
 
 # ------------------------------

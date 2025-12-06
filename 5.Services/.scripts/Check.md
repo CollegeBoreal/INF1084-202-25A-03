@@ -1,11 +1,9 @@
-﻿# Precision au 06-12-2025 17:13
+﻿# Precision au 06-12-2025 17:19
 
 | Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
 | :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |
 | :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |
-
-:bulb: Le mot de passe Administrateur de la VM est **Infra@2024**
 
 ## Legende
 
@@ -17,8 +15,8 @@
 
 ## :b: Precision
 
-| :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |
-|--------|-------------|---------------------|----------|
+| :hash: | Boreal :id: | :slot_machine: VM   | :file_folder: **C:\\Logs**   |
+|--------|-------------|---------------------|------------------------------|
 | 1 | [300133071](../300133071/README.md) [<image src='https://avatars0.githubusercontent.com/u/181301859?s=460&v=4' width=20 height=20></image>](https://github.com/nelsonwilliam237) | 10.7.236.194 | :x: |
 | 2 | [300141550](../300141550/README.md) [<image src='https://avatars0.githubusercontent.com/u/211749528?s=460&v=4' width=20 height=20></image>](https://github.com/emeraudesantu) | 10.7.236.196 | :heavy_check_mark: |
 | 3 | [300141625](../300141625/README.md) [<image src='https://avatars0.githubusercontent.com/u/188626020?s=460&v=4' width=20 height=20></image>](https://github.com/Mamefatim14) | 10.7.236.197 | :heavy_check_mark: |

@@ -32,8 +32,6 @@ $md += "|-------------------------------|---------------------------------------
 $md += "| :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |"
 $md += "| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |"
 $md += ""
-$md += ":bulb: Le mot de passe Administrateur de la VM est **Infra@2024**"
-$md += ""
 $md += "## Legende"
 $md += ""
 $md += "| Signe              | Signification                 |"
@@ -44,8 +42,8 @@ $md += "| :no_entry:         | Acces refuse                  |"
 $md += ""
 $md += "## :b: Precision"
 $md += ""
-$md += "| :hash: | Boreal :id: | :slot_machine: VM   | :tada:   |"
-$md += "|--------|-------------|---------------------|----------|"
+$md += "| :hash: | Boreal :id: | :slot_machine: VM   | :file_folder: **C:\\Logs**   |"
+$md += "|--------|-------------|---------------------|------------------------------|"
 
 # Boucle sur chaque VM
 $i = 0

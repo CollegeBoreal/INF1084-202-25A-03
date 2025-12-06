@@ -26,7 +26,7 @@ INF1084 (202) - Introduction à l'administration des systèmes
 | :five:  |29-sept | [3.VMs](3.VMs)     | [🎉](3.VMs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](3.VMs/.scripts/Check.md) â Noter :x: 
 | :six:   |13-oct  | [4.OUs](4.OUs)     | [🎉](4.OUs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](4.OUs/.scripts/Check.md) â Noter :x: 
 | :seven: |27-oct  | [5.Services](5.Services) | [🎉](5.Services/.scripts/Participation.md) 👉 â Noter :x: |  
-| :eight: |03-nov  | [6.Objects](6.Objects) | [🎉](6.Objects/.scripts/Participation.md) 👉 â Noter :x: |  
+| :eight: |03-nov  | [6.Objects](6.Objects) | [🎉](6.Objects/.scripts/Participation.md) 👉 â Noter :x: | [🏁](6.Objects/.scripts/Check.md) â Noter :x:  
 | :eight: |10-nov  | [7.DCs](7.DCs) | [🎉](7.DCs/.scripts/Participation.md) 👉 â Noter :x: |  
 
 

@@ -1,9 +1,11 @@
-﻿# Verification au 05-12-2025 17:56
+﻿# Precision au 05-12-2025 22:52
 
-| Table des matiÃ¨res            | Description                                             |
+| Table des matieres            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
-| :a: [Presence](#a-presence)   | L'Ã©tudiant.e a accÃ¨s Ã  son partage SMB :heavy_check_mark: |
-| :b: [Precision](#b-precision) | Statut du partage SMB                                   |
+| :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |
+| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |
+
+:bulb: Le mot de passe de ***Etudiant1*** est ***Press123!***
 
 ## Legende
 
@@ -11,7 +13,8 @@
 |--------------------|-------------------------------|
 | :heavy_check_mark: | AD DS et repertoire OK         |
 | :x:                | AD DS ou repertoire inexistant |
-| :no_entry:         | Acces refuse                  |
+| :no_entry:         | Acces refuse - pwd incorrect   |
+| :warning:          | Acces refuse - pwd a changer   |
 
 ## :b: Precision
 

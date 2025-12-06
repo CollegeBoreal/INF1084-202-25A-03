@@ -126,3 +126,20 @@ Test-ADTrustRelationship -Source $SourceForest -Target $TargetForest
 
 Write-Host "=== TRUST CONFIGURE AVEC SUCCES ===" -ForegroundColor Green
 ###############################################################################
+
+
+
+# Trust:
+```powershell
+netdom TRUST DC300151825-00.local /Domain:DC300153476-00.local /UserO:Administrator /PasswordO:* /UserD:Administrator /PasswordD:* /Add /Realm /Twoway
+```
+
+# Resultat:
+```powershell
+PS C:\Users\Administrator> netdom TRUST DC300151825-00.local /Domain:DC300153476-00.local /UserO:Administrator /PasswordO:* /UserD:Administrator /PasswordD:* /Add /Realm /Twoway
+Type the password associated with the domain user:
+
+Type the password associated with the object user:
+
+The command completed successfully.
+```

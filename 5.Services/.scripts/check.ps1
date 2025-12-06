@@ -19,7 +19,8 @@ if (-not $SERVERS) {
 
 # Identifiants administrateur
 $User = "Administrator"
-$Password = Read-Host -AsSecureString "Mot de passe de $User"
+$plain = 'Infra@2024'
+$Password = ConvertTo-SecureString $plain -AsPlainText -Force
 
 # Préparer le Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
@@ -60,19 +61,16 @@ foreach ($VM in $SERVERS) {
     try {
         $Session = New-PSSession -ComputerName $VM -Credential (New-Object PSCredential ($User, $Password))
         
-        # Vérifier le service AD DS
+        # 🔁 Vérifier le service DFSR (remplacement NTDS → DFSR)
         $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
-            $svc = Get-Service -Name NTDS -ErrorAction SilentlyContinue
+            $svc = Get-Service -Name DFSR -ErrorAction SilentlyContinue
             if ($svc) { $svc.Status } else { -1 }
         }
 
-        # Vérifier l'existence du répertoire étudiant via USERPROFILE
+        # 🔁 Vérifier l'existence du répertoire C:\Logs (remplacement du path complet)
         $dirExists = Invoke-Command -Session $Session -ScriptBlock {
-            param($studentID)
-            $userProfile = $env:USERPROFILE
-            $path = Join-Path $userProfile "Developer\INF1084-202-25A-03\4.OUs\$studentID"
-            Test-Path $path
-        } -ArgumentList $id
+            Test-Path "C:\Logs"
+        }
 
         # Déterminer l'icône
         if ($ADStatus -eq 4 -and $dirExists) {
@@ -108,4 +106,3 @@ $md += "| :abacus: | $COUNT = $STATS% | | $SUM = $s |"
 # Exporter le README.md
 $md | Set-Content -Path ".scripts/Check.md" -Encoding UTF8
 Write-Host "README.md généré avec succès !" -ForegroundColor Green
-

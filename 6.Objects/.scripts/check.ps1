@@ -44,8 +44,8 @@ $md += "| :warning:          | Mot de passe a changer            |"
 $md += ""
 $md += "## :b: Precision"
 $md += ""
-$md += "| :hash: | Boreal :id: | :roll_of_paper: Partage SMB | :toilet: Statut SMB  | :rat: netbios | :mouse_trap: RDP GUI |"
-$md += "|--------|-------------|-----------------------------|----------------------|---------------|----------------------|"
+$md += "| :hash: | Boreal :id: | :roll_of_paper: Partage SMB | :toilet: Statut SMB  | :hiking_boot: netbios | :skateboard: RDP GUI |"
+$md += "|--------|-------------|-----------------------------|----------------------|-----------------------|----------------------|"
 
 # ------------------------------
 # Boucle sur chaque étudiant

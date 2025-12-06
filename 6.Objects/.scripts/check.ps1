@@ -24,12 +24,12 @@ $Creds = New-Object System.Management.Automation.PSCredential ($etudiant, $Passw
 # Préparer le Markdown
 $timestamp = Get-Date -Format "dd-MM-yyyy HH:mm"
 $md = @()
-$md += "# Verification au $timestamp"
+$md += "# Precision au $timestamp"
 $md += ""
-$md += "| Table des matières            | Description                                             |"
+$md += "| Table des matieres            | Description                                             |"
 $md += "|-------------------------------|---------------------------------------------------------|"
-$md += "| :a: [Presence](#a-presence)   | L'étudiant.e a accès à son partage SMB :heavy_check_mark: |"
-$md += "| :b: [Precision](#b-precision) | Statut du partage SMB                                   |"
+$md += "| :a: [Presence](#a-presence)   | L'etudiant.e a fait son travail    :heavy_check_mark:   |"
+$md += "| :b: [Precision](#b-precision) | L'etudiant.e a reussi son travail  :tada:               |"
 $md += ""
 $md += "## Legende"
 $md += ""

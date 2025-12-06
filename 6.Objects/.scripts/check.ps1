@@ -97,7 +97,7 @@ for ($i = 0; $i -lt $ETUDIANTS.Count; $i++) {
     # ------------------------------
     # Ligne Markdown
     # ------------------------------
-    $md += "| $i | [$id](../$FILE) $URL | \\\\$vm\\SharedResources | $statusIcon | $NETBIOS[$i] | $rdpIcon |"
+    $md += "| $i | [$id](../$FILE) $URL | \\\\$vm\\SharedResources | $statusIcon | $($NETBIOS[$i]) | $rdpIcon |"
 }
 
 # ------------------------------

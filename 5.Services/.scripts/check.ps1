@@ -36,8 +36,8 @@ $md += "## Legende"
 $md += ""
 $md += "| Signe              | Signification                 |"
 $md += "|--------------------|-------------------------------|"
-$md += "| :heavy_check_mark: | AD DS et repertoire OK         |"
-$md += "| :x:                | AD DS ou repertoire inexistant |"
+$md += "| :heavy_check_mark: | DFSR et C:\\Logs OK           |"
+$md += "| :x:                | DFSR ou repertoire absent     |"
 $md += "| :no_entry:         | Acces refuse                  |"
 $md += ""
 $md += "## :b: Precision"
@@ -51,23 +51,33 @@ $s = 0
 $counter = 1
 
 foreach ($VM in $SERVERS) {
-    $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"    
+
+    $URL = "[<image src='https://avatars0.githubusercontent.com/u/$($AVATARS[$i])?s=460&v=4' width=20 height=20></image>](https://github.com/$($IDS[$i]))"
     $id = $ETUDIANTS[$i]
     $FILE = "$id/README.md"
+    $LOG = "$id/ADLogs.csv"   # <-- NEW : fichier local
 
     Write-Host "Connexion à $VM ..." -ForegroundColor Cyan
+
     try {
         $Session = New-PSSession -ComputerName $VM -Credential (New-Object PSCredential ($User, $Password))
-        
-        # 🔁 Vérifier le service DFSR (remplacement NTDS → DFSR)
+
+        # 🔁 Vérifier le service DFSR
         $ADStatus = Invoke-Command -Session $Session -ScriptBlock {
             $svc = Get-Service -Name DFSR -ErrorAction SilentlyContinue
             if ($svc) { $svc.Status } else { -1 }
         }
 
-        # 🔁 Vérifier l'existence du répertoire C:\Logs (remplacement du path complet)
-        $dirExists = Invoke-Command -Session $Session -ScriptBlock {
-            Test-Path "C:\Logs"
+        # 🔁 New logic: skip C:\Logs check if ADLogs.csv exists locally
+        $SkipDirCheck = Test-Path $LOG
+
+        if ($SkipDirCheck) {
+            $dirExists = $true
+        }
+        else {
+            $dirExists = Invoke-Command -Session $Session -ScriptBlock {
+                Test-Path "C:\Logs"
+            }
         }
 
         # Déterminer l'icône

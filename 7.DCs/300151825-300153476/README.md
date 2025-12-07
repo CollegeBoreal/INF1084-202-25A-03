@@ -141,10 +141,6 @@ FeatFreedy
 
 L’objectif de ce travail était d’établir une relation d’approbation (trust) bidirectionnelle entre deux forêts Active Directory (DC300151825-00.local et DC300153476-00.local) en utilisant PowerShell et Netdom, comme demandé dans le livrable.
 
-Cependant, en raison de difficultés techniques rencontrées lors de la création du trust en ligne de commande, et sur recommandation de l’enseignant, nous avons d’abord réalisé la configuration via l'interface graphique (GUI) afin de valider le fonctionnement DNS, la connectivité, et l’authentification.
-
-Une fois la configuration fonctionnelle, nous avons repris entièrement la procédure en PowerShell, conformément aux exigences du travail.
-
 # 📌 2. Étapes suivies
 # 🔹 a. Création initiale du trust (GUI – recommandée par l’enseignant)
 
@@ -164,10 +160,19 @@ la faisabilité du trust
 ```powershell
 $credAD2 = Get-Credential -Message "Entrez les identifiants administrateur du domaine DC300153476-00.local"
 ```
+
 # 🔹 c. Vérifier la connectivité avec le DC de AD2
 ```powershell
 Test-Connection -ComputerName DC300153476-00.local -Count 2
 ```
+# Resultat:
+```powershell
+Source        Destination     IPV4Address      IPV6Address                              Bytes    Time(ms)
+------        -----------     -----------      -----------                              -----    --------
+DC300151825   DC300153476-... 10.7.236.224                                              32       2
+DC300151825   DC300153476-... 10.7.236.224                                              32       2
+```
+
 # 🔹 d. Interroger le domaine AD2
 # Informations générales sur le domaine partenaire
 ```powershell
@@ -177,34 +182,34 @@ Get-ADDomain -Server DC300153476-00.local -Credential $credAD2
 ```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
-ComputersContainer                 : CN=Computers,DC=DC300151347-00,DC=local
-DeletedObjectsContainer            : CN=Deleted Objects,DC=DC300151347-00,DC=local
-DistinguishedName                  : DC=DC300151347-00,DC=local
-DNSRoot                            : DC300151347-00.local
-DomainControllersContainer         : OU=Domain Controllers,DC=DC300151347-00,DC=local
+ComputersContainer                 : CN=Computers,DC=DC300153476-00,DC=local
+DeletedObjectsContainer            : CN=Deleted Objects,DC=DC300153476-00,DC=local
+DistinguishedName                  : DC=DC300153476-00,DC=local
+DNSRoot                            : DC300153476-00.local
+DomainControllersContainer         : OU=Domain Controllers,DC=DC300153476-00,DC=local
 DomainMode                         : Windows2016Domain
 DomainSID                          : S-1-5-21-447135690-91861430-3213525697
-ForeignSecurityPrincipalsContainer : CN=ForeignSecurityPrincipals,DC=DC300151347-00,DC=local
-Forest                             : DC300151347-00.local
-InfrastructureMaster               : DC300151347.DC300151347-00.local
+ForeignSecurityPrincipalsContainer : CN=ForeignSecurityPrincipals,DC=DC300153476-00,DC=local
+Forest                             : DC300153476-00.local
+InfrastructureMaster               : DC300153476.DC300153476-00.local
 LastLogonReplicationInterval       :
-LinkedGroupPolicyObjects           : {CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=DC300151347-00,DC=local}
-LostAndFoundContainer              : CN=LostAndFound,DC=DC300151347-00,DC=local
+LinkedGroupPolicyObjects           : {CN={31B2F340-016D-11D2-945F-00C04FB984F9},CN=Policies,CN=System,DC=DC300153476-00,DC=local}
+LostAndFoundContainer              : CN=LostAndFound,DC=DC300153476-00,DC=local
 ManagedBy                          :
-Name                               : DC300151347-00
-NetBIOSName                        : DC300151347-00
+Name                               : DC300153476-00
+NetBIOSName                        : DC300153476-00
 ObjectClass                        : domainDNS
-ObjectGUID                         : 02f8a57f-cd1c-44f0-9e3b-cabe4f4bc78e
+ObjectGUID                         : 6e025027-fa10-4753-b3be-04c0c8d96df3
 ParentDomain                       :
-PDCEmulator                        : DC300151347.DC300151347-00.local
+PDCEmulator                        : DC300153476.DC300153476-00.local
 PublicKeyRequiredPasswordRolling   : True
-QuotasContainer                    : CN=NTDS Quotas,DC=DC300151347-00,DC=local
+QuotasContainer                    : CN=NTDS Quotas,DC=DC300153476-00,DC=local
 ReadOnlyReplicaDirectoryServers    : {}
-ReplicaDirectoryServers            : {DC300151347.DC300151347-00.local}
-RIDMaster                          : DC300151347.DC300151347-00.local
-SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151347-00,DC=local, DC=DomainDnsZones,DC=DC300151347-00,DC=local, CN=Configuration,DC=DC300151347-00,DC=local}
-SystemsContainer                   : CN=System,DC=DC300151347-00,DC=local
-UsersContainer                     : CN=Users,DC=DC300151347-00,DC=local
+ReplicaDirectoryServers            : {DC300153476.DC300153476-00.local}
+RIDMaster                          : DC300153476.DC300153476-00.local
+SubordinateReferences              : {DC=ForestDnsZones,DC=DC300153476-00,DC=local, DC=DomainDnsZones,DC=DC300153476-00,DC=local, CN=Configuration,DC=DC300153476-00,DC=local}
+SystemsContainer                   : CN=System,DC=DC300153476-00,DC=local
+UsersContainer                     : CN=Users,DC=DC300153476-00,DC=local
 ```
 # Liste des utilisateurs du domaine partenaire
 ```powershell
@@ -212,55 +217,82 @@ Get-ADUser -Filter * -Server DC300153476-00.local -Credential $credAD2
 ```
 # Resultat:
 ```powershell
-DistinguishedName : CN=Administrator,CN=Users,DC=DC300151347-00,DC=local
+DistinguishedName : CN=Administrator,CN=Users,DC=DC300153476-00,DC=local
 Enabled           : True
 GivenName         :
 Name              : Administrator
 ObjectClass       : user
-ObjectGUID        : cfc38753-ea54-4ca1-bcc6-5b86da03059a
+ObjectGUID        : 225d08d3-15a2-4df7-b358-001b74a6e348
 SamAccountName    : Administrator
 SID               : S-1-5-21-447135690-91861430-3213525697-500
 Surname           :
 UserPrincipalName :
 
-DistinguishedName : CN=Guest,CN=Users,DC=DC300151347-00,DC=local
+DistinguishedName : CN=Guest,CN=Users,DC=DC300153476-00,DC=local
 Enabled           : False
 GivenName         :
 Name              : Guest
 ObjectClass       : user
-ObjectGUID        : a4ccf8f0-b3f8-4284-bfe9-a7e69810c4d1
+ObjectGUID        : ca04e43c-5df6-4957-80df-a9fbf2ec2683
 SamAccountName    : Guest
 SID               : S-1-5-21-447135690-91861430-3213525697-501
 Surname           :
 UserPrincipalName :
 
-DistinguishedName : CN=student1,CN=Users,DC=DC300151347-00,DC=local
+DistinguishedName : CN=student1,CN=Users,DC=DC300153476-00,DC=local
 Enabled           : True
 GivenName         :
 Name              : student1
 ObjectClass       : user
-ObjectGUID        : 471055d6-ee5a-4514-be93-5d7a309b95e1
+ObjectGUID        : 0f1cd06f-2eb4-419e-a523-c25b3feab244
 SamAccountName    : student1
 SID               : S-1-5-21-447135690-91861430-3213525697-1000
 Surname           :
 UserPrincipalName :
-                                                                                                                                                                                                                                             DistinguishedName : CN=krbtgt,CN=Users,DC=DC300151347-00,DC=local                                                                                                                                                                            Enabled           : False                                                                                                                                                                                                                    GivenName         :                                                                                                                                                                                                                          Name              : krbtgt                                                                                                                                                                                                                   ObjectClass       : user
-ObjectGUID        : b19cb6ff-53b3-4e3f-a30a-1a434ffc2f64
+
+DistinguishedName : CN=krbtgt,CN=Users,DC=DC300153476-00,DC=local
+Enabled           : False
+GivenName         :
+Name              : krbtgt
+ObjectClass       : user
+ObjectGUID        : 6062791a-1fa9-4090-b5be-f3487aa86d1f
 SamAccountName    : krbtgt
 SID               : S-1-5-21-447135690-91861430-3213525697-502
 Surname           :
 UserPrincipalName :
 
-DistinguishedName : CN=Sara Hocine,CN=Users,DC=DC300151347-00,DC=local
+DistinguishedName : CN=Etudiant1,CN=Users,DC=DC300153476-00,DC=local
 Enabled           : True
-GivenName         : Sara
-Name              : Sara Hocine
+GivenName         :
+Name              : Etudiant1
 ObjectClass       : user
-ObjectGUID        : 3793c42a-4175-471f-8c3c-0c1852e2eed4
-SamAccountName    : shocine
-SID               : S-1-5-21-447135690-91861430-3213525697-1104
-Surname           : Hocine
-UserPrincipalName : shocine@DC300151347-00.local
+ObjectGUID        : c320c3f7-f130-4ea4-a9cb-78c7d532f41b
+SamAccountName    : Etudiant1
+SID               : S-1-5-21-447135690-91861430-3213525697-1105
+Surname           :
+UserPrincipalName :
+
+DistinguishedName : CN=Etudiant2,CN=Users,DC=DC300153476-00,DC=local
+Enabled           : True
+GivenName         :
+Name              : Etudiant2
+ObjectClass       : user
+ObjectGUID        : 8b830a55-fd65-4404-8464-a5408e7c798a
+SamAccountName    : Etudiant2
+SID               : S-1-5-21-447135690-91861430-3213525697-1106
+Surname           :
+UserPrincipalName :
+
+DistinguishedName : CN=Ramatoulaye,CN=Users,DC=DC300153476-00,DC=local
+Enabled           : True
+GivenName         : Diallo
+Name              : Ramatoulaye
+ObjectClass       : user
+ObjectGUID        : cb7902fa-cfe0-4a8d-bd60-343d6e548b41
+SamAccountName    : rama.diallo
+SID               : S-1-5-21-447135690-91861430-3213525697-1107
+Surname           : Bah
+UserPrincipalName : rama.diallo@DC300153476-00.local
 ```
 
 # 🔹 e. Naviguer dans AD2 via PSDrive
@@ -271,8 +303,9 @@ Get-ChildItem
 ```
 # Resultat:
 ```powershell
- Directory: C:\Users\Administrator
- 
+    Directory: C:\Users\Administrator
+
+
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 d-----         11/6/2025   6:24 PM                .ssh
@@ -285,7 +318,7 @@ d-r---         7/29/2024   8:06 PM                Downloads
 d-r---         7/29/2024   8:06 PM                Favorites
 d-r---         7/29/2024   8:06 PM                Links
 d-r---         7/29/2024   8:06 PM                Music
-d-r---         7/29/2024   8:06 PM                Pictures
+d-r---         12/6/2025   6:54 PM                Pictures
 d-r---         7/29/2024   8:06 PM                Saved Games
 d-r---         7/29/2024   8:06 PM                Searches
 d-r---         7/29/2024   8:06 PM                Videos
@@ -308,6 +341,10 @@ Type the password associated with the object user:
 
 The command completed successfully.
 
+PS C:\Users\Administrator>
+
+
+
 ```
 # 🔹 g. Vérification du trust
 
@@ -320,11 +357,10 @@ nltest /domain_trusts
 ```powershell
 Name                                           Type   TTL   Section    IPAddress
 ----                                           ----   ---   -------    ---------
-DC300153476-00.local                           A      0     Answer     10.7.236.218
+DC300153476-00.local                           A      0     Answer     10.7.236.224
 List of domain trusts:
-    0: DC300153476-00 (MIT) (Direct Outbound) (Direct Inbound)
-    1: DC300153476-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
-    2: DC300151825-00 DC300151825-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+    0: DC300153476-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300151825-00 DC300151825-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
 The command completed successfully
 ```
 

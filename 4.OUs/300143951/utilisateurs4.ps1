@@ -1,5 +1,4 @@
-Set-ADUser -Identity "kadji.falcon" `
-           -EmailAddress "kadji.falcon@DC300143951-00.local" `
-           -GivenName "Kadji.laurel" `
+Set-ADUser -Identity "alice.dupont" `
+           -EmailAddress "alice.dupont@exemple.com" `
+           -GivenName "Alice-Marie" `
            -Credential $cred
-New-ADUser `                                                                                                                                                                                                                                   -Name "kadji" `                                                                                                                                                                                                                              -GivenName "Falcon" `                                                                                                                                                                                                                        -Surname "K falcon" `                                                                                                                                                                                                                        -SamAccountName "Kadji.falcon" `                                                                                                                                                                                                             -UserPrincipalName "kadji.falcon@DC300143951-00.local" `                                                                                                    

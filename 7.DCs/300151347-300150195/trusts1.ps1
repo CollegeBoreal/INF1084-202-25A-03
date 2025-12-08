@@ -1,62 +1,28 @@
-<# ============================================================
-    Script TRUST - Sara (DC300151347)
-============================================================ #>
+# Demander les identifiants Admin du domaine d'Amel
+$cred = Get-Credential -Message "Entrez le compte Administrator du domaine DC300150195-00.local"
 
-Import-Module ActiveDirectory
-
-# === Domaine LOCAL (Sara) ===
-$LocalDomainDnsName = "DC300151347-00.local"
-$LocalDomainNetbios = "DC300151347-00"
-$LocalDC            = "DC300151347"
-
-# === Domaine DISTANT (Amel) ===
-$RemoteDomainDnsName = "DC300150195-00.local"
-$RemoteDomainNetbios = "DC300150195-00"
-$RemoteDC            = "DC300150195"
-
-Write-Host "=== 1. Vérification DNS ==="
-Resolve-DnsName $RemoteDomainDnsName
-Resolve-DnsName $RemoteDC
+Write-Host "=== 1. Résolution DNS ==="
+Resolve-DnsName DC300150195-00.local
+Resolve-DnsName DC300150195.DC300150195-00.local -ErrorAction SilentlyContinue
 
 Write-Host "=== 2. Test de connectivité ==="
-Test-Connection -ComputerName $RemoteDC -Count 2
+Test-Connection -ComputerName DC300150195-00.local -Count 2
+Test-Connection -ComputerName 10.7.236.211 -Count 2
 
-Write-Host "=== 3. Demande des identifiants AD2 (Amel) ==="
-$credAD2 = Get-Credential -Message "Entrez le compte admin de $RemoteDomainDnsName"
+Write-Host "=== 3. Informations AD du domaine d'Amel ==="
+Get-ADDomain -Server DC300150195-00.local -Credential $cred
 
-Write-Host "=== 4. Interroger AD2 ==="
-Get-ADDomain -Server $RemoteDomainDnsName -Credential $credAD2
-Get-ADUser -Filter * -Server $RemoteDomainDnsName -Credential $credAD2 |
-    Select-Object -First 10 Name, SamAccountName
+Write-Host "=== 4. Exemple : lister des utilisateurs ==="
+Get-ADUser -Filter * -Server DC300150195-00.local -Credential $cred | Select -First 5
 
-Write-Host "=== 5. Créer un PSDrive pour AD2 ==="
-New-PSDrive -Name AD2 `
-    -PSProvider ActiveDirectory `
-    -Root "DC=DC300150195-00,DC=local" `
-    -Server $RemoteDomainDnsName `
-    -Credential $credAD2
+Write-Host "=== 5. Création du trust bidirectionnel ==="
 
-Set-Location AD2:\
+netdom trust DC300150195-00.local `
+    /Domain:DC300151347-00.local `
+    /UserD:Administrator `
+    /PasswordD:* `
+    /Add `
+    /TwoWay
 
-Write-Host "=== - Contenu racine AD2 : ==="
-Get-ChildItem
-
-Set-Location C:\
-
-Write-Host "=== 6. Création du trust ==="
-netdom trust $RemoteDomainDnsName `
-/Domain:$LocalDomainDnsName `
-/UserD:$LocalDomainNetbios\Administrateur `
-/PasswordD:* `
-/UserO:$RemoteDomainNetbios\Administrateur `
-/PasswordO:* `
-/TwoWay `
-/Transitive:Yes `
-/add
-
-Write-Host "=== 7. Vérification du trust ==="
-Get-ADTrust -Filter *
-netdom trust $RemoteDomainDnsName /Domain:$LocalDomainDnsName /verify
-
-Write-Host "=== Script terminé ==="
+Write-Host "=== Trust créé ==="
 

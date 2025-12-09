@@ -20,11 +20,7 @@ Chaque domaine doit pouvoir résoudre le contrôleur de domaine distant.
 ### ✔ Test DNS depuis Sara → Amel
 ```powershell
 Resolve-DnsName DC300150195-00.local
-
-
-![ping sara](https://github.com/user-attachments/assets/e8a0d622-21c2-4d70-b607-8aae46abf531)
-
-
+<img src="images/ping sara.jpg">
 Résultat :
 
 L’adresse IP 10.7.236.211 est correctement résolue

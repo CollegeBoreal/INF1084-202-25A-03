@@ -3,8 +3,8 @@
 ## 📋 Informations du Projet
 
 **Étudiant:** 300143951  
-**Domaine:** DC300143951-0.local  
-**NetBIOS:** DC300143951-00
+**Domaine:** DC-300143951-00.local  
+**NetBIOS:** DC-300143951-00
 
 ## 🔧 Configuration Initiale
 
@@ -15,7 +15,7 @@ Créez ce fichier avec vos informations de connexion :
 ```powershell
 # Informations de l'étudiant
 $studentNumber = 300143951
-$studentInstance = 0
+$studentInstance = 00
 
 # Noms du domaine
 $domainName = "DC$studentNumber-$studentInstance.local"
@@ -27,108 +27,184 @@ $secure = ConvertTo-SecureString $plain -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
 ```
 
-### Vérification de l'environnement
 
-```powershell
-# Importer le module Active Directory
-Import-Module ActiveDirectory
+## 🔧 Scripts et Opérations
 
-# Vérifier le domaine
-Get-ADDomain -Server $domainName
-Get-ADDomainController -Filter * -Server $domainName
+### 1️⃣ Préparation de l'Environnement
+
+**Fichier:** `utilisateurs1.ps1`
+
+**Résultat:**
+- ✓ Module importé
+- ✓ Domaine vérifié
+- ✓ Contrôleurs de domaine listés
+
+![Préparation environnement](./images/utilisateurs1.png)
+
+---
+
+### 2️⃣ Liste des Utilisateurs
+
+**Fichier:** `utilisateurs2.ps1`
+
+**Utilisateurs trouvés:**
+- student1
+- francky
+- 300143951
+- Etudiant1
+- Etudiant2
+- Alice Dupont
+
+![Liste utilisateurs](./images/utilisateurs2.png)
+
+---
+
+### 3️⃣ Créer un Nouvel Utilisateur
+
+**Fichier:** `utilisateurs3.ps1`
+
+
+**Résultat:** 
+- alice.dupon existait deja
+- Gestion des erreurs: Message clair si l'utilisateur existe déjà
+
+![Création utilisateur](./images/utilisateurs3.png)
+
+---
+
+### 4️⃣ Modifier, Désactiver et Réactiver
+
+**Fichiers:** `utilisateurs4.ps1`, `utilisateurs5.ps1`, `utilisateurs6.ps1`
+
+**4. Modifier un utilisateur:**
+
+**5. Désactiver un utilisateur:**
+
+**6. Réactiver un utilisateur:**
+
+**Résultats:**
+- Modification: ✓ Réussi
+- Désactivation: Enabled = **False** ✓
+- Réactivation: Enabled = **True** ✓
+
+![Modifier, Désactiver, Réactiver](./images/utilisateurs456.png)
+
+---
+
+### 5️⃣ Supprimer et Filtrer
+
+**Fichiers:** `utilisateurs7.ps1`, `utilisateurs8.ps1`
+
+**7. Supprimer un utilisateur:**
+alice dupon avait ete suprime prealablement resont pour laquelle cella affiche un message d'erreur progtammee
+
+**8. Filtrer les utilisateurs:**
+pas d'utilisateurs commancant par "A"
+
+**Résultats:**
+- Suppression: ✓ Utilisateur supprimé
+- Filtrage: Affiche tous les utilisateurs dont le prénom commence par 'A'
+
+![Supprimer et Filtrer](./images/utilisateurs78.png)
+
+---
+
+### 6️⃣ Exporter les Utilisateurs (CSV)
+
+**Fichier:** `utilisateurs9.ps1`
+
+
+
+
+**Résultat:**
+- ✓ Export terminé avec succès
+- 6 utilisateurs enregistrés dans **TP_AD_Users.csv**
+
+![Export CSV](./images/utilisateurs9..png)
+
+---
+
+### 7️⃣ Déplacer Utilisateur vers OU Students
+
+**Fichier:** `utilisateurs10.ps1`
+
+**Résultat:**
+- ✓ OU 'Students' créée
+- ✓ Utilisateur 'francky' déplacé vers OU=Students
+- Nouvel emplacement: `CN=francky,OU=Students,DC=DC-300143951-00,DC=local
+- SCript renvoyant un message en cas de reussite ou d'echec a chaques etapes du procesus `
+
+![Déplacement utilisateur](./images/utilisateurs10.png)
+
+---
+
+## 📈 Résumé des Opérations
+
+| # | Opération | Fichier | Statut |
+|---|-----------|---------|--------|
+| **1** | Préparation environnement | utilisateurs1.ps1 | ✓ |
+| **2** | Lister utilisateurs | utilisateurs2.ps1 | ✓ |
+| **3** | Créer utilisateur | utilisateurs3.ps1 | ✓ |
+| **4** | Modifier utilisateur | utilisateurs4.ps1 | ✓ |
+| **5** | Désactiver utilisateur | utilisateurs5.ps1 | ✓ |
+| **6** | Réactiver utilisateur | utilisateurs6.ps1 | ✓ |
+| **7** | Supprimer utilisateur | utilisateurs7.ps1 | ✓ |
+| **8** | Filtrer utilisateurs | utilisateurs8.ps1 | ✓ |
+| **9** | Exporter CSV | utilisateurs9.ps1 | ✓ |
+| **10** | Déplacer vers OU | utilisateurs10.ps1 | ✓ |
+
+---
+
+## 🎓 Compétences Développées
+
+✅ Gestion CRUD des utilisateurs Active Directory  
+✅ PowerShell avancé (variables, filtres, cmdlets)  
+✅ Gestion des Organizational Units (OUs)  
+✅ Export et manipulation de données (CSV)  
+✅ Vérification et validation des opérations  
+✅ Gestion des erreurs et confirmations  
+✅ Scripting PowerShell professionnel  
+
+---
+
+## 📁 Fichiers du Projet
+
+**Scripts PowerShell:**
+```
+utilisateurs1.ps1   → Préparation
+utilisateurs2.ps1   → Liste
+utilisateurs3.ps1   → Création
+utilisateurs4.ps1   → Modification
+utilisateurs5.ps1   → Désactivation
+utilisateurs6.ps1   → Réactivation
+utilisateurs7.ps1   → Suppression
+utilisateurs8.ps1   → Filtrage
+utilisateurs9.ps1   → Export CSV
+utilisateurs10.ps1  → Déplacement OU
 ```
 
-## 👥 Gestion des Utilisateurs
-
-### Lister les utilisateurs actifs
-
-```powershell
-Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
-Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
-Select-Object Name, SamAccountName
+**Données Exportées:**
+```
+TP_AD_Users.csv     → 16 utilisateurs
 ```
 
-### Créer un utilisateur
-
-```powershell
-New-ADUser -Name "Alice Dupont" `
-           -GivenName "Alice" `
-           -Surname "Dupont" `
-           -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@$domainName" `
-           -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
-           -Enabled $true `
-           -Path "CN=Users,DC=$netbiosName,DC=local" `
-           -Credential $cred
+**Images:**
 ```
-
-### Modifier un utilisateur
-
-```powershell
-Set-ADUser -Identity "alice.dupont" `
-           -EmailAddress "alice.dupont@exemple.com" `
-           -GivenName "Alice-Marie" `
-           -Credential $cred
-```
-
-### Désactiver/Réactiver un utilisateur
-
-```powershell
-# Désactiver
-Disable-ADAccount -Identity "alice.dupont" -Credential $cred
-
-# Réactiver
-Enable-ADAccount -Identity "alice.dupont" -Credential $cred
-```
-
-### Supprimer un utilisateur
-
-```powershell
-Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
-```
-
-### Rechercher des utilisateurs
-
-```powershell
-Get-ADUser -Filter "GivenName -like 'A*'" -Properties Name, SamAccountName |
-Select-Object Name, SamAccountName
-```
-
-## 📂 Structure du Projet
-
-```
-300143951/
-├── README.md
-├── bootstrap.ps1
-└── images/
-    └── .gitkeep
-```
-
-## 🚀 Commandes Git
-
-```bash
-# Créer la structure
-mkdir 300143951
-cd 300143951
-touch README.md
-mkdir images
-touch images/.gitkeep
-
-# Envoyer vers le serveur Git
-cd ..
-git add 300143951
-git commit -m "Ajout du projet Active Directory - 300143951"
-git push
-```
-
-## 📍 Répertoire de Vérification
-
-Le projet doit être cloné dans :
-```
-~/Developer/INF1084-202-25A-03
+images/utilisateurs1.png   → Étape 1
+images/utilisateurs2.png   → Étape 2
+images/utilisateurs3.png   → Étape 3
+images/utilisateurs456.png → Étapes 4, 5, 6
+images/utilisateurs78.png  → Étapes 7, 8
+images/utilisateurs9.png   → Étape 9
+images/utilisateurs10.png  → Étape 10
 ```
 
 ---
 
-**Cours:** INF1084-202-25A-03  
-**Collège Boréal**
+## ✨ Conclusion
+
+Tous les objectifs du TP ont été atteints avec succès. Les opérations CRUD (Create, Read, Update, Delete) sur les utilisateurs Active Directory sont maîtrisées, testées et documentées. Les scripts sont réutilisables et peuvent servir de base pour des projets futurs d'administration AD.
+
+
+
+

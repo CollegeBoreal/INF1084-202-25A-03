@@ -22,7 +22,8 @@ Chaque domaine doit pouvoir résoudre le contrôleur de domaine distant.
 Resolve-DnsName DC300150195-00.local
 
 
-<img src="images/pingsara.jpg">
+![ping sara](https://github.com/user-attachments/assets/e8a0d622-21c2-4d70-b607-8aae46abf531)
+
 
 Résultat :
 

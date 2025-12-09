@@ -1,49 +1,44 @@
-# ===================================================
-# Script PowerShell pour créer et vérifier un trust
-# entre deux forêts Active Directory
-# Respecte les directives du projet INF1084
-# ===================================================
+# ======================================================
+# Script : create_verify_trust.ps1
+# Objet  : Créer et vérifier un trust REALM <-> AD
+# Domaine AD local  : DC300141625-00.local
+# Realm Kerberos    : DC300141858-01
+# Basé sur le trace du professeur (netdom / nltest)
+# ======================================================
 
-# Étape 0 : Message de début
-Write-Host "=== Début du script de création et vérification du trust ===" -ForegroundColor Cyan
+Write-Host "=== Début du script de création et vérification du trust REALM ===" -ForegroundColor Cyan
 
-# Étape 1 : Demander les identifiants administrateur de la forêt distante (AD2)
-$credAD2 = Get-Credential -Message "Entrez le compte administrateur de AD2"
+# 1. Informations sur le domaine local (optionnel)
+Write-Host "`n[1] Informations sur le domaine AD local :" -ForegroundColor Yellow
+try {
+    Get-ADDomain | Select-Object DNSRoot, NetBIOSName, Forest
+} catch {
+    Write-Host "Get-ADDomain indisponible - ce n'est pas bloquant pour le trust REALM." -ForegroundColor DarkYellow
+}
 
-# Étape 2 : Vérifier la connectivité au contrôleur de domaine AD2
-$dcAD2 = "dc01.ad2.local"   # Nom du contrôleur de domaine AD2
-Write-Host "Test de connectivité vers $dcAD2..." -ForegroundColor Yellow
-Test-Connection -ComputerName $dcAD2 -Count 2
+# 2. Création du trust REALM bidirectionnel avec NETDOM
+Write-Host "`n[2] Création du trust REALM bidirectionnel (Two-way, non transitif)..." -ForegroundColor Yellow
+Write-Host "Commande exécutée :" -ForegroundColor Gray
+Write-Host "netdom trust DC300141625-00 /Domain:DC300141858-01 /UserD:Administrator /PasswordD:* /Add /Realm /TwoWay" -ForegroundColor Gray
 
-# Étape 3 : Créer le trust bidirectionnel et transitif
-$sourceForest = "AD1.local"  # Nom de ta forêt
-$targetForest = "AD2.local"  # Nom de la forêt distante
+netdom trust DC300141625-00 `
+    /Domain:DC300141858-01 `
+    /UserD:Administrator `
+    /PasswordD:* `
+    /Add `
+    /Realm `
+    /TwoWay
 
-Write-Host "Création du trust bidirectionnel entre $sourceForest et $targetForest..." -ForegroundColor Yellow
-New-ADTrust -Name $targetForest `
-            -SourceForest $sourceForest `
-            -TargetForest $targetForest `
-            -Credential $credAD2 `
-            -TrustType Forest `
-            -Direction Bidirectional `
-            -Transitive $true
+# 3. Vérification basique avec NLTEST
+Write-Host "`n[3] Vérification des domaines approuvés (nltest /trusted_domains)..." -ForegroundColor Yellow
+nltest /trusted_domains
 
-# Étape 4 : Vérifier le trust
-Write-Host "Vérification du trust..." -ForegroundColor Yellow
-Get-ADTrust -Filter * -Server $dcAD2 -Credential $credAD2
+# 4. Vérification détaillée depuis le DC local
+Write-Host "`n[4] Vérification détaillée depuis DC300141625-00 (nltest /server:... /trusted_domains)..." -ForegroundColor Yellow
+nltest /server:DC300141625-00 /trusted_domains
 
-# Étape 5 : Lister les utilisateurs de AD2 pour tester l’accès
-Write-Host "Liste des utilisateurs de AD2..." -ForegroundColor Yellow
-Get-ADUser -Filter * -Server $dcAD2 -Credential $credAD2
+# 5. Affichage des tickets Kerberos (klist)
+Write-Host "`n[5] Tickets Kerberos actuels (klist)..." -ForegroundColor Yellow
+klist
 
-# Étape 6 : Créer un PSDrive pour accéder à AD2
-Write-Host "Création d'un PSDrive pour naviguer dans AD2..." -ForegroundColor Yellow
-New-PSDrive -Name AD2 -PSProvider ActiveDirectory -Root $dcAD2 -Credential $credAD2
-
-# Étape 7 : Navigation et affichage des unités organisationnelles
-Write-Host "Navigation dans AD2 et liste des unités organisationnelles..." -ForegroundColor Yellow
-Set-Location AD2:\DC=AD2,DC=LOCAL
-Get-ChildItem
-
-# Étape 8 : Fin du script
-Write-Host "=== Script terminé : le trust a été créé et vérifié ===" -ForegroundColor Cyan
+Write-Host "`n=== Script terminé : trust REALM <-> AD testé ===" -ForegroundColor Cyan

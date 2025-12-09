@@ -210,14 +210,17 @@ Le **DNS (Domain Name System)** permet :
 
 ### **5️⃣ Que contient le dossier SYSVOL ?**
 
-Le dossier **SYSVOL** contient :
+> 📁 Le dossier **SYSVOL** contient :
+> `C:\Windows\SYSVOL`
 
 * les **scripts de connexion** (logon scripts),
+  > 📁 Emplacement typique :
+  > `C:\Windows\SYSVOL\sysvol\<nom_du_domaine>\scripts`
 * les **fichiers des stratégies de groupe (GPO)**,
+  > 📁 Emplacement typique :
+  > `C:\Windows\SYSVOL\sysvol\<nom_du_domaine>\Policies`
 * et d’autres données **synchronisées entre les contrôleurs de domaine**.
 
-> 📁 Emplacement typique :
-> `C:\Windows\SYSVOL\sysvol\<nom_du_domaine>\Policies`
 
 ---
 

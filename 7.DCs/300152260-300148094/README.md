@@ -1,4 +1,5 @@
 Ouail Gacem (300148094) & Mohib (300152260)
+
 🎯 Résumé du laboratoire
 
 Dans ce travail, nous avons mis en place—uniquement via PowerShell—une relation d’approbation entre deux domaines Active Directory isolés.

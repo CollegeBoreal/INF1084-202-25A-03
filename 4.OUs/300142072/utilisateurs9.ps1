@@ -1,6 +1,5 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
-
-$domainName = "DC300142072-20.local"
 
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, EmailAddress, Enabled |
 Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |

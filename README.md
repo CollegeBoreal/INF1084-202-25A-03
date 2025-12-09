@@ -3,6 +3,18 @@ INF1084 (202) - Introduction à l'administration des systèmes
 
 ## :date: [Épreuves](.epreuves)
 
+| :hash:  | Date   | Épreuves                                           |
+|-------- |--------|:---------------------------------------------------|
+| :one:   |05-dec  | Finale                                             |
+
+## 🧨 [Évaluations](.evaluations)
+
+| :hash:  | Date   | Evaluations                                        |
+|-------- |--------|:---------------------------------------------------|
+| :one:   |10-dec  | [0.Lab1](.evaluations/0.Lab1)                      |
+| :two:   |10-dec  | [1.Projet](.evaluations/1.Projet)                  |
+
+
 ## :one: [Devoirs](Devoirs)
 
 | :hash:  | Date   | Leçons                                                           | 🎉 Participations | 🏁 Vérifications |
@@ -13,12 +25,12 @@ INF1084 (202) - Introduction à l'administration des systèmes
 | :four:  |22-sept | [2.Utilisateurs](2.Utilisateurs)              | [🎉](2.Utilisateurs/.scripts/Participation.md) 👉  â Noter :x:|
 | :five:  |29-sept | [3.VMs](3.VMs)     | [🎉](3.VMs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](3.VMs/.scripts/Check.md) â Noter :x: 
 | :six:   |13-oct  | [4.OUs](4.OUs)     | [🎉](4.OUs/.scripts/Participation.md) 👉 â Noter :x: | [🏁](4.OUs/.scripts/Check.md) â Noter :x: 
-| :seven: |27-oct  | [5.Services](5.Services) | [🎉](5.Services/.scripts/Participation.md) 👉 â Noter :x: |  
-| :eight: |03-nov  | [6.Objects](6.Objects) | [🎉](6.Objects/.scripts/Participation.md) 👉 â Noter :x: |  
+| :seven: |27-oct  | [5.Services](5.Services) | [🎉](5.Services/.scripts/Participation.md) 👉 â Noter :x: |  [🏁](5.Services/.scripts/Check.md) â Noter :x:  
+| :eight: |03-nov  | [6.Objects](6.Objects) | [🎉](6.Objects/.scripts/Participation.md) 👉 â Noter :x: | [🏁](6.Objects/.scripts/Check.md) â Noter :x:  
 | :eight: |10-nov  | [7.DCs](7.DCs) | [🎉](7.DCs/.scripts/Participation.md) 👉 â Noter :x: |  
 
 
-# :books: References :zero: 🖼️ 🗒️ 📂
+# :books: References 
 
 - [ ] Comment vérifier que le `commit` a été fait par le `CLI`
       

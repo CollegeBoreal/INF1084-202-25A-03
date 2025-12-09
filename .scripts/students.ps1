@@ -58,7 +58,7 @@ $IDS = @(
     'hakimsb'
     'sarahocine'
     'JustinSandy99'
-    '33070733'
+    'Rabia-777'
     'Kahinazerkani'
     'FeatFreedy'
     'Hannibalcarthage'
@@ -91,7 +91,7 @@ $AVATARS = @(
     231778604
     207281891
     211593057
-    212077526
+    206001876
     231781132
     195238262
     205994935
@@ -149,4 +149,70 @@ $GROUPES = @(
     '300142072-300144176'
     '300148094-300152260'
     '300151863-300147510'
+)
+
+$DOMAINS = @(
+    'nelsonwilliam.me'
+    'emeraudesantu.me'
+    '300141625@monboreal.ca'
+    'lmnzglobalshop.store'
+    '300141716@monboreal.ca'
+    '300141858@monboreal.ca'
+    '300142072@monboreal.ca'
+    'frankkadji.dev'
+    '300144176@monboreal.ca'
+    'ikramsidhoum.me'
+    'harkati.me'
+    '300146721@monboreal.ca'
+    '300147510@monboreal.ca'
+    '300147816@monboreal.ca'
+    '300148094@monboreal.ca'
+    'adjhocine.me'
+    'amelzourane.me'
+    '300150416@monboreal.ca'
+    'zakariadjellouli.me'
+    'amirasadouni.me'
+    'isako29.store'
+    'hakimsb.me'
+    'sarahocine.me'
+    'sandyjustin.me'
+    'rabiabouhali.me'
+    'kahinazerkani.me'
+    'featfreedy.xyz'
+    '300151863@monboreal.ca'
+    'mohibbekkai.me'
+    'ramatoulaye.me'
+)
+
+$NETBIOS = @(
+    "DC300133071-00"
+    "DC300141550"
+    "DC300141625-00"
+    "DC300141657-00"
+    "DC300141716-00"
+    "DC300141858-00"
+    "DC300142072-00"
+    "DC300143951-00"
+    "DC300144176-00"
+    "DC300146418-00"
+    "DC300146676-00"
+    "DC300146721-00"
+    "DC300147510-00"
+    "DC300147816-00"
+    "DC300148094-00"
+    "DC300148450-00"
+    "DC300150195-00"
+    "DC300150416-00"
+    "DC300150433-00"
+    "DC300150558-00"
+    "DC300150562-00"
+    "DC300151258-00"
+    "DC300151347-00"
+    "DC300151403-00"
+    "DC300151469-00"
+    "DC300151556-00"
+    "DC300151825-00"
+    "DC300151863-00"
+    "DC300152260-00"
+    "DC300153476-00"
 )

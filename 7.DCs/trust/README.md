@@ -38,7 +38,13 @@ nltest /trusted_domains
 ```cmd
 nltest /server:DC300098957-90.local /trusted_domains
 ```
-
+>
+```lua
+List of domain trusts:
+    0: DC300098957-40 (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300098957-90 DC300098957-90.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+```
 **Test d'authentification :**
 ```cmd
 net use \\SERVEUR_LOCAL\Partage /user:DC300098957-40.local\utilisateur *
@@ -53,7 +59,7 @@ klist
 
 ### Méthode Recommandée (NETDOM) :
 ```cmd
-netdom trust DC300098957-90.local /Domain:DC300098957-40.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+netdom trust DC300098957-90 /Domain:DC300098957-40 /UserD:Administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
 ## Outils Graphiques Alternatifs
@@ -77,3 +83,30 @@ domain.msc  # Active Directory Domains and Trusts
 - Permet le partage de ressources entre les environnements
 
 L'approbation bidirectionnelle permet maintenant aux utilisateurs des deux domaines d'accéder aux ressources de l'autre domaine en utilisant leur identité native.
+
+# :books: References
+
+- [ ] [NetDom examples](https://homeworks.it/Pdf/NetDom%20Examples.pdf)
+
+---
+
+```txt
+
+Specified domain: DC300098957-40
+
+Direction:
+Two-way: Users in the local domain can authenticate in the specified domain and users in the specified domain can authenticate in the local domain.
+
+Trust type: realm
+
+Transitive: No
+
+Sides of trust: Created the trust for this domain only.
+```
+
+```powershell
+netdom trust ATHENA `
+             /Domain:DC300098957-40 `
+             /UserD:Administrator /PasswordD:* `
+             /Add /Realm /TwoWay
+```

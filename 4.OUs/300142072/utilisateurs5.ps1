@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 Import-Module ActiveDirectory
 
-Disable-ADAccount -Identity "siga.diarra" -Credential $cred
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred

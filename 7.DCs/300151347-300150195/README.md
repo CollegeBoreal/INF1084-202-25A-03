@@ -20,7 +20,6 @@ Chaque domaine doit pouvoir résoudre le contrôleur de domaine distant.
 ### ✔ Test DNS depuis Sara → Amel
 ```powershell
 Resolve-DnsName DC300150195-00.local
-<img src="images/ping sara.jpg">
 Résultat :
 
 L’adresse IP 10.7.236.211 est correctement résolue
@@ -28,16 +27,7 @@ L’adresse IP 10.7.236.211 est correctement résolue
 
 🧩 2. Test de connectivité (Ping)
 Test-Connection DC300150195-00.local -Count 2
-
-
-📸 Capture :
-
-
-![pingsara](https://github.com/user-attachments/assets/218eb014-1392-4f5b-af41-0e5bb6ceead7)
-
-
 Résultat :
-
 Le DC d’Amel répond
 ➡ Réseau OK
 
@@ -46,11 +36,6 @@ Le DC d’Amel répond
 Depuis Sara, interrogation du domaine d’Amel :
 
 Get-ADDomain -Server DC300150195-00.local
-
-
-📸 Capture :
-
-
 Résultat attendu :
 
 Informations du domaine retournées
@@ -60,19 +45,10 @@ Informations du domaine retournées
 🧩 4. Création du Trust (Sara → Amel)
 netdom trust DC300151347-00.local /Domain:DC300150195-00.local `
 /UserD:Administrator /PasswordD:* /Add /Realm /TwoWay
-
-
-📸 Capture :
-
-
 ➡ Trust créé avec succès
 
 🧩 5. Vérification du Trust
 netdom trust DC300151347-00.local /Domain:DC300150195-00.local /Verify
-
-
-📸 Capture :
-
 
 ➡ Vérification OK
 
@@ -86,11 +62,6 @@ DC300151347-00\Administrator
 Elle interroge ton domaine :
 
 Get-ADDomain -Server DC300151347-00.local
-
-
-📸 Capture :
-
-
 Résultat :
 
 Toutes les informations de ton domaine apparaissent
@@ -127,8 +98,6 @@ Tous les objectifs du laboratoire sont atteints :
 ✔ Consultation des objets AD du domaine distant
 
 ✔ Trust totalement opérationnel
-
-🎉 Projet complété avec succès !
 
 👩‍💻 Réalisé par :
 

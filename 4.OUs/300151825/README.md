@@ -2,18 +2,24 @@
 
 0️⃣ Nom du domaine basé sur le numéro étudiant
 
+```powershell
 $studentNumber = 300151825
 $studentInstance = 00
+```
 
+```powershell
 $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
-
+```
+```powershell
 $domainName
 # DC300151825-0.local
+```
 
+```powershell
 $netbiosName
 # DC300151825-0
-
+```
 ---
 
 1️⃣ Préparer l’environnement
@@ -22,9 +28,12 @@ $netbiosName
 Import-Module ActiveDirectory
 
 # Vérifier le domaine et les DC
+```powershell
 Get-ADDomain -Server $domainName
+```
 
 # Résultat
+```powershell
 AllowedDNSSuffixes                 : {}
 ChildDomains                       : {}
 ComputersContainer                 : CN=Computers,DC=DC300151825-00,DC=local
@@ -55,10 +64,15 @@ RIDMaster                          : DC300151825.DC300151825-00.local
 SubordinateReferences              : {DC=ForestDnsZones,DC=DC300151825-00,DC=local, DC=DomainDnsZones,DC=DC300151825-00,DC=local, CN=Configuration,DC=DC300151825-00,DC=local}
 SystemsContainer                   : CN=System,DC=DC300151825-00,DC=local
 UsersContainer                     : CN=Users,DC=DC300151825-00,DC=local
+```
 
+```powershell
 Get-ADDomainController -Filter * -Server $domainName
+```
 
-# Résultat
+✨ Resultat ✨:
+
+```powershell
 ComputerObjectDN           : CN=DC300151825,OU=Domain Controllers,DC=DC300151825-00,DC=local
 DefaultPartition           : DC=DC300151825-00,DC=local
 Domain                     : DC300151825-00.local
@@ -83,14 +97,19 @@ ServerObjectDN             : CN=DC300151825,CN=Servers,CN=Default-First-Site-Nam
 ServerObjectGuid           : b22c4f6c-93cd-4a6a-8c55-9dd50aa231ea
 Site                       : Default-First-Site-Name
 SslPort                    : 636
-
+```
 ---
 
 2️⃣ Liste des utilisateurs du domaine
 
+```powershell
 Get-ADUser -Filter *
+```
+---
 
-# Résultat
+✨ Resultat ✨:
+
+```powershell
 DistinguishedName : CN=Administrator,CN=Users,DC=DC300151825-00,DC=local
 Enabled           : True
 GivenName         :
@@ -134,11 +153,12 @@ SamAccountName    : krbtgt
 SID               : S-1-5-21-447135690-91861430-3213525697-502
 Surname           :
 UserPrincipalName :
-
+```
 ---
 
 3️⃣ Créer un nouvel utilisateur
 
+```powershell
 New-ADUser `
   -Name "Leandre Ebah" `
   -GivenName "Leandre" `
@@ -149,41 +169,44 @@ New-ADUser `
   -AccountPassword (Read-Host -Prompt "Entrer le mot de passe pour Leandre Ebah" -AsSecureString) `
   -Enabled $true `
   -Credential $cred
-
+```
 ---
 
 4️⃣ Modifier un utilisateur
-
+```powershell
 Set-ADUser -Identity "leandre.ebah" `
            -EmailAddress "leandre.ebah@DC300151825-00.local" `
            -GivenName "Leandre-Freedy" `
            -Credential $cred
-
+```
 ---
 
 5️⃣ Désactiver un utilisateur
-
+```powershell
 Disable-ADAccount -Identity "leandre.ebah" -Credential $cred
-
+```
 ---
 
 6️⃣ Réactiver un utilisateur
-
+```powershell
 Enable-ADAccount -Identity "leandre.ebah" -Credential $cred
-
+```
 ---
 
 7️⃣ Supprimer un utilisateur
-
+```powershell
 Remove-ADUser -Identity "leandre.ebah" -Confirm:$false -Credential $cred
-
+```
 ---
 
 8️⃣ Rechercher des utilisateurs avec un filtre
-
+```powershell
 Get-ADUser -Filter "GivenName -like 'T*'"
+```
 
-# Résultat
+✨ Resultat ✨:
+
+```powershell
 DistinguishedName : CN=Thomas Girard,CN=Users,DC=DC300151825-00,DC=local
 Enabled           : True
 GivenName         : Thomas
@@ -194,20 +217,20 @@ SamAccountName    : thomas.girard
 SID               : S-1-5-21-447135690-91861430-3213525697-1107
 Surname           : Girard
 UserPrincipalName : thomas.girard@DC300151825-00.local
-
+```
 ---
 
 9️⃣ Exporter les utilisateurs dans un CSV
-
+```powershell
 Get-ADUser -Filter * -Server "DC300151825-00.local" -Properties Name, SamAccountName, EmailAddress, Enabled |
 Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName, EmailAddress, Enabled |
 Export-Csv -Path "C:\Users\Student1\INF1084-202-25A-03\4.OUs\300151825\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
-
+```
 ---
 
 🔟 Déplacer un utilisateur vers une OU Students
-
+```powershell
 # 1️⃣ Créer l’OU si elle n’existe pas
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
     New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Credential $cred
@@ -215,19 +238,30 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
 } else {
     Write-Host "OU 'Students' existe déjà."
 }
+```
 
-# Résultat
+✨ Resultat ✨:
+
+```powershell
 OU 'Students' créée avec succès
 
 # 2️⃣ Déplacer l’utilisateur depuis CN=Users
+
+```powershell
 Move-ADObject -Identity "CN=Thomas Girard,CN=Users,DC=$netbiosName,DC=local" `
               -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
               -Credential $cred
 
 # 3️⃣ Vérifier le déplacement
+```powershell
 Get-ADUser -Identity "thomas.girard" | Select-Object Name, DistinguishedName
+```
 
-# Résultat
+✨ Resultat ✨:
+
+```powershell
 Name          DistinguishedName
 ----          -----------------
 Thomas Girard CN=Thomas Girard,OU=Students,DC=DC300151825-00,DC=local
+```
+

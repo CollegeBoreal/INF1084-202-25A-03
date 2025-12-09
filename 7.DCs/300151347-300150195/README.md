@@ -22,7 +22,7 @@ Chaque domaine doit pouvoir résoudre le contrôleur de domaine distant.
 Resolve-DnsName DC300150195-00.local
 
 
-📸 Capture :
+<img src="images/ping sara.jpg">
 
 Résultat :
 

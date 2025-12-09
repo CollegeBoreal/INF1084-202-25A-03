@@ -33,6 +33,9 @@ Test-Connection DC300150195-00.local -Count 2
 📸 Capture :
 
 
+![pingsara](https://github.com/user-attachments/assets/218eb014-1392-4f5b-af41-0e5bb6ceead7)
+
+
 Résultat :
 
 Le DC d’Amel répond

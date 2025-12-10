@@ -2,7 +2,7 @@
 #   Informations étudiant
 # ==========================
 
-$studentNumber = 30015346
+$studentNumber = 300153476
 $studentInstance = "00"
 
 # Domaines générés
@@ -14,5 +14,7 @@ $plain = 'Infra@2024'
 $secure = ConvertTo-SecureString $plain -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
 
-# Import module Active Directory
-Import-Module ActiveDirectory
+<<<<<<< HEAD
+
+=======
+>>>>>>> e95d58b0e325c665479891f071375d71a31f3231

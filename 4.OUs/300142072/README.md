@@ -21,4 +21,14 @@ $cred = New-Object System.Management.Automation.PSCredential("Administrator@$dom
 # Import module Active Directory
 Import-Module ActiveDirectory
 ```
+🔢 Preparation de l'environnement
+```
+. .\bootstrap.ps1
+Import-Module ActiveDirectory
+
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
+```
+
+
 

@@ -41,7 +41,7 @@ netdom trust DC300153476-00.local /Domain:DC300151825-00.local `
 netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
-<img src="images/utilisateur1_a.PNG" width ='50%' height = '50%'> </img>
+<img src="images/Trust_freedy.PNG" width ='50%' height = '50%'> </img>
 
 ---
 

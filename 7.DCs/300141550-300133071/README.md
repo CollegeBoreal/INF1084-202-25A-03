@@ -31,10 +31,8 @@ Test-Connection -ComputerName DC300141550.DC300141550.local -Count 2
 
 
 ## Étape 2 – Informations du domaine distant
-```powershell
-Test-Connection -ComputerName dc01.ad2.local -Count 2
-``` 
-<img width="849" height="139" alt="image" src="https://github.com/user-attachments/assets/562fd690-1c40-4947-b3a6-124b706f1b88" />
+
+
 
 
 

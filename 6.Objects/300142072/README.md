@@ -1,4 +1,6 @@
+
 😙 LES OBJECTS
+
 🔢 Creation du dossier partage
 ```
 # Charger les informations du bootstrap
@@ -154,3 +156,4 @@ secedit /configure /db $dbPath /cfg $cfgPath /areas USER_RIGHTS | Out-Null
 Write-Host "RDP activé et droits appliqués pour le groupe $group."
 ```
 ❗La verification se trouve dans le dossier image du projet
+

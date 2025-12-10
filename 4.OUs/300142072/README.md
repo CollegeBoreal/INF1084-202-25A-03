@@ -30,7 +30,8 @@ Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
 
-![images](WhatsApp%20Image%202025-12-09%20at%2021.31.46.jpeg)
+![preuve](https://raw.githubusercontent..com/CollegeBoreal/INF1084-202-25A-03/main/4.OUs/300142072/images/serviceobject/WhatsApp%20Image%202025-12-09%20at%2021.31.46.jpeg)
+
 
 
 

@@ -124,7 +124,8 @@ Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
 # Vérification
 Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
 ```
-❗: j'ai mis toutes les captures relatofs a ce projet dans le dossier images. Ca s'aappelle serviceobject.
+❗: j'ai mis toutes les captures relatives a ce projet dans le dossier images. Ca s'aappelle serviceobject.
+
 
 
 

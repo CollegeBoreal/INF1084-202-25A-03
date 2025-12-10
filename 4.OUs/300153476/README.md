@@ -20,12 +20,12 @@ Import-Module ActiveDirectory
 Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
-
-<img src="images/utilisateur1_a.PNG" alt="images" width ='50%' height = '50%/>
+<img src="images/utilisateur1_a.PNG" width ='50%' height = '50%'> </img>
+<img src="images/utilisateur1b.PNG" width ='50%' height = '50%'> </img>
 
 # 2️⃣ Liste des utilisateurs du domaine
 
-<img src="images/2.jpg" alt="images" width="450"/>
+<img src="images/utilisateur2.PNG" width ='50%' height = '50%'> </img>
 
 # 3️⃣ Créer un nouvel utilisateur
 

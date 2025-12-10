@@ -54,14 +54,14 @@ New-ADUser `
 
 
 # 8️⃣ Rechercher des utilisateurs avec un filtre
-
+<img src="images/utilisateur8.PNG" width ='50%' height = '50%'> </img>
 
 # 9️⃣ Exporter les utilisateurs dans un CSV
 
 <img src="images/9.jpg" alt="images" width="450"/>
 
 # 🔟 Déplacer un utilisateur vers une OU Students
-
+<img src="images/utilisateur8.PNG" width ='50%' height = '50%'> </img>
 
 # 🉐 Pour vous connecter avec un utilisateur creer vous devez :
 

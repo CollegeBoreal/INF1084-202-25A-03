@@ -21,6 +21,7 @@ Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
 <img src="images/utilisateur1_a.PNG" width ='50%' height = '50%'> </img>
+<img src="images/utilisateur1b.PNG" width ='50%' height = '50%'> </img>
 
 # 2️⃣ Liste des utilisateurs du domaine
 

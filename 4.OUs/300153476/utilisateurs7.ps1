@@ -1,3 +1,3 @@
-. ./utilisateur6.ps1
-Remove-ADUser -Identity "rama.diallo" -Confirm:$false -Credential $cred
+. ./bootstrap.ps1
+Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
 

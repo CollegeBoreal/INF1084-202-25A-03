@@ -1,2 +1,2 @@
-. .\utilisateur4.ps1
-Disable-ADAccount -Identity "rama.diallo" -Credential $cred
+. .\bootstrap.ps1
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred

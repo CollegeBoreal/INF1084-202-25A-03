@@ -1,10 +1,12 @@
-. .\utilisateur2.ps1
-New-ADUser -Name "Ramatoulaye" `
-           -GivenName "Diallo" `
-           -Surname "Bah" `
-           -SamAccountName "rama.diallo" `
-           -UserPrincipalName "rama.diallo@$domainName" `
-           -AccountPassword (ConvertTo-SecureString "Myabdoul@23" -AsPlainText -Force) `
-           -Enabled $true `
-           -Path "CN=Users,DC=$netbiosName,DC=local" `
-           -Credential $cred
+
+New-ADUser `
+  -Name "Alice Dupont" `
+  -GivenName "Alice" `
+  -Surname "Dupont" `
+  -SamAccountName "alice.dupont" `
+  -UserPrincipalName "alice.dupont@DC300153476-00.local" `
+  -Path "CN=Users,DC=DC300153476-00,DC=local" `
+  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
+  -Enabled $true `
+  -Credential $cred
+

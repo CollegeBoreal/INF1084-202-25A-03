@@ -1,5 +1,7 @@
-. .\utilisateur3.ps1
-Set-ADUser -Identity "rama.diallo" `
-           -EmailAddress "rama.diallo@exemple.com" `
-           -GivenName "Rama-Bah" `
+. .\bootstrap.ps1
+Set-ADUser -Identity "alice.dupont" `
+           -EmailAddress "alice.dupont@exemple.com" `
+           -GivenName "Alice-Marie" `
            -Credential $cred
+
+

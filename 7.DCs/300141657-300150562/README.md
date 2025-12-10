@@ -36,7 +36,7 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
-![Trust Creation Success](./images/success.png)
+![Trust Creation Success](7.DCs/300141657-300150562/images)
 
 ---
 

@@ -1,17 +1,23 @@
 # 300144176
 
 
-- [ ] Exercice 2
 
+- [ ] Exercice 2
 ``` powershell
+
+
 
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 
-```
+``` powershell
 - [ ] resultat :  
 Success Restart Needed Exit Code      Feature Result                               
 ------- -------------- ---------      --------------                               
 True    No             NoChangeNeeded {}                                           
+
+
+
+
 
 
 
@@ -39,11 +45,25 @@ Install-ADDSForest `
 Se connecter avec :
 Utilisateur : DC300144176-01\Administrator
 Mot de passe : celui de la VM
+
+
+
+
+
+
+
+
+
+
 execrice 4
 🔹 5. Vérification de l’installation du contrôleur de domaine
 Get-ADDomain
-Get-ADForest
-PS C:\Users\Administrator> Get-ADDomain
+
+
+`` Get-ADDomain
+
+
+
 
 
 AllowedDNSSuffixes                 : {}
@@ -81,9 +101,11 @@ SystemsContainer                   : CN=System,DC=DC300144176-01,DC=local
 UsersContainer                     : CN=Users,DC=DC300144176-01,DC=local
 
 
-exercice5
 
-PS C:\Users\Administrator> Get-ADForest
+
+
+
+``Get-ADForest
 
 
 ApplicationPartitions : {DC=ForestDnsZones,DC=DC300144176-01,DC=local, DC=DomainDnsZones,DC=DC300144176-01,DC=local}

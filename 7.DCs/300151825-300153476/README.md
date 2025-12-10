@@ -40,17 +40,17 @@ netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
 
 ## 📸 Visualisation des Trusts
 
-### Vue Frank (DC-300143951-00)
-![Trust Visibility Frank](./images/visibilitytrst_frank.png)
+### Vue Ramatoulaye (DC300153476-00)
+<img src="images/Trust_freedy.PNG" width ='100%' height = '100%'> </img>
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC300151825-00.local (Realm, Bidirectionnel)
 
-### Vue Justin (DC-300151403-00)
-![Trust Visibility Justin](./images/visibilitytrust_justin.png)
+### Vue Freedy (DC300151825-00)
+<img src="images/Trust_freedy.PNG" width ='100%' height = '100%'> </img>
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC300153476-00.local (Realm, Bidirectionnel)
 
 ---
 

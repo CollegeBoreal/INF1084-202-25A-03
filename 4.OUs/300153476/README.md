@@ -1,17 +1,23 @@
-# TP : Gestion des utilisateurs Active Directory avec PowerShell
+# README - Gestion des utilisateurs Active Directory avec PowerShell
 
-## Description
+Ce projet présente un ensemble de scripts PowerShell pour gérer les utilisateurs dans un domaine Active Directory. Le fichier `bootstrap.ps1` contient les informations nécessaires pour configurer l'environnement et exécuter diverses opérations sur les utilisateurs du domaine. Le script suit un processus d'importation, de création, de gestion et de suppression des utilisateurs tout en intégrant des bonnes pratiques de sécurité pour manipuler les informations sensibles.
 
-J'ai créé **10 fichiers PowerShell** (`utilisateurs1.ps1` à `utilisateurs10.ps1`),  
-et dans chacun d’eux, j’ai ajouté des scripts qui exécutent le fichier précédent pour assurer une exécution séquentielle.
+## Structure du Projet
+
+- **bootstrap.ps1** : Script PowerShell principal contenant les opérations de gestion des utilisateurs AD.
+- **TP_AD_Users.csv** : Fichier exporté listant les utilisateurs du domaine avec leurs informations.
+
+## Table des Matières
+
+1. [Informations de Configuration](#informations-de-configuration)
+2. [Préparation de l'Environnement](#préparation-de-lenvironnement)
+3. [Liste des Utilisateurs](#liste-des-utilisateurs)
+4. [Création et Gestion des Utilisateurs](#création-et-gestion-des-utilisateurs)
+5. [Exportation et Recherche](#exportation-et-recherche)
+6. [Déplacement d'un Utilisateur](#déplacement-dun-utilisateur)
+7. [Bilan du TP](#bilan-du-tp)
 
 ---
-## Objectifs atteints
-** Après ce TP, j'ai pu :**
-1. Lister tous les utilisateurs d’un domaine
-2. Créer, modifier, activer/désactiver et supprimer des utilisateurs
-3. Appliquer des filtres et exporter les données
-4. Déplacer des utilisateurs depuis le container par défaut CN=Users vers une OU spécifique
 
 
----
+

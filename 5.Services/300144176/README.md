@@ -160,5 +160,6 @@ Stopped
 
 
 
-<img src="images/capture 1 de service.PNG" alt="Girl in a jacket" width="500" height="600">
+<img src="images/Capture2 de services.PNG" alt="Girl in a jacket" width="500" height="600">
+
 

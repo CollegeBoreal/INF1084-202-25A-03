@@ -1,23 +1,98 @@
-# README - Gestion des utilisateurs Active Directory avec PowerShell
+# 300153476
 
-Ce projet présente un ensemble de scripts PowerShell pour gérer les utilisateurs dans un domaine Active Directory. Le fichier `bootstrap.ps1` contient les informations nécessaires pour configurer l'environnement et exécuter diverses opérations sur les utilisateurs du domaine. Le script suit un processus d'importation, de création, de gestion et de suppression des utilisateurs tout en intégrant des bonnes pratiques de sécurité pour manipuler les informations sensibles.
+# 0️⃣ Nom du domaine basé sur le numéro étudiant
 
-## Structure du Projet
+```powershell
+$studentNumber = 300153476
+$studentInstance = "00"
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+```
 
-- **bootstrap.ps1** : Script PowerShell principal contenant les opérations de gestion des utilisateurs AD.
-- **TP_AD_Users.csv** : Fichier exporté listant les utilisateurs du domaine avec leurs informations.
+<img src="images/utilisateur1_a.PNG" alt="images" width="450"/>
 
-## Table des Matières
+# 1️⃣ Préparer l’environnement
 
-1. [Informations de Configuration](#informations-de-configuration)
-2. [Préparation de l'Environnement](#préparation-de-lenvironnement)
-3. [Liste des Utilisateurs](#liste-des-utilisateurs)
-4. [Création et Gestion des Utilisateurs](#création-et-gestion-des-utilisateurs)
-5. [Exportation et Recherche](#exportation-et-recherche)
-6. [Déplacement d'un Utilisateur](#déplacement-dun-utilisateur)
-7. [Bilan du TP](#bilan-du-tp)
+```powershell
+# Importer le module AD
+Import-Module ActiveDirectory
+# Vérifier le domaine et les DC
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
+```
 
----
+<img src="images/utilisateur1_a.PNG" alt="images" width ='50%' height = '50%/>
+
+# 2️⃣ Liste des utilisateurs du domaine
+
+<img src="images/2.jpg" alt="images" width="450"/>
+
+# 3️⃣ Créer un nouvel utilisateur
+
+```powershell
+
+New-ADUser `
+  -Name "William Nelson" `
+  -GivenName "William" `
+  -Surname "Nelson" `
+  -SamAccountName "nelson" `
+  -UserPrincipalName "nelson@DC300133071-00.local" `
+  -Path "CN=Users,DC=DC300133071-00,DC=local" `
+  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
+  -Enabled $true
+```
+
+<img src="images/3.jpg" alt="images" width="450"/>
+
+# 4️⃣ Modifier un utilisateur
+
+<img src="images/4.jpg" alt="images" width="450"/>
+
+# 7️⃣ Supprimer un utilisateur
+
+<img src="images/7.jpg" alt="images" width="450"/>
+
+# 8️⃣ Rechercher des utilisateurs avec un filtre
+
+<img src="images/8.jpg" alt="images" width="450"/>
+
+# 9️⃣ Exporter les utilisateurs dans un CSV
+
+<img src="images/9.jpg" alt="images" width="450"/>
+
+# 🔟 Déplacer un utilisateur vers une OU Students
 
 
+# 🉐 Pour vous connecter avec un utilisateur creer vous devez :
 
+1️⃣ verifier que la connexion RDP actif
+
+```powershell
+(Get-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name fDenyTSConnections).fDenyTSConnections
+```
+```txt
+1 c'est desactive 0 c'est active
+```
+2️⃣ activer RDP si c'est desactiver
+
+```powershell
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name fDenyTSConnections -Value 0
+```
+3️⃣ ajouter votre utilisateur dans le groupe remote desktop users
+
+```powershell
+Add-ADGroupMember -Identity "Remote Desktop Users" -Members "wnelson"
+```
+```powershell
+Get-ADGroupMember "Remote Desktop Users"
+```
+4️⃣ ouvrir l'executer avec 🪟➕```R``` puis
+
+```txt
+taoe secpol.msc (→ menu Démarrer → tape secpol.msc)
+
+allez dans :
+Local Policies → User Rights Assignment → Allow log on through Remote Desktop Services
+
+Assure-toi que le groupe Remote Desktop Users (et/ou ton utilisateur) y figure.
+```

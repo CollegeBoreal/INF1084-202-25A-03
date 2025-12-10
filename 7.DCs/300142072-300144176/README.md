@@ -2,8 +2,8 @@
 
 ## 📋 Informations
 
- 
-**Étudiants :** awa (DC-300142072-50) & siga(DC-300144176-01)
+**Cours :** INF1084 | **Établissement :** Collège Boréal  
+**Étudiants :** Frank (DC-300143951-00) & Justin (DC-300151403-00)
 
 ---
 
@@ -13,27 +13,37 @@
 
 ---
 
-ip 
-1-.7.236.203
+## 📊 Domaines Configurés
+
+| Étudiant | Domaine | Adresse IP |
+|----------|---------|-----------|
+| Frank | `DC-300143951-00.local` | 10.7.236.202 |
+| Justin | `DC-300151403-00.local` | 10.7.236.219 |
+
 ---
 
 ## 🔧 Configuration
 
 ### Vérification DNS
 ```powershell
-Resolve-DnsName DC-300142072-50.local
-Resolve-DnsName DC-300144176-01local
+Resolve-DnsName DC-300143951-00.local
+Resolve-DnsName DC-300151403-00.local
 ```
 
+### Création du Trust
+```powershell
+netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local `
+    /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+```
 
-/Capture du projet.PNG"
-![Trust Creation Success](/Capture du projet.PNG
+![Trust Creation Success](./images/success.png)
+
 ---
 
 ## 📸 Visualisation des Trusts
 
 ### Vue Frank (DC-300143951-00)
-![Trust Visibility Frank](./images/visibilitytrst_frank.png)
+![Trust Visibility AWA](./images/PURE.PNG)
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
@@ -97,15 +107,6 @@ netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
-
-
-
-
-
-
-<img src="images/Capture du projet.PNG" alt="Girl in a jacket" width="500" height="600">
-<img src="images/Capture de projet avant le cred.PNG" alt="Girl in a jacket" width="500" height="600">
-<img src="images/Capture de projet gred.PNG" alt="Girl in a jacket" width="500" height="600">
 
 
 

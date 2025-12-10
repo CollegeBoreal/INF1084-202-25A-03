@@ -49,15 +49,12 @@ New-ADUser `
 
 # 4️⃣ Modifier un utilisateur
 
-<img src="images/4.jpg" alt="images" width="450"/>
 
 # 7️⃣ Supprimer un utilisateur
 
-<img src="images/7.jpg" alt="images" width="450"/>
 
 # 8️⃣ Rechercher des utilisateurs avec un filtre
 
-<img src="images/8.jpg" alt="images" width="450"/>
 
 # 9️⃣ Exporter les utilisateurs dans un CSV
 

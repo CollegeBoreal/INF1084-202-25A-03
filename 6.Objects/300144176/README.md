@@ -73,4 +73,7 @@ Capture 3 de verification.PNG
 
 
 
+<img src="images/Capture 3 de verification.PNG" alt="Girl in a jacket" width="500" height="600">
 
+
+<img src="images/Capture 1de objects.PNG" alt="Girl in a jacket" width="500" height="600">

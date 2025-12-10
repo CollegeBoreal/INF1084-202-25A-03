@@ -40,8 +40,12 @@ Get-ADDomain -Server DC300141550.DC300141550.local -Credential $cred
 
 # Lister tous les utilisateurs de AD2
 ```powershell
-Get-ADDomain -Server DC300141550.DC300141550.local -Credential $cred 
+Get-ADUser -Filter * -Server DC300141550.DC300141550.local -Credential $cred 
 ```
+<img width="776" height="348" alt="image" src="https://github.com/user-attachments/assets/57bd14ff-0183-4087-90c1-66d1fcca80af" />
+
+
+
 
 
 

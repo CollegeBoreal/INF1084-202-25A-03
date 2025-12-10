@@ -45,7 +45,7 @@ New-ADUser `
 
 ```
 
-<img src="images/images/utilisateur3.PNG" width ='50%' height = '50%'> </img>
+<img src="images/utilisateur3.PNG" width ='50%' height = '50%'> </img>
 
 # 4️⃣ Modifier un utilisateur
 

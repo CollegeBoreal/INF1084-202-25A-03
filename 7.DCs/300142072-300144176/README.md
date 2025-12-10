@@ -22,7 +22,8 @@ Test-Connection -ComputerName  DC300133071.DC300142072-50.count2
 localDC300141550.DC300144176. 01 local count 2
 
 
+<img src="images/Capture du projet.PNG" alt="Girl in a jacket" width="500" height="600">
+<img src="images/Capture de projet avant le cred.PNG" alt="Girl in a jacket" width="500" height="600">
+<img src="images/Capture de projet gred.PNG" alt="Girl in a jacket" width="500" height="600">
 
-Capture de projet gred.PNG
-Capture du projet.PNG
-Capture de projet avant le cred.PNG
+

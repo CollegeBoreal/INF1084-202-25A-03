@@ -1,137 +1,120 @@
-📘 README — Projet : Création d’une relation de confiance entre deux forêts Active Directory
-🎯 Objectif
+# Trust Active Directory Bidirectionnel
 
-Ce projet consiste à créer une relation de confiance (trust) bidirectionnelle entre deux forêts Active Directory distinctes, en utilisant uniquement des commandes PowerShell (CLI).
-L’objectif est de permettre la communication sécurisée, la résolution DNS et l’accès aux ressources entre les deux forêts.
+## 📋 Informations
 
-🏗️ 1. Informations sur la forêt AD1 (locale)
+**Cours :** INF1084 | **Établissement :** Collège Boréal  
+**Étudiants :** Frank (DC-300143951-00) & Justin (DC-300151403-00)
 
-Commande utilisée :
+---
 
-Get-ADDomain
+## 🎯 Objectif
 
+Établir un trust Active Directory bidirectionnel pour l'authentification croisée entre deux domaines.
 
-Résultat (extrait important) :
+---
 
-DNSRoot : DC300153476-00.local
+## 📊 Domaines Configurés
 
-NetBIOSName : DC300153476-00
+| Étudiant | Domaine | Adresse IP |
+|----------|---------|-----------|
+| Ramatoulaye | `DC300153476-00.local` | 10.7.236.224 |
+| Freedy | `DC300151825-00.local` | 10.7.236.217 |
 
-DistinguishedName : DC=DC300153476-00,DC=local
+---
 
-Contrôleur de domaine : DC300153476.DC300153476-00.local
+## 🔧 Configuration
 
-Mode de domaine : Windows2016Domain
-
-🌐 2. Vérification DNS entre les deux forêts
-Vérification via nom externe
-ping netbios.featfreedy.xyz
-
-
-✔️ Résolution fonctionnelle → IP : 10.7.236.217
-
-Vérification via nom interne AD2
-ping DC300151825-00.local
-
-
-✔️ Résolution fonctionnelle et communication réussie
-
-🛠️ 3. Script PowerShell complet (préparation + trust + verification)
-
-
-###############################################################################
-# SCRIPT COMPLET : Création d’une relation de confiance entre 2 forêts AD
-###############################################################################
-
-Write-Host "=== 1. PREPARATION DE LA CONNEXION ===" -ForegroundColor Cyan
-
-# Demander les identifiants d'un administrateur de la forêt AD2
-$credAD2 = Get-Credential -Message "Entrez le compte administrateur de la forêt AD2"
+### Vérification DNS
+```powershell
+Resolve-DnsName DC300153476-00.local
+Resolve-DnsName DC300151825-00.local
+```
+## Ramtoulaye
+### Création du Trust
+```powershell
+netdom trust DC300153476-00.local /Domain:DC300151825-00.local `
+    /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+```
+## Freedy
+### Création du Trust
+```powershell
+netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
+    /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
+```
 
 
-###############################################################################
-# 2. Vérification DNS et connectivité entre AD1 et AD2
-###############################################################################
+---
 
-Write-Host "=== 2. TEST DE CONNECTIVITE ===" -ForegroundColor Cyan
+## 📸 Visualisation des Trusts
 
-# Modifier le nom du DC de AD2 selon votre environnement
-$AD2DC = "dc01.ad2.local"
+### Vue Frank (DC-300143951-00)
+![Trust Visibility Frank](./images/visibilitytrst_frank.png)
 
-# Vérifier si le DC AD2 répond au ping
-Test-Connection -ComputerName $AD2DC -Count 2
+**Trusts Visibles:**
+- Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
 
+### Vue Justin (DC-300151403-00)
+![Trust Visibility Justin](./images/visibilitytrust_justin.png)
 
-###############################################################################
-# 3. INTERROGER LE DOMAINE AD2
-###############################################################################
+**Trusts Visibles:**
+- Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)
 
-Write-Host "=== 3. INTERROGATION DE AD2 ===" -ForegroundColor Cyan
+---
 
-# Informations générales de AD2
-Get-ADDomain -Server $AD2DC -Credential $credAD2
+## 🖥️ Interrogation du Domaine Distant
 
-# Lister les utilisateurs AD2
-Get-ADUser -Filter * -Server $AD2DC -Credential $credAD2
+### Accès Cross-Domain
+```powershell
+Get-ADDomain -Server DC-300151403-00.local -Credential $cred
+```
 
+![Cross-Domain Access](./images/access.png)
 
-###############################################################################
-# 4. CREATION D'UN PSDRIVE POUR NAVIGUER DANS AD2
-###############################################################################
+**Résultat:** Accès réussi au domaine distant avec authentification croisée
+justin a bien access au domaine de frand depuis sa machine virtuelle.
 
-Write-Host "=== 4. NAVIGATION DANS AD2 ===" -ForegroundColor Cyan
+---
 
-# Création du PSDrive
-New-PSDrive -Name AD2 -PSProvider ActiveDirectory -Root $AD2DC -Credential $credAD2 -ErrorAction SilentlyContinue
+## ✅ Résultats de Vérification
 
-# Déplacement dans AD2
-Set-Location AD2:\
+| Paramètre | Valeur | Statut |
+|-----------|--------|--------|
+| Direction | BiDirectional | ✓ |
+| Type | Realm | ✓ |
+| Transitivité | Non | ✓ |
+| Accès Cross-Domain | Fonctionnel | ✓ |
 
-# Affichage des OU
-Get-ChildItem
+---
 
+## 🔍 Commandes de Vérification
 
-###############################################################################
-# 5. CREATION DE LA RELATION DE CONFIANCE (TRUST)
-###############################################################################
-
-Write-Host "=== 5. CREATION DU TRUST BIDIRECTIONNEL ===" -ForegroundColor Cyan
-
-# Modifier la source et target forest selon votre configuration
-$SourceForest = "DC300153476-00.local"
-$TargetForest = "AD2.local"
-
-New-ADForestTrust `
-    -Name $TargetForest `
-    -SourceForest $SourceForest `
-    -TargetForest $TargetForest `
-    -Credential $credAD2 `
-    -Direction Bidirectional `
-    -TrustType Forest `
-    -TrustAttributes ForestTransitive
-
-
-###############################################################################
-# 6. VERIFICATION DU TRUST
-###############################################################################
-
-Write-Host "=== 6. VERIFICATION DU TRUST ===" -ForegroundColor Cyan
-
-# Afficher tous les trusts existants
+```powershell
+# Lister tous les trusts
 Get-ADTrust -Filter *
 
-# Tester la relation de confiance
-Test-ADTrustRelationship -Source $SourceForest -Target $TargetForest
+# Vérifier la connectivité
+netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local /verify
+netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
+```
+
+---
+
+## 📝 Scripts & Documents
+
+- `trusts1..ps1` - Script de rapport Frank
+- `trusts2.ps1` - Script de rapport Justin
+
+---
+
+## ✨ Résultat Final
+
+✅ Trust bidirectionnel établi avec succès  
+✅ Authentification croisée fonctionnelle  
+✅ Communication inter-domaines confirmée  
+✅ Accès aux ressources cross-domain validé
 
 
-Write-Host "=== TRUST CONFIGURE AVEC SUCCES ===" -ForegroundColor Green
-###############################################################################
-
-
-
---
-FeatFreedy
---
+# FeatFreedy
 
 
 🛡️ Création et Vérification d’un Trust entre deux forêts Active Directory

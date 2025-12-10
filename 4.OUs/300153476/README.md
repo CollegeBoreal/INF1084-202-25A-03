@@ -9,7 +9,7 @@ $domainName = "DC$studentNumber-$studentInstance.local"
 $netbiosName = "DC$studentNumber-$studentInstance"
 ```
 
-<img src="images/utilisateur_aaaaaaaaaaaa.png" alt="images" width="450"/>
+<img src="images/utilisateur1_a.PNG" alt="images" width="450"/>
 
 # 1️⃣ Préparer l’environnement
 
@@ -21,7 +21,7 @@ Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
 
-<img src="images/1.jpg" alt="images" width="450"/>
+<img src="images/utilisateur1_a.PNG" alt="images" width="450"/>
 
 # 2️⃣ Liste des utilisateurs du domaine
 

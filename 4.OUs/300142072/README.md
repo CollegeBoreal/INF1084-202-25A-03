@@ -30,5 +30,7 @@ Get-ADDomain -Server $domainName
 Get-ADDomainController -Filter * -Server $domainName
 ```
 
+![capture_projet](WhatsApp%20Image%202025-12-09%20at%2021.31.46.jpeg)
+
 
 

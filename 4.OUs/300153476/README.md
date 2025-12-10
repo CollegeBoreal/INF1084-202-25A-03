@@ -11,7 +11,7 @@ Ce projet présente un ensemble de scripts PowerShell pour gérer les utilisateu
 
 1. [Informations de Configuration](#informations-de-configuration)
    
-<img src = images/utilisateur1_a.png width ='50%' height = '50%'> </img>
+<img src = images/utilisateur1_a.PNG width ='50%' height = '50%'> </img>
 3. [Préparation de l'Environnement](#préparation-de-lenvironnement)
 4. [Liste des Utilisateurs](#liste-des-utilisateurs)
 5. [Création et Gestion des Utilisateurs](#création-et-gestion-des-utilisateurs)

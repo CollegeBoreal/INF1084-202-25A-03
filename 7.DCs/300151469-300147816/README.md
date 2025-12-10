@@ -79,7 +79,13 @@ Get-ADTrust -Filter *
 - Il faut verifier la configuration DNS  pour que le trust marche tres bien.
 <img width="1431" height="208" alt="1" src="https://github.com/user-attachments/assets/c9991c5a-242e-4f50-a47e-cd0ba5de79e4" />
 
+
+-De plus la verification suivante est necessaire pour que le trust reussi:
+
+<img width="1431" height="208" alt="1" src="https://github.com/user-attachments/assets/fbbb4748-4c81-4545-9902-d943e2e798c0" />
+
 - On a teste le trust de Rabia vers mon Active Directory [Hanane].
+
 
 
 

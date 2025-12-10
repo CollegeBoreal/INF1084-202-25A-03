@@ -71,6 +71,9 @@ Le script effectue les étapes suivantes :
 
 Get-ADTrust -Filter *
 
+<img width="1604" height="931" alt="3" src="https://github.com/user-attachments/assets/f60769e1-ba35-4d41-b45c-d46ca9984181" />
+
+
 
 
 

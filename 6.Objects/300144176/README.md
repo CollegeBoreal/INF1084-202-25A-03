@@ -47,8 +47,8 @@ Get-GPO -Name "MapSharedFolder"
 ```
 ```powershell
 DisplayName      : MapSharedFolder
-DomainName       : DC300133071-00.local
-Owner            : DC300133071-00\Domain Admins
+DomainName       : DC300144176-01.local
+Owner            : DC300144176-01\Domain Admins
 Id               : 9d5ab9bb-f8ef-4d62-b89b-dec233b18c7d
 GpoStatus        : AllSettingsEnabled
 Description      :
@@ -67,6 +67,7 @@ WmiFilter        :
 secedit /export /cfg "$env:TEMP\verify.cfg" /areas USER_RIGHTS
 Select-String -Path "$env:TEMP\verify.cfg" -Pattern "SeRemoteInteractiveLogonRight"
 ```
+
 
 
 

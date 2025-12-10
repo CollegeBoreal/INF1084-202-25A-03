@@ -13,12 +13,12 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 ```
 ```powershell
 $domainName
-# DC300151825-0.local
+# DC300151825-00.local
 ```
 
 ```powershell
 $netbiosName
-# DC300151825-0
+# DC300151825-00
 ```
 ---
 
@@ -264,4 +264,5 @@ Name          DistinguishedName
 ----          -----------------
 Thomas Girard CN=Thomas Girard,OU=Students,DC=DC300151825-00,DC=local
 ```
+
 

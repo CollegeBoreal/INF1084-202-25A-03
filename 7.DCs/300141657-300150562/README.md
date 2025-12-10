@@ -43,7 +43,7 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
 ## 📸 Visualisation des Trusts
 
 ### Vue Leandre (DC-300141657-00)
-![Trust Visibility Frank](./images/visibilitytrst_frank.png)
+![Trust Visibility Leandre](./images/trust 1.png)
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)

@@ -1,9 +1,8 @@
 # Trust Active Directory Bidirectionnel
 
 ## 📋 Informations
-
-**Cours :** INF1084 | **Établissement :** Collège Boréal  
-**Étudiants :** Frank (DC-300143951-00) & Justin (DC-300151403-00)
+ 
+**Étudiants :** Awa (DC-300144176-01 & SIGA (DC-300142072-50)
 
 ---
 
@@ -13,12 +12,6 @@
 
 ---
 
-## 📊 Domaines Configurés
-
-| Étudiant | Domaine | Adresse IP |
-|----------|---------|-----------|
-| Frank | `DC-300143951-00.local` | 10.7.236.202 |
-| Justin | `DC-300151403-00.local` | 10.7.236.219 |
 
 ---
 
@@ -26,13 +19,13 @@
 
 ### Vérification DNS
 ```powershell
-Resolve-DnsName DC-300143951-00.local
-Resolve-DnsName DC-300151403-00.local
+Resolve-DnsName DC-300144176-01.local
+Resolve-DnsName DC-300142072.50local
 ```
 
 ### Création du Trust
 ```powershell
-netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local `
+netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
@@ -42,17 +35,17 @@ netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local `
 
 ## 📸 Visualisation des Trusts
 
-### Vue Frank (DC-300143951-00)
+### Vue AWA(DC-300143951-00)
 ![Trust Visibility AWA](./images/PURE.PNG)
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC-300142072-50.local (Realm, Bidirectionnel)
 
-### Vue Justin (DC-300151403-00)
-![Trust Visibility Justin](./images/visibilitytrust_justin.png)
+### Vue SIGA (DC-300151403-00)
+![Trust Visibility SIGA](./images/visibilitytrust_justin.png)
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC-300144176-01.local (Realm, Bidirectionnel)
 
 ---
 
@@ -60,7 +53,7 @@ netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local `
 
 ### Accès Cross-Domain
 ```powershell
-Get-ADDomain -Server DC-300151403-00.local -Credential $cred
+Get-ADDomain -Server DC-300142072.50local -Credential $cred
 ```
 
 ![Cross-Domain Access](./images/access.png)
@@ -72,14 +65,9 @@ justin a bien access au domaine de frand depuis sa machine virtuelle.
 
 ## ✅ Résultats de Vérification
 
-| Paramètre | Valeur | Statut |
-|-----------|--------|--------|
-| Direction | BiDirectional | ✓ |
-| Type | Realm | ✓ |
-| Transitivité | Non | ✓ |
-| Accès Cross-Domain | Fonctionnel | ✓ |
+ 
 
----
+
 
 ## 🔍 Commandes de Vérification
 
@@ -88,16 +76,16 @@ justin a bien access au domaine de frand depuis sa machine virtuelle.
 Get-ADTrust -Filter *
 
 # Vérifier la connectivité
-netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local /verify
-netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
+netdom trust DC-300144176.01local /Domain:DC-300142072-50.local /verify
+netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ```
 
 ---
 
 ## 📝 Scripts & Documents
 
-- `trusts1..ps1` - Script de rapport Frank
-- `trusts2.ps1` - Script de rapport Justin
+- `trusts1..ps1` - Script de rapport AWA
+- `trusts2.ps1` - Script de rapport SIGA
 
 ---
 
@@ -107,6 +95,7 @@ netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 

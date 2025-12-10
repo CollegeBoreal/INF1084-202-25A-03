@@ -29,19 +29,12 @@
 Resolve-DnsName DC300153476-00.local
 Resolve-DnsName DC300151825-00.local
 ```
-## Ramtoulaye
-### Création du Trust
-```powershell
-netdom trust DC300153476-00.local /Domain:DC300151825-00.local `
-    /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
-```
-## Freedy
 ### Création du Trust
 ```powershell
 netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
-<img src="images/Trust_freedy.PNG" width ='50%' height = '50%'> </img>
+<img src="images/Trust_freedy.PNG" width ='100%' height = '100%'> </img>
 
 ---
 

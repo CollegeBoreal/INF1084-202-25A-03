@@ -1,0 +1,3 @@
+hostname
+Get-ADDomain
+ipconfig

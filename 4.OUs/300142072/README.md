@@ -2,7 +2,6 @@
 
 🔢 Creation du boostrap.ps1
 ```
-sh
 # ==========================
 #   Informations étudiant
 # ==========================
@@ -22,3 +21,4 @@ $cred = New-Object System.Management.Automation.PSCredential("Administrator@$dom
 # Import module Active Directory
 Import-Module ActiveDirectory
 ```
+

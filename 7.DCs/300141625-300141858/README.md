@@ -1,3 +1,1 @@
-hostname
-Get-ADDomain
-ipconfig
+1️⃣ Préparation des contrôleurs de domaine

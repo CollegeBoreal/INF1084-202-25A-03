@@ -67,3 +67,20 @@ try {
 } catch {
     Write-Host "❌ Échec accès AD distant : $_" -ForegroundColor Red
 }
+
+# 7. Vérification des Unités d'Organisation (OUs) distantes
+Write-Host "`n[7] VÉRIFICATION : Unités d'Organisation du domaine partenaire" -ForegroundColor Magenta
+
+try {
+    $OUs = Get-ADOrganizationalUnit -Filter * -Server dc300141858.dc300141858-01.local -Credential $cred | Select-Object Name, DistinguishedName
+    
+    Write-Host "`n=== OUs DU DOMAINE DISTANT ===" -ForegroundColor Cyan
+    if ($OUs.Count -gt 0) {
+        $OUs | Format-Table -AutoSize
+        Write-Host "`n✅ OUs listées avec succès ($($OUs.Count) unités d'organisation)" -ForegroundColor Green
+    } else {
+        Write-Host "Aucune OU trouvée" -ForegroundColor Yellow
+    }
+} catch {
+    Write-Host "❌ Échec lecture OUs : $_" -ForegroundColor Red
+}

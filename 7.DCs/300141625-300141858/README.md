@@ -1,4 +1,8 @@
-# TP Active Directory – Vérification inter-domaines
+# TP Active Directory – Vérification inter-domaines (REALM ↔ AD)
+
+## 👥 Binôme : 300141625 – 300141858  
+## 🌐 Domaine AD : DC300141625-00.local  
+## 🔒 Domaine REALM : DC300141858-01  
 
 ## Objectif du laboratoire
 
@@ -33,4 +37,5 @@ Texte ici…
 ## Étape 4 – Vérifier le trust
 
 Texte ici…
+
 

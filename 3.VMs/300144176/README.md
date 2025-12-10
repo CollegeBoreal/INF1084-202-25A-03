@@ -1,5 +1,25 @@
+# 300144176
+
+
+- [ ] Exercice 2
+
+``` powershell
+
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+
+```
+- [ ] resultat :  
+Success Restart Needed Exit Code      Feature Result                               
+------- -------------- ---------      --------------                               
+True    No             NoChangeNeeded {}                                           
+
+
+
+exercice 3
+
 1. Renommage de la machine
-Rename-Computer -NewName "DC300144176" -Restart
+Rename-Co
+mputer -NewName "DC300144176" -Restart
 
 🔹 2. Installation du rôle Active Directory Domain Services
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
@@ -19,7 +39,7 @@ Install-ADDSForest `
 Se connecter avec :
 Utilisateur : DC300144176-01\Administrator
 Mot de passe : celui de la VM
-
+execrice 4
 🔹 5. Vérification de l’installation du contrôleur de domaine
 Get-ADDomain
 Get-ADForest
@@ -61,6 +81,7 @@ SystemsContainer                   : CN=System,DC=DC300144176-01,DC=local
 UsersContainer                     : CN=Users,DC=DC300144176-01,DC=local
 
 
+exercice5
 
 PS C:\Users\Administrator> Get-ADForest
 

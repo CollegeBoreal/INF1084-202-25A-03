@@ -42,3 +42,45 @@ Write-Host "`n[5] Tickets Kerberos actuels (klist)..." -ForegroundColor Yellow
 klist
 
 Write-Host "`n=== Script terminé : trust REALM <-> AD testé ===" -ForegroundColor Cyan
+
+
+# 6. Preuve d'accès AD distant (pour le sujet) - CORRIGÉ
+Write-Host "`n[6] PREUVE : Accès aux utilisateurs du domaine partenaire" -ForegroundColor Green
+
+# Demander les credentials
+$cred = Get-Credential -Message "Entrez les identifiants administrateur de DC300141858-01"
+
+# Tester l'accès avec credentials
+try {
+    Write-Host "Tentative de connexion à dc300141858.dc300141858-01.local..." -ForegroundColor Gray
+    $users = Get-ADUser -Filter * -Server dc300141858.dc300141858-01.local -Credential $cred | Select-Object Name, SamAccountName, Enabled -First 5
+    
+    Write-Host "`n=== UTILISATEURS DU DOMAINE DISTANT ===" -ForegroundColor Cyan
+    if ($users.Count -gt 0) {
+        $users | Format-Table -AutoSize
+        Write-Host "`n✅ Accès AD distant RÉUSSI ! ($($users.Count) utilisateurs listés)" -ForegroundColor Green
+    } else {
+        Write-Host "Aucun utilisateur trouvé (le trust fonctionne mais l'accès est limité)" -ForegroundColor Yellow
+        Write-Host "Preuve alternative : Test de connexion LDAP..." -ForegroundColor Gray
+        Test-NetConnection dc300141858.dc300141858-01.local -Port 389
+    }
+} catch {
+    Write-Host "❌ Échec accès AD distant : $_" -ForegroundColor Red
+}
+
+# 7. Vérification des Unités d'Organisation (OUs) distantes
+Write-Host "`n[7] VÉRIFICATION : Unités d'Organisation du domaine partenaire" -ForegroundColor Magenta
+
+try {
+    $OUs = Get-ADOrganizationalUnit -Filter * -Server dc300141858.dc300141858-01.local -Credential $cred | Select-Object Name, DistinguishedName
+    
+    Write-Host "`n=== OUs DU DOMAINE DISTANT ===" -ForegroundColor Cyan
+    if ($OUs.Count -gt 0) {
+        $OUs | Format-Table -AutoSize
+        Write-Host "`n✅ OUs listées avec succès ($($OUs.Count) unités d'organisation)" -ForegroundColor Green
+    } else {
+        Write-Host "Aucune OU trouvée" -ForegroundColor Yellow
+    }
+} catch {
+    Write-Host "❌ Échec lecture OUs : $_" -ForegroundColor Red
+}

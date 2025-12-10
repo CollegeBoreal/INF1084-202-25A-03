@@ -47,7 +47,7 @@ netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
 - Domaine Sortant: DC300151825-00.local (Realm, Bidirectionnel)
 
 ### Vue Freedy (DC300151825-00)
-<img src="images/Trust_freedy.PNG" width ='100%' height = '100%'> </img>
+<img src="images/VerificationTrust_freedy.PNG" width ='100%' height = '100%'> </img>
 
 **Trusts Visibles:**
 - Domaine Sortant: DC300153476-00.local (Realm, Bidirectionnel)

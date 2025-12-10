@@ -82,9 +82,11 @@ Get-ADTrust -Filter *
 
 -De plus la verification suivante est necessaire pour que le trust reussi:
 
-<img width="1868" height="950" alt="2" src="https://github.com/user-attachments/assets/68c0aa7a-bcd7-469a-80cc-58f377dbcac9" />
+<img width="1868" height="950" alt="2" src="https://github.com/user-attachments/assets/cd387a33-3424-4864-b513-b54abcec80ef" />
+
 
 - On a teste le trust de Rabia vers mon Active Directory [Hanane].
+
 
 
 

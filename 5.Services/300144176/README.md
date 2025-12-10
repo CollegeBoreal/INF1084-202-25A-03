@@ -156,4 +156,6 @@ PS C:\Users\Administrator\Developer\INF1084-202-25A-04\5.Services\300138205> .\s
 Stopped
 
 ```
+<img src="images/Cartel_Berlín.jpg" alt="Girl in a jacket" width="500" height="600">
 
+<img src="images/Cartel_Berlín.jpg" alt="Girl in a jacket" width="500" height="600">

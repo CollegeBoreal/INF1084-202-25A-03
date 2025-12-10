@@ -10,12 +10,14 @@ Ce projet présente un ensemble de scripts PowerShell pour gérer les utilisateu
 ## Table des Matières
 
 1. [Informations de Configuration](#informations-de-configuration)
-2. [Préparation de l'Environnement](#préparation-de-lenvironnement)
-3. [Liste des Utilisateurs](#liste-des-utilisateurs)
-4. [Création et Gestion des Utilisateurs](#création-et-gestion-des-utilisateurs)
-5. [Exportation et Recherche](#exportation-et-recherche)
-6. [Déplacement d'un Utilisateur](#déplacement-dun-utilisateur)
-7. [Bilan du TP](#bilan-du-tp)
+   
+<img src = images/Canadian_Flag.jpg width ='50%' height = '50%'> </img>
+3. [Préparation de l'Environnement](#préparation-de-lenvironnement)
+4. [Liste des Utilisateurs](#liste-des-utilisateurs)
+5. [Création et Gestion des Utilisateurs](#création-et-gestion-des-utilisateurs)
+6. [Exportation et Recherche](#exportation-et-recherche)
+7. [Déplacement d'un Utilisateur](#déplacement-dun-utilisateur)
+8. [Bilan du TP](#bilan-du-tp)
 
 ---
 

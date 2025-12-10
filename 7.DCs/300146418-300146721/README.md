@@ -2,7 +2,6 @@
 
 # 📄 **README.md — Projet : Relation de confiance entre deux forêts Active Directory**
 
-*(Version sans création de forêt)*
 
 ````md
 # 🌐 Projet : Création d’une relation de confiance entre deux forêts Active Directory

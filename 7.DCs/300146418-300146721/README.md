@@ -1,8 +1,4 @@
-D’accord Ikram — tu veux un **README + script** qui résume **uniquement ce que tu as fait dans le TP**, **sans parler de création de forêt**, car les forêts existaient déjà dans ton labo.
 
-Voici la version corrigée **sans aucune création de forêt**.
-
----
 
 # 📄 **README.md — Projet : Relation de confiance entre deux forêts Active Directory**
 
@@ -11,8 +7,9 @@ Voici la version corrigée **sans aucune création de forêt**.
 ````md
 # 🌐 Projet : Création d’une relation de confiance entre deux forêts Active Directory
 
-## 👤 Étudiante
+## 👤 Étudiant
 Ikram
+Smail
 
 ---
 

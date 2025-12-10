@@ -1,29 +1,22 @@
+Write-Host "Création des utilisateurs..." -ForegroundColor Cyan
 
+New-ADUser `
+  -Name "Alice Dupont" `
+  -GivenName "Alice" `
+  -Surname "Dupont" `
+  -SamAccountName "alice.dupont" `
+  -UserPrincipalName "alice.dupont@DC300150558-00.local" `
+  -Path "CN=Users,DC=DC300150558-00,DC=local" `
+  -AccountPassword (ConvertTo-SecureString "Motdepasse123!" -AsPlainText -Force) `
+  -Enabled $true
 
-# Identité étudiante
-$studentNumber   = 300150416
-$studentInstance = '00'      # garder l'underscore dans les noms
-
-# Noms du domaine (avec underscore)
-$domainName  = "DC${studentNumber}_${studentInstance}.local"
-$netbiosName = "DC${studentNumber}_${studentInstance}"
-
-# Mot de passe TP (fourni par le prof)
-$plain  = 'Infra@2024'
-$secure = ConvertTo-SecureString $plain -AsPlainText -Force
-
-# Credential admin du domaine
-$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
-
-# Module AD et vérifications
-Import-Module ActiveDirectory
-
-# Vérifier que le domaine et le DC répondent
-Get-ADDomain -Server $domainName
-Get-ADDomainController -Filter * -Server $domainName | Select-Object HostName,IPv4Address,Site,IsGlobalCatalog
-
-# S'assurer que l'OU Students existe
-if (-not (Get-ADOrganizationalUnit -LDAPFilter '(ou=Students)' -Server $domainName -ErrorAction SilentlyContinue)) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Server $domainName -ProtectedFromAccidentalDeletion:$false
-}
+New-ADUser `
+  -Name "Marc Petit" `
+  -GivenName "Marc" `
+  -Surname "Petit" `
+  -SamAccountName "marc.petit" `
+  -UserPrincipalName "marc.petit@DC300150558-00.local" `
+  -Path "CN=Users,DC=DC300150558-00,DC=local" `
+  -AccountPassword (ConvertTo-SecureString "Motdepasse123!" -AsPlainText -Force) `
+  -Enabled $true
 

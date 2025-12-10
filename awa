@@ -1,0 +1,8 @@
+[core]
+        editor = nano
+
+[user]
+# Please adapt and uncomment the following lines:
+        name = awadiabate
+        email = awaodendod@gmail.com
+

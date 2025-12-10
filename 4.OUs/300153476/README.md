@@ -26,6 +26,7 @@ Get-ADDomainController -Filter * -Server $domainName
 # 2️⃣ Liste des utilisateurs du domaine
 
 <img src="images/utilisateur2.PNG" width ='50%' height = '50%'> </img>
+<img src="images/utilisateur2_2.PNG" width ='50%' height = '50%'> </img>
 
 # 3️⃣ Créer un nouvel utilisateur
 

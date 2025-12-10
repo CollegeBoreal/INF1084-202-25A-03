@@ -19,7 +19,8 @@ Le trust bidirectionnel permet aux utilisateurs des deux domaines de s’authent
 - Les deux contrôleurs de domaines doivent être joignables via le réseau :
   
         Test de ping : Test-Connection -ComputerName <IP_DomaineDistant>
-  <img width="173" height="1725" alt="5" src="https://github.com/user-attachments/assets/0bce1be9-e3cc-4e3d-8e01-e14185cb1978" />
+  <img width="1725" height="173" alt="5" src="https://github.com/user-attachments/assets/20d83491-31f0-461e-83f3-dd326426b64a" />
+
 
                                                                                                                                      
 - Les comptes administrateurs des deux domaines doivent connaître un mot de passe convenu pour le trust.
@@ -69,6 +70,7 @@ Le script effectue les étapes suivantes :
 - Vérifier que le trust est bien créé :
 
 Get-ADTrust -Filter *
+
 
 
 

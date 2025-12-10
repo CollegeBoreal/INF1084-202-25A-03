@@ -33,14 +33,16 @@ Get-ADDomainController -Filter * -Server $domainName
 ```powershell
 
 New-ADUser `
-  -Name "William Nelson" `
-  -GivenName "William" `
-  -Surname "Nelson" `
-  -SamAccountName "nelson" `
-  -UserPrincipalName "nelson@DC300133071-00.local" `
-  -Path "CN=Users,DC=DC300133071-00,DC=local" `
-  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
-  -Enabled $true
+    -Name "Alice Dupont" `
+    -GivenName "Alice" `
+    -Surname "Dupont" `
+    -SamAccountName "alice.dupont" `
+    -UserPrincipalName "alice.dupont@DC300153476-00.local" `
+    -Path "CN=Users,DC=DC300153476-00,DC=local" `
+    -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
+    -Enabled $true `
+    -Credential $cred
+
 ```
 
 <img src="images/3.jpg" alt="images" width="450"/>

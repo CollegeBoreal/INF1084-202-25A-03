@@ -120,12 +120,12 @@ Get-ChildItem
 
 ---
 
-## 📦 7. Script CLI complet (sans création de forêt)
+## 📦 7. Script CLI complet
 
 ```powershell
 ############################################
 # SCRIPT COMPLET : Gestion du Trust entre AD1 et AD2
-# Auteur : Ikram
+# Auteur : Ikram , Smail
 ############################################
 
 Write-Host "=== Étape 1 : Identifiants AD2 ===" -ForegroundColor Cyan
@@ -153,4 +153,4 @@ netdom trust DC300146418-00.local /Domain:DC300146721_001.local /Verify
 
 ---
 
-
+## 📦 8. Verification

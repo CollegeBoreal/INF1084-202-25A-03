@@ -27,3 +27,4 @@ netdom trust DC-300141657-00.local /Domain:DC300150562-00.local `
 
 Write-Host "=== 6. Ouvrir la console de gestion ==="
 Domain.msc
+

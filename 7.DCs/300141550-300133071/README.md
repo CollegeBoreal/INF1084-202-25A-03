@@ -30,7 +30,24 @@ Test-Connection -ComputerName DC300141550.DC300141550.local -Count 2
 </table>
 
 
-Étape 2 – Informations du domaine distant
+## Étape 2 – Informations du domaine distant
+```powershell
+Get-ADDomain -Server DC300141550.DC300141550.local -Credential $cred 
+```
+# Obtenir les informations générales du domaine AD2
+
+<img width="945" height="424" alt="image" src="https://github.com/user-attachments/assets/6c36bfc7-2a47-44cb-8f1d-55b01b7a24ed" />
+
+# Lister tous les utilisateurs de AD2
+```powershell
+Get-ADUser -Filter * -Server DC300141550.DC300141550.local -Credential $cred 
+```
+<img width="776" height="348" alt="image" src="https://github.com/user-attachments/assets/57bd14ff-0183-4087-90c1-66d1fcca80af" />
+
+
+
+
+
 
 
 

@@ -1,16 +1,4 @@
-# Charger les utilisateurs depuis utilisateur1.ps1
-. "$PSScriptRoot\utilisateurs1.ps1"
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
+Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 
-# Cr�er des groupes
-$Groups = @{
-    "GroupeFormation" = @()
-    "ProfesseursAD"   = @()
-}
-
-# Ajouter tous les utilisateurs dont lOU = "Stagiaires" dans GroupeFormation (Exercice 2)
-$Groups["GroupeFormation"] = $Users | Where-Object { $_.OU -eq "Stagiaires" }
-
-# V�rifier
-Write-Host "=== Membres du GroupeFormation ===" -ForegroundColor Green
-$Groups["GroupeFormation"] | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
-
+Select-Object Name, SamAccountName

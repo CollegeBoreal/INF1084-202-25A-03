@@ -99,15 +99,16 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 
 
 
+<img src="images/Capture de projet avant le cred.PNG" alt="Girl in a jacket" width="500" height="600">
+
+<img src="images/Capture du projet.PNG" alt="Girl in a jacket" width="500" height="600">
+<img src="images/Capture de projet gred.PNG" alt="Girl in a jacket" width="500" height="600">
 
 
-Capture de projet avant le cred.PNG
 
-Capture de projet gred.PNG
 
-Capture du projet.PNG
 
-PURE.PNG
+
 
 
 

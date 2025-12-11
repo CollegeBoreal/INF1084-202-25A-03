@@ -154,3 +154,4 @@ netdom trust DC300146418-00.local /Domain:DC300146721_001.local /Verify
 ---
 
 ## 📦 8. Verification
+<img src="images/3333.png" alt="Images" width="450"/>

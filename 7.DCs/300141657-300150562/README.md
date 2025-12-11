@@ -63,7 +63,7 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
 Get-ADDomain -Server DC-300141657-00.local -Credential $cred
 ```
 
-![Cross-Domain Access](./images/access.png)
+![Cross-Domain Access](./images/foret_de_corneil_vue_par_leandre.png)
 
 **Résultat:** Accès réussi au domaine distant avec authentification croisée
 justin a bien access au domaine de frand depuis sa machine virtuelle.

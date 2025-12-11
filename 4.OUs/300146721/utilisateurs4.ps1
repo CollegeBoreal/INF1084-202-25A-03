@@ -5,28 +5,23 @@
 
 # Identité étudiante
 $studentNumber   = 300146721
-$studentInstance = '001'      # garder l'underscore dans les noms
+$studentInstance = '001'      
 
-# Noms du domaine (avec underscore)
-$domainName  = "DC${studentNumber}_${studentInstance}.local"
-$netbiosName = "DC${studentNumber}_${studentInstance}"
+# Désactivation du compte
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred
 
-# Mot de passe TP (fourni par le prof)
-$plain  = 'Infra@2024'
-$secure = ConvertTo-SecureString $plain -AsPlainText -Force
+# Réactivation du compte
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred
 
-# Credential admin du domaine
-$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
+# Suppression du compte
+Remove-ADUser -Identity "alice.dupont" -Credential $cred -Confirm:$false
 
-# Module AD et vérifications
-Import-Module ActiveDirectory
+# Liste des utilisateurs dont le prénom commence par "A"
+Get-ADUser -Filter "GivenName -like 'A*'" -Server "DC300146721-001.local" -Properties Name, SamAccountName |
+Select-Object Name, SamAccountName
 
-# Vérifier que le domaine et le DC répondent
-Get-ADDomain -Server $domainName
-Get-ADDomainController -Filter * -Server $domainName | Select-Object HostName,IPv4Address,Site,IsGlobalCatalog
-
-# S'assurer que l'OU Students existe
-if (-not (Get-ADOrganizationalUnit -LDAPFilter '(ou=Students)' -Server $domainName -ErrorAction SilentlyContinue)) {
-    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local" -Server $domainName -ProtectedFromAccidentalDeletion:$false
-}
-
+# Exportation de la liste complète des utilisateurs dans un fichier CSV
+Get-ADUser -Filter * -Server "DC300146721-00.local" -Properties Name, SamAccountName, EmailAddress, Enabled |
+Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName, EmailAddress, Enabled |
+Export-Csv -Path "TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8

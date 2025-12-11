@@ -18,7 +18,12 @@ Ce laboratoire a pour objectif de vérifier la communication et l’accès entre
 
 ## Étape 1 – Vérifier la connectivité
 
-Texte ici…
+Pour vérifier que les deux domaines communiquent, nous avons effectué plusieurs tests `ping`.
+
+Voici une capture d’écran montrant le succès du ping :
+
+![Test de connectivité](./images/ping0.jpg)
+
 
 ---
 
@@ -37,5 +42,6 @@ Texte ici…
 ## Étape 4 – Vérifier le trust
 
 Texte ici…
+
 
 

@@ -42,7 +42,7 @@ netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
 - Domaine Sortant: DC-300142072-50.local (Realm, Bidirectionnel)
 
 ### Vue SIGA (DC-300122072)
-![Trust Visibility SIGA](./images/image.PNG)
+
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300144176-01.local (Realm, Bidirectionnel)
@@ -56,7 +56,6 @@ netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
 Get-ADDomain -Server DC-300142072.50local -Credential $cred
 ```
 
-![Cross-Domain Access](./images/access.png)
 
 **Résultat:** Accès réussi au domaine distant avec authentification croisée
 justin a bien access au domaine de frand depuis sa machine virtuelle.
@@ -95,6 +94,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 

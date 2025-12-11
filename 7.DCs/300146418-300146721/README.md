@@ -158,7 +158,9 @@ netdom trust DC300146418-00.local /Domain:DC300146721_001.local /Verify
 
 Depuis PowerShell :
 
+
 domain.msc
+
 ✔️ b) Vérification des trusts existants
 
 Dans les deux domaines, affichage :
@@ -202,8 +204,8 @@ Il est possible de créer un trust entre deux domaines
 Les trusts  sont correctement configurés.
 
 Les consoles graphiques et PowerShell affichent des résultats cohérents.
-<img src="images/3333.png" alt="Images" width="450"/>
-<img src="images/3333.png" alt="Images" width="450"/>
-<img src="images/3333.png" alt="Images" width="450"/>
-<img src="images/3333.png" alt="Images" width="450"/>
-<img src="images/3333.png" alt="Images" width="450"/>
+<img src="images/1.jpeg" alt="Images" width="450"/>
+<img src="images/2.jpeg" alt="Images" width="450"/>
+<img src="images/3.jpeg" alt="Images" width="450"/>
+<img src="images/4.jpeg" alt="Images" width="450"/>
+<img src="images/5.jpeg" alt="Images" width="450"/>

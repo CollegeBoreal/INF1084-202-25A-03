@@ -14,7 +14,11 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 # Ajouter le groupe Students au groupe local "Remote Desktop Users"
 Write-Host "Ajout du groupe au groupe Remote Desktop Users..." -ForegroundColor Yellow
 try {
-    Add-LocalGroupMember -Group "Remote Desktop Users" -Member "$netbiosName\$GroupName" -ErrorAction Stop
+    # Utiliser [ADSI] ou net localgroup plutôt que Add-LocalGroupMember
+    $group = [ADSI]"WinNT://./Remote Desktop Users"
+    $member = [ADSI]"WinNT://$netbiosName/$GroupName"
+    $group.Add($member.Path)
+    
     Write-Host "Groupe $GroupName ajouté aux utilisateurs RDP" -ForegroundColor Green
 } catch {
     if ($_.Exception.Message -match "already a member") {

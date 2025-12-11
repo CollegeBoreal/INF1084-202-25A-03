@@ -101,6 +101,13 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 
 
 
+Capture de projet avant le cred.PNG
+
+Capture de projet gred.PNG
+
+Capture du projet.PNG
+
+PURE.PNG
 
 
 

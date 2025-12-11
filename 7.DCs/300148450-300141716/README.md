@@ -1,17 +1,24 @@
 # Projet : Relation de Confiance entre Forêts Active Directory
 
-**Auteur :** [Votre Nom]  
-**Domaine :** `DC300141716-00.local`  
-**Partenaire :** `DC300148450-00.local`  
-**Date :** Décembre 2024
+**Auteur : [Votre Nom]**
+**Domaine : DC300141716-00.local**
+**Partenaire : DC300148450-00.local**
+**Date : Décembre 2024**
+
+---
 
 ## 📋 Objectif
-Établir et vérifier une relation de confiance bidirectionnelle entre deux forêts Active Directory distinctes en automatisant les procédures via PowerShell.
+
+Mettre en place et vérifier une **relation de confiance bidirectionnelle** entre deux forêts Active Directory distinctes en automatisant toutes les étapes via **PowerShell**.
+
+---
 
 ## 1. Préparation de l'Environnement
-Installation des outils nécessaires pour gérer Active Directory en ligne de commande.
 
-### Commandes Exécutées
+Installation des outils nécessaires pour administrer Active Directory en ligne de commande.
+
+### Commandes exécutées
+
 ```powershell
 # Installation des modules PowerShell pour AD
 Install-WindowsFeature RSAT-AD-PowerShell
@@ -25,84 +32,101 @@ Install-WindowsFeature RSAT-AD-Tools
 
 # Chargement du module ActiveDirectory
 Import-Module ActiveDirectory
-Résultat : Toutes les fonctionnalités ont été installées avec succès. Aucun redémarrage nécessaire.
+```
 
-2. Configuration des Prérequis Réseau
-Avant de créer le trust, la connectivité réseau et DNS entre les deux domaines a été établie.
+**Résultat :** ✅ Toutes les fonctionnalités installées, aucun redémarrage nécessaire.
 
-Résolution DNS
-Configuration d'un Conditional Forwarder pour que chaque domaine puisse résoudre le nom de l'autre.
+---
 
-powershell
-# Sur DC300141716-00.local (pointant vers l'IP du partenaire)
-Add-DnsServerConditionalForwarderZone -Name "DC300148450-00.local" -MasterServers [IP_DU_SERVEUR_PARTENAIRE]
-Validation :
+## 2. Configuration DNS
 
-powershell
-# Test de résolution DNS
-Resolve-DnsName DC300148450-00.local
-# Test de connectivité réseau
+Permettre aux deux domaines de se résoudre mutuellement.
+
+### Sur mon serveur (DC300141716-00.local)
+
+```powershell
+Add-DnsServerConditionalForwarderZone -Name "DC300148450-00.local" -MasterServers [IP_DU_BINOME]
+```
+
+### Sur le serveur du partenaire (DC300148450-00.local)
+
+Il a configuré un forwarder conditionnel vers mon domaine.
+
+### Vérification
+
+```powershell
+nslookup DC300148450-00.local
 Test-Connection -ComputerName DC300148450-00.local -Count 2
-3. Création du Trust Inter-Forêts
-Création de la relation de confiance à l'aide de la commande netdom.
+```
 
-Commande Principale
-powershell
+---
+
+## 3. Création du Trust
+
+Création de la relation de confiance bidirectionnelle entre les deux forêts.
+
+```powershell
 netdom trust DC300141716-00.local /Domain:DC300148450-00.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
-Note : Lors de l'exécution, une coquille a été corrigée automatiquement (/Twokay → /TwoWay).
+```
 
-Paramètres clés :
+**Résultat :** ✅ *"The command completed successfully."*
 
-/Domain: : Spécifie le domaine partenaire.
+> **Note :** L’option `/Realm` crée un trust de type **realm**, donc non-transitif.
 
-/UserD: : Compte administrateur du domaine partenaire.
+---
 
-/PasswordD:* : Permet de saisir le mot de passe de manière sécurisée.
+## 4. Vérification du Trust
 
-/Add : Ajoute un nouveau trust.
+### 4.1 Vérification en ligne de commande
 
-/Realm : Crée un trust de type "realm".
+```powershell
+# Liste des domaines de confiance
+tltest /trusted_domains
 
-/TwoWay : Établit une confiance bidirectionnelle.
+# Détails complets du trust
+Get-ADTrust -Filter *
+```
 
-Sortie : The command completed successfully.
+**Résultats attendus :**
 
-4. Vérification du Trust
-4.1 Vérification par Interface Graphique
-La console Active Directory Domains and Trusts (domain.msc) confirme la présence du trust des deux côtés :
+* `nltest` doit lister **DC300148450-00.local** (realm).
+* `Get-ADTrust` doit montrer : *Bidirectional*, *Realm*, *TrustStatus OK*.
 
-Domains trusted by this domain : DC300141716-00.local → DC300148450-00.local
+### 4.2 Vérification dans l’interface graphique
 
-Domains that trust this domain : DC300148450-00.local → DC300141716-00.local
+Ouvrir **Active Directory Domains and Trusts (domain.msc)**.
 
-Type : realm
+Ce qu'on doit voir :
 
-Transitive : No
+* **Domains trusted by this domain :** DC300148450-00.local (Type: realm, Transitive: No)
+* **Domains that trust this domain :** DC300141716-00.local (Type: realm, Transitive: No)
 
-4.2 Vérification par Ligne de Commande
-powershell
-# 1. Liste des domaines approuvés
-nltest /trusted_domains
+---
 
-# 2. Détails du trust via PowerShell
-Get-ADTrust -Filter * | Format-Table Name, Direction, TrustType, TrustStatus
+## 5. Tests Fonctionnels
 
-# 3. Vérification spécifique du canal sécurisé
-nltest /sc_verify:DC300148450-00.local
-Tableau des Résultats de Vérification Attendus
-Outil	Commande	Résultat Attendu
-nltest	/trusted_domains	Liste incluant DC300148450-00.local (realm)
-PowerShell	Get-ADTrust -Filter *	Affiche le trust avec Direction: Bidirectional, TrustType: Realm
-nltest	/sc_verify	Retourne La confiance entre ... a été vérifiée avec succès.
-5. Tests Fonctionnels
-Accès aux Ressources du Domaine Partenaire
-powershell
-# Demande des identifiants administrateur du partenaire
+Valider que la relation de confiance fonctionne réellement.
+
+```powershell
+# Saisir les identifiants du partenaire
 $credPartenaire = Get-Credential -Message "Entrez les identifiants admin de DC300148450-00.local"
 
-# Récupération d'informations sur le domaine partenaire
+# Obtenir les informations du domaine partenaire
 Get-ADDomain -Server DC300148450-00.local -Credential $credPartenaire
 
-# Liste des utilisateurs du domaine partenaire (5 premiers)
-Get-ADUser -Filter * -Server DC300148450-00.local -Credential $credPartenaire | Select-Object Name, SamAccountName -First 5
-Navigation via PSDr
+# Lister quelques utilisateurs du partenaire
+Get-ADUser -Filter * -Server DC300148450-00.local -Credential $credPartenaire | Select-Object -First 3
+```
+
+---
+
+## ✔️ Conclusion
+
+La relation de confiance **realm bidirectionnelle** a été correctement configurée et validée via :
+
+* DNS opérationnel entre les deux domaines
+* Trust établi et vérifié en PowerShell et en GUI
+* Tests fonctionnels réussis
+
+Ce projet démontre la capacité à automatiser et diagnostiquer une configuration de trust entre deux forêts Active Directory.
+

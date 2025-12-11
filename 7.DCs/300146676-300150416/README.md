@@ -116,12 +116,12 @@ Get-ChildItem
 netdom trust DC300150416-00.local /Domain:DC300146676.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
-<img width="1919" height="1014" alt="2A" src="images/7.png"/>     
+<img width="1919" height="1014" alt="2A" src="images/im7.png"/>     
 
 
 👉 Ce script va créer un **Forest Trust bidirectionnel**
 
-<img width="1919" height="1014" alt="2A" src="images/8.png"/>     
+<img width="1919" height="1014" alt="2A" src="images/im8.png"/>     
 
 
 ---

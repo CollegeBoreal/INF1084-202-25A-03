@@ -120,12 +120,12 @@ Get-ChildItem
 
 ---
 
-## 📦 7. Script CLI complet (sans création de forêt)
+## 📦 7. Script CLI complet
 
 ```powershell
 ############################################
 # SCRIPT COMPLET : Gestion du Trust entre AD1 et AD2
-# Auteur : Ikram
+# Auteur : Ikram , Smail
 ############################################
 
 Write-Host "=== Étape 1 : Identifiants AD2 ===" -ForegroundColor Cyan
@@ -153,4 +153,65 @@ netdom trust DC300146418-00.local /Domain:DC300146721_001.local /Verify
 
 ---
 
+## 📦 8. Verification
+✔️ a) Ouverture de la console des trusts
 
+Depuis PowerShell :
+
+
+domain.msc
+
+✔️ b) Vérification des trusts existants
+
+Dans les deux domaines, affichage :
+
+Outgoing trusts : domaines que ce domaine fait confiance
+
+Incoming trusts : domaines qui font confiance à ce domaine
+
+Les deux domaines affichent des trusts de type Realm, non transitifs, exactement comme attendu.
+
+✔️ c) Vérification PowerShell
+
+Exécution :
+
+Get-ADDomain -Server DC300146721_001.local -Credential $cred
+Get-ADDomain -Server DC300146418-00.local -Credential $cred
+
+Résultat observé :
+
+Les informations de domaine sont correctes
+
+
+
+Le ForeignSecurityPrincipalsContainer est bien présent, confirmant que des trusts peuvent être utilisés
+
+🧪 3. Résultats obtenus
+
+Les relations Realm Trust sont bien créées.
+
+Elles apparaissent des deux côtés : incoming et outgoing.
+
+
+Les commandes Get-ADDomain confirment que les deux domaines fonctionnent correctement.
+
+📝 4. Conclusion
+
+Le TP confirme que :
+
+Il est possible de créer un trust entre deux domaines
+
+Les trusts  sont correctement configurés.
+
+Les consoles graphiques et PowerShell affichent des résultats cohérents.
+
+
+<img src="images/1.jpeg" alt="Images" width="450"/>
+
+<img src="images/2.jpeg" alt="Images" width="450"/>
+
+<img src="images/3.jpeg" alt="Images" width="450"/>
+
+<img src="images/4.jpeg" alt="Images" width="450"/>
+
+<img src="images/5.jpeg" alt="Images" width="450"/>

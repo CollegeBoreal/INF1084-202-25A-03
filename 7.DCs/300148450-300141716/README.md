@@ -129,4 +129,4 @@ La relation de confiance **realm bidirectionnelle** a été correctement configu
 
 Ce projet démontre la capacité à automatiser et diagnostiquer une configuration de trust entre deux forêts Active Directory.
 
-<img src=images/WhatsApp Image 2025-12-10 at 21.10.27_92d86f7d.jpg width='50%' height='50%'> </img>
+<img src=images/trustpic.jpg width='50%' height='50%'> </img>

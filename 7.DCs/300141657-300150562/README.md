@@ -48,8 +48,8 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
 **Trusts Visibles:**
 - Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
 
-### Vue Justin (DC-300151403-00)
-![Trust Visibility Justin](./images/visibilitytrust_justin.png)
+### Vue Justin (DC-300150562-00)
+![Trust Visibility Corneil](./images/trust2Corneil.jpeg)
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)

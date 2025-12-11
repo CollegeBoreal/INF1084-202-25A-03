@@ -46,13 +46,13 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
 ![Trust Visibility Leandre](./images/trust1Leandre.png)
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300151403-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC-300150562-00.local (Realm, Bidirectionnel)
 
 ### Vue Justin (DC-300150562-00)
 ![Trust Visibility Corneil](./images/trust2Corneil.jpeg)
 
 **Trusts Visibles:**
-- Domaine Sortant: DC-300143951-00.local (Realm, Bidirectionnel)
+- Domaine Sortant: DC-300141657-00.local (Realm, Bidirectionnel)
 
 ---
 
@@ -60,7 +60,7 @@ netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local `
 
 ### Accès Cross-Domain
 ```powershell
-Get-ADDomain -Server DC-300151403-00.local -Credential $cred
+Get-ADDomain -Server DC-300141657-00.local -Credential $cred
 ```
 
 ![Cross-Domain Access](./images/access.png)
@@ -88,16 +88,16 @@ justin a bien access au domaine de frand depuis sa machine virtuelle.
 Get-ADTrust -Filter *
 
 # Vérifier la connectivité
-netdom trust DC-300143951-00.local /Domain:DC-300151403-00.local /verify
-netdom trust DC-300151403-00.local /Domain:DC-300143951-00.local /verify
+netdom trust DC-300141657-00.local /Domain:DC-300150562-00.local /verify
+netdom trust DC-300150562-00.local /Domain:DC-300141657-00.local /verify
 ```
 
 ---
 
 ## 📝 Scripts & Documents
 
-- `trusts1..ps1` - Script de rapport Frank
-- `trusts2.ps1` - Script de rapport Justin
+- `trusts1..ps1` - Script de rapport leandre
+- `trusts2.ps1` - Script de rapport corneil
 
 ---
 

@@ -3,8 +3,8 @@ $studentNumber = 300143951
 $studentInstance = "00"
 
 # Noms respectifs
-$domainName = "DC$studentNumber-$studentInstance.local"
-$netbiosName = "DC$studentNumber-$studentInstance"
+$domainName = "DC-$studentNumber-$studentInstance.local"
+$netbiosName = "DC-$studentNumber-$studentInstance"
 
 # les informations de sécurité
 $plain = 'Infra@2024'

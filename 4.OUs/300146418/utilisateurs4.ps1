@@ -1,5 +1,15 @@
-Set-ADUser -Identity "alice.dupont" `
-           -EmailAddress "alice.dupont@exemple.com" `
-           -GivenName "Alice-Marie" `
-           -Credential $cred
+# utilisateurs4.ps1
+. .\bootstrap.ps1
+
+Write-Host "Recherche d'utilisateurs..." -ForegroundColor Cyan
+Get-ADUser -Filter * -SearchBase "OU=Utilisateurs,DC=DC300146418-00,DC=local" |
+Select Name, SamAccountName
+
+Write-Host "Exporter les utilisateurs..." -ForegroundColor Cyan
+Get-ADUser -Filter * -SearchBase "OU=Utilisateurs,DC=DC300146418-00,DC=local" |
+Select Name, SamAccountName, Enabled |
+Export-Csv -Path ".\export_utilisateurs.csv" -NoTypeInformation -Encoding UTF8
+
+Write-Host "Suppression d'un utilisateur..." -ForegroundColor Cyan
+Remove-ADUser -Identity "marc.petit" -Confirm:$false -Credential $cred
 

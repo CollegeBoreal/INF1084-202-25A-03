@@ -1,10 +1,11 @@
+New-ADUser `
+  -Name "Alice Dupont" `
+  -GivenName "Alice" `
+  -Surname "Dupont" `
+  -SamAccountName "alice.dupont" `
+  -UserPrincipalName "alice.dupont@DC300141716-00.local" `
+  -Path "CN=Users,DC=DC300141716-00,DC=local" `
+  -AccountPassword (Read-Host -AsSecureString "Entrer le mot de passe") `
+  -Enabled $true `
+  -Credential $cred
 
-New-ADUser -Name "Alice Dupont" `
-           -GivenName "Alice" `
-           -Surname "Dupont" `
-           -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@$domainName" `
-           -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
-           -Enabled $true `
-           -Path "CN=Users,DC=$netbiosName,DC=local" `
-           -Credential $cred

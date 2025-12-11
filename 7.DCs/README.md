@@ -1,10 +1,13 @@
 # 🎛️ DC Domain Controler
 
+|:hash: | Fonctions                                          |
+|-------|:---------------------------------------------------|
+| :one: | [:tada: Participation](.scripts/Participation.md)  |
+
 ## :books: Travail à soumettre :
 
-- [ ] Créer un répertoire avec ton  :id: (votre identifiant boreal)
-  - [ ] `mkdir ` :id:
-  - [ ] `cd ` :id:
+- [ ] Un répertoire a été créé avec ton  :id: et celui de ton partenaire (votre identifiant boreal) tu pourras voir la liste [ici :point_right:](.scripts/Participation.md)
+  - [ ] `cd ` :id:-:id:
 - [ ] dans le répertoire ajouter le fichier `README.md`
   - [ ] `touch README.md`
   - [ ] Créer un répertoire images
@@ -13,121 +16,105 @@
 - [ ] envoyer vers le serveur `git`
   - [ ] remonter au repertoire précédent
     - [ ] `cd ..`
-  - [ ] `git add `:id:
-  - [ ] `git commit -m "mon fichier ..."`
+  - [ ] `git add `:id:-:id:
+  - [ ] `git commit -m "mon groupe ..."`
   - [ ] `git push`
 
-## :a: Arborescence 
+## :o: **Projet : Création d’une relation de confiance entre deux forêts Active Directory** :busts_in_silhouette:
 
-```mermaid
-flowchart TD
-    %% Forêt
-    subgraph FOREST1["Forêt : Contoso.com"]
-        direction TB
-        
-        %% Arbre 1
-        subgraph TREE1["Arbre 1 : contoso.com"]
-            direction TB
-            DOMAIN1["Domaine : contoso.com"]
-            DOMAIN2["Domaine : sales.contoso.com"]
-        end
-        
-        %% Arbre 2
-        subgraph TREE2["Arbre 2 : marketing.contoso.com"]
-            direction TB
-            DOMAIN3["Domaine : marketing.contoso.com"]
-        end
-    end
+### **Objectifs**
 
-    %% Contrôleurs de domaine
-    DOMAIN1_DC1["DC1 (contoso.com)"]
-    DOMAIN1_DC2["DC2 (contoso.com)"]
-    DOMAIN2_DC1["DC1 (sales.contoso.com)"]
-    DOMAIN3_DC1["DC1 (marketing.contoso.com)"]
-
-    %% Objets AD dans un domaine
-    DOMAIN1_USERS["Users: Alice, Bob"]
-    DOMAIN1_COMPUTERS["Computers: PC1, PC2"]
-    DOMAIN1_PRINTERS["Printers: Printer1"]
-
-    %% Approbations (trusts)
-    DOMAIN1 -->|Parent-Enfant| DOMAIN2
-    DOMAIN1 -->|Forest Trust| DOMAIN3
-
-    %% Liaisons DC <-> Domaines
-    DOMAIN1 --> DOMAIN1_DC1
-    DOMAIN1 --> DOMAIN1_DC2
-    DOMAIN2 --> DOMAIN2_DC1
-    DOMAIN3 --> DOMAIN3_DC1
-
-    %% Liaisons Objets -> Domaine
-    DOMAIN1 --> DOMAIN1_USERS
-    DOMAIN1 --> DOMAIN1_COMPUTERS
-    DOMAIN1 --> DOMAIN1_PRINTERS
-
-```
-
-:warning: **Chaque étudiant a un domaine unique basé sur son numéro étudiant**.
-
-Voici comment organiser ça et l’adapter à PowerShell :
+* Comprendre la gestion des forêts et domaines dans Active Directory.
+* Configurer une relation de confiance (trust) entre deux forêts AD distinctes.
+* Automatiser la création et la vérification du trust via des commandes CLI (PowerShell ou équivalent).
 
 ---
 
-## **1️⃣ Nom du domaine basé  sur le numéro étudiant**
+### **Travail à faire**
 
-Si ton numéro d’étudiant est `999999999` et que tu as le numéro d'instance `netbios` 30 (pour éviter les erreurs de duplicatas):
+1. **Préparer vos environnements**
+
+   * Chaque étudiant utilise sa VM avec une forêt AD distincte.
+   * Vérifier que chaque VM peut résoudre le nom DNS de l’autre forêt.
+
+2. **Créer le trust via CLI**
+
+   * Créer un trust **bidirectionnel** entre les deux forêts.
+   * Le trust doit être **transitif** (ou non-transitif selon votre choix).
+   * Utiliser uniquement des commandes CLI (PowerShell ou autre).
+   * Tous les commandes doivent être scriptables pour automatisation.
+
+3. **Vérifier le trust**
+
+   * Confirmer la création du trust via CLI.
+   * Tester l’accès entre utilisateurs et ressources des deux forêts.
+  
+### **a. Définir les informations d’accès à AD2**
 
 ```powershell
-$studentNumber = 999999999
-$studentInstance = 00
-
-$domainName = "DC$studentNumber-$studentInstance.local"
-$netbiosName = "DC$studentNumber-$studentInstance"
+# Demander les identifiants d'un compte administrateur de la forêt AD2
+$credAD2 = Get-Credential -Message "Entrez le compte administrateur de AD2"
 ```
-
-* **$domainName** : FQDN du domaine (`DC999999999-00.local`)
-* **$netbiosName** : Nom NetBIOS court (`DC999999999-00`)
-* Cela garantit **un nom unique pour chaque étudiant** même si plusieurs étudiants font le TP sur le même réseau isolé.
 
 ---
 
-## **2️⃣ Ajouter un DC enfant ou sous-domaine pour TP avancé**
+### **b. Vérifier la connectivité au contrôleur de domaine AD2**
 
 ```powershell
-# Exemple : créer un domaine enfant “sales” dans ton domaine étudiant
-Install-ADDSDomain `
-    -NewDomainName "sales" `
-    -ParentDomainName $domainName `
-    -DomainNetbiosName "SALES$studentNumber$studentInstance" `
-    -InstallDns:$true `
-    -SafeModeAdministratorPassword (ConvertTo-SecureString "MotDePasseDSRM123!" -AsPlainText -Force) `
-    -Force
+Test-Connection -ComputerName dc01.ad2.local -Count 2
 ```
 
-* `SALES99999999900` devient le NetBIOS du sous-domaine pour l’étudiant 999999999-00.
+* Assurez-vous que le serveur est joignable et que le DNS est correct.
 
 ---
 
-## **3️⃣ Création automatique des utilisateurs pour TP**
+### **c. Interroger le domaine AD2**
 
 ```powershell
-# Créer un utilisateur “Alice” pour cet étudiant
-New-ADUser -Name "Alice Dupont" `
-           -GivenName "Alice" `
-           -Surname "Dupont" `
-           -SamAccountName "alice.dupont" `
-           -UserPrincipalName "alice.dupont@$domainName" `
-           -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
-           -Enabled $true
+# Obtenir les informations générales du domaine AD2
+Get-ADDomain -Server dc01.ad2.local -Credential $cred
+
+# Lister tous les utilisateurs de AD2
+Get-ADUser -Filter * -Server dc01.ad2.local -Credential $cred
 ```
 
 ---
 
-## ✅ **Résumé des bonnes pratiques pour TP étudiant**
+### **d. Naviguer dans le PSDrive AD pour AD2**
 
-1. **Numéro étudiant + instance** → nom de domaine unique.
-2. **Installer le DNS intégré** pour éviter les conflits avec le réseau réel.
-3. **Isoler les VM sur un réseau interne** (Hyper-V/VMware/VirtualBox).
-4. **Scripts PowerShell multi-lignes** pour lisibilité.
-5. Créer des OU, groupes et utilisateurs directement avec le numéro étudiant pour éviter les collisions.
+```powershell
+# Créer un PSDrive pour accéder à AD2
+New-PSDrive -Name AD2 -PSProvider ActiveDirectory -Root dc01.ad2.local -Credential $cred
+
+# Se déplacer dans AD2
+Set-Location AD2:\DC=AD2,DC=LOCAL
+
+# Lister les unités organisationnelles
+Get-ChildItem
+```
+
+---
+
+4. **Livrables**
+
+   * **Script CLI** commenté pour créer et vérifier le trust.
+   * **Rapport** court présentant :
+
+     * Les étapes suivies
+     * Les commandes utilisées
+     * Les tests effectués
+
+---
+
+### **Contraintes**
+
+* Aucune manipulation via l’interface graphique.
+* Les scripts doivent être réutilisables et documentés.
+
+# :books: References
+
+- [ ] Assigner un DNS
+
+* https://www.name.com/partner/github-students
+* https://www.youtube.com/watch?v=YXqqfjjVXmo
 

@@ -10,17 +10,17 @@
 
 Établir un trust Active Directory bidirectionnel pour l'authentification croisée entre deux domaines.
 
----
 
 
----
+
+
 
 ## 🔧 Configuration
 
 ### Vérification DNS
 ```powershell
 Resolve-DnsName DC-300144176-01.local
-Resolve-DnsName DC-300142072.50local
+Resolve-DnsName DC-300142072.50 .local
 ```
 
 ### Création du Trust
@@ -95,6 +95,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 

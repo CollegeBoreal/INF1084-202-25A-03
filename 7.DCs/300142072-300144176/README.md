@@ -1,5 +1,7 @@
 # Trust Active Directory Bidirectionnel
 
+❗Nous avons realise ce travail avec nos adresses ip car siga a rencontre des defis avec son namecheap. Elle a contacte le service client, mais les solutions donnees n'ont pas ete efficaces pour resouldre le probleme.
+
 ## 📋 Informations
  
 **Étudiants :** Awa (DC-300144176-01 & SIGA (DC-300142072-50)
@@ -103,6 +105,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 
 <img src="images/Capture du projet.PNG" alt="Girl in a jacket" width="500" height="600">
 <img src="images/Capture de projet gred.PNG" alt="Girl in a jacket" width="500" height="600">
+
 
 
 

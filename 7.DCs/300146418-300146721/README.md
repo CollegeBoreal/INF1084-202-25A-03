@@ -204,8 +204,14 @@ Il est possible de créer un trust entre deux domaines
 Les trusts  sont correctement configurés.
 
 Les consoles graphiques et PowerShell affichent des résultats cohérents.
+
+
 <img src="images/1.jpeg" alt="Images" width="450"/>
+
 <img src="images/2.jpeg" alt="Images" width="450"/>
+
 <img src="images/3.jpeg" alt="Images" width="450"/>
+
 <img src="images/4.jpeg" alt="Images" width="450"/>
+
 <img src="images/5.jpeg" alt="Images" width="450"/>

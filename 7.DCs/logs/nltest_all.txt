@@ -1,0 +1,196 @@
+﻿
+===== NLTEST 10.7.236.194 (300133071) =====
+List of domain trusts:
+    0: DC300141550-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300133071-00 DC300133071-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.196 (300141550) =====
+List of domain trusts:
+    0: DC300098957-90.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC3000141550 DC300141550.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.197 (300141625) =====
+List of domain trusts:
+    0: DC300141858-01 (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300141625-00 DC300141625-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.198 (300141657) =====
+List of domain trusts:
+    0: DC-300150562-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300141657-00 DC300141657-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.199 (300141716) =====
+List of domain trusts:
+    0: DC300148450-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300141716-00 DC300141716-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.200 (300141858) =====
+List of domain trusts:
+    0: DC30014185801 DC300141858-01.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.201 (300142072) =====
+List of domain trusts:
+    0: DC300144176-01.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300142072-50 DC300142072-50.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.202 (300143951) =====
+List of domain trusts:
+    0: DC-300151403-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC-300143951-00 DC-300143951-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.203 (300144176) =====
+List of domain trusts:
+    0: DC-300142072-50.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300144176-01 DC300144176-01.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.204 (300146418) =====
+List of domain trusts:
+    0: DC300146721_001.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300146721-001.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    2: DC300146418-00 DC300146418-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.205 (300146676) =====
+List of domain trusts:
+    0: DC300146676-00 DC300146676-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.206 (300146721) =====
+List of domain trusts:
+    0: DC-300146418-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300146721_001 DC300146721_001.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.207 (300147510) =====
+List of domain trusts:
+    0: DC300147510-00 D300147510-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.208 (300147816) =====
+List of domain trusts:
+    0: DC300147816VM DC300147816.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.209 (300148094) =====
+List of domain trusts:
+    0: DC300148094-00 DC300148094-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.210 (300148450) =====
+List of domain trusts:
+    0: DC300141716-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300148450-00 DC300148450-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.211 (300150195) =====
+List of domain trusts:
+    0: DC300150195-00 DC300150195-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.212 (300150416) =====
+List of domain trusts:
+    0: DC300146676.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300150416-00 DC300150416-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.213 (300150433) =====
+List of domain trusts:
+    0: DC300150433-00 DC300150433-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.214 (300150558) =====
+List of domain trusts:
+    0: DC300150558-00 DC300150558-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.215 (300150562) =====
+List of domain trusts:
+    0: DC-300141657-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300150562-00 DC300150562-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.216 (300151258) =====
+List of domain trusts:
+    0: D300151258 DC300151258.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.218 (300151347) =====
+List of domain trusts:
+    0: DC300151347-00 DC300151347-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.219 (300151403) =====
+List of domain trusts:
+    0: DC-300143951-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC-300151403-00 DC-300151403-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.221 (300151469) =====
+List of domain trusts:
+    0: DC300151469-00 DC300151469-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.220 (300151556) =====
+List of domain trusts:
+    0: DC300151556-00 DC300151556-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.217 (300151825) =====
+List of domain trusts:
+    0: DC300153476-00.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300151825-00 DC300151825-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.222 (300151863) =====
+Enumerating domain trusts failed: Status = 1722 0x6ba RPC_S_SERVER_UNAVAILABLE
+
+
+===== NLTEST 10.7.236.223 (300152260) =====
+List of domain trusts:
+    0: DC300152260-00 DC300152260-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+
+===== NLTEST 10.7.236.224 (300153476) =====
+List of domain trusts:
+    0: DC300151825.local (MIT) (Direct Outbound) (Direct Inbound) ( Attr: non-trans )
+    1: DC300153476-00 DC300153476-00.local (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+The command completed successfully
+
+

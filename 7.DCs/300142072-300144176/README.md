@@ -42,7 +42,7 @@ netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
 - Domaine Sortant: DC-300142072-50.local (Realm, Bidirectionnel)
 
 ### Vue SIGA (DC-300151403-00)
-![Trust Visibility SIGA](./images/Capture de projet avant le cred.png)
+![Trust Visibility SIGA](./images/image.PNG)
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300144176-01.local (Realm, Bidirectionnel)
@@ -95,6 +95,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 

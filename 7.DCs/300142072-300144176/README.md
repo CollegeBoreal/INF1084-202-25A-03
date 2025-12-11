@@ -29,7 +29,7 @@ netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
     /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
 
-![Trust Creation Success](./images/success.png)
+![Trust Creation Success](./images/Capture de projet gred.PNG)
 
 ---
 
@@ -95,6 +95,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 

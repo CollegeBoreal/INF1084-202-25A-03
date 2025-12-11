@@ -20,10 +20,11 @@ Ce laboratoire a pour objectif de vérifier la communication et l’accès entre
 
 Pour vérifier que les deux domaines communiquent, nous avons effectué plusieurs tests `ping`.
 
-Voici une capture d’écran montrant le succès du ping :
+Voici les captures d’écran montrant le succès du ping :
 
 ![Test de connectivité](./images/ping0.jpg)
-
+![Test de connectivité](./images/ping1.jpg)
+![Test de connectivité](./images/ping2.jpg)
 
 ---
 
@@ -48,6 +49,7 @@ Voici la capture montrant la commande `netdom trust` :
 La commande `nltest /trusted_domains` confirme que la relation d’approbation fonctionne :
 
 ![Test du trust](./images/access_distance1.jpg)
+
 
 
 

@@ -319,8 +319,6 @@ The command completed successfully.
 
 PS C:\Users\Administrator>
 
-
-
 ```
 # 🔹 g. Vérification du trust
 
@@ -350,6 +348,8 @@ The command completed successfully
 ✔ netdom trust
 ✔ Resolve-DnsName
 ✔ nltest /domain_trusts
+
+<img src="images/Capture.PNG" width ='50%' height = '50%'> </img>
 
 # 📌 4. Les Tests effectués
 

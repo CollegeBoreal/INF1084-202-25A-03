@@ -3,7 +3,7 @@
 ## 📋 Informations
 
 **Cours :** INF1084 | **Établissement :** Collège Boréal  
-**Étudiants :** Frank (DC-300143951-00) & Justin (DC-300151403-00)
+**Étudiants :** Ramatoulaye (DC300153476-00) & Freedy (DC300151825-00)
 
 ---
 

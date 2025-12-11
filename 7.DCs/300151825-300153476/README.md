@@ -41,7 +41,7 @@ netdom trust DC300151825-00.local /Domain:DC300153476-00.local `
 ## 📸 Visualisation des Trusts
 
 ### Vue Ramatoulaye (DC300153476-00)
-<img src="images/trust_verifiction.PNG" width ='100%' height = '100%'> </img>
+<img src="images/trust_verifiction.PNG" width ='50%' height = '50%'> </img>
 
 **Trusts Visibles:**
 - Domaine Sortant: DC300151825-00.local (Realm, Bidirectionnel)

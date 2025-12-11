@@ -1,4 +1,4 @@
-# Participation au 04-12-2025 22:06
+# Participation au 11-12-2025 03:51
 
 | Table des matières            | Description                                             |
 |-------------------------------|---------------------------------------------------------|
@@ -31,7 +31,7 @@
 | 12 | [300147510](../300147510/README.md) [<image src='https://avatars0.githubusercontent.com/u/212286223?s=460&v=4' width=20 height=20></image>](https://github.com/ghikanotes) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 13 | [300147816](../300147816) [<image src='https://avatars0.githubusercontent.com/u/230452383?s=460&v=4' width=20 height=20></image>](https://github.com/HananeZerrouki) | [:heavy_check_mark:](../300147816/README.md) | [:hiking_boot:](../300147816/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 14 | [300148094](../300148094) [<image src='https://avatars0.githubusercontent.com/u/212054634?s=460&v=4' width=20 height=20></image>](https://github.com/ouailg28) | [:heavy_check_mark:](../300148094/README.md) | [:hiking_boot:](../300148094/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 15 | [300148450](../300148450/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994730?s=460&v=4' width=20 height=20></image>](https://github.com/adjaoud-git) | :x: | :x: | :x: | :x: | :x: | :x: |
+| 15 | [300148450](../300148450) [<image src='https://avatars0.githubusercontent.com/u/205994730?s=460&v=4' width=20 height=20></image>](https://github.com/adjaoud-git) | [:heavy_check_mark:](../300148450/README.md) | [:hiking_boot:](../300148450/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 16 | [300150195](../300150195) [<image src='https://avatars0.githubusercontent.com/u/211596474?s=460&v=4' width=20 height=20></image>](https://github.com/amelzourane) | [:heavy_check_mark:](../300150195/README.md) | [:hiking_boot:](../300150195/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 17 | [300150416](../300150416) [<image src='https://avatars0.githubusercontent.com/u/211596263?s=460&v=4' width=20 height=20></image>](https://github.com/hachemsouyadi) | [:heavy_check_mark:](../300150416/README.md) | [:hiking_boot:](../300150416/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 18 | [300150433](../300150433) [<image src='https://avatars0.githubusercontent.com/u/211743410?s=460&v=4' width=20 height=20></image>](https://github.com/zakariadjellouli) | [:heavy_check_mark:](../300150433/README.md) | [:hiking_boot:](../300150433/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -46,4 +46,4 @@
 | 27 | [300151863](../300151863/README.md) [<image src='https://avatars0.githubusercontent.com/u/205994935?s=460&v=4' width=20 height=20></image>](https://github.com/Hannibalcarthage) | :x: | :x: | :x: | :x: | :x: | :x: |
 | 28 | [300152260](../300152260) [<image src='https://avatars0.githubusercontent.com/u/212179557?s=460&v=4' width=20 height=20></image>](https://github.com/bekkai-mohibb) | [:heavy_check_mark:](../300152260/README.md) | [:hiking_boot:](../300152260/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 29 | [300153476](../300153476) [<image src='https://avatars0.githubusercontent.com/u/129418622?s=460&v=4' width=20 height=20></image>](https://github.com/dialloramatoulayebah) | [:heavy_check_mark:](../300153476/README.md) | [:hiking_boot:](../300153476/bootstrap.ps1) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| :abacus: | \$\\frac{27}{30}$ = 90% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 27 |
+| :abacus: | \$\\frac{28}{30}$ = 93.33% | \$\displaystyle\sum_{i=1}^{30} s_i$ = 28 |

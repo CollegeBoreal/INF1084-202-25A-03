@@ -1,5 +1,10 @@
 # utilisateurs4.ps1
 
+# Création du dossier C:\Temp s'il n'existe pas
+if (-not (Test-Path "C:\Temp")) {
+    New-Item -Path "C:\Temp" -ItemType Directory | Out-Null
+}
+
 # Exporter les utilisateurs simulés
 $Users | Export-Csv -Path "C:\Temp\UsersSimules.csv" -NoTypeInformation
 
@@ -14,4 +19,3 @@ $Groups["ImportGroupe"] += $ImportedUsers
 
 # Afficher le groupe importé
 $Groups["ImportGroupe"] | ForEach-Object { "$($_.Prenom) $($_.Nom)" }
-

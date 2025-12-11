@@ -13,12 +13,12 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 ```
 ```powershell
 $domainName
-# DC300151825-0.local
+# DC300151825-00.local
 ```
 
 ```powershell
 $netbiosName
-# DC300151825-0
+# DC300151825-00
 ```
 ---
 
@@ -225,11 +225,17 @@ UserPrincipalName : thomas.girard@DC300151825-00.local
 Get-ADUser -Filter * -Server "DC300151825-00.local" -Properties Name, SamAccountName, EmailAddress, Enabled |
 Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName, EmailAddress, Enabled |
-Export-Csv -Path "C:\Users\Student1\INF1084-202-25A-03\4.OUs\300151825\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
+Export-Csv -Path "C:\Users\Administrator\Developer\INF1084-202-25A-03\4.OUs\300151825\TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
 ```
 ---
 
 🔟 Déplacer un utilisateur vers une OU Students
+Definir d'abord les variables:
+```powershell
+$domainName = "DC300151825-00.local"
+$netbiosName = "DC300151825-00"
+$domainDN = "DC=DC300151825-00,DC=local"
+```
 ```powershell
 # 1️⃣ Créer l’OU si elle n’existe pas
 if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
@@ -244,24 +250,28 @@ if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
 
 ```powershell
 OU 'Students' créée avec succès
-
+```
 # 2️⃣ Déplacer l’utilisateur depuis CN=Users
 
 ```powershell
-Move-ADObject -Identity "CN=Thomas Girard,CN=Users,DC=$netbiosName,DC=local" `
-              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
-              -Credential $cred
+Move-ADObject `
+    -Identity "CN=Leandre Ebah,CN=Users,DC=DC300151825-00,DC=local" `
+    -TargetPath "OU=Students,DC=DC300151825-00,DC=local" `
+    -Credential $cred
+```
 
 # 3️⃣ Vérifier le déplacement
 ```powershell
 Get-ADUser -Identity "thomas.girard" | Select-Object Name, DistinguishedName
 ```
 
-✨ Resultat ✨:
-
 ```powershell
-Name          DistinguishedName
-----          -----------------
-Thomas Girard CN=Thomas Girard,OU=Students,DC=DC300151825-00,DC=local
+Name         DistinguishedName
+----         -----------------
+Leandre Ebah CN=Leandre Ebah,OU=Students,DC=DC300151825-00,DC=local
 ```
+
+
+
+
 

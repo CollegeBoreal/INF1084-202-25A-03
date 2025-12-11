@@ -1,0 +1,7 @@
+﻿"Name","SamAccountName","Enabled"
+"Administrator","Administrator","True"
+"Guest","Guest","False"
+"student1","student1","True"
+"krbtgt","krbtgt","False"
+"Alice Dupont","alice.dupont","True"
+"Marc Petit","marc.petit","True"

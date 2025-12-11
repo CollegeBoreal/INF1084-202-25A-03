@@ -1,3 +1,3 @@
- . .\utilisateur5.ps1
-Enable-ADAccount -Identity "rama.diallo" -Credential $cred 
+ . .\bootstrap.ps1
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred 
 

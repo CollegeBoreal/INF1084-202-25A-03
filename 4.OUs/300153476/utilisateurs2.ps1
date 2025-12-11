@@ -1,3 +1,4 @@
+. .\bootstrap.ps1
 # Importer le module AD
 Import-Module ActiveDirectory
 
@@ -9,4 +10,4 @@ Get-ADDomainController -Filter * -Server $domainName
 Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
 Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
 Select-Object Name, SamAccountName
-$cred = Get-Credential  # entrer Administrator@$domainName et le mot de passe
+

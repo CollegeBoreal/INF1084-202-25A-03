@@ -1,72 +1,41 @@
-# 🧩 Windows Services & Active Directory – Technical Documentation
+# 🧩 Services Windows & Active Directory – Documentation Technique
 
-## Overview
 
-This repository provides an in-depth technical overview and PowerShell implementation of **Windows Services** and their interdependencies within **Active Directory Domain Services (AD DS)**.
-All scripts and observations are executed in a controlled lab environment under Windows Server.
+
+## 1️⃣ 
+**Zakaria Djellouli**
+**ID Étudiant : 300150433**
+---
+
+## 2️⃣ Services principaux d’Active Directory et dépendances
+
+| Service      | Processus                           | Description                                            |
+| ------------ | ----------------------------------- | ------------------------------------------------------ |
+| **NTDS**     | Active Directory Domain Services    | Base de données AD et logique du répertoire            |
+| **ADWS**     | Active Directory Web Services       | Administration AD à distance via PowerShell/RSAT       |
+| **DFSR**     | Distributed File System Replication | Réplication de SYSVOL et des GPO entre les contrôleurs |
+| **KDC**      | Kerberos Key Distribution Center    | Gestion des tickets Kerberos                           |
+| **Netlogon** | Netlogon Service                    | Authentification et enregistrement DNS du DC           |
+| **IsmServ**  | Intersite Messaging Service         | Support de la réplication entre sites AD               |
 
 ---
 
-## 1️⃣ Windows Services Fundamentals
+## 3️⃣ Architecture fonctionnelle
 
-Windows Services are **background processes** that ensure system functionality and service availability without user interaction.
+**Résumé des interactions :**
 
-**Key Characteristics**
-
-* Operate independently from user sessions
-* Can start automatically or manually
-* Essential for network stability and authentication continuity
-
-**Examples**
-
-| Service Name | Display Name     | Function             |
-| ------------ | ---------------- | -------------------- |
-| WinDefend    | Windows Defender | System protection    |
-| W32Time      | Windows Time     | Time synchronization |
-| Spooler      | Print Spooler    | Manages print queues |
+* `NTDS` est le cœur d'Active Directory
+* `KDC` gère l'authentification Kerberos
+* `Netlogon` est vital pour la connexion au domaine
+* `DFSR` assure la cohérence du SYSVOL
+* `ADWS` fournit les interfaces Web d'administration
+* `IsmServ` gère la réplication multisite
 
 ---
 
-## 2️⃣ Active Directory Core Services and Dependencies
+## 4️⃣ Opérations PowerShell
 
-Active Directory relies on multiple Windows Services to provide centralized authentication, replication, and directory management.
-
-| Service      | Process                             | Description                                              |
-| ------------ | ----------------------------------- | -------------------------------------------------------- |
-| **NTDS**     | Active Directory Domain Services    | Core AD database and directory logic                     |
-| **ADWS**     | Active Directory Web Services       | Enables remote management via PowerShell and RSAT tools  |
-| **DFSR**     | Distributed File System Replication | Replicates SYSVOL and GPO data across domain controllers |
-| **KDC**      | Kerberos Key Distribution Center    | Issues and validates Kerberos tickets                    |
-| **Netlogon** | Netlogon Service                    | Authenticates users and registers DC in DNS              |
-| **IsmServ**  | Intersite Messaging Service         | Ensures replication between AD sites                     |
-
----
-
-## 3️⃣ Functional Architecture
-
-```mermaid
-flowchart LR
-A[NTDS] --> B[KDC]
-B --> C[Netlogon]
-A --> D[DFSR]
-A --> E[ADWS]
-E --> F[IsmServ]
-```
-
-**Interaction Summary**
-
-* `NTDS` acts as the AD core — all services depend on it
-* `KDC` handles Kerberos authentication
-* `Netlogon` is essential for domain logon and discovery
-* `DFSR` maintains SYSVOL consistency across DCs
-* `ADWS` enables modern remote administration
-* `IsmServ` supports intersite replication
-
----
-
-## 4️⃣ PowerShell Operations
-
-### 4.1 Enumerate AD-related Services
+### 4.1 Lister les services liés à Active Directory
 
 ```powershell
 Get-Service | Where-Object {
@@ -74,13 +43,13 @@ Get-Service | Where-Object {
 } | Sort-Object DisplayName
 ```
 
-### 4.2 Check Service Status
+### 4.2 Vérifier l’état des services
 
 ```powershell
 Get-Service -Name NTDS, ADWS, DFSR
 ```
 
-### 4.3 Manage Service Lifecycle
+### 4.3 Gérer le cycle de vie des services
 
 ```powershell
 Start-Service -Name Netlogon
@@ -88,7 +57,7 @@ Stop-Service -Name DFSR
 Restart-Service -Name NTDS
 ```
 
-### 4.4 Event Log Analysis
+### 4.4 Analyse des journaux d’événements
 
 ```powershell
 Get-EventLog -LogName "Directory Service" -Newest 20
@@ -96,7 +65,7 @@ Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogo
 Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
 ```
 
-### 4.5 Export Logs
+### 4.5 Exportation des journaux
 
 ```powershell
 Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\Logs\ADLogs.csv" -NoTypeInformation
@@ -104,7 +73,7 @@ Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\L
 
 ---
 
-## 5️⃣ Automation Scripts
+## 5️⃣ Scripts d’automatisation
 
 ### services1.ps1
 
@@ -114,6 +83,7 @@ Get-Service | Where-Object {
 } | Sort-Object DisplayName
 Get-Service -Name NTDS, ADWS, DFSR
 ```
+<img width="692" height="207" alt="1" src="https://github.com/user-attachments/assets/197b6468-9fa7-434c-9a09-8b2cd84499ab" />
 
 ### services2.ps1
 
@@ -122,12 +92,14 @@ Get-EventLog -LogName "Directory Service" -Newest 20
 Get-EventLog -LogName "System" -Newest 20 | Where-Object {$_.Source -eq "Netlogon"}
 Get-WinEvent -LogName "Directory Service" -MaxEvents 20 | Format-Table TimeCreated, Id, LevelDisplayName, Message -AutoSize
 ```
+<img width="1319" height="656" alt="2" src="https://github.com/user-attachments/assets/5ba4144c-88cd-45dc-b0b9-e6e8a4cd7521" />
 
 ### services3.ps1
 
 ```powershell
 Get-WinEvent -LogName "Directory Service" -MaxEvents 50 | Export-Csv -Path "C:\Logs\ADLogs.csv" -NoTypeInformation
 ```
+<img width="803" height="52" alt="3" src="https://github.com/user-attachments/assets/1d29bbac-bfaf-4ee9-8221-97c5928a5981" />
 
 ### services4.ps1
 
@@ -136,73 +108,53 @@ Stop-Service -Name DFSR
 (Get-Service -Name DFSR).Status
 Start-Service -Name DFSR
 ```
+<img width="667" height="34" alt="4" src="https://github.com/user-attachments/assets/62e7626f-b46b-44c5-8d60-9096e8bb620f" />
 
 ---
 
-## 6️⃣ Dependency Matrix
+## 6️⃣ Matrice des dépendances
 
-| Service  | Critical Dependency | Impact if Stopped                         |
-| -------- | ------------------- | ----------------------------------------- |
-| NTDS     | Core                | Domain unavailable, GPOs inaccessible     |
-| KDC      | NTDS                | Authentication failure (Kerberos tickets) |
-| Netlogon | KDC                 | Logon and DNS registration fail           |
-| DFSR     | NTDS                | SYSVOL replication halted                 |
-| ADWS     | NTDS                | Remote AD management blocked              |
-| IsmServ  | DFSR                | Intersite replication suspended           |
-
----
-
-## 7️⃣ Administrative Best Practices
-
-* Verify dependencies before stopping critical services
-* Use `Restart-Service` instead of manual stop/start cycles
-* Regularly monitor the **Directory Service** log for warnings and replication issues
-* Export event logs periodically for audit and compliance
-* Ensure time synchronization across DCs for Kerberos consistency
+| Service  | Dépendance critique | Impact en cas d’arrêt                   |
+| -------- | ------------------- | --------------------------------------- |
+| NTDS     | Noyau               | Domaine indisponible, GPO inaccessibles |
+| KDC      | NTDS                | Échec d’authentification Kerberos       |
+| Netlogon | KDC                 | Impossible de se connecter au domaine   |
+| DFSR     | NTDS                | Réplication SYSVOL bloquée              |
+| ADWS     | NTDS                | Gestion AD à distance impossible        |
+| IsmServ  | DFSR                | Réplication multisite interrompue       |
 
 ---
 
-## 8️⃣ Lab Objectives
+## 7️⃣ Bonnes pratiques d'administration
 
-* Enumerate and analyze AD-related Windows services
-* Investigate Active Directory event logs
-* Export diagnostic logs for reporting
-* Manage service states programmatically via PowerShell
-
----
-
-## 9️⃣ Environment
-
-**Operating System:** Windows Server 2022
-**Tools Used:** PowerShell 7, Event Viewer, RSAT Tools
-**Test Environment:** Active Directory Domain Controller (Lab setup)
+* Toujours vérifier les dépendances avant d’arrêter un service AD
+* Préférer `Restart-Service` à une séquence Stop → Start
+* Surveiller régulièrement les journaux **Directory Service**
+* Exporter les logs pour audit et diagnostic
+* Garder une synchronisation horaire correcte pour Kerberos
 
 ---
 
-## 🔧 Git Commands for Version Control
+## 8️⃣ Objectifs du laboratoire
 
-```powershell
-git init
-git add .
-git commit -m "Initial commit - Windows & AD Services Lab"
-git branch -M main
-git remote add origin https://github.com/CollegeBoreal/INF1084-202-25A-03.git
-git push -u origin main
-```
+* Lister et analyser les services AD
+* Examiner les journaux Active Directory
+* Exporter les logs de diagnostic
+* Automatiser la gestion des services via PowerShell
 
 ---
 
-## 👨‍💻 Author
+## 9️⃣ Environnement utilisé
 
-**Author:** Zakaria Djellouli
-**ID Étudiant :** 300150433
-
+* **OS :** Windows Server 2022
+* **Outils :** PowerShell 7, Event Viewer, RSAT
+* **Lab :** Contrôleur de domaine Active Directory
 
 ---
 
 ## ✅ Conclusion
 
-Cette documentation consolide les connaissances théoriques et pratiques sur **Windows Services et Active Directory**.
-Tous les scripts PowerShell démontrent le contrôle opérationnel, la compréhension des dépendances et les bonnes pratiques d’administration sur un serveur Windows.
+Cette documentation regroupe les connaissances essentielles sur les **services Windows** et leur rôle au sein d’**Active Directory**.
+Les scripts PowerShell démontrent la maîtrise de l’automatisation, la compréhension des dépendances critiques et les bonnes pratiques d’administration système en environnement professionnel.
 
 ---

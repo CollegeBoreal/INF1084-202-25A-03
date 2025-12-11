@@ -1,0 +1,7 @@
+[core]
+        editor = nano
+
+[user]
+# Please adapt and uncomment the following lines:
+        name = MonNom
+        email = MonCourriel@me_remplacer.com

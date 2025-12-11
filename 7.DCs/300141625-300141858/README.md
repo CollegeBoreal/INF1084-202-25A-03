@@ -29,19 +29,26 @@ Voici une capture d’écran montrant le succès du ping :
 
 ## Étape 2 – Vérifier la résolution DNS
 
-Texte ici…
+Nous avons utilisé la commande `nslookup` pour valider la résolution des noms de domaine.
+
+![Résolution DNS](./images/dns.jpg)
 
 ---
 
 ## Étape 3 – Créer le trust REALM ↔ AD
 
-Texte ici…
+Voici la capture montrant la commande `netdom trust` :
 
+![Création du trust](./images/trust1.jpg)
+![Vérification du trust](./images/trust2.jpg)
 ---
 
 ## Étape 4 – Vérifier le trust
 
-Texte ici…
+La commande `nltest /trusted_domains` confirme que la relation d’approbation fonctionne :
+
+![Test du trust](./images/access_distance1.jpg)
+
 
 
 

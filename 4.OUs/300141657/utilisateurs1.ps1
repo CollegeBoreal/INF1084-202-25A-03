@@ -5,5 +5,5 @@ New-ADUser -Name "Alice Dupont" `
            -UserPrincipalName "alice.dupont@$domainName" `
            -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
            -Enabled $true `
-           -Path "CN=Users,DC=DC300098957-40,DC=local" `
+           -Path "CN=Users,DC=DC300141657-00,DC=local" `
            -Credential $cred

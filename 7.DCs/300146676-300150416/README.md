@@ -103,7 +103,7 @@ cd AD:\
 Get-ChildItem
 ```
 📸 Capture :  
-![AD PSDrive](images/im7.png)
+![AD PSDrive](images/im9.png)
 
 ---
 
@@ -113,18 +113,14 @@ Get-ChildItem
 
 📌 **trusts1.ps1**
 ```powershell
-New-ADTrust `
- -Name "DC300146676-00.local" `
- -SourceForest "DC300150416-00.local" `
- -TargetForest "DC300146676-00.local" `
- -Direction Bidirectional `
- -ForestTransitive $true `
- -Credential (Get-Credential)
+netdom trust DC300150416-00.local /Domain:DC300146676.local /UserD:administrator /PasswordD:* /Add /Realm /TwoWay
 ```
+
+(images/im7.png)
 
 👉 Ce script va créer un **Forest Trust bidirectionnel**
 
-Les preuves seront capturées lorsque la configuration sera faite avec mon coéquipier.
+(images/im8.png)
 
 ---
 

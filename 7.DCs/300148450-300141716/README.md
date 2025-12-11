@@ -1,9 +1,8 @@
 # Projet : Relation de Confiance entre Forêts Active Directory
 
-**Auteur : [Votre Nom]**
 **Domaine : DC300141716-00.local**
 **Partenaire : DC300148450-00.local**
-**Date : Décembre 2024**
+
 
 ---
 
@@ -37,7 +36,7 @@ Import-Module ActiveDirectory
 **Résultat :** ✅ Toutes les fonctionnalités installées, aucun redémarrage nécessaire.
 
 ---
-
+<img src=images/cap_projetfinal.png width='50%' height='50%'> </img>
 ## 2. Configuration DNS
 
 Permettre aux deux domaines de se résoudre mutuellement.

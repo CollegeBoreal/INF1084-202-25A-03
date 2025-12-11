@@ -1,0 +1,128 @@
+# 🧭 TP Active Directory – Gestion des Utilisateurs et des OU
+
+## 👤 Informations Étudiant
+- **Nom :** Ikhlef Smail  
+- **Numéro étudiant :** 300146721  
+- **Instance :** 00  
+- **Nom de domaine :** DC300146721-00.local  
+- **Nom NetBIOS :** DC300146721-00  
+
+---
+
+# ⚙️ Étape 0 – Configuration des variables (`bootstrap.ps1`)
+
+```powershell
+# Variables du domaine
+$studentNumber = 300146721
+$studentInstance = "00"
+$domainName = "DC$studentNumber-$studentInstance.local"
+$netbiosName = "DC$studentNumber-$studentInstance"
+
+# Mot de passe administrateur
+$plain = 'Infra@2024'
+$secure = ConvertTo-SecureString $plain -AsPlainText -Force
+
+# Identifiants administrateur
+$cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
+
+```
+# Étape 1 – Vérification du domaine
+
+```powershell
+Import-Module ActiveDirectory
+Get-ADDomain -Server $domainName
+Get-ADDomainController -Filter * -Server $domainName
+
+```
+
+#Étape 2 – Liste des utilisateurs du domaine
+
+```powershell
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, Enabled |
+Where-Object { $_.Enabled -eq $true -and $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName
+
+```
+
+#Étape 3 – Création d’un utilisateur
+
+```powershell
+New-ADUser -Name "Alice Dupont" `
+           -GivenName "Alice" `
+           -Surname "Dupont" `
+           -SamAccountName "alice.dupont" `
+           -UserPrincipalName "alice.dupont@$domainName" `
+           -AccountPassword (ConvertTo-SecureString "MotDePasse123!" -AsPlainText -Force) `
+           -Enabled $true `
+           -Path "CN=Users,DC=$netbiosName,DC=local" `
+           -Credential $cred
+```
+
+Création d’un utilisateur nommé Alice Dupont.
+
+#📝 Étape 4 – Modifier un utilisateur
+```powershell
+Set-ADUser -Identity "alice.dupont" `
+           -EmailAddress "alice.dupont@exemple.com" `
+           -GivenName "Alice-Marie" `
+           -Credential $cred
+
+```
+Modification de son adresse courriel et de son prénom.
+
+#🚫 Étape 5 – Désactiver un utilisateur
+```powershell
+Disable-ADAccount -Identity "alice.dupont" -Credential $cred
+
+```
+Désactivation du compte.
+
+#🔁 Étape 6 – Réactiver un utilisateur
+```powershell
+Enable-ADAccount -Identity "alice.dupont" -Credential $cred
+```
+
+Réactivation du compte.
+
+#❌ Étape 7 – Supprimer un utilisateur
+```powershell
+Remove-ADUser -Identity "alice.dupont" -Confirm:$false -Credential $cred
+```
+
+Suppression définitive du compte.
+
+#🧾 Étape 8 – Exporter la liste des utilisateurs
+
+```powershell
+Get-ADUser -Filter * -Server $domainName -Properties Name, SamAccountName, EmailAddress, Enabled |
+Where-Object { $_.SamAccountName -notin @("Administrator","Guest","krbtgt") } |
+Select-Object Name, SamAccountName, EmailAddress, Enabled |
+Export-Csv -Path "TP_AD_Users.csv" -NoTypeInformation -Encoding UTF8
+
+```
+Génère un fichier TP_AD_Users.csv contenant les comptes du domaine.
+
+#🗂️ Étape 9 – Créer une Unité d’Organisation (OU)
+
+```powershell
+if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'Students'")) {
+    New-ADOrganizationalUnit -Name "Students" -Path "DC=$netbiosName,DC=local"
+}
+
+```
+Création de l’OU Students.
+
+#🚀 Étape 10 – Déplacer un utilisateur vers l’OU
+```powershell
+Move-ADObject -Identity "CN=Alice Dupont,CN=Users,DC=$netbiosName,DC=local" `
+              -TargetPath "OU=Students,DC=$netbiosName,DC=local" `
+              -Credential $cred
+```
+# Vérification
+```powershell
+Get-ADUser -Identity "alice.dupont" | Select-Object Name, DistinguishedName
+
+```
+
+
+

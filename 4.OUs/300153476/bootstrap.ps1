@@ -2,7 +2,7 @@
 #   Informations étudiant
 # ==========================
 
-$studentNumber = 30015346
+$studentNumber = 300153476
 $studentInstance = "00"
 
 # Domaines générés
@@ -13,4 +13,5 @@ $netbiosName = "DC$studentNumber-$studentInstance"
 $plain = 'Infra@2024'
 $secure = ConvertTo-SecureString $plain -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential("Administrator@$domainName", $secure)
+
 

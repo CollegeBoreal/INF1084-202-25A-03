@@ -1,39 +1,56 @@
 ###################################################
 # Script : trusts2.ps1
-# Rôle : Vérifier le trust et accéder au domaine A
-# Domain B → Domain A
+# Rôle : Vérifier le trust REALM et tester l'accès
+# Relation : Domaine B (Aymen) → Domaine A (Hachem)
+# Auteur : Hachem Souyadi
 ###################################################
 
-Write-Host "=== Vérification Trust depuis Domain B ===" -ForegroundColor Cyan
+Write-Host "============================================"
+Write-Host "     VALIDATION DU REALM TRUST (MIT)"
+Write-Host "============================================" -ForegroundColor Cyan
 
-# Variables à modifier si nécessaire
-$RemoteDC = "DC300150416-00.local"    # Ton domaine
-$RemoteServer = "DC300150416"         # Nom du contrôleur AD distant
+# Variables
+$RemoteDC = "DC300150416-00.local"     # Domaine de Hachem
+$RemoteServer = "DC300150416"          # Nom du DC de Hachem
 
-# Identifiants du domaine distant (TON domaine)
-$credA = Get-Credential -Message "Entrez les identifiants administrateur de $RemoteDC"
+# Credentials
+$credA = Get-Credential -Message "Entrez un compte administrateur du domaine $RemoteDC"
 
-# Test réseau et DNS
-Write-Host "=== Vérification de la connectivité ===" -ForegroundColor Yellow
+# 1. Vérification réseau
+Write-Host "`n=== 1. Vérification de la connectivité réseau ===" -ForegroundColor Yellow
 Test-Connection -ComputerName $RemoteServer -Count 2
 
-Write-Host "=== Vérification DNS ===" -ForegroundColor Yellow
+# 2. Test DNS
+Write-Host "`n=== 2. Vérification DNS ===" -ForegroundColor Yellow
 nslookup $RemoteServer
 
-# Informations du domaine local
-Write-Host "=== Infos du domaine local ==="
+# 3. Domaine local
+Write-Host "`n=== 3. Informations du domaine local ===" -ForegroundColor Cyan
 Get-ADDomain
 
-# Interroger le domaine distant (via Trust)
-Write-Host "=== Infos du domaine distant ===" -ForegroundColor Green
-Get-ADDomain -Server $RemoteDC -Credential $credA
+# 4. Infos domaine distant (Realm trust ne supporte pas ADWS)
+Write-Host "`n=== 4. Informations du domaine distant (peut échouer : normal en REALM TRUST) ===" -ForegroundColor Green
+try {
+    Get-ADDomain -Server $RemoteDC -Credential $credA
+}
+catch {
+    Write-Host "⚠️ Impossible d'interroger le domaine distant via ADWS. C'est NORMAL pour un REALM (MIT) Trust." -ForegroundColor Red
+}
 
-Write-Host "=== Liste des utilisateurs du domaine distant ===" -ForegroundColor Green
-Get-ADUser -Filter * -Server $RemoteDC -Credential $credA | Select SamAccountName, DistinguishedName
+# 5. Liste des utilisateurs du domaine distant
+Write-Host "`n=== 5. Liste des utilisateurs du domaine distant (peut échouer : normal en REALM TRUST) ===" -ForegroundColor Green
+try {
+    Get-ADUser -Filter * -Server $RemoteDC -Credential $credA |
+        Select SamAccountName, DistinguishedName
+}
+catch {
+    Write-Host "⚠️ Accès LDAP refusé. Les REALM Trust ne supportent PAS Get-ADUser." -ForegroundColor Red
+}
 
-# Vérification du Trust
-Write-Host "=== Vérification de la relation Trust ===" -ForegroundColor Yellow
+# 6. Vérification du Trust
+Write-Host "`n=== 6. Vérification de la relation Trust ===" -ForegroundColor Yellow
 Get-ADTrust -Filter *
 
-Write-Host "=== Script terminé ===" -ForegroundColor Green
-
+Write-Host "`n============================================"
+Write-Host "     VALIDATION TERMINEE"
+Write-Host "============================================" -ForegroundColor Cyan

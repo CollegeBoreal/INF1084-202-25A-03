@@ -35,13 +35,13 @@ netdom trust DC-300142072.50local /Domain:DC-300144176.01local `
 
 ## 📸 Visualisation des Trusts
 
-### Vue AWA(DC-300143951-00)
+### Vue AWA(DC-300144176)
 ![Trust Visibility AWA](./images/PURE.PNG)
 
 **Trusts Visibles:**
 - Domaine Sortant: DC-300142072-50.local (Realm, Bidirectionnel)
 
-### Vue SIGA (DC-300151403-00)
+### Vue SIGA (DC-300122072)
 ![Trust Visibility SIGA](./images/image.PNG)
 
 **Trusts Visibles:**
@@ -95,6 +95,7 @@ netdom trust DC-300142072-50.local /Domain:DC-300144176.01local /verify
 ✅ Authentification croisée fonctionnelle  
 ✅ Communication inter-domaines confirmée  
 ✅ Accès aux ressources cross-domain validé
+
 
 
 
